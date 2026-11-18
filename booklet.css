@@ -15,15 +15,62 @@ body.bk-open{padding-bottom:0;background:#e9e6e1}
 .kicker{font-size:7.5pt;letter-spacing:.32em;text-transform:uppercase;color:var(--c);font-weight:700}
 .folio{position:absolute;bottom:7mm;left:14mm;right:14mm;display:flex;justify-content:space-between;font-size:7pt;color:var(--soft);letter-spacing:.2em}
 /* cover */
-.cover{padding:0;background:#102e43;color:#fff;display:flex;flex-direction:column}
-.cover-top{padding:22mm 16mm 10mm}
-.cover h1{font-size:44pt;line-height:1;margin:6mm 0 4mm;font-weight:400}
-.cover h1 small{display:block;font-size:13pt;letter-spacing:.5em;margin-bottom:4mm;color:#d9c7a3}
-.cover .sub{font-size:12pt;letter-spacing:.12em;color:#e7dfd1}
-.cover .route{font-size:10pt;letter-spacing:.25em;margin-top:6mm;color:#d9c7a3}
-.cover .map{flex:1;min-height:120mm;margin:0 16mm;border-radius:2mm;overflow:hidden;border:1px solid #ffffff33}
-.cover-bottom{padding:8mm 16mm 14mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:9pt;color:#c4d6e1}
-.cover-bottom b{display:block;font-size:22pt;color:#fff;font-weight:400}
+.cover{padding:0;background:#102e43;color:#fff;display:flex;flex-direction:column;height:297mm}
+.cover-mast{display:flex;justify-content:space-between;padding:11mm 14mm 0;font-size:7.5pt;letter-spacing:.3em;color:#d9c7a3;border-bottom:0}
+.masthead{font-size:118pt;line-height:.82;margin:5mm 12mm 0;font-weight:400;letter-spacing:.02em;color:#fff;text-align:center}
+.cover-tag{display:flex;justify-content:space-between;align-items:baseline;gap:6mm;margin:4mm 14mm 6mm;padding:2.5mm 0;border-top:1px solid #d9c7a3;border-bottom:1px solid #d9c7a3;color:#e7dfd1}
+.cover-tag .latin{font-size:11pt;letter-spacing:.55em;color:#d9c7a3}.cover-tag .serif{font-size:10pt;letter-spacing:.12em}
+.cover-body{flex:1;display:grid;grid-template-columns:1fr 56mm;gap:6mm;margin:0 14mm;min-height:0}
+.cover .map{height:100%;min-height:150mm;margin:0;border-radius:1.5mm;overflow:hidden;border:1px solid #ffffff33}
+.cover-lines{display:flex;flex-direction:column;gap:5mm}
+.cl{font-size:11pt;line-height:1.45;color:#f3ede2;padding-bottom:4mm;border-bottom:1px solid #ffffff2a}
+.cl small{display:block;font-size:7pt;letter-spacing:.4em;color:#d9c7a3;margin-bottom:1.5mm}
+.cl.big{font-size:19pt;line-height:1.3;font-weight:600;color:#fff}.cl.big em{display:block;font-style:normal;font-size:11pt;font-weight:400;color:#d9c7a3;margin-top:2mm;letter-spacing:.08em}
+.cl b{display:block;font-size:30pt;font-weight:400;line-height:1.1;color:#d9c7a3}
+.cover-bottom{padding:7mm 14mm 12mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:8pt;color:#c4d6e1;letter-spacing:.2em}
+.cover-bottom b{display:block;font-size:26pt;color:#fff;font-weight:400;letter-spacing:.06em;margin-bottom:1mm}
+.cover .route{text-align:right;font-size:7.5pt;letter-spacing:.25em;color:#d9c7a3;line-height:1.7}
+/* contents */
+.ct-grid{display:grid;grid-template-columns:1fr 62mm;gap:8mm}
+.toc-row{display:grid;grid-template-columns:27mm 1fr 9mm;gap:2mm;align-items:baseline;padding:1.6mm 0;border-bottom:1px solid var(--rule);font-size:9pt}
+.toc-row.major{margin-top:3mm;border-top:1.5px solid var(--ink)}
+.toc-k{font-size:7.5pt;letter-spacing:.18em;color:var(--soft)}.toc-p{text-align:right;font-size:11pt}
+.ct-side .lead{font-size:11pt;line-height:1.9;margin:0 0 6mm;padding-left:4mm;border-left:3px solid #d9c7a3}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:5mm}
+.nums div{border-top:2px solid var(--ink);padding-top:1.5mm;font-size:7pt;letter-spacing:.3em;color:var(--soft)}
+.nums b{display:block;font-size:30pt;font-weight:400;line-height:1.05;color:var(--ink);letter-spacing:0}
+.ct-side .box{margin-bottom:4mm;font-size:8.4pt}.ct-side .big{font-size:16pt;font-weight:600;display:block;line-height:1.3}
+/* reservations */
+table.rsv td{font-size:8pt;line-height:1.45;padding:1.6mm 1.5mm;vertical-align:middle}
+table.rsv td.k{font-size:6.8pt;letter-spacing:.12em;color:var(--soft)}
+table.rsv td.m,table.rsv .m{color:var(--soft);font-size:7.6pt}
+table.rsv td.memo{border-bottom:1px solid #b9b1a4;font-weight:600}
+table.rsv tr.ok b{color:#2f6b45}
+.cb{display:inline-block;width:3.4mm;height:3.4mm;border:1.2px solid #8d877d;border-radius:.7mm;vertical-align:-.6mm;position:relative;background:#fff;margin-right:1.2mm}
+.cb.on{background:#2f7a45;border-color:#2f7a45}.cb.on::after{content:'';position:absolute;left:1mm;top:.2mm;width:.9mm;height:1.9mm;border:solid #fff;border-width:0 .45mm .45mm 0;transform:rotate(45deg)}
+ul.rl{list-style:none;padding:0!important}ul.rl li{margin:1mm 0}ul.rl .m{display:block;margin-left:4.8mm;color:var(--soft);font-size:7.6pt}ul.rl li.ok{color:#2f6b45}
+/* ideas for free time */
+.ideas{border:1px solid var(--rule);border-left:3px solid var(--c);border-radius:1.5mm;padding:3mm 4mm;margin:1mm 0 3mm;background:#fff9}
+.ideas-h{font-size:9pt;font-weight:700;margin-bottom:1.5mm}.ideas-h .latin{display:inline-block;font-size:7pt;letter-spacing:.35em;color:var(--c);margin-right:2mm}
+.idea{padding:1.5mm 0;border-top:1px dashed var(--rule)}.idea b{font-size:9.6pt}.idea .m{display:block;color:var(--soft);font-size:7.6pt}.idea p{margin:.6mm 0 0;font-size:8.2pt;line-height:1.55}
+.ideas-f{font-size:7.4pt;color:var(--soft);margin-top:1.5mm}
+/* day page fill */
+.bk-page.day{display:flex;flex-direction:column;height:297mm}.bk-page.day .day-grid{flex:1;min-height:0}
+.day-main{display:flex;flex-direction:column}
+.day-memo{flex:1 1 0;min-height:0;margin:3mm 0 6mm;border-top:1.5px solid var(--ink);background:repeating-linear-gradient(to bottom,transparent 0,transparent 7.2mm,var(--rule) 7.2mm,var(--rule) 7.5mm);position:relative}
+.day-memo span{position:absolute;top:1mm;left:0;font-size:6.8pt;letter-spacing:.35em;color:var(--soft)}
+/* city feature */
+.g-hero{margin:-15mm -14mm 6mm;padding:13mm 14mm 7mm;background:var(--c);color:#fff}
+.g-hero .kicker{color:#ffffffcc}
+.g-en{font-size:58pt;line-height:.95;margin-top:2mm;font-weight:400}
+.g-ja{font-size:13pt;letter-spacing:.35em;margin-top:2mm;opacity:.92}
+.g-body{display:grid;grid-template-columns:1fr 64mm;gap:6mm;margin-bottom:5mm}
+.city-intro{font-size:10.2pt;line-height:1.95;margin:0}
+.city-intro::first-letter{float:left;font-size:30pt;line-height:1;margin:1mm 2mm 0 0;color:var(--c);font-weight:600}
+.g-side .box{margin-bottom:3mm;font-size:8.3pt}
+.g-sub{font-size:10pt;font-weight:700;margin:0 0 3mm;padding-bottom:1.5mm;border-bottom:2px solid var(--ink)}.g-sub .latin,.ms-h .latin{font-size:7pt;letter-spacing:.35em;color:var(--c);margin-right:2.5mm}
+.more-see{margin-top:5mm}.ms-h{font-size:9.5pt;font-weight:700;padding-bottom:1.5mm;border-bottom:1px solid var(--ink);margin-bottom:2mm}
+.ms-list{column-count:3;column-gap:5mm;font-size:8pt}.ms-list span{display:block;break-inside:avoid;padding:.8mm 0;border-bottom:1px dotted var(--rule);color:var(--soft)}.ms-list b{color:var(--ink);font-weight:600;margin-right:1.5mm}
 /* headings */
 .sec-h{border-bottom:2px solid var(--ink);padding-bottom:3mm;margin-bottom:5mm}
 .sec-h h2{font-size:22pt;margin:1mm 0 0;font-weight:600;line-height:1.2}
@@ -69,7 +116,8 @@ table.bk td.d{white-space:nowrap;font-weight:700}
 .seg-title span{display:block;font-weight:400;color:var(--soft);font-size:8pt}
 .side .box{margin-bottom:3.5mm;font-size:8.4pt}
 .side .big{font-size:15pt;font-weight:600;display:block;line-height:1.2}
-.tag-r{display:inline-block;font-size:7pt;font-weight:700;padding:.3mm 1.6mm;border-radius:1mm;background:#f6e3c6;color:#8a5a12;margin-left:1mm;vertical-align:1px}
+.tag-r{display:inline-block;font-size:7pt;font-weight:700;padding:.3mm 1.6mm;border-radius:1mm;background:#f6e3c6;color:#8a5a12;margin-left:1mm;vertical-align:1px;font-family:"Hiragino Sans","Noto Sans JP",sans-serif;letter-spacing:0}
+.tag-r.must{background:#f7dcd6;color:#9c3524}.tag-r.ok{background:#dcefe2;color:#2f6b45}
 .warnline{color:#8a5a12;font-size:8pt}
 /* spot guide */
 .spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
@@ -79,7 +127,6 @@ table.bk td.d{white-space:nowrap;font-weight:700}
 .spot-card p{margin:1mm 0;font-size:8.6pt}
 .spot-card .facts{font-size:7.8pt;color:#57534d}
 .spot-card .photo{font-size:8pt;color:var(--c);margin-top:1mm}
-.city-intro{font-size:9.5pt;margin:0 0 5mm;column-count:2;column-gap:6mm}
 /* practical */
 .check li{list-style:none;margin-left:-4.5mm}.check li::before{content:'□ ';color:var(--soft)}
 .phr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;font-size:8.4pt}

@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=13"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=14"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -63,7 +63,21 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 .move{background:#f5f6fb;border-radius:12px;padding:10px 12px;margin:6px 0 8px}.move-t{font-size:13.5px;font-weight:700;color:#4a4f86;margin-bottom:2px}.move .hrow{font-weight:500;font-size:13px;padding:4px 0}.move .time{color:#4a4f86}.move-l{display:inline-block;margin-top:4px;font-size:13px;font-weight:600;text-decoration:none}
 .leg .st{color:#46606f;font-size:12px}.hrow.sub{font-weight:500;color:var(--sub)}
 .warnbox{background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.6;margin:10px 0}
-.travel-pick{display:flex;align-items:center;gap:8px;margin-top:10px}.travel-pick label{margin:0;white-space:nowrap}.travel-pick select{padding:7px 10px;font-size:14.5px}
+.travel-pick{display:flex;align-items:center;gap:8px;margin-top:10px;padding:0 16px}
+.rv{display:inline-block;font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;margin-left:6px;vertical-align:2px;background:var(--red-soft);color:var(--red);white-space:nowrap}.rv.rec{background:var(--warn-soft);color:var(--warn)}.rv.ok{background:#e4f3e9;color:#2f7a45}
+.badge.ok{background:#e4f3e9;color:#2f7a45}.badge.rsv{background:var(--red-soft);color:var(--red)}
+.chip.sm{padding:6px 11px;font-size:13px}.chip.sm small{font-size:11px;margin-left:3px;font-weight:600;opacity:.7}.chip.today{border-color:var(--accent);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.card{scroll-margin-top:calc(var(--toph) + 62px)}.card.today{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}.today-tag{font-size:11px;font-weight:800;color:#fff;background:var(--accent);border-radius:5px;padding:2px 6px;margin-left:4px;letter-spacing:.05em}
+.tab{position:relative}.tab .nb{position:absolute;top:3px;left:calc(50% + 7px);min-width:17px;height:17px;border-radius:9px;background:#d64545;color:#fff;font-size:10.5px;font-style:normal;font-weight:700;line-height:17px;padding:0 5px;box-sizing:border-box}
+.prog{padding:16px}.prog-n{font-size:14px;color:var(--sub);font-weight:600}.prog-n b{font-size:26px;color:var(--ink);font-variant-numeric:tabular-nums;margin-right:2px}.prog .bar{display:block;height:8px;margin:10px 0 8px}.prog .bar i{background:#2f8a4f}
+.bitem{display:flex;gap:12px;padding:14px 16px;border-top:1px solid var(--line)}
+.bcheck{flex:none;width:30px;height:30px;border-radius:9px;border:2px solid #c3d1db;display:grid;place-items:center;color:transparent;font-size:15px;font-weight:800;margin-top:1px;transition:.15s}
+.bitem.done{background:#f6fbf7}.bitem.done .bcheck{background:#2f8a4f;border-color:#2f8a4f;color:#fff}
+.bitem .t{flex:1;min-width:0}.bitem b{font-size:15.5px;font-weight:700}.bitem .sub{font-size:12.5px;color:var(--sub);font-weight:600;margin-left:6px}
+.when{font-size:13px;font-weight:700;color:var(--accent);margin:5px 0 3px;line-height:1.5}.bitem.done .when{color:#2f7a45}
+.bitem .muted{margin:0 0 8px}.bitem input{padding:9px 11px;margin:2px 0 8px}
+.bwarn{background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:8px 10px;font-size:12.5px;line-height:1.5;margin:4px 0 8px;font-weight:600}
+.howto{padding:2px 16px 14px}.howto div{display:flex;gap:12px;padding:9px 0;border-top:1px dashed var(--line);font-size:13.5px;line-height:1.55}.howto div:first-child{border-top:0}.howto b{flex:none;width:98px;color:var(--accent);font-size:12.5px}.travel-pick label{margin:0;white-space:nowrap}.travel-pick select{padding:7px 10px;font-size:14.5px}
 </style></head><body>
 <header class="top" id="top"><div class="top-in"><div class="brand"><b>EUROPE 2027</b><span>3/11夜〜3/23 · パリ · モン・サン・ミッシェル · ヴェネツィア · ローマ</span></div><button class="share-btn" data-act="share">共有</button></div></header>
 <main>
@@ -82,6 +96,7 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 
 <section id="plan" class="page hide">
 <div class="page-h"><div><h1>日程</h1><p id="planSub"></p></div><button class="btn sub sm" data-bk="open">📖 旅のしおり</button></div>
+<div class="chips" id="dayChips"></div>
 <div id="days"></div>
 <details class="card more"><summary>計算の前提と注意</summary><div class="note"><ul>
 <li>都市間ルートと宿泊地は固定：日本 → パリ → モン・サン・ミッシェル → パリ → ヴェネツィア → ローマ → 日本</li>
@@ -96,6 +111,19 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 <li>場所を追加・削除・ホテル変更をすると、日程は自動で最適化されます（同じ条件なら毎回同じ結果）。場所をタップすると、日付の変更・並べ替え・削除を手動でもできます。</li>
 </ul><p style="margin:12px 0 0"><a href="#" data-act="openRoute">都市間ルートを地図で見る ↗</a></p></div></details>
 <details class="card more"><summary>公式情報（料金・休館日）</summary><div class="note" style="padding-bottom:6px">2026年11月時点の公開情報（非EU居住者の大人料金）。2027年3月の料金・運行・予約枠は再確認してください。</div><div id="official"></div></details>
+</section>
+
+<section id="book" class="page hide">
+<div class="page-h"><div><h1>予約</h1><p id="bookSub">日程から、予約が必要なものを自動でリストにしています</p></div></div>
+<div class="card" id="bookProg"></div>
+<div id="bookList"></div>
+<details class="card more"><summary>いつ予約する？（目安）</summary><div class="howto">
+<div><b>今すぐ</b><span>国際線とホテル。ホテルは「キャンセル無料」のプランで早めに押さえ、日程が固まったら見直すのが安心です。</span></div>
+<div><b>出発の3〜4か月前</b><span>フランス・イタリアの列車と、パリ→ヴェネツィアの飛行機。発売が始まったら早いほど安い運賃が残っています（発売時期は目安）。</span></div>
+<div><b>出発の約2か月前</b><span>バチカン美術館・エッフェル塔・ルーヴル美術館など、日時指定の入場券。人気の時間帯から売り切れます。</span></div>
+<div><b>出発の約1か月前</b><span>コロッセオ。販売開始直後に売り切れることが多いので、公式サイトで販売開始日を確認しておきましょう。</span></div>
+<div><b>予約したら</b><span>ここにチェックを入れて予約番号をメモ。確認メールはスクリーンショットも残しておくと、通信できない場所でも安心です。</span></div>
+</div><p class="muted" style="margin:0 16px 14px">販売開始の時期や条件は施設・会社によって変わります。必ず各公式サイトで確認してください。</p></details>
 </section>
 
 <section id="hotels" class="page hide">
@@ -133,13 +161,14 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 <button class="btn sub" data-act="export">JSONで保存</button><button class="btn sub" data-act="import">JSONを読み込む</button>
 </div></div>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v13 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v14 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
 <nav class="tabbar"><div class="tabbar-in">
 <button class="tab on" data-go="places"><span class="ic">📍</span>選ぶ</button>
 <button class="tab" data-go="plan"><span class="ic">🗓️</span>日程</button>
+<button class="tab" data-go="book"><span class="ic">🎫</span>予約<i class="nb hide" id="bookBadge"></i></button>
 <button class="tab" data-go="hotels"><span class="ic">🏨</span>ホテル</button>
 <button class="tab" data-go="cost"><span class="ic">💴</span>予算</button>
 <button class="tab" data-go="settings"><span class="ic">⚙️</span>設定</button>
@@ -201,6 +230,24 @@ const official=[
 ['ローマの地下鉄・バス','BIT券€1.50（100分）、72時間券€22。','https://www.atac.roma.it/en/tickets-and-passes/bit'],
 ['パリ ↔ モン・サン・ミッシェル','モンパルナス駅から列車、その後バスに乗換。日付別に検索が必要。','https://www.sncf-connect.com/en-en/train/timetables/paris/le-mont-saint-michel'],
 ['ヴェネツィア → ローマ','Frecciarossa / Italoで約3.5〜4時間。便ごとに時間と価格が異なる。','https://www.trenitalia.com/']];
+// Advance booking: [level ('必須' = timed ticket needed / '推奨' = strongly recommended), note, booking url, shared-ticket group]
+const RES={
+'エッフェル塔':['推奨','日時指定券。夕方〜夜の枠から先に埋まります','https://www.toureiffel.paris/en/rates-opening-times'],
+'ルーヴル美術館':['必須','日時指定の予約制。当日券はほとんど買えません','https://www.louvre.fr/en/visit/hours-admission/tickets-and-prices/'],
+'オルセー美術館':['推奨','日時指定券があると入場がスムーズ','https://www.musee-orsay.fr/en/visit'],
+'オランジュリー美術館':['推奨','日時指定券','https://www.musee-orangerie.fr/en'],
+'サント・シャペル':['推奨','日時指定券。保安検査の列が長いことが多い','https://www.sainte-chapelle.fr/en'],
+'ヴェルサイユ宮殿':['必須','日時指定の予約が必要','https://en.chateauversailles.fr/'],
+'オペラ・ガルニエ':['推奨','見学は日時指定券。公演・リハーサルで見学できない日あり','https://www.operadeparis.fr/en/visits/palais-garnier'],
+'修道院':['推奨','日時指定券。オンラインで買うと並ばずに入れます','https://www.abbaye-mont-saint-michel.fr/visiter/informations-pratiques'],
+'コロッセオ':['必須','入場時間指定・記名式。フォロ・ロマーノとパラティーノの丘も同じ券（24時間有効）','https://colosseo.it/en/opening-times-and-tickets/'],
+'フォロ・ロマーノ':['必須','コロッセオと共通の券で入場（24時間有効）','https://colosseo.it/en/opening-times-and-tickets/','コロッセオ'],
+'バチカン美術館':['必須','日時指定。公式サイトでおよそ60日前から販売（目安）','https://www.museivaticani.va/content/museivaticani/en/organizza-visita.html'],
+'ボルゲーゼ美術館':['必須','完全予約制・2時間ごとの入れ替え','https://galleriaborghese.beniculturali.it/en/'],
+'パンテオン':['推奨','入場€5。週末・祝日は混むのでオンライン購入が安心',''],
+'ドゥカーレ宮殿':['推奨','日時指定券（サン・マルコ広場の美術館共通券）','https://palazzoducale.visitmuve.it/en/visitor-information/'],
+'サン・マルコ寺院':['推奨','入場時間を予約すると行列を避けられます','https://www.basilicasanmarco.it/en/']};
+const resOf=x=>x&&x.tag!=='自由追加'&&RES[x.n]?RES[x.n]:null;
 // [name, stay hours, adult price EUR (non-EU, 2026), lat, lon, tag, note]
 const data={
 'パリ':[
@@ -315,7 +362,7 @@ function transitDetail(a,b,r){const A=stOf(a),B=stOf(b);if(!A||!B)return '';if(A
 
 // ===================== helpers =====================
 const regions=Object.keys(data),$=id=>document.getElementById(id),yen=n=>Math.round(n).toLocaleString('ja-JP')+'円',esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let selected=[],region='パリ',assignments={},openKey=null,summary={};
+let selected=[],region='パリ',assignments={},openKey=null,summary={},bookings={};
 const keys=['people','startH','endH','food','flight','rate'];
 const LATEST=21; // latest acceptable return to the hotel on night-view days
 const keyOf=x=>x.r+'|'+x.n;
@@ -374,7 +421,7 @@ function venueHours(x,date){const w=dow(date),n=x.n,r=x.r;
 const knownHours=h=>h&&!(h[0]===0&&h[1]===24);
 // Photo timing: 'night' (after sunset), 'sunset', 'dawndusk' (sunrise on a morning segment, otherwise sunset)
 const evType=x=>/夜景/.test(x.tag||'')?'night':/夕景/.test(x.tag||'')?'sunset':/朝夕/.test(x.tag||'')?'dawndusk':null;
-function evStart(x,s){const t=evType(x),ss=sunset[x.r];if(!t||!ss)return 0;if(t==='night')return ss-.75;if(t==='dawndusk'&&isMorning(s))return sunrise[x.r]-.5;return ss-1}
+function evStart(x,s){const t=evType(x),ss=sunset[x.r];if(!t||!ss)return 0;if(t==='night')return Math.max(ss-2,ss+.6-dur(x)); /* be there from before sunset until the blue hour */if(t==='dawndusk'&&isMorning(s))return sunrise[x.r]-.5;return ss-1}
 const isLateSpot=(x,s)=>{const t=evType(x);return t==='night'||t==='sunset'||(t==='dawndusk'&&!isMorning(s))};
 function legInfo(a,b){const H=a.hotel?a:b.hotel?b:null,o=a.hotel?b:a;
  if(H&&H.r==='ヴェネツィア'&&H.mestre){const st={r:'ヴェネツィア',n:'Venezia Santa Lucia',lat:45.4411,lon:12.3210,hotel:true,st:['Ferrovia',['1','2']]},w=o.lat?legInfo(a.hotel?st:o,a.hotel?o:st):{h:.3,mode:'徒歩',detail:''};
@@ -410,7 +457,9 @@ function timeline(items,s){const H=hotelFor(s.r);let start=segStart(s);
 function segCost(items,s){if(!items.length)return 0;const T=timeline(items,s);const busy=T.stops.reduce((a,st)=>a+dur(st.x),0)+T.travel,wait=T.stops.reduce((a,st)=>a+st.wait,0);let c=busy+.25*busy*busy+.1*wait+T.travel*.5+Math.max(0,T.home-T.limit)*(s.d==='2027-03-12'?300:100)+Math.max(0,T.home-LATEST)*150;
  for(const st of T.stops){if(st.closed)c+=1000;const et=evType(st.x);if(et&&et!=='night'){const e=evStart(st.x,s);if(e)c+=30*Math.max(0,st.arrive-(e+.75))} // missed the golden hour
   if(st.late)c+=100*(st.leave-st.h[1]);if(isMorning(s)&&isLateSpot(st.x,s))c+=1000}
- const lateCount=T.stops.filter(st=>isLateSpot(st.x,s)).length;if(lateCount>1)c+=40*(lateCount-1);return c}
+ const lateCount=T.stops.filter(st=>isLateSpot(st.x,s)).length;if(lateCount>1)c+=40*(lateCount-1);
+ if(s.d==='2027-03-12')c+=.4*busy*busy; // arrival day after the night flight: prefer a light plan
+ return c}
 function permute(a){if(a.length<=1)return [a];const out=[];a.forEach((x,i)=>{for(const p of permute([...a.slice(0,i),...a.slice(i+1)]))out.push([x,...p])});return out}
 const routeCache=new Map();
 // Best visiting order for one segment: exhaustive for up to 7 spots, otherwise greedy + 2-opt.
@@ -436,12 +485,60 @@ function autoDistribute(){routeCache.clear();const asg={};
  const order=[];for(const s of segs)order.push(...bestRoute(itemsOf(s),s));selected=[...order,...selected.filter(x=>!order.includes(x))];
  openKey=null;build()}
 
+// ===================== bookings =====================
+const TODAY=(()=>{const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`})();
+const nextDay=d=>new Date(Date.parse(d)+864e5).toISOString().slice(0,10);
+const dl=d=>`${md(d)}（${wd(d)}）`;
+function nightRanges(r){const out=[];for(const d of days.filter(D=>D.night===r).map(D=>D.d)){const g=out[out.length-1];if(g&&nextDay(g[g.length-1])===d)g.push(d);else out.push([d])}return out}
+function moveDep(dd){const D=days.find(x=>x.d===dd),s=(D.plan||[]).find(z=>z.move),v=D.variants?D.variants[Math.min(D.variants.length-1,Math.max(0,+travelChoice[dd]||0))].label:'';const st=s&&s.steps[1];return {label:v,short:v.replace(/（.*?）/g,''),t:st?st[0]:null,steps:s?s.steps:[]}}
+const MOVE_BOOK=[
+ {d:'2027-03-14',id:'tr-0314',name:'パリ → モン・サン・ミッシェル',sub:'列車＋バス',lvl:'必須',note:'SNCF Connect で列車とバスを通しで予約できます。発売はおよそ3〜4か月前から（目安）。',url:SNCF},
+ {d:'2027-03-15',id:'tr-0315',name:'モン・サン・ミッシェル → パリ',sub:'バス＋TGV',lvl:'必須',note:'行きと同じく SNCF Connect で。バスと TGV の乗り継ぎを通しで予約すると安心です。',url:SNCF},
+ {d:'2027-03-16',id:'tr-0316',name:'パリ → ヴェネツィア',sub:'飛行機（LCC）',lvl:'必須',note:'オルリー空港発・ヴェネツィア（マルコポーロ）空港着の便を。LCCは受託手荷物が別料金なので、荷物込みで予約しましょう。',url:'https://www.easyjet.com/'},
+ {d:'2027-03-19',id:'tr-0319',name:'ヴェネツィア → ローマ',sub:'高速鉄道',lvl:'推奨',note:'Trenitalia（Frecciarossa）か Italo。早く買うほど安い割引運賃が残っています。',url:'https://www.trenitalia.com/'}];
+const PREP_BOOK=[
+ ['prep-ins','海外旅行保険','推奨','クレジットカード付帯の保険は、補償額や「旅行代金をそのカードで払う」などの条件を確認しておきましょう。',''],
+ ['prep-etias','EUの渡航認証（ETIAS）を確認','推奨','2026年11月時点ではまだ始まっていません。出発前に必要になっていないか公式サイトで確認を。','https://travel-europe.europa.eu/etias_en'],
+ ['prep-sim','スマホの海外通信（eSIMなど）','推奨','地図・翻訳・予約の確認に欠かせません。3人分を用意しておきましょう。',''],
+ ['prep-tabi','外務省「たびレジ」に登録','推奨','滞在先の安全情報や緊急連絡がメールで届きます。','https://www.ezairyu.mofa.go.jp/tabireg/']];
+const spotBookId=x=>{const R=resOf(x);return R?'tk-'+(R[3]||x.n):null};
+const isBooked=id=>!!(id&&bookings[id]&&bookings[id].done);
+function bookingItems(){const L=[];
+ const back=moveDep('2027-03-22'),ret=back.steps[back.steps.length-1];
+ L.push({id:'flight',g:'flight',name:'国際線（往復）',lvl:'必須',when:`行き ${dl('2027-03-11')} 羽田 22:55発（例）／帰り ${dl('2027-03-22')} ローマ ${ret?fmt(ret[0]):''}発ごろ（${back.short}）`,ref:back.label,note:'「東京→パリ」「ローマ→東京」の周遊（マルチシティ）で検索。帰りの時間帯は、日程の「移動の時間帯」と合わせましょう。',url:'https://www.google.com/travel/flights',refMsg:r=>`予約したときの帰りの時間帯は「${r}」でした。日程の「移動の時間帯」と合っているか確認してください`});
+ for(const m of MOVE_BOOK){const dep=moveDep(m.d);L.push({id:m.id,g:'move',name:m.name,sub:m.sub,lvl:m.lvl,when:`${dl(m.d)} ${dep.t!=null?fmt(dep.t)+'発':''}（${dep.short}）`,ref:dep.label,note:m.note,url:m.url,refMsg:r=>`予約したときの時間帯は「${r}」でした。日程の「移動の時間帯」を合わせてください`})}
+ for(const r of [...regions].sort((a,b)=>nightRanges(a)[0][0].localeCompare(nightRanges(b)[0][0]))){const h=hotelInfo(r),rg=nightRanges(r);L.push({id:'hotel-'+r,g:'hotel',name:h.name,sub:r,lvl:'必須',when:rg.map(g=>`${dl(g[0])}〜${dl(nextDay(g[g.length-1]))} ${g.length}泊`).join(' ＋ '),ref:h.name,note:(rg.length>1?'2回に分けて泊まるので予約も2件になります。モン・サン・ミッシェルに行く間、大きな荷物を預かってもらえるかも確認を。':'')+'「大人3名・1室」で検索し、キャンセル無料のプランを選ぶと安心です。',url:'https://www.google.com/search?q='+encodeURIComponent(h.query+' official site'),refMsg:x=>`予約したのは「${x}」です。ホテルのページで選んでいる宿と違います`})}
+ const tk=new Map();
+ for(const s of segs){const its=itemsOf(s);if(!its.length)continue;for(const st of timeline(its,s).stops){const R=resOf(st.x);if(!R)continue;const key=R[3]||st.x.n,e=tk.get(key)||{key,R:RES[key]||R,m:[]};e.m.push({x:st.x,d:s.d,t:st.arrive});tk.set(key,e)}}
+ [...tk.values()].map(e=>{e.m.sort((a,b)=>a.d.localeCompare(b.d)||a.t-b.t);return e}).sort((a,b)=>a.m[0].d.localeCompare(b.m[0].d)||a.m[0].t-b.m[0].t).forEach(e=>{const f=e.m[0],same=e.m.every(m=>m.d===f.d),names=e.m.map(m=>m.x.n);
+  L.push({id:'tk-'+e.key,g:'ticket',name:names.join('＋'),sub:f.x.r,lvl:e.R[0],when:`${dl(f.d)} ${fmt(f.t)}ごろ入場`+(same?'':` ／ ${names[names.length-1]}は${md(e.m[e.m.length-1].d)}`),ref:f.d,note:e.R[1],url:e.R[2]||'https://www.google.com/search?q='+encodeURIComponent(names[0]+' '+f.x.r+' 公式 チケット'),tip:same?'':'共通券は24時間有効なので、同じ日か続けて回るのがおすすめです',refMsg:r=>`予約した日（${md(r)}）と今の日程（${md(f.d)}）がずれています。日程を戻すか、予約を変更してください`})});
+ for(const p of PREP_BOOK)L.push({id:p[0],g:'prep',name:p[1],lvl:p[2],note:p[3],url:p[4],ref:''});
+ return L}
+function bookItemHtml(i){const b=bookings[i.id]||{},done=!!b.done,mism=done&&i.ref&&b.ref&&b.ref!==i.ref;
+ return `<div class="bitem ${done?'done':''}"><button class="bcheck" data-book="${esc(i.id)}" aria-pressed="${done}" aria-label="${esc(i.name)}を予約済みにする">✓</button><div class="t"><b>${esc(i.name)}</b>${i.sub?`<span class="sub">${esc(i.sub)}</span>`:''}${done?'<span class="rv ok">予約済み</span>':`<span class="rv ${i.lvl==='必須'?'':'rec'}">${esc(i.lvl)}</span>`}
+${i.when?`<div class="when">📅 ${esc(i.when)}${i.g==='ticket'&&!done?' → この日時で予約':''}</div>`:''}${mism?`<div class="bwarn">⚠ ${esc(i.refMsg(b.ref))}</div>`:''}${i.tip?`<div class="bwarn">💡 ${esc(i.tip)}</div>`:''}
+<div class="muted">${esc(i.note)}</div>${done?`<input data-memo="${esc(i.id)}" value="${esc(b.memo||'')}" placeholder="予約番号・メモ（任意）" maxlength="200" aria-label="予約番号・メモ">`:''}${i.url?`<a class="btn sub sm" target="_blank" rel="noopener" href="${esc(i.url)}">${i.g==='prep'?'公式サイト':'予約・確認'} ↗</a>`:''}</div></div>`}
+function renderBook(){const L=bookingItems(),done=L.filter(i=>isBooked(i.id)).length,must=L.filter(i=>i.lvl==='必須'),left=must.filter(i=>!isBooked(i.id)).length;
+ const nb=$('bookBadge');nb.textContent=left;nb.classList.toggle('hide',!left);
+ if($('book').classList.contains('hide'))return;
+ $('bookProg').innerHTML=`<div class="prog"><div class="prog-n"><b>${done}</b>/ ${L.length}件 予約済み</div><span class="bar"><i style="width:${L.length?done/L.length*100:0}%"></i></span><div class="muted">${left?`必須のうち<b style="color:var(--red)">あと${left}件</b>。`:'必須の予約はすべて完了！'}チェックすると日程とPDFにも「予約済み」と出ます</div></div>`;
+ const G=[['flight','✈️ 国際線'],['move','🚄 都市間の移動'],['hotel','🏨 ホテル'],['ticket','🎟 入場券（日時指定）'],['prep','🧳 出発前の準備']];
+ $('bookList').innerHTML=G.map(([g,t])=>{const its=L.filter(i=>i.g===g);
+  if(!its.length)return g==='ticket'?`<div class="card"><div class="hgroup-h">${t}</div><p class="muted" style="margin:4px 16px 14px">予約が必要な場所はまだ日程に入っていません。「選ぶ」で「予約必須」「予約推奨」の印がある場所を選ぶと、ここに出てきます。</p></div>`:'';
+  return `<div class="card"><div class="hgroup-h">${t} <span>${its.filter(i=>isBooked(i.id)).length}/${its.length}</span></div>${its.map(bookItemHtml).join('')}</div>`}).join('')}
+function toggleBook(id){const it=bookingItems().find(i=>i.id===id);if(!it)return;const b=bookings[id]||{};bookings[id]=b.done?{...b,done:false}:{...b,done:true,ref:it.ref||''};build();toast(bookings[id].done?`「${it.name}」を予約済みにしました`:'予約済みのチェックを外しました')}
+function jumpDay(d){const el=$('day-'+d);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+function setHeader(){const left=Math.round((Date.parse('2027-03-11')-Date.parse(TODAY))/864e5),i=days.findIndex(D=>D.d===TODAY);
+ document.querySelector('.brand span').textContent=(left>0?`出発まであと${left}日 · `:i>=0?`旅行${i+1}日目 · `:'')+'3/11夜〜3/23 · パリ · モン・サン・ミッシェル · ヴェネツィア · ローマ'}
+
 // ===================== rendering =====================
 function renderCatalog(){
  $('placesSub').textContent=selected.length?`${selected.length}か所を選択中 · タップで日程に自動で入ります`:'タップで選ぶと、日程に自動で入ります';
  $('cityChips').innerHTML=regions.map(r=>{const c=selected.filter(x=>x.r===r).length;return `<button class="chip ${r===region?'on':''}" data-city="${esc(r)}">${esc(r)}${c?`<i>${c}</i>`:''}</button>`}).join('');
  const list=[...data[region].map(x=>item(region,x)),...selected.filter(x=>x.r===region&&x.tag==='自由追加')];
- $('catalog').innerHTML=list.map(x=>{const on=selected.some(y=>keyOf(y)===keyOf(x)),p=priceYen(x);return `<button class="spot ${on?'on':''}" data-toggle="${esc(keyOf(x))}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}</b><small>${esc(x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}${x.note?'<br>'+esc(x.note):''}</small></span><span class="tick">✓</span></button>`}).join('');
+ $('catalog').innerHTML=list.map(x=>{const k=keyOf(x),on=selected.some(y=>keyOf(y)===k),p=priceYen(x),R=resOf(x),bid=spotBookId(x),ad=on&&assignments[k];
+  const pill=R?(isBooked(bid)?'<span class="rv ok">予約済み</span>':`<span class="rv ${R[0]==='必須'?'':'rec'}">予約${R[0]}</span>`):'';
+  return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}${pill}</b><small>${esc(x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note?'<br>'+esc(x.note):''}</small></span><span class="tick">✓</span></button>`}).join('');
 }
 const legHtml=(a,b,leg)=>`<div class="leg">${legIcon(leg.mode)} ${esc(leg.mode)} · 約${Math.max(5,Math.round(leg.h*12)*5)}分 · <a target="_blank" rel="noopener" href="${routeUrl(a,b,leg.mode)}">経路 ↗</a>${leg.detail?`<br><span class="st">${esc(leg.detail)}</span>`:''}</div>`;
 const stepsHtml=(steps,url,title)=>`<div class="move"><div class="move-t">${esc(title)}</div>${steps.map(([t,txt])=>`<div class="hrow"><span class="time">${t==null?'':fmt(t)}</span><span>${esc(typeof txt==='function'?txt():txt)}</span></div>`).join('')}${url?`<a class="move-l" target="_blank" rel="noopener" href="${url}">時刻・料金を調べる ↗</a>`:''}</div>`;
@@ -452,7 +549,8 @@ function segHtml(s){const items=itemsOf(s),T=timeline(items,s);
  const ratio=Math.min(100,(T.home-T.start)/Math.max(.5,T.limit-T.start)*100);
  const stops=T.stops.map((st,i)=>{const k=keyOf(st.x),open=openKey===k,p=priceYen(st.x);
   const meta=[`${st.x.h}時間`,p?yen(p):'',knownHours(st.h)?`営業 ${fmt(st.h[0])}–${fmt(st.h[1])}`:'',evType(st.x)?(evStart(st.x,s)<12?`日の出 ${fmt(sunrise[s.r])}ごろ`:`日没 ${fmt(sunset[s.r])}ごろ`):'',st.lunchIn?'途中で館内か近くで昼食（+1時間）':''].filter(Boolean).join(' · ');
-  const flag=st.closed?'<span class="badge">この日は通常休館日</span>':st.late?'<span class="badge">閉館時刻を過ぎる可能性</span>':'';
+  const R=resOf(st.x),bid=spotBookId(st.x),rsv=R?(isBooked(bid)?'<span class="badge ok">✓ 予約済み</span>':`<span class="badge${R[0]==='必須'?' rsv':''}">🎫 予約${R[0]}</span>`):'';
+  const flag=[st.closed?'<span class="badge">この日は通常休館日</span>':st.late?'<span class="badge">閉館時刻を過ぎる可能性</span>':'',rsv].filter(Boolean).join(' ');
   return `${st.lunchAt!=null?`<div class="hrow sub"><span class="time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}${legHtml(st.prev,st.x,st.leg)}${st.wait>=.5?`<div class="leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間${evType(st.x)?'（光の時間待ち）':''}</div>`:''}<button class="stop" data-open="${esc(k)}" aria-expanded="${open}"><span class="time">${fmt(st.arrive)}</span><span class="t"><b>${esc(st.x.n)}</b><small>${meta}</small>${flag?'<br>'+flag:''}</span><span class="chev">${open?'▲':'▼'}</span></button>${open?`<div class="edit"><select data-day="${esc(k)}" aria-label="日付を変更">${segs.filter(z=>z.r===st.x.r).map(z=>`<option value="${z.d}" ${z.d===s.d?'selected':''}>${segLabel(z)}</option>`).join('')}</select><button class="btn sub sm" data-up="${esc(k)}" ${i===0?'disabled':''} aria-label="前へ">↑</button><button class="btn sub sm" data-down="${esc(k)}" ${i===T.stops.length-1?'disabled':''} aria-label="後へ">↓</button>${st.x.lat?`<a class="btn sub sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${st.x.lat},${st.x.lon}">地図</a>`:''}<button class="btn danger sm" data-remove="${esc(k)}">削除</button></div>`:''}`}).join('');
  return `<div class="seg">${head}<div class="load ${over?'over':''}"><span class="bar"><i style="width:${ratio}%"></i></span>${over?`${fmt(T.limit)}を約${T.home-T.limit<1.5?Math.round((T.home-T.limit)*60)+'分':Math.round((T.home-T.limit)*2)/2+'時間'}オーバー`:`ホテル着 ${fmt(T.home)}`}</div>${lateHome?`<div class="badge" style="margin-top:6px">ホテル着が${fmt(T.home)}ごろ。夜は大通り・地下鉄やタクシーで戻りましょう</div>`:nightOk?`<div class="muted" style="margin-top:6px">🌙 夜の撮影があるので帰着は遅め（21時までに戻る想定）</div>`:''}
  <div class="stops"><div class="hrow"><span class="time">${fmt(T.start)}</span><span>🏨 ${esc(T.H.name)} を出発</span></div>${stops}${legHtml(items[items.length-1],T.H,T.back)}<div class="hrow"><span class="time${over||lateHome?' lt':''}">${fmt(T.home)}</span><span>🏨 ${esc(T.H.name)} に戻る</span></div></div></div>`}
@@ -461,10 +559,12 @@ function renderPlan(){
  const warn=regions.map(r=>{let over=0;for(const s of segs.filter(z=>z.r===r)){const it=itemsOf(s);if(!it.length)continue;const T=timeline(it,s);over+=Math.max(0,T.home-T.limit)}
   if(over<.25)return '';const big=selected.filter(x=>x.r===r).sort((a,b)=>dur(b)-dur(a)).slice(0,2).map(x=>`${x.n}（${x.h}時間）`).join('、');
   return `<div class="warnbox">⚠ <b>${esc(r)}</b>は選んだ場所が多く、合計で約${Math.round(over*2)/2}時間オーバーしています。${esc(big)}など時間のかかる場所を外すか、優先度の低い場所を減らすと収まります。</div>`}).join('');
+ $('dayChips').innerHTML=days.map(D=>`<button class="chip sm ${D.d===TODAY?'today':''}" data-jump="${D.d}">${md(D.d)}<small>${wd(D.d)}</small></button>`).join('');
+ const todayTag=D=>D.d===TODAY?'<span class="today-tag">TODAY</span>':'';
  $('days').innerHTML=warn+days.map(D=>{
-  if(D.pre)return `<div class="card"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(D.title)}</span></div><span class="tag move">機内泊</span></div><div class="stops">${stepsHtml(D.steps,'',`東京 → パリ`)}<p class="muted" style="margin:4px 0 12px">${esc(D.note)}</p></div></div>`;
+  if(D.pre)return `<div class="card${D.d===TODAY?' today':''}" id="day-${D.d}"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(D.title)}</span>${todayTag(D)}</div><span class="tag move">機内泊</span></div><div class="stops">${stepsHtml(D.steps,'',`東京 → パリ`)}<p class="muted" style="margin:4px 0 12px">${esc(D.note)}</p></div></div>`;
   const regs=[...new Set(D.plan.filter(s=>s.r).map(s=>s.r))];
-  return `<div class="card"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(regs.join(' → '))}</span></div><span class="tag ${D.plan.some(s=>s.move)?'move':''}">${D.night?esc(D.night)+'泊':'帰国便（機内泊）'}</span></div>${D.variants?`<div class="travel-pick"><label>移動の時間帯</label><select data-travel="${D.d}">${D.variants.map((v,i)=>`<option value="${i}" ${D.plan===v.plan?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>`:''}<div class="stops">${D.plan.map(s=>s.move?stepsHtml(s.steps,s.url,s.title):segHtml(s)).join('')}</div></div>`}).join('');
+  return `<div class="card${D.d===TODAY?' today':''}" id="day-${D.d}"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(regs.join(' → '))}</span>${todayTag(D)}</div><span class="tag ${D.plan.some(s=>s.move)?'move':''}">${D.night?esc(D.night)+'泊':'帰国便（機内泊）'}</span></div>${D.variants?`<div class="travel-pick"><label>移動の時間帯</label><select data-travel="${D.d}">${D.variants.map((v,i)=>`<option value="${i}" ${D.plan===v.plan?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>`:''}<div class="stops">${D.plan.map(s=>s.move?stepsHtml(s.steps,s.url,s.title):segHtml(s)).join('')}</div></div>`}).join('');
 }
 function renderHotels(){$('hotelCards').innerHTML=Object.entries(hotelOptions).map(([r,list])=>`<div class="hgroup"><div class="hgroup-h">${esc(r)} <span>${NIGHTS[r]}泊</span></div>${list.map((h,i)=>{const on=hotelInfo(r)===h;return `<div class="hotel ${on?'on':''}"><div class="hotel-top"><span class="city">${esc(h.rec)}</span>${on?'<span class="chosen">✓ 選択中</span>':''}</div><b>${esc(h.name)}</b><div class="muted">📍 ${esc(h.area)}${h.st?' · 最寄り '+esc(h.st[0]):''}</div><p>${esc(h.why)}</p><div class="price">1泊 約${yen(h.eur*rate())}<small>（€${h.eur}・3名1室の目安）</small></div><div class="muted" style="margin-bottom:10px">${esc(h.basis)}</div><div class="row2">${on?'':`<button class="btn sm" data-hotel="${esc(r)}|${i}">この宿にする</button>`}<a class="btn sub sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.query)}">地図 ↗</a></div></div>`}).join('')}</div>`).join('')}
 function renderOfficial(){$('official').innerHTML=official.map(([n,t,u])=>`<div class="info"><b>${esc(n)}</b><span>${esc(t)}</span>${u?` <a target="_blank" rel="noopener" href="${u}">公式サイト ↗</a>`:''}</div>`).join('')}
@@ -481,23 +581,26 @@ function renderCost(){
 <h4>入場・体験（選んだ場所）</h4>${selected.filter(x=>priceYen(x)>0).map(x=>`<div><span>${esc(x.n)}<br><small class="muted">${esc(x.r)}</small></span><b>${x.eur!=null?'€'+x.eur:yen(priceYen(x))}</b></div>`).join('')||'<p class="muted">なし</p>'}
 <p class="muted" style="margin:10px 0 0">1ユーロ＝${R}円で換算。入場料は非EU居住者の大人料金。運賃・宿泊料金は2026年11月時点で調べた目安で、予約する時期によって変わります。</p></div></details>`;
 }
-function build(){ensureAssignments();renderPlan();renderCost();renderHotels();persist()}
+function build(){ensureAssignments();renderPlan();renderCost();renderHotels();renderBook();persist()}
 
 // ===================== actions =====================
-function showPage(id){document.querySelectorAll('.page').forEach(e=>e.classList.toggle('hide',e.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.go===id));id==='places'?renderCatalog():build();window.scrollTo(0,0)}
+function showPage(id){document.querySelectorAll('.page').forEach(e=>e.classList.toggle('hide',e.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.go===id));id==='places'?renderCatalog():build();window.scrollTo(0,0);
+ if(id==='plan'&&!jumpedToday&&days.some(D=>D.d===TODAY)){jumpedToday=true;setTimeout(()=>jumpDay(TODAY),60)}}
+let jumpedToday=false;
 function toggle(k){const i=selected.findIndex(y=>keyOf(y)===k);if(i>=0)selected.splice(i,1);else{const r=k.slice(0,k.indexOf('|')),n=k.slice(k.indexOf('|')+1),x=(data[r]||[]).find(z=>z[0]===n);if(x)selected.push(item(r,x))}autoDistribute();renderCatalog()}
 function addCustom(){const r=$('newRegion').value,n=$('newName').value.trim();if(!n)return toast('場所の名前を入力してください');if(selected.some(x=>x.r===r&&x.n===n))return toast('すでに追加されています');selected.push({r,n,h:+$('newHours').value||2,p:+$('newPrice').value||0,lat:null,lon:null,tag:'自由追加'});$('newName').value='';region=r;autoDistribute();renderCatalog();toast(`「${n}」を追加しました`)}
 function setDay(k,d){assignments[k]=d;const x=selected.find(y=>keyOf(y)===k),s=segOf(d,x.r);selected=selected.filter(y=>y!==x);const others=itemsOf(s);const best=bestRoute([...others,x],s);selected=[...selected.filter(y=>!best.includes(y)),...best];build();toast(`${segLabel(s)}に移動しました`)}
 function shiftStop(k,delta){const day=assignments[k],x0=selected.find(y=>keyOf(y)===k),arr=selected.filter(x=>x.r===x0.r&&assignments[keyOf(x)]===day),i=arr.indexOf(x0),j=i+delta;if(j<0||j>=arr.length)return;const a=selected.indexOf(arr[i]),b=selected.indexOf(arr[j]);[selected[a],selected[b]]=[selected[b],selected[a]];build()}
 function removeStop(k){const x=selected.find(y=>keyOf(y)===k);selected=selected.filter(y=>keyOf(y)!==k);delete assignments[k];autoDistribute();toast(`「${x?x.n:''}」を外しました`)}
 function persist(){try{localStorage.setItem('europetrip_v4',JSON.stringify(state()))}catch{}}
-function state(){return {v:6,selected:selected.map(x=>x.tag==='自由追加'?x:{r:x.r,n:x.n}),assignments,order:selected.map(keyOf),hotels:hotelSel,travel:travelChoice,settings:Object.fromEntries(keys.map(k=>[k,$(k).value]))}}
+function state(){return {v:6,selected:selected.map(x=>x.tag==='自由追加'?x:{r:x.r,n:x.n}),assignments,order:selected.map(keyOf),hotels:hotelSel,travel:travelChoice,bookings,settings:Object.fromEntries(keys.map(k=>[k,$(k).value]))}}
 // Older saves: keep the chosen places (refreshed from the catalog), drop outdated settings, and re-plan.
 function apply(s){if(!s||!Array.isArray(s.selected))throw Error('データが不正です');
  selected=s.selected.filter(x=>x&&regions.includes(x.r)&&typeof x.n==='string').slice(0,120).map(x=>{const c=(data[x.r]||[]).find(z=>z[0]===x.n);return c?item(x.r,c):{r:x.r,n:x.n.slice(0,100),h:+x.h||2,p:+x.p||0,lat:null,lon:null,tag:'自由追加'}});
  if(s.v>=5)for(const k of keys)if(s.settings&&s.settings[k]!=null&&$(k))$(k).value=s.settings[k];
  if(s.travel&&typeof s.travel==='object'){travelChoice={};for(const D of days)if(D.variants&&Number.isInteger(+s.travel[D.d]))travelChoice[D.d]=+s.travel[D.d];applyTravel()}
  if(s.hotels&&typeof s.hotels==='object')for(const r of regions)if(Number.isInteger(+s.hotels[r]))hotelSel[r]=+s.hotels[r];
+ if(s.bookings&&typeof s.bookings==='object'){bookings={};for(const [k,v] of Object.entries(s.bookings).slice(0,200))if(v&&typeof v==='object')bookings[String(k).slice(0,80)]={done:!!v.done,memo:String(v.memo||'').slice(0,200),ref:String(v.ref||'').slice(0,120)}}
  renderCatalog();if(s.v>=6){assignments=s.assignments&&typeof s.assignments==='object'?s.assignments:{};build()}else autoDistribute()}
 function openRoute(){const r=['パリ','モン・サン・ミッシェル','パリ','ヴェネツィア','ローマ'];window.open('https://www.google.com/maps/dir/'+r.map(encodeURIComponent).join('/')+'/','_blank','noopener')}
 function encode(s){const b=new TextEncoder().encode(JSON.stringify(s));let raw='';b.forEach(x=>raw+=String.fromCharCode(x));return btoa(raw).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
@@ -506,8 +609,10 @@ async function share(){persist();const url=location.origin+location.pathname+'#p
 function exportJSON(){const blob=new Blob([JSON.stringify(state(),null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='europe-trip-2027.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 let toastTimer;function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200)}
 
-document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity]');if(!t||t.disabled)return;const d=t.dataset;
- if(d.hotel){const [r,i]=d.hotel.split('|');hotelSel[r]=+i;autoDistribute();toast(`${r}は ${hn(r)} にしました`)}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book]');if(!t||t.disabled)return;const d=t.dataset;
+ if(d.book)toggleBook(d.book);
+ else if(d.jump)jumpDay(d.jump);
+ else if(d.hotel){const [r,i]=d.hotel.split('|');hotelSel[r]=+i;autoDistribute();toast(`${r}は ${hn(r)} にしました`)}
  else if(d.go)showPage(d.go);
  else if(d.city){region=d.city;renderCatalog()}
  else if('toggle' in d)toggle(d.toggle);
@@ -518,15 +623,15 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[da
  else if(d.addcity){region=d.addcity;showPage('places')}
  else if(d.act){e.preventDefault();({share,export:exportJSON,import:()=>$('importFile').click(),addCustom,openRoute})[d.act]()}
 });
-document.addEventListener('change',e=>{const ds=e.target.dataset;if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();autoDistribute();toast(`${md(ds.travel)}は「${days.find(D=>D.d===ds.travel).plan&&e.target.selectedOptions[0].text}」にしました`)}});
+document.addEventListener('change',e=>{const ds=e.target.dataset;if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();autoDistribute();toast(`${md(ds.travel)}は「${days.find(D=>D.d===ds.travel).plan&&e.target.selectedOptions[0].text}」にしました`)}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
 keys.forEach(k=>$(k).addEventListener('change',()=>{if(k==='startH'||k==='endH')autoDistribute();else build()}));
 $('newRegion').innerHTML=regions.map(r=>`<option>${esc(r)}</option>`).join('');
 const setTop=()=>document.documentElement.style.setProperty('--toph',$('top').offsetHeight+'px');addEventListener('resize',setTop);setTop();
-renderHotels();renderOfficial();
+renderHotels();renderOfficial();setHeader();
 function restoreOrder(s){if(Array.isArray(s.order)){const pos=Object.fromEntries(s.order.map((k,i)=>[k,i]));selected.sort((a,b)=>(pos[keyOf(a)]??999)-(pos[keyOf(b)]??999));build()}}
 try{const src=location.hash.startsWith('#plan=')?decode(location.hash.slice(6)):JSON.parse(localStorage.getItem('europetrip_v4')||'null');
  if(src){apply(src);if(src.v>=6)restoreOrder(src)}
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
-</script><script src="booklet.js?v=13"></script></body></html>
+</script><script src="booklet.js?v=14"></script></body></html>

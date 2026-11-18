@@ -6,7 +6,7 @@ const CITY_INTRO={
 'モン・サン・ミッシェル':'ノルマンディーとブルターニュの境、干潟に浮かぶ岩山の修道院。対岸のホテル街（ラ・カゼルヌ）から無料シャトルで約12分です。日帰り客が帰った夕方以降と早朝は人が少なく、ライトアップや朝焼けの撮影に最高の時間帯。潮の干満差が大きく、大潮の日は島へのアクセスが制限されることがあります。',
 'ヴェネツィア':'車が一台も走らない「水の都」。移動は徒歩と水上バス（ヴァポレット）だけで、細い路地と橋が迷路のように続きます。地図アプリを頼りに、迷うこと自体を楽しむのがコツ。サン・マルコ広場周辺は昼は大混雑するので、朝早くと夕方以降がおすすめです。橋が多いのでスーツケースの移動は大変。',
 'ローマ':'2000年以上の歴史が街じゅうに重なる「永遠の都」。古代遺跡、ルネサンスの教会、バロックの噴水が歩ける範囲に集まっています。地下鉄は2路線＋1路線と少なめで、中心部は歩くかバスが基本。教会は肩・膝を出す服装では入れないので、薄手の羽織りを持ち歩きましょう。'};
-// local name, description, reservation, photo tip
+// local name, description, (unused: reservation now lives in RES in index.html), photo tip
 const SPOT_INFO={
 'エッフェル塔':['Tour Eiffel','1889年のパリ万博のために建てられた高さ330mの鉄塔。頂上の展望台からパリを一望でき、夜は毎正時から5分間、無数のライトがきらめきます。','推奨','日没後のブルーアワーと、毎正時のきらめきを狙う'],
 '凱旋門':['Arc de Triomphe','ナポレオンが戦勝を記念して建てた門。284段の階段で上がる屋上から、シャンゼリゼと放射状に延びる12本の通りを見渡せます（エレベーターは停止中のことあり）。','','屋上から夕方〜夜のシャンゼリゼの光の帯'],
@@ -72,19 +72,51 @@ const TILE_ATTR='&copy; OpenStreetMap contributors';
 let bkMaps=[],bkTiles=0,bkTilesDone=0;
 const DOW_EN=['SUN','MON','TUE','WED','THU','FRI','SAT'];
 const txtOf=t=>typeof t==='function'?t():t;
+const CITY_FOOD={
+'パリ':['パン屋のクロワッサンとカフェ・クレームで朝ごはん','そば粉のガレットとクレープ','ステック・フリット（ステーキとフライドポテト）','オニオングラタンスープ','マカロンなどの焼き菓子'],
+'モン・サン・ミッシェル':['名物のふわふわオムレツ','プレ・サレ（塩分を含んだ牧草で育った子羊）','ブルターニュのガレットとシードル','バターたっぷりのサブレ（おみやげにも）'],
+'ヴェネツィア':['チケッティ（バーカロで立ち飲みしながらつまむ小皿）','イカ墨のパスタ','サルデ・イン・サオール（イワシの甘酢漬け）','食前酒のスプリッツ','ティラミス'],
+'ローマ':['カルボナーラ','カチョ・エ・ペペ（チーズと黒こしょうのパスタ）','ピッツァ・アル・ターリオ（量り売りのピザ）','スップリ（ライスコロッケ）','ジェラート']};
+const CITY_TIP={
+'パリ':'カフェやレストランで水が欲しいときは「Une carafe d’eau, s’il vous plaît」と頼むと、無料の水道水が出てきます。',
+'モン・サン・ミッシェル':'島の中の店は日帰り客が帰る夕方には閉まり始めます。夕食は対岸のホテル街（ラ・カゼルヌ）でとるのが楽です。',
+'ヴェネツィア':'レストランでは席料（コペルト）がかかることが多いので、メニューで確認を。バーカロでチケッティをつまむのが地元流です。',
+'ローマ':'コーヒーはバールのカウンターで立って飲むと安く済みます。街角の水飲み場「ナゾーネ」の水は飲めるので、空のボトルがあると便利。'};
+const pad2=n=>String(n).padStart(2,'0');
 
 function loadLeaflet(){return new Promise(res=>{if(window.L)return res();const l=document.createElement('link');l.rel='stylesheet';l.href='vendor/leaflet/leaflet.css';document.head.appendChild(l);const s=document.createElement('script');s.src='vendor/leaflet/leaflet.js';s.onload=()=>res();s.onerror=()=>res();document.head.appendChild(s)})}
 function bkBudget(){const R=rate(),people=Math.max(1,+$('people').value||3),rooms=Math.ceil(people/3),entry=selected.reduce((a,x)=>a+priceYen(x),0),flight=+$('flight').value||0,food=+$('food').value||0;
  const hotel=regions.reduce((a,r)=>a+hotelInfo(r).eur*NIGHTS[r],0)*R*rooms/people,inter=transfers.reduce((a,t)=>a+t[3],0)*R,local=passes.reduce((a,p)=>a+p[2],0)*R;
  const rows=[['国際線往復',flight],['宿泊（10泊）',hotel],['食費（11日）',food*11],['都市間・空港の移動',inter],['市内交通',local],['入場・体験',entry]];return {rows,per:rows.reduce((a,r)=>a+r[1],0),people}}
 const folio=(n,label)=>`<div class="folio"><span class="latin">EUROPE PHOTO JOURNEY 2027</span><span>${esc(label)} · ${n}</span></div>`;
+// Reservation tag that reflects what was ticked in the app's booking list.
+function rsvTag(x){const R=resOf(x);if(!R)return '';const ok=isBooked(spotBookId(x));return `<span class="tag-r${ok?' ok':R[0]==='必須'?' must':''}">${ok?'✓ 予約済み':'予約'+R[0]}</span>`}
+function dayTitle(D){if(D.pre)return 'いよいよ出発。羽田から夜の便でパリへ';
+ const all=D.plan.filter(s=>s.r).flatMap(s=>itemsOf(s)),top=[...all].sort((a,b)=>dur(b)-dur(a)).slice(0,2).map(x=>x.n),mv=D.plan.find(s=>s.move);
+ if(D.d==='2027-03-12')return 'パリに到着'+(top.length?'。まずは'+top[0]+'へ':'');
+ if(D.d==='2027-03-22')return 'ローマ最後の朝、そして帰国';
+ if(mv)return mv.title.replace(/（.*?）/g,'');
+ return top.length?top.join('と')+'へ':(D.night||'')+'を気ままに歩く'}
 
-function bkCover(){return `<section class="bk-page cover"><div class="cover-top"><div class="kicker" style="color:#d9c7a3">Spring 2027 · Travel Notebook</div>
-<h1 class="latin"><small>EUROPE PHOTO JOURNEY</small>Paris<br>Mont-Saint-Michel<br>Venezia · Roma</h1>
-<div class="sub serif">パリ、モン・サン・ミッシェル、ヴェネツィア、ローマをめぐる12日間</div>
-<div class="route latin">TOKYO → PARIS → MONT-SAINT-MICHEL → PARIS → VENEZIA → ROMA → TOKYO</div></div>
-<div class="map bk-map" data-map="overview" style="height:auto"></div>
-<div class="cover-bottom"><div><b class="latin">3.11 — 3.23</b>2027 · 3人旅</div><div style="text-align:right">${selected.length}か所の観光地<br>10泊 · 4つの街</div></div></section>`}
+function bkCover(){const n=selected.length,photo=selected.filter(x=>evType(x)).length;
+ return `<section class="bk-page cover"><div class="cover-mast latin"><span>VOL. 01</span><span>SPRING 2027 · TRAVEL NOTEBOOK</span><span>FOR 3 TRAVELLERS</span></div>
+<h1 class="masthead latin">EUROPE</h1>
+<div class="cover-tag"><span class="latin">PHOTO JOURNEY</span><span class="serif">パリ · モン・サン・ミッシェル · ヴェネツィア · ローマ</span></div>
+<div class="cover-body"><div class="map bk-map" data-map="overview"></div>
+<div class="cover-lines">
+<div class="cl big serif"><small class="latin">FEATURE</small>花の都から、<br>永遠の都へ。<br><em>4つの街を歩く13日間</em></div>
+<div class="cl serif"><small class="latin">PHOTO</small>夕景・夜景・朝焼けを<br>狙う撮影スポット<b class="latin">${photo}</b></div>
+<div class="cl serif"><small class="latin">ROUTE</small>${n}か所を回る<br>地図つきの毎日の行程</div>
+<div class="cl serif"><small class="latin">GUIDE</small>予約リスト、交通、<br>安全とひとことフレーズ</div></div></div>
+<div class="cover-bottom"><div><b class="latin">3.11 — 3.23</b><span class="latin">2027 · 13 DAYS · 10 NIGHTS</span></div><div class="route latin">TOKYO → PARIS → MONT-SAINT-MICHEL → PARIS<br>→ VENEZIA → ROMA → TOKYO</div></div></section>`}
+
+function bkContents(page,toc){const B=bkBudget(),L=bookingItems(),done=L.filter(i=>isBooked(i.id)).length,left=L.filter(i=>i.lvl==='必須'&&!isBooked(i.id)).length;
+ return `<section class="bk-page"><div class="sec-h"><div class="kicker">Contents</div><h2 class="serif">目次</h2></div>
+<div class="ct-grid"><div class="toc">${toc.map(t=>`<div class="toc-row${t.major?' major':''}"><span class="toc-k latin">${esc(t.k)}</span><span class="toc-t">${esc(t.t)}</span><span class="toc-p latin">${t.p}</span></div>`).join('')}</div>
+<div class="ct-side"><p class="lead serif">パリの美術館、モン・サン・ミッシェルの朝焼け、ヴェネツィアの運河、ローマの遺跡。カメラを片手に4つの街を歩く、13日間の旅のノートです。</p>
+<div class="nums"><div><b class="latin">13</b>DAYS</div><div><b class="latin">4</b>CITIES</div><div><b class="latin">10</b>NIGHTS</div><div><b class="latin">${selected.length}</b>SPOTS</div></div>
+<div class="box"><h4>💴 1人あたりの予算</h4><span class="big">${yen(B.per)}</span>${B.people}人で約${yen(B.per*B.people)}（目安）</div>
+<div class="box"><h4>🎫 予約の状況</h4><span class="big">${done} / ${L.length}</span>${left?`必須の予約が<b>あと${left}件</b>あります`:'必須の予約はすべて完了'}</div></div></div>${folio(page,'CONTENTS')}</section>`}
 
 function bkOverview(page){const B=bkBudget();
  const rows=days.map(D=>{if(D.pre)return `<tr><td class="d">${md(D.d)}（${wd(D.d)}）</td><td>東京 → パリ</td><td>夜の便で出発（機内泊）</td><td>—</td></tr>`;
@@ -92,18 +124,17 @@ function bkOverview(page){const B=bkBudget();
   return `<tr><td class="d">${md(D.d)}（${wd(D.d)}）</td><td>${regs.map(r=>`<span class="dot" style="background:${CITY[r].c}"></span>${esc(r)}`).join(' → ')}${D.plan.some(s=>s.move)?`<br><span class="warnline">${D.d==='2027-03-12'?'到着日':'移動日'}</span>`:''}</td><td>${spots.length?esc(spots.join('、')):'自由時間'}</td><td>${D.night?esc(hn(D.night)):'機内泊'}</td></tr>`}).join('');
  return `<section class="bk-page"><div class="sec-h"><div class="kicker">Itinerary</div><h2 class="serif">旅のすべて、一枚で。</h2><p>13日間の行程と泊まる宿の一覧</p></div>
 <table class="bk ov"><thead><tr><th style="width:17mm">DATE</th><th style="width:40mm">CITY</th><th>SPOTS</th><th style="width:40mm">STAY</th></tr></thead><tbody>${rows}</tbody></table>
-<div class="cols" style="margin-top:5mm"><div class="box tight"><h4>🏨 宿泊するホテル</h4><ul>${regions.map(r=>`<li><b>${esc(r)}</b>（${NIGHTS[r]}泊）：${esc(hn(r))}</li>`).join('')}</ul></div>
+<div class="cols" style="margin-top:5mm"><div class="box tight"><h4>🏨 宿泊するホテル</h4><ul>${[...regions].sort((a,b)=>nightRanges(a)[0][0].localeCompare(nightRanges(b)[0][0])).map(r=>`<li><b>${esc(r)}</b>（${NIGHTS[r]}泊）：${esc(hn(r))}${isBooked('hotel-'+r)?' <span class="tag-r ok">✓ 予約済み</span>':''}</li>`).join('')}</ul></div>
 <div class="box tight"><h4>💴 1人あたりの予算（目安）</h4><table class="bk">${B.rows.map(([n,v])=>`<tr><td>${n}</td><td style="text-align:right">${yen(v)}</td></tr>`).join('')}<tr><td><b>合計</b></td><td style="text-align:right"><b>${yen(B.per)}</b></td></tr></table><p style="margin:2mm 0 0;font-size:7.5pt;color:var(--soft)">1ユーロ＝${rate()}円。料金は2026年11月時点の目安。</p></div></div>${folio(page,'ITINERARY')}</section>`}
 
 function bkPre(page){const D=days[0];
- return `<section class="bk-page" style="--c:#102e43"><div class="day-head"><div class="day-num latin"><small>DEPARTURE</small>00</div><div class="day-meta"><div class="en latin">TOKYO → PARIS</div><h2 class="serif">いよいよ出発。羽田から夜の便でパリへ</h2></div><div class="day-date"><b class="latin">3.11</b>THU</div></div>
+ return `<section class="bk-page" style="--c:#102e43"><div class="day-head"><div class="day-num latin"><small>DEPARTURE</small>00</div><div class="day-meta"><div class="en latin">TOKYO → PARIS</div><h2 class="serif">${esc(dayTitle(D))}</h2></div><div class="day-date"><b class="latin">3.11</b>THU</div></div>
 <div class="day-grid"><div>${D.steps.map(([t,x])=>`<div class="tl-row"><span class="tl-time">${t==null?'':fmt(t)}</span><span>${esc(txtOf(x))}</span></div>`).join('')}<p style="color:var(--soft);font-size:8pt">${esc(D.note)}</p>
 <h3 class="bk">出発前にやっておくこと</h3><ul class="check" style="padding-left:4.5mm">
 <li>パスポートの残存期間を確認（シェンゲン協定国の出国予定日から3か月以上）</li>
 <li>EUの渡航認証ETIAS：2026年11月時点では未開始。出発前に公式サイト（travel-europe.europa.eu）で必要かどうかを確認</li>
 <li>海外旅行保険（クレジットカード付帯の条件も確認）</li>
-<li>人気施設の予約：ルーヴル、コロッセオ、バチカン、ボルゲーゼなどは日時指定</li>
-<li>都市間の列車・飛行機の予約（早いほど安い）</li>
+<li>航空券・列車・ホテル・日時指定の入場券を予約（次のページの予約リスト）</li>
 <li>外務省の「たびレジ」に登録</li>
 <li>スマホの海外通信（eSIMなど）とオフライン地図の準備</li>
 <li>パスポートとクレジットカードの写真を保存しておく</li></ul></div>
@@ -111,35 +142,52 @@ function bkPre(page){const D=days[0];
 <div class="box"><h4>🕗 時差</h4>パリ・ローマは日本の<b>8時間遅れ</b>。3/28から夏時間で7時間遅れに。</div>
 <div class="box"><h4>🌤 3月の気候</h4>パリ・ヴェネツィアは最高12℃前後・最低4〜5℃、ローマは最高16℃前後。朝晩は冷えるので重ね着と雨具を。</div></div></div>${folio(page,'DEPARTURE')}</section>`}
 
+function bkBooking(page){const L=bookingItems(),done=L.filter(i=>isBooked(i.id)).length,K={flight:'FLIGHT',move:'TRANSFER',hotel:'HOTEL',ticket:'TICKET',prep:'PREP'};
+ return `<section class="bk-page"><div class="sec-h"><div class="kicker">Reservations</div><h2 class="serif">予約リスト</h2><p>アプリの「予約」でチェックした状況です（${done} / ${L.length}件 予約済み）。予約番号はアプリにメモするか、ここに書き込んで。</p></div>
+<table class="bk rsv"><thead><tr><th style="width:6mm"></th><th style="width:19mm">KIND</th><th>ITEM</th><th style="width:52mm">WHEN</th><th style="width:34mm">NO. / MEMO</th></tr></thead><tbody>${L.map(i=>{const b=bookings[i.id]||{};
+  return `<tr class="${b.done?'ok':''}"><td><span class="cb${b.done?' on':''}"></span></td><td class="k latin">${K[i.g]}</td><td><b>${esc(i.name)}</b>${i.sub?` <span class="m">${esc(i.sub)}</span>`:''} <span class="tag-r${b.done?' ok':i.lvl==='必須'?' must':''}">${b.done?'予約済み':esc(i.lvl)}</span></td><td class="m">${esc(i.when||'')}</td><td class="memo">${esc(b.memo||'')}</td></tr>`}).join('')}</tbody></table>
+<div class="cols" style="margin-top:5mm"><div class="box tight"><h4>🗓 いつ予約する？（目安）</h4><ul><li><b>今すぐ</b>：国際線とホテル（キャンセル無料プランで）</li><li><b>3〜4か月前</b>：フランス・イタリアの列車、パリ→ヴェネツィアの飛行機</li><li><b>約2か月前</b>：バチカン、エッフェル塔、ルーヴルなど日時指定の入場券</li><li><b>約1か月前</b>：コロッセオ（販売開始直後に売り切れやすい）</li></ul></div>
+<div class="box tight"><h4>📝 予約したら</h4><ul><li>日程の時刻を、予約した時間に合わせて読み替える</li><li>確認メールはスクリーンショットでも保存（電波がない場所でも見られる）</li><li>記名式の券（コロッセオなど）は、当日パスポートを持参</li></ul></div></div>${folio(page,'RESERVATIONS')}</section>`}
+
+function bkIdeas(s){const picked=new Set(selected.map(keyOf)),morning=isMorning(s),light=(s.from||0)>=16||s.dawn;
+ const pool=data[s.r].map(x=>item(s.r,x)).filter(x=>!picked.has(keyOf(x))&&!(morning&&isLateSpot(x,s))&&venueHours(x,s.d));
+ if(light)pool.sort((a,b)=>(evType(b)?1:0)-(evType(a)?1:0));
+ const span=segEnd(s)-segStart(s),list=pool.slice(0,span>=8?4:span>=4?3:2);
+ if(!list.length)return '<p style="color:var(--soft)">自由時間</p>';
+ return `<div class="ideas"><div class="ideas-h"><span class="latin">IDEAS</span>空いた時間に、こんな場所はいかが？</div>${list.map(x=>{const info=SPOT_INFO[x.n]||[],p=priceYen(x);return `<div class="idea"><b>${esc(x.n)}</b>${rsvTag(x)}<span class="m">${esc(x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}</span><p>${esc(info[1]||x.note||'')}</p></div>`}).join('')}<div class="ideas-f">アプリの「選ぶ」で追加すると、この日の行程に自動で組み込まれます</div></div>`}
+
 function bkDay(D,dayNo,page){const regs=[...new Set(D.plan.filter(s=>s.r).map(s=>s.r))],main=regs[regs.length-1]||D.night||'ローマ',col=CITY[main].c;
- const sightSegs=D.plan.filter(s=>s.r),allItems=sightSegs.flatMap(s=>itemsOf(s));
- const isMove=D.plan.some(s=>s.move),moveTitle=(D.plan.find(s=>s.move)||{}).title||'';
- const title=isMove?moveTitle.replace(/（.*?）/g,'').replace('ローマ → 日本','ローマ最後の朝、そして帰国'):(allItems.length?[...allItems].sort((a,b)=>dur(b)-dur(a)).slice(0,2).map(x=>x.n).join('と')+(allItems.length>2?'へ':''):'自由に街歩き');
+ const allItems=D.plan.filter(s=>s.r).flatMap(s=>itemsOf(s)),isMove=D.plan.some(s=>s.move);
  let num=0;const parts=D.plan.map(s=>{if(s.move)return `<div class="tl-move"><div class="tt">🚆 ${esc(s.title)}</div>${s.steps.map(([t,x])=>`<div class="tl-row"><span class="tl-time">${t==null?'':fmt(t)}</span><span>${esc(txtOf(x))}</span></div>`).join('')}</div>`;
-  const items=itemsOf(s);if(!items.length)return `<div class="seg-title">📍 ${esc(s.r)} <span>${s.label?esc(s.label):''}</span></div><p style="color:var(--soft)">予定なし（自由時間）</p>`;
+  const items=itemsOf(s);if(!items.length)return `<div class="seg-title">📍 ${esc(s.r)} <span>${fmt(segStart(s))}〜${fmt(segEnd(s))}${s.label?' · '+esc(s.label):''}</span></div>${bkIdeas(s)}`;
   const T=timeline(items,s),base=num;num+=items.length;
-  const rows=T.stops.map((st,i)=>{const p=priceYen(st.x),info=SPOT_INFO[st.x.n]||[];
+  const rows=T.stops.map((st,i)=>{const p=priceYen(st.x);
    const meta=[`滞在${st.x.h}時間`,p?yen(p):'',knownHours(st.h)?`営業${fmt(st.h[0])}–${fmt(st.h[1])}`:'',st.lunchIn?'途中で昼食':''].filter(Boolean).join(' · ');
-   return `${st.lunchAt!=null?`<div class="tl-row"><span class="tl-time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}<div class="tl-leg">${legIcon(st.leg.mode)} ${esc(st.leg.mode)} 約${Math.max(5,Math.round(st.leg.h*12)*5)}分${st.leg.detail?`<span class="st">${esc(st.leg.detail)}</span>`:''}</div>${st.wait>=.5?`<div class="tl-leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間</div>`:''}<div class="tl-row"><span class="tl-time">${fmt(st.arrive)}</span><span><span class="tl-num">${base+i+1}</span><b>${esc(st.x.n)}</b>${info[2]?`<span class="tag-r">予約${esc(info[2])}</span>`:''}<br><span class="m">${esc(meta)}</span>${st.closed?'<br><span class="warnline">⚠ この日は通常休館日</span>':st.late?'<br><span class="warnline">⚠ 閉館時刻を過ぎる可能性</span>':''}</span></div>`}).join('');
+   return `${st.lunchAt!=null?`<div class="tl-row"><span class="tl-time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}<div class="tl-leg">${legIcon(st.leg.mode)} ${esc(st.leg.mode)} 約${Math.max(5,Math.round(st.leg.h*12)*5)}分${st.leg.detail?`<span class="st">${esc(st.leg.detail)}</span>`:''}</div>${st.wait>=.5?`<div class="tl-leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間</div>`:''}<div class="tl-row"><span class="tl-time">${fmt(st.arrive)}</span><span><span class="tl-num">${base+i+1}</span><b>${esc(st.x.n)}</b>${rsvTag(st.x)}<br><span class="m">${esc(meta)}</span>${st.closed?'<br><span class="warnline">⚠ この日は通常休館日</span>':st.late?'<br><span class="warnline">⚠ 閉館時刻を過ぎる可能性</span>':''}</span></div>`}).join('');
   return `<div class="seg-title">📍 ${esc(s.r)}の観光 <span>${fmt(T.start)}〜${fmt(T.end)}${s.label?' · '+esc(s.label):''}</span></div><div class="bk-map${isMove?' small':''}" data-map="seg" data-d="${s.d}" data-r="${esc(s.r)}" data-base="${base}"></div>
 <div class="tl-row"><span class="tl-time">${fmt(T.start)}</span><span><span class="tl-num h">H</span>${esc(T.H.name)} を出発</span></div>${rows}<div class="tl-leg">${legIcon(T.back.mode)} ${esc(T.back.mode)} 約${Math.max(5,Math.round(T.back.h*12)*5)}分${T.back.detail?`<span class="st">${esc(T.back.detail)}</span>`:''}</div><div class="tl-row"><span class="tl-time"${T.home>T.limit+.01?' style="color:#a8483a"':''}>${fmt(T.home)}</span><span><span class="tl-num h">H</span>${esc(T.H.name)} に戻る</span></div>`}).join('');
- // side notes
- const reserve=allItems.filter(x=>(SPOT_INFO[x.n]||[])[2]),photos=allItems.filter(x=>(SPOT_INFO[x.n]||[])[3]),cost=allItems.reduce((a,x)=>a+priceYen(x),0);
+ const reserve=allItems.filter(x=>resOf(x)),photos=allItems.filter(x=>(SPOT_INFO[x.n]||[])[3]),cost=allItems.reduce((a,x)=>a+priceYen(x),0);
  const sunNotes=regs.map(r=>`${esc(r)}：日の出 ${fmt(sunrise[r])}ごろ／日没 ${fmt(sunset[r])}ごろ`).join('<br>');
  const side=`<div class="box"><h4>🌅 光の時間</h4>${sunNotes}</div>
-${reserve.length?`<div class="box"><h4>🎫 事前に予約</h4><ul>${reserve.map(x=>`<li>${esc(x.n)}（${esc(SPOT_INFO[x.n][2])}）</li>`).join('')}</ul></div>`:''}
+${reserve.length?`<div class="box"><h4>🎫 予約</h4><ul class="rl">${reserve.map(x=>{const ok=isBooked(spotBookId(x)),memo=(bookings[spotBookId(x)]||{}).memo;return `<li class="${ok?'ok':''}"><span class="cb${ok?' on':''}"></span>${esc(x.n)}<span class="m">${ok?'予約済み'+(memo?' · '+esc(memo):''):'予約'+esc(resOf(x)[0])}</span></li>`}).join('')}</ul></div>`:''}
 ${photos.length?`<div class="box"><h4>📷 撮影メモ</h4><ul>${photos.map(x=>`<li><b>${esc(x.n)}</b>：${esc(SPOT_INFO[x.n][3])}</li>`).join('')}</ul></div>`:''}
 <div class="box"><h4>💴 今日の入場料</h4><span class="big">${yen(cost)}</span>1人あたり（交通・食事は別）</div>
-${D.night?`<div class="box"><h4>🏨 今夜の宿</h4>${esc(hn(D.night))}<br><span style="color:var(--soft)">${esc(hotelInfo(D.night).area)}</span></div>`:`<div class="box"><h4>✈️ 帰国</h4>夕方〜夜の便でローマを出発、3/23に日本着。</div>`}`;
- const dt=D.d,dw=DOW_EN[dow(dt)];
- return `<section class="bk-page" style="--c:${col}"><div class="day-head"><div class="day-num latin"><small>DAY</small>${String(dayNo).padStart(2,'0')}</div><div class="day-meta"><div class="en latin">${regs.map(r=>CITY[r].en).join(' → ')}</div><h2 class="serif">${esc(title)}</h2></div><div class="day-date"><b class="latin">${+dt.slice(5,7)}.${+dt.slice(8)}</b>${dw}</div></div>
-<div class="day-grid${D.plan.length>2?' compact':''}"><div>${parts}</div><div class="side">${side}</div></div>${folio(page,'DAY '+String(dayNo).padStart(2,'0'))}</section>`}
+${D.night?`<div class="box"><h4>🏨 今夜の宿</h4>${esc(hn(D.night))}${isBooked('hotel-'+D.night)?' <span class="tag-r ok">✓ 予約済み</span>':''}<br><span style="color:var(--soft)">${esc(hotelInfo(D.night).area)}</span></div>`:`<div class="box"><h4>✈️ 帰国</h4>ローマから帰国の便へ。3/23に日本着。</div>`}`;
+ const dt=D.d;
+ return `<section class="bk-page day" style="--c:${col}"><div class="day-head"><div class="day-num latin"><small>DAY</small>${pad2(dayNo)}</div><div class="day-meta"><div class="en latin">${regs.map(r=>CITY[r].en).join(' → ')}</div><h2 class="serif">${esc(dayTitle(D))}</h2></div><div class="day-date"><b class="latin">${+dt.slice(5,7)}.${+dt.slice(8)}</b>${DOW_EN[dow(dt)]}</div></div>
+<div class="day-grid${D.plan.length>2?' compact':''}"><div class="day-main">${parts}<div class="day-memo"><span class="latin">NOTE</span></div></div><div class="side">${side}</div></div>${folio(page,'DAY '+pad2(dayNo))}</section>`}
 
-function bkGuide(r,startPage){const items=selected.filter(x=>x.r===r);if(!items.length)return [];
- const cards=items.map(x=>{const info=SPOT_INFO[x.n]||[x.n,x.tag==='自由追加'?'自分で追加した場所':'','',''],p=priceYen(x),st=stOf(x),h=venueHours(x,'2027-03-17');
-  return `<div class="spot-card"><div class="en latin">${esc(info[0]||'')}</div><h4 class="serif">${esc(x.n)}${info[2]?`<span class="tag-r">予約${esc(info[2])}</span>`:''}</h4><p>${esc(info[1]||'')}</p><div class="facts">⏱ 滞在の目安 ${x.h}時間 · 💴 ${p?yen(p)+(x.eur!=null?`（€${x.eur}）`:''):'無料'}${knownHours(h)?` · 🕘 ${fmt(h[0])}–${fmt(h[1])}`:''}${st?` · 🚇 ${esc(st[0])}`:''}</div>${info[3]?`<div class="photo">📷 ${esc(info[3])}</div>`:''}</div>`});
- const pages=[];for(let i=0;i<cards.length;i+=8)pages.push(cards.slice(i,i+8));
- return pages.map((cs,pi)=>`<section class="bk-page" style="--c:${CITY[r].c}"><div class="sec-h"><div class="kicker">City Guide · ${CITY[r].en}</div><h2 class="serif">${esc(r)}${pi?'（つづき）':''}</h2></div>${pi?'':`<div class="city-intro">${esc(CITY_INTRO[r])}</div>`}<div class="spot-grid">${cs.join('')}</div>${folio(startPage+pi,'CITY GUIDE')}</section>`)}
+function spotCard(x){const info=SPOT_INFO[x.n]||[x.n,x.tag==='自由追加'?'自分で追加した場所':'','',''],p=priceYen(x),st=stOf(x),h=venueHours(x,'2027-03-17'),ad=assignments[keyOf(x)];
+ return `<div class="spot-card"><div class="en latin">${esc(info[0]||'')}</div><h4 class="serif">${esc(x.n)}${rsvTag(x)}</h4><p>${esc(info[1]||'')}</p><div class="facts">${ad?`📅 ${esc(dl(ad))} · `:''}⏱ 滞在の目安 ${x.h}時間 · 💴 ${p?yen(p)+(x.eur!=null?`（€${x.eur}）`:''):'無料'}${knownHours(h)?` · 🕘 ${fmt(h[0])}–${fmt(h[1])}`:''}${st?` · 🚇 ${esc(st[0])}`:''}</div>${info[3]?`<div class="photo">📷 ${esc(info[3])}</div>`:''}</div>`}
+// City feature: an opener page with a full-bleed title band, then continuation pages of spot cards.
+function bkGuide(r){const C=CITY[r],items=selected.filter(x=>x.r===r),cards=items.map(spotCard),first=cards.slice(0,4),rest=[];for(let i=4;i<cards.length;i+=8)rest.push(cards.slice(i,i+8));
+ const others=data[r].map(x=>item(r,x)).filter(x=>!items.some(y=>keyOf(y)===keyOf(x))).slice(0,15);
+ const more=others.length?`<div class="more-see"><div class="ms-h"><span class="latin">MORE TO SEE</span>ほかの見どころ</div><div class="ms-list">${others.map(x=>`<span><b>${esc(x.n)}</b>${esc(x.tag)}</span>`).join('')}</div></div>`:'';
+ const pages=[p=>`<section class="bk-page guide" style="--c:${C.c}"><div class="g-hero"><div class="kicker">City Guide · ${String(regions.indexOf(r)+1).padStart(2,'0')}</div><div class="g-en latin">${C.en}</div><div class="g-ja serif">${esc(r)}</div></div>
+<div class="g-body"><p class="city-intro serif">${esc(CITY_INTRO[r])}</p><div class="g-side"><div class="box"><h4>🍽 この街で食べたい</h4><ul>${CITY_FOOD[r].map(f=>`<li>${esc(f)}</li>`).join('')}</ul></div><div class="box"><h4>💡 ひとくちメモ</h4>${esc(CITY_TIP[r])}</div></div></div>
+${first.length?`<div class="g-sub"><span class="latin">OUR PICKS</span>この旅で行く場所</div><div class="spot-grid">${first.join('')}</div>`:''}${!rest.length&&first.length<=4?more:''}${folio(p,'CITY GUIDE')}</section>`];
+ rest.forEach((cs,i)=>pages.push(p=>`<section class="bk-page" style="--c:${C.c}"><div class="sec-h"><div class="kicker">City Guide · ${C.en}</div><h2 class="serif">${esc(r)}（つづき）</h2></div><div class="spot-grid">${cs.join('')}</div>${i===rest.length-1&&cs.length<=4?more:''}${folio(p,'CITY GUIDE')}</section>`));
+ return pages}
 
 function bkTransport(page){return `<section class="bk-page"><div class="sec-h"><div class="kicker">How to get around</div><h2 class="serif">交通のきほん</h2><p>切符の買い方と乗り方。改札や乗り場での「タッチ」を忘れずに</p></div>
 <div class="cols"><div><h3 class="bk" style="--c:${CITY['パリ'].c}">パリ</h3><ul><li>紙の切符は廃止。駅の窓口・券売機でICカード <b>Navigo Easy</b>（€2）を買い、<b>1日券 Navigo Jour（€12.30）</b>か1回券（€2.55）をチャージ。スマホのアプリ（Bonjour RATP など）でも買える</li><li>メトロもRERも改札でタッチ。RERは降りるときも改札を通る</li><li>空港（CDG・オルリー）へは専用の空港券（€14）が必要。1日券では行けない</li><li>RER Bは混雑時スリが多い。荷物から目を離さない</li></ul>
@@ -157,10 +205,14 @@ function bkSafety(page){return `<section class="bk-page"><div class="sec-h"><div
 
 function bkMemo(page){return `<section class="bk-page"><div class="sec-h"><div class="kicker">Memories</div><h2 class="serif">旅の記録</h2><p>撮った写真を貼ったり、思い出を書き込んだり</p></div><div class="memo-lines"></div><div class="photo-frames"><div>PHOTO</div><div>PHOTO</div><div>PHOTO</div><div>PHOTO</div></div>${folio(page,'MEMO')}</section>`}
 
-function buildBooklet(){let p=2;const out=[bkCover(),bkOverview(p++),bkPre(p++)];let dayNo=1;
- for(const D of days.slice(1)){out.push(bkDay(D,dayNo++,p++))}
- for(const r of regions){const g=bkGuide(r,p);p+=g.length;out.push(...g)}
- out.push(bkTransport(p++),bkSafety(p++),bkMemo(p++));return out.join('')}
+// Assemble all pages first, then number them so the contents page can list page numbers.
+function buildBooklet(){const E=[{r:()=>bkCover()},{contents:true}];
+ E.push({r:bkOverview,k:'ITINERARY',t:'旅のすべて、一枚で（行程・宿・予算）',major:true},{r:bkPre,k:'DEPARTURE',t:'3/11 出発と、出発前の準備'},{r:bkBooking,k:'RESERVATIONS',t:'予約リスト'});
+ days.slice(1).forEach((D,i)=>E.push({r:p=>bkDay(D,i+1,p),k:'DAY '+pad2(i+1),t:`${md(D.d)}（${wd(D.d)}） ${dayTitle(D)}`,major:i===0}));
+ for(const r of regions)bkGuide(r).forEach((f,i)=>E.push({r:f,k:i?'':'GUIDE',t:i?'':`シティガイド ${r}`,major:r===regions[0]&&!i}));
+ E.push({r:bkTransport,k:'TRANSPORT',t:'交通のきほん',major:true},{r:bkSafety,k:'SAFETY',t:'安心して旅するために'},{r:bkMemo,k:'MEMO',t:'旅の記録'});
+ const toc=E.map((e,i)=>e.k?{k:e.k,t:e.t,p:i+1,major:e.major}:null).filter(Boolean);
+ return E.map((e,i)=>e.contents?bkContents(i+1,toc):e.r(i+1)).join('')}
 
 function bkPin(n,color,h){return L.divIcon({className:'',html:`<div class="bk-pin${h?' h':''}" style="background:${color}">${h?'H':n}</div>`,iconSize:[22,22],iconAnchor:[11,11]})}
 function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkTilesDone=0;if(!window.L)return;
