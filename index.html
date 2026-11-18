@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=13"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -63,6 +63,7 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 .move{background:#f5f6fb;border-radius:12px;padding:10px 12px;margin:6px 0 8px}.move-t{font-size:13.5px;font-weight:700;color:#4a4f86;margin-bottom:2px}.move .hrow{font-weight:500;font-size:13px;padding:4px 0}.move .time{color:#4a4f86}.move-l{display:inline-block;margin-top:4px;font-size:13px;font-weight:600;text-decoration:none}
 .leg .st{color:#46606f;font-size:12px}.hrow.sub{font-weight:500;color:var(--sub)}
 .warnbox{background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.6;margin:10px 0}
+.travel-pick{display:flex;align-items:center;gap:8px;margin-top:10px}.travel-pick label{margin:0;white-space:nowrap}.travel-pick select{padding:7px 10px;font-size:14.5px}
 </style></head><body>
 <header class="top" id="top"><div class="top-in"><div class="brand"><b>EUROPE 2027</b><span>3/11夜〜3/23 · パリ · モン・サン・ミッシェル · ヴェネツィア · ローマ</span></div><button class="share-btn" data-act="share">共有</button></div></header>
 <main>
@@ -88,6 +89,7 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 <li>昼食1時間を自動で入れ、有料施設には入場待ち・保安検査として15分を足しています。</li>
 <li>移動日は列車・飛行機の移動を日程に組み込み、出発前と到着後の両方の都市で観光できます（3/15朝はモン・サン・ミッシェル、3/19朝はヴェネツィア、3/22は帰国前の午前）。列車・便の時刻は目安なので、予約した便に合わせて読み替えてください。</li>
 <li>到着日の3/12は機内泊明けなので、9:30〜19:00の軽めの日程にしています。</li>
+<li>移動日（3/14・3/15・3/16・3/19・3/22）は、日程画面の「移動の時間帯」で朝・昼・夕方などを選べます。出発を遅らせると、出発前の街で観光する時間が自動で入ります。</li>
 <li>夕景・夜景スポットは日没（3月中旬の目安）に合わせて最後に、モン・サン・ミッシェルの朝の撮影スポットは日の出に合わせて組みます。</li>
 <li>市内の移動手段と時間は距離からの推定です。各区間の「経路」からGoogleマップで実際のルートと時刻を確認できます。</li>
 <li>主要施設の通常の営業時間・休館日を反映していますが、2027年の臨時休館や予約枠は未確認です。</li>
@@ -131,7 +133,7 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 <button class="btn sub" data-act="export">JSONで保存</button><button class="btn sub" data-act="import">JSONを読み込む</button>
 </div></div>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v12 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v13 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
@@ -230,30 +232,63 @@ const days=[
  {move:true,title:'空港 → ホテル（荷物を預ける）',steps:[[5+50/60,'シャルル・ド・ゴール空港 第2ターミナルE 着'],[6,'入国審査・荷物の受け取り（約1時間。新しい出入国システムEESで混むことも）'],[7.1,()=>hub('パリ','cdg')],[8.2,()=>hn('パリ')+' に到着。スーツケースを預ける（チェックインは14〜15時から）'],[8.5,'近くで朝食・身支度']],url:'https://www.ratp.fr/en'},
  {r:'パリ',from:9.5,to:19,label:'機内泊明けなので軽め。疲れたら午後に一度ホテルで休むのも◎'}]},
 {d:'2027-03-13',night:'パリ',plan:[{r:'パリ'}]},
-{d:'2027-03-14',night:'モン・サン・ミッシェル',plan:[
- {move:true,title:'パリ → モン・サン・ミッシェル',steps:[[6.9,()=>'1泊分の荷物で '+hn('パリ')+' を出発（大きな荷物はホテルに預ける）。'+hub('パリ','toMp')],[7.5,'Paris Montparnasse 駅発の列車'],[11.4,'Pontorson–Mont-Saint-Michel 駅着 → バスに乗り換え'],[12.4,()=>'La Caserne 着。'+hn('モン・サン・ミッシェル')+' に荷物を預けて昼食']],url:SNCF},
- {r:'モン・サン・ミッシェル',from:13.25}]},
-{d:'2027-03-15',night:'パリ',plan:[
- {r:'モン・サン・ミッシェル',to:11.25,dawn:true,label:'朝の撮影ができる時間'},
- {move:true,title:'モン・サン・ミッシェル → パリ',steps:[[11.25,()=>hn('モン・サン・ミッシェル')+' で荷物を受け取る'],[11.75,'La Caserne からバスで Rennes 駅へ（約1時間10分）'],[13.4,'Rennes 駅から TGV で Paris Montparnasse 駅へ（約1時間30分）'],[15.2,()=>hub('パリ','fromMp')],[15.75,()=>hn('パリ')+' にチェックイン（預けた荷物を受け取る）']],url:SNCF},
- {r:'パリ',from:16.25}]},
-{d:'2027-03-16',night:'ヴェネツィア',plan:[
- {move:true,title:'パリ → ヴェネツィア（飛行機）',steps:[[8.5,()=>hn('パリ')+' をチェックアウト → '+hub('パリ','toOrly')],[10.75,'オルリー空港発の便（LCC・約1時間40分）※時刻は仮定'],[12.5,'ヴェネツィア・マルコポーロ空港着'],[13.1,()=>hotelInfo('ヴェネツィア').airport],[13.6,()=>hn('ヴェネツィア')+' に荷物を預ける']],url:'https://www.easyjet.com/'},
- {r:'ヴェネツィア',from:14.25}]},
+{d:'2027-03-14',night:'モン・サン・ミッシェル',variants:[
+ {label:'朝の列車（おすすめ）',plan:[
+  {move:true,title:'パリ → モン・サン・ミッシェル',steps:[[6.9,()=>'1泊分の荷物で '+hn('パリ')+' を出発（大きな荷物はホテルに預ける）。'+hub('パリ','toMp')],[7.5,'Paris Montparnasse 駅発の列車'],[11.4,'Pontorson–Mont-Saint-Michel 駅着 → バスに乗り換え'],[12.4,()=>'La Caserne 着。'+hn('モン・サン・ミッシェル')+' に荷物を預けて昼食']],url:SNCF},
+  {r:'モン・サン・ミッシェル',from:13.25}]},
+ {label:'昼の列車（午前はパリ）',plan:[
+  {r:'パリ',to:10.75,label:'出発前のパリ'},
+  {move:true,title:'パリ → モン・サン・ミッシェル',steps:[[10.75,()=>hn('パリ')+' で荷物を受け取る（大きな荷物は預けたまま）。'+hub('パリ','toMp')],[11.9,'Paris Montparnasse 駅発の TGV で Rennes 駅へ（約1時間30分）'],[13.6,'Rennes 駅前からバスでモン・サン・ミッシェルへ（約1時間10分）'],[15.1,()=>'La Caserne 着。'+hn('モン・サン・ミッシェル')+' にチェックイン']],url:SNCF},
+  {r:'モン・サン・ミッシェル',from:15.6}]}]},
+{d:'2027-03-15',night:'パリ',variants:[
+ {label:'昼に移動（おすすめ）',plan:[
+  {r:'モン・サン・ミッシェル',to:11.25,dawn:true,label:'朝の撮影ができる時間'},
+  {move:true,title:'モン・サン・ミッシェル → パリ',steps:[[11.25,()=>hn('モン・サン・ミッシェル')+' で荷物を受け取る'],[11.75,'La Caserne からバスで Rennes 駅へ（約1時間10分）'],[13.4,'Rennes 駅から TGV で Paris Montparnasse 駅へ（約1時間30分）'],[15.2,()=>hub('パリ','fromMp')],[15.75,()=>hn('パリ')+' にチェックイン（預けた荷物を受け取る）']],url:SNCF},
+  {r:'パリ',from:16.25}]},
+ {label:'夕方に移動（島をゆっくり）',plan:[
+  {r:'モン・サン・ミッシェル',to:14.25,dawn:true,label:'朝の撮影と島の散策'},
+  {move:true,title:'モン・サン・ミッシェル → パリ',steps:[[14.25,()=>hn('モン・サン・ミッシェル')+' で荷物を受け取る'],[14.75,'La Caserne からバスで Rennes 駅へ（約1時間10分）'],[16.4,'Rennes 駅から TGV で Paris Montparnasse 駅へ（約1時間30分）'],[18.2,()=>hub('パリ','fromMp')],[18.75,()=>hn('パリ')+' にチェックイン（預けた荷物を受け取る）']],url:SNCF},
+  {r:'パリ',from:19.25,label:'夜景を見に行くなら'}]}]},
+{d:'2027-03-16',night:'ヴェネツィア',variants:[
+ {label:'朝の便',plan:[
+  {move:true,title:'パリ → ヴェネツィア（飛行機）',steps:[[8.5,()=>hn('パリ')+' をチェックアウト → '+hub('パリ','toOrly')],[10.75,'オルリー空港発の便（LCC・約1時間40分）※時刻は仮定'],[12.5,'ヴェネツィア・マルコポーロ空港着'],[13.1,()=>hotelInfo('ヴェネツィア').airport],[13.6,()=>hn('ヴェネツィア')+' に荷物を預ける']],url:'https://www.easyjet.com/'},
+  {r:'ヴェネツィア',from:14.25}]},
+ {label:'昼の便（午前はパリ）',plan:[
+  {r:'パリ',to:11.25,label:'出発前のパリ'},
+  {move:true,title:'パリ → ヴェネツィア（飛行機）',steps:[[11.25,()=>hn('パリ')+' で荷物を受け取る → '+hub('パリ','toOrly')],[14,'オルリー空港発の便（LCC・約1時間40分）※時刻は仮定'],[15.7,'ヴェネツィア・マルコポーロ空港着'],[16.3,()=>hotelInfo('ヴェネツィア').airport],[16.9,()=>hn('ヴェネツィア')+' にチェックイン']],url:'https://www.easyjet.com/'},
+  {r:'ヴェネツィア',from:17.4,label:'夕景・夜景の時間'}]},
+ {label:'夕方の便（パリを長めに）',plan:[
+  {r:'パリ',to:14.25,label:'出発前のパリ'},
+  {move:true,title:'パリ → ヴェネツィア（飛行機）',steps:[[14.25,()=>hn('パリ')+' で荷物を受け取る → '+hub('パリ','toOrly')],[17.5,'オルリー空港発の便（LCC・約1時間40分）※時刻は仮定'],[19.2,'ヴェネツィア・マルコポーロ空港着'],[19.8,()=>hotelInfo('ヴェネツィア').airport],[20.4,()=>hn('ヴェネツィア')+' にチェックイン']],url:'https://www.easyjet.com/'}]}]},
 {d:'2027-03-17',night:'ヴェネツィア',plan:[{r:'ヴェネツィア'}]},
 {d:'2027-03-18',night:'ヴェネツィア',plan:[{r:'ヴェネツィア'}]},
-{d:'2027-03-19',night:'ローマ',plan:[
- {r:'ヴェネツィア',to:11.25,label:'午前のヴェネツィア'},
- {move:true,title:'ヴェネツィア → ローマ（高速鉄道）',steps:[[11.5,()=>hn('ヴェネツィア')+' で荷物を受け取り、'+hotelInfo('ヴェネツィア').toRail],[12.3,()=>hotelInfo('ヴェネツィア').rail+' 駅発の Frecciarossa / Italo（約3時間40分）'],[15.9,()=>'Roma Termini 駅着 → '+hotelInfo('ローマ').termini],[16.2,()=>hn('ローマ')+' にチェックイン']],url:'https://www.trenitalia.com/'},
- {r:'ローマ',from:16.5}]},
+{d:'2027-03-19',night:'ローマ',variants:[
+ {label:'昼の列車（おすすめ）',plan:[
+  {r:'ヴェネツィア',to:11.25,label:'午前のヴェネツィア'},
+  {move:true,title:'ヴェネツィア → ローマ（高速鉄道）',steps:[[11.5,()=>hn('ヴェネツィア')+' で荷物を受け取り、'+hotelInfo('ヴェネツィア').toRail],[12.3,()=>hotelInfo('ヴェネツィア').rail+' 駅発の Frecciarossa / Italo（約3時間40分）'],[15.9,()=>'Roma Termini 駅着 → '+hotelInfo('ローマ').termini],[16.2,()=>hn('ローマ')+' にチェックイン']],url:'https://www.trenitalia.com/'},
+  {r:'ローマ',from:16.5}]},
+ {label:'朝の列車（ローマを長めに）',plan:[
+  {move:true,title:'ヴェネツィア → ローマ（高速鉄道）',steps:[[8.5,()=>hn('ヴェネツィア')+' をチェックアウトし、'+hotelInfo('ヴェネツィア').toRail],[9.3,()=>hotelInfo('ヴェネツィア').rail+' 駅発の Frecciarossa / Italo（約3時間40分）'],[13,()=>'Roma Termini 駅着 → '+hotelInfo('ローマ').termini],[13.3,()=>hn('ローマ')+' に荷物を預けて昼食']],url:'https://www.trenitalia.com/'},
+  {r:'ローマ',from:14.25}]},
+ {label:'夕方の列車（ヴェネツィアを長めに）',plan:[
+  {r:'ヴェネツィア',to:14.5,label:'ヴェネツィア最後の日'},
+  {move:true,title:'ヴェネツィア → ローマ（高速鉄道）',steps:[[14.75,()=>hn('ヴェネツィア')+' で荷物を受け取り、'+hotelInfo('ヴェネツィア').toRail],[15.5,()=>hotelInfo('ヴェネツィア').rail+' 駅発の Frecciarossa / Italo（約3時間40分）'],[19.2,()=>'Roma Termini 駅着 → '+hotelInfo('ローマ').termini],[19.5,()=>hn('ローマ')+' にチェックイン']],url:'https://www.trenitalia.com/'}]}]},
 {d:'2027-03-20',night:'ローマ',plan:[{r:'ローマ'}]},
 {d:'2027-03-21',night:'ローマ',plan:[{r:'ローマ'}]},
-{d:'2027-03-22',night:null,plan:[
- {r:'ローマ',to:13,label:'帰国前の午前'},
- {move:true,title:'ローマ → 日本',steps:[[13,()=>hn('ローマ')+' で荷物を受け取り、Roma Termini 駅へ'],[13.5,'Roma Termini 駅から Leonardo Express で Fiumicino Aeroporto 駅へ直通（約32分・€14）'],[14.5,'空港着。出発の3時間前を目安にチェックイン'],[17.5,'夕方〜夜の便で帰国（3/23に日本着）※時刻は仮定']]}]}
+{d:'2027-03-22',night:null,variants:[
+ {label:'夕方〜夜の便',plan:[
+  {r:'ローマ',to:13,label:'帰国前の午前'},
+  {move:true,title:'ローマ → 日本',steps:[[13,()=>hn('ローマ')+' で荷物を受け取り、Roma Termini 駅へ'],[13.5,'Roma Termini 駅から Leonardo Express で Fiumicino Aeroporto 駅へ直通（約32分・€14）'],[14.5,'空港着。出発の3時間前を目安にチェックイン'],[17.5,'夕方〜夜の便で帰国（3/23に日本着）※時刻は仮定']]}]},
+ {label:'昼の便',plan:[
+  {move:true,title:'ローマ → 日本',steps:[[8.5,()=>hn('ローマ')+' をチェックアウトし、Roma Termini 駅へ'],[9,'Roma Termini 駅から Leonardo Express で Fiumicino Aeroporto 駅へ直通（約32分・€14）'],[10,'空港着。出発の3時間前を目安にチェックイン'],[13,'昼の便で帰国（3/23に日本着）※時刻は仮定']]}]},
+ {label:'夜遅めの便',plan:[
+  {r:'ローマ',to:16,label:'帰国前のローマ'},
+  {move:true,title:'ローマ → 日本',steps:[[16,()=>hn('ローマ')+' で荷物を受け取り、Roma Termini 駅へ'],[16.5,'Roma Termini 駅から Leonardo Express で Fiumicino Aeroporto 駅へ直通（約32分・€14）'],[17.5,'空港着。出発の3時間前を目安にチェックイン'],[20.5,'夜の便で帰国（3/23に日本着）※時刻は仮定']]}]}]}
 ];
-days.forEach(D=>(D.plan||[]).forEach((s,i)=>{s.d=D.d;s.idx=i}));
-const segs=days.flatMap(D=>(D.plan||[]).filter(s=>s.r));
+let travelChoice={};
+let segs=[];
+function applyTravel(){for(const D of days){if(D.variants){const i=Math.min(D.variants.length-1,Math.max(0,+travelChoice[D.d]||0));D.plan=D.variants[i].plan}(D.plan||[]).forEach((s,i)=>{s.d=D.d;s.idx=i})}segs=days.flatMap(D=>(D.plan||[]).filter(s=>s.r))}
+applyTravel();
 
 
 // Nearest station / stop and its lines, used to describe each leg.
@@ -429,7 +464,7 @@ function renderPlan(){
  $('days').innerHTML=warn+days.map(D=>{
   if(D.pre)return `<div class="card"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(D.title)}</span></div><span class="tag move">機内泊</span></div><div class="stops">${stepsHtml(D.steps,'',`東京 → パリ`)}<p class="muted" style="margin:4px 0 12px">${esc(D.note)}</p></div></div>`;
   const regs=[...new Set(D.plan.filter(s=>s.r).map(s=>s.r))];
-  return `<div class="card"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(regs.join(' → '))}</span></div><span class="tag ${D.plan.some(s=>s.move)?'move':''}">${D.night?esc(D.night)+'泊':'帰国便（機内泊）'}</span></div><div class="stops">${D.plan.map(s=>s.move?stepsHtml(s.steps,s.url,s.title):segHtml(s)).join('')}</div></div>`}).join('');
+  return `<div class="card"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(regs.join(' → '))}</span></div><span class="tag ${D.plan.some(s=>s.move)?'move':''}">${D.night?esc(D.night)+'泊':'帰国便（機内泊）'}</span></div>${D.variants?`<div class="travel-pick"><label>移動の時間帯</label><select data-travel="${D.d}">${D.variants.map((v,i)=>`<option value="${i}" ${D.plan===v.plan?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>`:''}<div class="stops">${D.plan.map(s=>s.move?stepsHtml(s.steps,s.url,s.title):segHtml(s)).join('')}</div></div>`}).join('');
 }
 function renderHotels(){$('hotelCards').innerHTML=Object.entries(hotelOptions).map(([r,list])=>`<div class="hgroup"><div class="hgroup-h">${esc(r)} <span>${NIGHTS[r]}泊</span></div>${list.map((h,i)=>{const on=hotelInfo(r)===h;return `<div class="hotel ${on?'on':''}"><div class="hotel-top"><span class="city">${esc(h.rec)}</span>${on?'<span class="chosen">✓ 選択中</span>':''}</div><b>${esc(h.name)}</b><div class="muted">📍 ${esc(h.area)}${h.st?' · 最寄り '+esc(h.st[0]):''}</div><p>${esc(h.why)}</p><div class="price">1泊 約${yen(h.eur*rate())}<small>（€${h.eur}・3名1室の目安）</small></div><div class="muted" style="margin-bottom:10px">${esc(h.basis)}</div><div class="row2">${on?'':`<button class="btn sm" data-hotel="${esc(r)}|${i}">この宿にする</button>`}<a class="btn sub sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.query)}">地図 ↗</a></div></div>`}).join('')}</div>`).join('')}
 function renderOfficial(){$('official').innerHTML=official.map(([n,t,u])=>`<div class="info"><b>${esc(n)}</b><span>${esc(t)}</span>${u?` <a target="_blank" rel="noopener" href="${u}">公式サイト ↗</a>`:''}</div>`).join('')}
@@ -456,11 +491,12 @@ function setDay(k,d){assignments[k]=d;const x=selected.find(y=>keyOf(y)===k),s=s
 function shiftStop(k,delta){const day=assignments[k],x0=selected.find(y=>keyOf(y)===k),arr=selected.filter(x=>x.r===x0.r&&assignments[keyOf(x)]===day),i=arr.indexOf(x0),j=i+delta;if(j<0||j>=arr.length)return;const a=selected.indexOf(arr[i]),b=selected.indexOf(arr[j]);[selected[a],selected[b]]=[selected[b],selected[a]];build()}
 function removeStop(k){const x=selected.find(y=>keyOf(y)===k);selected=selected.filter(y=>keyOf(y)!==k);delete assignments[k];autoDistribute();toast(`「${x?x.n:''}」を外しました`)}
 function persist(){try{localStorage.setItem('europetrip_v4',JSON.stringify(state()))}catch{}}
-function state(){return {v:6,selected:selected.map(x=>x.tag==='自由追加'?x:{r:x.r,n:x.n}),assignments,order:selected.map(keyOf),hotels:hotelSel,settings:Object.fromEntries(keys.map(k=>[k,$(k).value]))}}
+function state(){return {v:6,selected:selected.map(x=>x.tag==='自由追加'?x:{r:x.r,n:x.n}),assignments,order:selected.map(keyOf),hotels:hotelSel,travel:travelChoice,settings:Object.fromEntries(keys.map(k=>[k,$(k).value]))}}
 // Older saves: keep the chosen places (refreshed from the catalog), drop outdated settings, and re-plan.
 function apply(s){if(!s||!Array.isArray(s.selected))throw Error('データが不正です');
  selected=s.selected.filter(x=>x&&regions.includes(x.r)&&typeof x.n==='string').slice(0,120).map(x=>{const c=(data[x.r]||[]).find(z=>z[0]===x.n);return c?item(x.r,c):{r:x.r,n:x.n.slice(0,100),h:+x.h||2,p:+x.p||0,lat:null,lon:null,tag:'自由追加'}});
  if(s.v>=5)for(const k of keys)if(s.settings&&s.settings[k]!=null&&$(k))$(k).value=s.settings[k];
+ if(s.travel&&typeof s.travel==='object'){travelChoice={};for(const D of days)if(D.variants&&Number.isInteger(+s.travel[D.d]))travelChoice[D.d]=+s.travel[D.d];applyTravel()}
  if(s.hotels&&typeof s.hotels==='object')for(const r of regions)if(Number.isInteger(+s.hotels[r]))hotelSel[r]=+s.hotels[r];
  renderCatalog();if(s.v>=6){assignments=s.assignments&&typeof s.assignments==='object'?s.assignments:{};build()}else autoDistribute()}
 function openRoute(){const r=['パリ','モン・サン・ミッシェル','パリ','ヴェネツィア','ローマ'];window.open('https://www.google.com/maps/dir/'+r.map(encodeURIComponent).join('/')+'/','_blank','noopener')}
@@ -482,7 +518,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[da
  else if(d.addcity){region=d.addcity;showPage('places')}
  else if(d.act){e.preventDefault();({share,export:exportJSON,import:()=>$('importFile').click(),addCustom,openRoute})[d.act]()}
 });
-document.addEventListener('change',e=>{if('day' in e.target.dataset)setDay(e.target.dataset.day,e.target.value)});
+document.addEventListener('change',e=>{const ds=e.target.dataset;if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();autoDistribute();toast(`${md(ds.travel)}は「${days.find(D=>D.d===ds.travel).plan&&e.target.selectedOptions[0].text}」にしました`)}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
 keys.forEach(k=>$(k).addEventListener('change',()=>{if(k==='startH'||k==='endH')autoDistribute();else build()}));
 $('newRegion').innerHTML=regions.map(r=>`<option>${esc(r)}</option>`).join('');
@@ -493,4 +529,4 @@ try{const src=location.hash.startsWith('#plan=')?decode(location.hash.slice(6)):
  if(src){apply(src);if(src.v>=6)restoreOrder(src)}
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
-</script><script src="booklet.js"></script></body></html>
+</script><script src="booklet.js?v=13"></script></body></html>
