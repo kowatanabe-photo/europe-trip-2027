@@ -92,6 +92,7 @@ table.bk td.d{white-space:nowrap;font-weight:700}
 .bk-pin.h{background:#1f2328!important;border-radius:5px}
 .bk-city-label{background:#fff;color:#102e43;font:700 11px/1.2 -apple-system,sans-serif;padding:4px 7px;border-radius:4px;box-shadow:0 1px 4px #0005;white-space:nowrap}
 .leaflet-container{font-family:inherit}
+.bk-map .leaflet-tile-pane{filter:saturate(.55) contrast(.92) brightness(1.04) sepia(.12)}
 .leaflet-control-attribution{font-size:7px!important}
 @page{size:A4;margin:0}
 @media print{

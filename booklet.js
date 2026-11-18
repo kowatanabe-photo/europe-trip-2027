@@ -67,8 +67,8 @@ const SPOT_INFO={
 'サン・ジョルジョ・マッジョーレ教会':['San Giorgio Maggiore','対岸の小島に建つ教会。鐘楼からサン・マルコ広場を正面に見渡せる、写真好きの穴場です。','','鐘楼から夕方のサン・マルコ'],
 'アカデミア美術館':["Gallerie dell'Accademia",'ティツィアーノ、ベッリーニ、ティントレットなど、ヴェネツィア派絵画の宝庫。','',''],
 'ペギー・グッゲンハイム美術館':['Peggy Guggenheim Collection','運河沿いの邸宅で、ピカソ、ダリ、ポロックなど20世紀美術を楽しめます。火曜休館。','','']};
-const TILE='https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-const TILE_ATTR='&copy; OpenStreetMap contributors &copy; CARTO';
+const TILE='https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+const TILE_ATTR='&copy; OpenStreetMap contributors';
 let bkMaps=[],bkTiles=0,bkTilesDone=0;
 const DOW_EN=['SUN','MON','TUE','WED','THU','FRI','SAT'];
 const txtOf=t=>typeof t==='function'?t():t;
@@ -166,7 +166,7 @@ function bkPin(n,color,h){return L.divIcon({className:'',html:`<div class="bk-pi
 function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkTilesDone=0;if(!window.L)return;
  document.querySelectorAll('#bk-pages [data-map]').forEach(el=>{const map=L.map(el,{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,touchZoom:false,tap:false,zoomSnap:.25,fadeAnimation:false,zoomAnimation:false,markerZoomAnimation:false});
   map.attributionControl.setPrefix(false);
-  const tl=L.tileLayer(TILE,{subdomains:'abcd',maxZoom:19,attribution:TILE_ATTR,crossOrigin:true});tl.on('tileloadstart',()=>bkTiles++);tl.on('tileload tileerror',()=>bkTilesDone++);tl.addTo(map);
+  const tl=L.tileLayer(TILE,{maxZoom:19,attribution:TILE_ATTR,crossOrigin:true});tl.on('tileloadstart',()=>bkTiles++);tl.on('tileload tileerror',()=>bkTilesDone++);tl.addTo(map);
   if(el.dataset.map==='overview'){const pts=['パリ','モン・サン・ミッシェル','パリ','ヴェネツィア','ローマ'].map(r=>[CITY[r].lat,CITY[r].lon]);
    L.polyline(pts,{color:'#d9c7a3',weight:3,dashArray:'6 6'}).addTo(map);
    for(const r of regions)L.marker([CITY[r].lat,CITY[r].lon],{icon:L.divIcon({className:'',html:`<div class="bk-city-label">${esc(r)}</div>`,iconSize:null,iconAnchor:[0,0]})}).addTo(map);
