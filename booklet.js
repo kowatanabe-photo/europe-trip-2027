@@ -235,7 +235,11 @@ async function openBooklet(){let el=$('booklet');if(!el){el=document.createEleme
  ensureAssignments();$('bk-pages').innerHTML=buildBooklet();document.body.classList.add('bk-open');el.classList.remove('hide');window.scrollTo(0,0);fitBookletZoom();fitBookletPages();
  await loadLeaflet();initBookletMaps()}
 // Busy days: shrink maps and spacing step by step until the page fits on one A4 sheet; as a last resort let it run onto a second sheet instead of clipping.
-function fitBookletPages(){document.querySelectorAll('#bk-pages .bk-page.day').forEach(el=>{for(const c of ['fit1','fit2','fit3','fit4']){if(el.scrollHeight<=el.clientHeight+2)break;el.classList.add(c)}})}
+function fitBookletPages(){const pages=[...document.querySelectorAll('#bk-pages .bk-page')];if(!pages.length)return;const a4=pages[0].offsetWidth*297/210+1;
+ pages.forEach(el=>{if(el.classList.contains('day')){for(const c of ['fit1','fit2','fit3','fit4']){if(el.scrollHeight<=el.clientHeight+2)break;el.classList.add(c)}return}
+  // other pages grow with their content: trim the optional "more to see" list until the page fits
+  const more=el.querySelector('.more-see');if(!more||el.offsetHeight<=a4)return;const items=[...more.querySelectorAll('.ms-list span')];
+  while(items.length&&el.offsetHeight>a4)items.pop().remove();if(!items.length)more.remove()})}
 function closeBooklet(){document.body.classList.remove('bk-open');const el=$('booklet');if(el)el.classList.add('hide');bkMaps.forEach(m=>m.remove());bkMaps=[];showPage('plan')}
 async function printBooklet(){const t0=Date.now();const bar=document.querySelector('#bk-bar .t'),msg=bar.textContent;bar.textContent='地図を読み込んでいます…';while(bkTilesDone<bkTiles&&Date.now()-t0<8000)await new Promise(r=>setTimeout(r,250));bar.textContent=msg;window.print()}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-bk]');if(!b)return;const a=b.dataset.bk;if(a==='open')openBooklet();else if(a==='close')closeBooklet();else if(a==='print')printBooklet()});
