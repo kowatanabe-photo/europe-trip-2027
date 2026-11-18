@@ -231,7 +231,7 @@ function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkT
    map.fitBounds(L.latLngBounds(pts),{padding:[28,28],maxZoom:16})}
   bkMaps.push(map)})}
 function fitBookletZoom(){const pages=$('bk-pages');if(!pages)return;const w=Math.min(1,(window.innerWidth-12)/pages.offsetWidth);pages.style.zoom=w<1?w:''}
-async function openBooklet(){let el=$('booklet');if(!el){el=document.createElement('div');el.id='booklet';el.innerHTML=`<div id="bk-bar"><button class="close" data-bk="close">← 戻る</button><span class="t">印刷画面で「PDFとして保存」（iPhoneは共有→「ファイルに保存」）</span><button class="print" data-bk="print">PDFで保存</button></div><div id="bk-scroll"><div id="bk-pages"></div></div>`;document.body.appendChild(el)}
+async function openBooklet(){let el=$('booklet');if(!el){el=document.createElement('div');el.id='booklet';el.innerHTML=`<div id="bk-bar"><button class="close" data-bk="close">← 戻る</button><span class="t">印刷画面で「PDFとして保存」（iPhoneは共有→「ファイルに保存」）${navigator.standalone?'。ホーム画面から開いていてうまくいかないときは、Safariで開いてください':''}</span><button class="print" data-bk="print">PDFで保存</button></div><div id="bk-scroll"><div id="bk-pages"></div></div>`;document.body.appendChild(el)}
  ensureAssignments();$('bk-pages').innerHTML=buildBooklet();document.body.classList.add('bk-open');el.classList.remove('hide');window.scrollTo(0,0);fitBookletZoom();fitBookletPages();
  await loadLeaflet();initBookletMaps()}
 // Busy days: shrink maps and spacing step by step until the page fits on one A4 sheet; as a last resort let it run onto a second sheet instead of clipping.
