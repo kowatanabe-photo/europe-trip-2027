@@ -170,7 +170,7 @@ function bkDay(D,dayNo,page){const regs=[...new Set(D.plan.filter(s=>s.r).map(s=
  const sunNotes=regs.map(r=>`${esc(r)}：日の出 ${fmt(sunrise[r])}ごろ／日没 ${fmt(sunset[r])}ごろ`).join('<br>');
  const side=`<div class="box"><h4>🌅 光の時間</h4>${sunNotes}</div>
 ${reserve.length?`<div class="box"><h4>🎫 予約</h4><ul class="rl">${reserve.map(x=>{const ok=isBooked(spotBookId(x)),memo=(bookings[spotBookId(x)]||{}).memo;return `<li class="${ok?'ok':''}"><span class="cb${ok?' on':''}"></span>${esc(x.n)}<span class="m">${ok?'予約済み'+(memo?' · '+esc(memo):''):'予約'+esc(resOf(x)[0])}</span></li>`}).join('')}</ul></div>`:''}
-${photos.length?`<div class="box"><h4>📷 撮影メモ</h4><ul>${photos.map(x=>`<li><b>${esc(x.n)}</b>：${esc(SPOT_INFO[x.n][3])}</li>`).join('')}</ul></div>`:''}
+${photos.length?`<div class="box photo-box"><h4>📷 撮影メモ</h4><ul>${photos.map(x=>`<li><b>${esc(x.n)}</b>：${esc(SPOT_INFO[x.n][3])}</li>`).join('')}</ul></div>`:''}
 <div class="box"><h4>💴 今日の入場料</h4><span class="big">${yen(cost)}</span>1人あたり（交通・食事は別）</div>
 ${D.night?`<div class="box"><h4>🏨 今夜の宿</h4>${esc(hn(D.night))}${isBooked('hotel-'+D.night)?' <span class="tag-r ok">✓ 予約済み</span>':''}<br><span style="color:var(--soft)">${esc(hotelInfo(D.night).area)}</span></div>`:`<div class="box"><h4>✈️ 帰国</h4>ローマから帰国の便へ。3/23に日本着。</div>`}`;
  const dt=D.d;
@@ -232,9 +232,13 @@ function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkT
   bkMaps.push(map)})}
 function fitBookletZoom(){const pages=$('bk-pages');if(!pages)return;const w=Math.min(1,(window.innerWidth-12)/pages.offsetWidth);pages.style.zoom=w<1?w:''}
 async function openBooklet(){let el=$('booklet');if(!el){el=document.createElement('div');el.id='booklet';el.innerHTML=`<div id="bk-bar"><button class="close" data-bk="close">← 戻る</button><span class="t">印刷画面で「PDFとして保存」（iPhoneは共有→「ファイルに保存」）</span><button class="print" data-bk="print">PDFで保存</button></div><div id="bk-scroll"><div id="bk-pages"></div></div>`;document.body.appendChild(el)}
- ensureAssignments();$('bk-pages').innerHTML=buildBooklet();document.body.classList.add('bk-open');el.classList.remove('hide');window.scrollTo(0,0);fitBookletZoom();
+ ensureAssignments();$('bk-pages').innerHTML=buildBooklet();document.body.classList.add('bk-open');el.classList.remove('hide');window.scrollTo(0,0);fitBookletZoom();fitBookletPages();
  await loadLeaflet();initBookletMaps()}
+// Busy days: shrink maps and spacing step by step until the page fits on one A4 sheet; as a last resort let it run onto a second sheet instead of clipping.
+function fitBookletPages(){document.querySelectorAll('#bk-pages .bk-page.day').forEach(el=>{for(const c of ['fit1','fit2','fit3','fit4']){if(el.scrollHeight<=el.clientHeight+2)break;el.classList.add(c)}})}
 function closeBooklet(){document.body.classList.remove('bk-open');const el=$('booklet');if(el)el.classList.add('hide');bkMaps.forEach(m=>m.remove());bkMaps=[];showPage('plan')}
 async function printBooklet(){const t0=Date.now();const bar=document.querySelector('#bk-bar .t'),msg=bar.textContent;bar.textContent='地図を読み込んでいます…';while(bkTilesDone<bkTiles&&Date.now()-t0<8000)await new Promise(r=>setTimeout(r,250));bar.textContent=msg;window.print()}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-bk]');if(!b)return;const a=b.dataset.bk;if(a==='open')openBooklet();else if(a==='close')closeBooklet();else if(a==='print')printBooklet()});
 addEventListener('resize',()=>{if(document.body.classList.contains('bk-open'))fitBookletZoom()});
+// The place list shows short descriptions from SPOT_INFO, which loads with this file.
+if(!$('places').classList.contains('hide'))renderCatalog();

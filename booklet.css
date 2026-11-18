@@ -151,3 +151,9 @@ table.bk td.d{white-space:nowrap;font-weight:700}
  .bk-page{margin:0;box-shadow:none}
  #booklet,#booklet *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+/* busy days: progressively tighter layouts (applied by fitBookletPages) */
+.fit1 .bk-map{height:56mm}.fit1 .bk-map.small{height:28mm}.fit1 .tl-row{padding:.4mm 0}.fit1 .tl-leg{padding:.1mm 0 .1mm 10mm}.fit1 .side .box{padding:2.5mm 3mm;margin-bottom:2.5mm}.fit1 .seg-title{margin:2mm 0 1mm}.fit1 .day-head{margin-bottom:3.5mm}
+.fit2{font-size:8.4pt}.fit2 .bk-map{height:40mm}.fit2 .bk-map.small{height:22mm}.fit2 .tl-leg .st{display:none}.fit2 .tl-row b{font-size:9pt}.fit2 .tl-row .m{font-size:7.2pt}.fit2 .tl-move{padding:1.2mm 2.5mm}.fit2 .tl-move .tl-row{font-size:7.6pt;padding:0}.fit2 .side .box{font-size:7.8pt}.fit2 .day-memo{display:none}
+.fit2 .idea p,.fit2 .ideas-f{display:none}
+.fit3 .ideas,.fit3 .side .photo-box{display:none}
+.bk-page.day.fit4{height:auto;min-height:297mm}
