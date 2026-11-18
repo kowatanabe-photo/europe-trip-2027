@@ -1,0 +1,105 @@
+/* ===== Travel booklet (magazine-style, printable A4) ===== */
+body.bk-open>header,body.bk-open>main,body.bk-open>nav,body.bk-open>.toast{display:none!important}
+body.bk-open{padding-bottom:0;background:#e9e6e1}
+#booklet{--paper:#fbf8f3;--ink:#1f2328;--soft:#6d6a64;--rule:#ddd6cb;--c:#1f3a5f;font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--ink)}
+#bk-bar{position:sticky;top:0;z-index:50;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:calc(10px + env(safe-area-inset-top)) 12px 10px;background:#102e43;color:#fff}
+#bk-bar .t{flex:1;min-width:160px;font-size:12px;color:#c4d6e1;line-height:1.5}
+#bk-bar button{border:0;border-radius:999px;padding:9px 14px;font-weight:700;font-size:14px;cursor:pointer}
+#bk-bar .print{background:#fff;color:#102e43}#bk-bar .close{background:#ffffff26;color:#fff}
+#bk-scroll{padding:12px 0 40px;overflow-x:hidden}
+#bk-pages{width:210mm;margin:0 auto;transform-origin:top left}
+.bk-page{position:relative;width:210mm;min-height:297mm;box-sizing:border-box;padding:15mm 14mm 14mm;background:var(--paper);margin:0 auto 10px;box-shadow:0 2px 12px #0002;break-after:page;page-break-after:always;-webkit-box-decoration-break:clone;box-decoration-break:clone;overflow:hidden;font-size:9.3pt;line-height:1.6}
+.bk-page:last-child{break-after:auto;page-break-after:auto}
+.serif{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Noto Serif CJK JP",serif}
+.latin{font-family:"Didot","Bodoni 72","Playfair Display","Georgia",serif;letter-spacing:.06em}
+.kicker{font-size:7.5pt;letter-spacing:.32em;text-transform:uppercase;color:var(--c);font-weight:700}
+.folio{position:absolute;bottom:7mm;left:14mm;right:14mm;display:flex;justify-content:space-between;font-size:7pt;color:var(--soft);letter-spacing:.2em}
+/* cover */
+.cover{padding:0;background:#102e43;color:#fff;display:flex;flex-direction:column}
+.cover-top{padding:22mm 16mm 10mm}
+.cover h1{font-size:44pt;line-height:1;margin:6mm 0 4mm;font-weight:400}
+.cover h1 small{display:block;font-size:13pt;letter-spacing:.5em;margin-bottom:4mm;color:#d9c7a3}
+.cover .sub{font-size:12pt;letter-spacing:.12em;color:#e7dfd1}
+.cover .route{font-size:10pt;letter-spacing:.25em;margin-top:6mm;color:#d9c7a3}
+.cover .map{flex:1;min-height:120mm;margin:0 16mm;border-radius:2mm;overflow:hidden;border:1px solid #ffffff33}
+.cover-bottom{padding:8mm 16mm 14mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:9pt;color:#c4d6e1}
+.cover-bottom b{display:block;font-size:22pt;color:#fff;font-weight:400}
+/* headings */
+.sec-h{border-bottom:2px solid var(--ink);padding-bottom:3mm;margin-bottom:5mm}
+.sec-h h2{font-size:22pt;margin:1mm 0 0;font-weight:600;line-height:1.2}
+.sec-h p{margin:1.5mm 0 0;color:var(--soft);font-size:9pt}
+h3.bk{font-size:12pt;margin:5mm 0 2mm;padding-left:3mm;border-left:3px solid var(--c)}
+/* overview */
+table.bk{width:100%;border-collapse:collapse;font-size:8.6pt}
+table.bk th{text-align:left;font-size:7.5pt;letter-spacing:.15em;color:var(--soft);border-bottom:1px solid var(--ink);padding:1.5mm 1.5mm}
+table.bk td{border-bottom:1px solid var(--rule);padding:1.2mm 1.5mm;vertical-align:top}
+.ov td{font-size:8pt;line-height:1.45}
+.box.tight{font-size:8pt;padding:3mm 3.5mm}.box.tight table.bk td{padding:.6mm 1mm}
+table.bk td.d{white-space:nowrap;font-weight:700}
+.dot{display:inline-block;width:2.2mm;height:2.2mm;border-radius:50%;margin-right:1.5mm;vertical-align:middle}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.box{border:1px solid var(--rule);border-radius:2mm;padding:3.5mm 4mm;background:#fff8}
+.box h4{margin:0 0 1.5mm;font-size:9.5pt}
+.box ul{margin:0;padding-left:4.5mm}.box li{margin:.8mm 0}
+/* day */
+.day-head{display:flex;align-items:flex-end;gap:5mm;margin:-15mm -14mm 5mm;padding:12mm 14mm 5mm;background:var(--c);color:#fff}
+.day-num{font-size:40pt;line-height:.85}
+.day-num small{display:block;font-size:7.5pt;letter-spacing:.4em;margin-bottom:2mm;opacity:.8}
+.day-meta{flex:1;padding-bottom:1mm}
+.day-meta .en{font-size:8pt;letter-spacing:.35em;opacity:.85}
+.day-meta h2{font-size:15pt;margin:1mm 0 0;font-weight:600;line-height:1.35}
+.day-date{text-align:right;font-size:9pt;line-height:1.4;opacity:.9}
+.day-date b{display:block;font-size:20pt;font-weight:400}
+.day-grid{display:grid;grid-template-columns:1fr 58mm;gap:6mm}
+.bk-map{height:88mm;border-radius:2mm;overflow:hidden;border:1px solid var(--rule);margin-bottom:4mm;background:#e8e4dc}
+.bk-map.small{height:36mm}
+.tl-row{display:grid;grid-template-columns:12mm 1fr;gap:2.5mm;padding:1.2mm 0;break-inside:avoid}
+.tl-time{font-weight:700;color:var(--c);font-variant-numeric:tabular-nums}
+.tl-row b{font-size:10pt}
+.tl-row .m{color:var(--soft);font-size:8pt}
+.tl-leg{margin-left:4.5mm;padding:.6mm 0 .6mm 10mm;border-left:1.5px dotted #b9b1a4;font-size:8pt;color:#57534d;break-inside:avoid}
+.tl-leg .st{display:block;color:#7a756d}
+.tl-num{display:inline-grid;place-items:center;width:4.6mm;height:4.6mm;border-radius:50%;background:var(--c);color:#fff;font-size:7pt;font-weight:700;margin-right:1.5mm;vertical-align:1px}
+.tl-num.h{background:#1f2328}
+.tl-move{background:#f1ede6;border-radius:2mm;padding:2mm 3mm;margin:1.5mm 0 2mm;break-inside:avoid}
+.compact .bk-map{margin-bottom:2mm}.compact .seg-title{margin:2mm 0 1mm}.compact .tl-row{padding:.5mm 0}.compact .tl-leg{padding:.2mm 0 .2mm 10mm}.compact .tl-move .tl-row{font-size:8pt;padding:.2mm 0}
+.tl-move .tt{font-weight:700;font-size:9pt;margin-bottom:1mm}
+.tl-move .tl-row{padding:.5mm 0;font-size:8.4pt}
+.seg-title{font-weight:700;font-size:10pt;margin:3mm 0 1.5mm}
+.seg-title span{display:block;font-weight:400;color:var(--soft);font-size:8pt}
+.side .box{margin-bottom:3.5mm;font-size:8.4pt}
+.side .big{font-size:15pt;font-weight:600;display:block;line-height:1.2}
+.tag-r{display:inline-block;font-size:7pt;font-weight:700;padding:.3mm 1.6mm;border-radius:1mm;background:#f6e3c6;color:#8a5a12;margin-left:1mm;vertical-align:1px}
+.warnline{color:#8a5a12;font-size:8pt}
+/* spot guide */
+.spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.spot-card{border-top:2px solid var(--c);padding-top:2.5mm;break-inside:avoid}
+.spot-card .en{font-size:7.5pt;letter-spacing:.12em;color:var(--soft)}
+.spot-card h4{margin:.5mm 0 1mm;font-size:11.5pt}
+.spot-card p{margin:1mm 0;font-size:8.6pt}
+.spot-card .facts{font-size:7.8pt;color:#57534d}
+.spot-card .photo{font-size:8pt;color:var(--c);margin-top:1mm}
+.city-intro{font-size:9.5pt;margin:0 0 5mm;column-count:2;column-gap:6mm}
+/* practical */
+.check li{list-style:none;margin-left:-4.5mm}.check li::before{content:'□ ';color:var(--soft)}
+.phr{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;font-size:8.4pt}
+.phr div{padding:1.3mm 1.5mm;border-bottom:1px solid var(--rule)}
+.phr .hd{font-size:7.5pt;letter-spacing:.15em;color:var(--soft);border-bottom:1px solid var(--ink)}
+.memo-lines{background:repeating-linear-gradient(to bottom,transparent 0,transparent 8.2mm,var(--rule) 8.2mm,var(--rule) 8.5mm);height:120mm}
+.photo-frames{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:6mm}
+.photo-frames div{height:52mm;border:1px dashed #b9b1a4;border-radius:2mm;display:grid;place-items:center;color:#b9b1a4;font-size:8pt;letter-spacing:.2em}
+.bk-pin{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;color:#fff;font:700 11px/1 -apple-system,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px #0006}
+.bk-pin.h{background:#1f2328!important;border-radius:5px}
+.bk-city-label{background:#fff;color:#102e43;font:700 11px/1.2 -apple-system,sans-serif;padding:4px 7px;border-radius:4px;box-shadow:0 1px 4px #0005;white-space:nowrap}
+.leaflet-container{font-family:inherit}
+.leaflet-control-attribution{font-size:7px!important}
+@page{size:A4;margin:0}
+@media print{
+ html,body{background:#fff!important}
+ body.bk-open{padding:0}
+ #bk-bar{display:none!important}
+ #bk-scroll{padding:0}
+ #bk-pages{zoom:1!important;transform:none!important;width:210mm}
+ .bk-page{margin:0;box-shadow:none}
+ #booklet,#booklet *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

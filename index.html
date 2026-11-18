@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><title>EUROPE 2027 | Photo Trip Planner</title><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -80,7 +80,7 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 </section>
 
 <section id="plan" class="page hide">
-<div class="page-h"><div><h1>日程</h1><p id="planSub"></p></div></div>
+<div class="page-h"><div><h1>日程</h1><p id="planSub"></p></div><button class="btn sub sm" data-bk="open">📖 旅のしおり</button></div>
 <div id="days"></div>
 <details class="card more"><summary>計算の前提と注意</summary><div class="note"><ul>
 <li>都市間ルートと宿泊地は固定：日本 → パリ → モン・サン・ミッシェル → パリ → ヴェネツィア → ローマ → 日本</li>
@@ -127,10 +127,11 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 <div class="page-h" style="margin-top:26px"><div><h1 style="font-size:18px">3人で共有</h1><p>編集は各自独立。変更したらURLをLINEで送ってください</p></div></div>
 <div class="card"><div class="form" style="padding-top:16px">
 <button class="btn full" data-act="share">計画のURLをコピー</button>
+<button class="btn sub full" data-bk="open">📖 旅のしおりを作る（PDF）</button>
 <button class="btn sub" data-act="export">JSONで保存</button><button class="btn sub" data-act="import">JSONを読み込む</button>
 </div></div>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v11 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v10 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
@@ -492,4 +493,4 @@ try{const src=location.hash.startsWith('#plan=')?decode(location.hash.slice(6)):
  if(src){apply(src);if(src.v>=6)restoreOrder(src)}
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
-</script></body></html>
+</script><script src="booklet.js"></script></body></html>
