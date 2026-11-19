@@ -246,7 +246,11 @@ function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkT
    for(const r of regions)L.marker([CITY[r].lat,CITY[r].lon],{icon:L.divIcon({className:'',html:`<div class="bk-city-label">${esc(r)}</div>`,iconSize:null,iconAnchor:[0,0]})}).addTo(map);
    map.fitBounds(L.latLngBounds(pts),{padding:[40,40]})}
   else{const s=segOf(el.dataset.d,el.dataset.r),items=itemsOf(s),H=hotelFor(s.r),col=CITY[s.r].c,base=+el.dataset.base||0;
-   const pts=[[H.lat,H.lon],...items.filter(x=>x.lat&&!x.trip).map(x=>[x.lat,x.lon]),[H.lat,H.lon]]; // day trips are far away: keep the city map
+   const city=items.filter(x=>x.lat&&!x.trip),trips=items.filter(x=>x.trip&&x.lat);
+   if(!city.length&&trips.length){ // a day spent away: show the day-trip town instead of an empty city map
+    trips.forEach(x=>L.marker([x.lat,x.lon],{icon:bkPin(base+items.indexOf(x)+1,col)}).addTo(map));
+    const tp=trips.map(x=>[x.lat,x.lon]);map.fitBounds(L.latLngBounds(tp).pad(.02),{padding:[40,40],maxZoom:14});bkMaps.push(map);return}
+   const pts=[[H.lat,H.lon],...city.map(x=>[x.lat,x.lon]),[H.lat,H.lon]]; // day trips are far away: keep the city map
    L.polyline(pts,{color:col,weight:3,opacity:.75,dashArray:'2 7',lineCap:'round'}).addTo(map);
    L.marker([H.lat,H.lon],{icon:bkPin(0,col,true)}).addTo(map);
    items.forEach((x,i)=>{if(x.lat&&!x.trip)L.marker([x.lat,x.lon],{icon:bkPin(base+i+1,col)}).addTo(map)});

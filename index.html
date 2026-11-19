@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=32"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=33"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -183,7 +183,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v32 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v33 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
@@ -200,7 +200,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v32 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v33 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
@@ -624,11 +624,13 @@ function setHeader(){const left=Math.round((Date.parse('2027-03-11')-Date.parse(
 // In-trip helper: the next thing on today's plan.
 function todayEvents(D){const ev=[],tx=x=>typeof x==='function'?x():x;if(D.pre){D.steps.forEach(([t,x])=>{if(t!=null)ev.push({t,label:tx(x)})});return ev}
  for(const s of D.plan){if(s.move){s.steps.forEach(([t,x])=>{if(t!=null)ev.push({t,label:tx(x)})});continue}
-  const it=itemsOf(s);if(!it.length)continue;const T=timeline(it,s);T.stops.forEach(st=>ev.push({t:st.arrive,label:st.x.n,x:st.x}));ev.push({t:T.home,label:T.H.name+' に戻る',x:T.H})}
+  const it=itemsOf(s);if(!it.length)continue;const T=timeline(it,s);T.stops.forEach(st=>ev.push({t:st.arrive,end:st.leave,label:st.x.n,x:st.x}));ev.push({t:T.home,label:T.H.name+' に戻る',x:T.H})}
  return ev.sort((a,b)=>a.t-b.t)}
 function nowCard(){const D=days.find(D=>D.d===TODAY);if(!D)return '';const now=nowH(),ev=todayEvents(D),rest=ev.filter(e=>e.t>=now-.05),nx=rest[0];
  const head=`<div class="now-h">TODAY · ${esc(dl(D.d))} · 旅行${days.indexOf(D)+1}日目</div>`;
  if(!nx)return `<div class="card nowcard" data-jump="${D.d}">${head}<div class="now-b"><b>今日の予定はおしまい。おつかれさまでした！</b></div></div>`;
+ const cur=ev.find(e=>e.end!=null&&e.t<now-.05&&e.end>now+.05),left=m=>m<90?m+'分':Math.round(m/30)/2+'時間';
+ if(cur){const m=Math.round((cur.end-now)*60);return `<div class="card nowcard" data-jump="${D.d}">${head}<div class="now-b"><span class="time">〜${fmt(cur.end)}</span><b>${esc(cur.label)}</b></div><div class="now-m">いま滞在中 · 出発まであと約${left(m)} · 次は${fmt(nx.t)} ${esc(nx.label)} · タップで今日の日程へ</div></div>`}
  const mins=Math.round((nx.t-now)*60),go=nx.x&&nx.x.lat?`<a class="btn sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${nx.x.lat},${nx.x.lon}&travelmode=transit">現在地から経路 ↗</a>`:'';
  return `<div class="card nowcard" data-jump="${D.d}">${head}<div class="now-b"><span class="time">${fmt(nx.t)}</span><b>${esc(nx.label)}</b></div><div class="now-m">${mins>2?'あと約'+(mins<90?mins+'分':Math.round(mins/30)/2+'時間'):'まもなく'} · 今日の残り${rest.length}件 · タップで今日の日程へ</div>${go?`<div class="row2">${go}</div>`:''}</div>`}
 
@@ -922,4 +924,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');
-</script><script src="booklet.js?v=32"></script></body></html>
+</script><script src="booklet.js?v=33"></script></body></html>
