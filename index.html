@@ -1,6 +1,6 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=24"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=25"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
 .top{position:sticky;top:0;z-index:10;background:var(--navy);color:#fff;padding:calc(10px + env(safe-area-inset-top)) 16px 10px}
 .top-in{max-width:720px;margin:auto;display:flex;align-items:center;gap:12px}
@@ -53,7 +53,7 @@ input,select{width:100%;border:1px solid #cfdae2;border-radius:10px;padding:11px
 .tabbar-in{max-width:720px;margin:auto;display:flex}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 0 6px;font-size:11px;font-weight:600;color:#8296a4}
 .tab .ic{font-size:20px;line-height:26px;filter:grayscale(1);opacity:.55}.tab.on{color:var(--accent)}.tab.on .ic{filter:none;opacity:1}
-.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:#1d3243;color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:30;max-width:calc(100vw - 32px);text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(var(--tabh,56px) + 74px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:#1d3243;color:#fff;padding:11px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:30;max-width:calc(100vw - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .hide{display:none!important}
 footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
@@ -79,6 +79,20 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 .btime{margin:2px 0 4px}.btime label{margin:6px 0 4px}.btime input{max-width:170px}
 .stayed{display:flex;align-items:center;gap:6px;flex-basis:100%;font-size:13px;font-weight:600;color:var(--sub);white-space:nowrap}.stayed b{flex:1;text-align:center;color:var(--ink);font-size:13.5px;white-space:nowrap}.stayed .btn{padding:6px 0;width:40px;font-size:17px;line-height:1.2}
 .cat-h{padding:14px 16px 10px;border-top:1px solid var(--line);background:#f6f8fa}.cat-h b{display:block;font-size:15px}.cat-h span{display:block;font-size:12.5px;color:var(--sub);line-height:1.55;margin-top:3px}.cat-h+.spot{border-top:1px solid var(--line)}
+.chat{position:fixed;left:0;right:0;bottom:calc(var(--tabh,56px) + env(safe-area-inset-bottom));z-index:19;pointer-events:none}
+.chat>*{pointer-events:auto}
+.chat-bar{max-width:720px;margin:0 auto;display:flex;gap:8px;padding:8px 12px;background:linear-gradient(transparent,var(--bg) 30%)}
+.chat-bar input{flex:1;border-radius:999px;border:1.5px solid #c9d6df;padding:11px 16px;background:#fff;box-shadow:0 6px 18px rgba(16,46,67,.12);font-size:16px}
+.chat-bar input:focus{outline:none;border-color:var(--accent)}
+.chat-send{flex:none;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-size:20px;font-weight:800;box-shadow:0 6px 18px rgba(16,46,67,.2)}
+.chat-send:disabled{opacity:.4}
+.chat-log{max-width:696px;margin:0 auto;max-height:46vh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 36px rgba(16,46,67,.22);padding:12px 14px 10px;margin-left:12px;margin-right:12px}
+@media(min-width:720px){.chat-log{margin-left:auto;margin-right:auto}}
+.cm{margin:6px 0;font-size:14.5px;line-height:1.6}.cm.u{text-align:right}.cm.u span{display:inline-block;background:var(--accent-soft);color:var(--navy);border-radius:14px 14px 4px 14px;padding:7px 12px;max-width:85%;text-align:left}
+.cm.a span{display:inline-block;background:#f3f5f8;border-radius:14px 14px 14px 4px;padding:8px 12px;max-width:92%}.cm.a ul{margin:6px 0 0;padding-left:18px;font-size:13px;color:#3d5262}.cm.a li{margin:2px 0}
+.chat-acts{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}.chat-acts .x{color:var(--sub);font-size:13px;font-weight:600;padding:6px 4px}
+.dots::after{content:'…';animation:dots 1s steps(3) infinite}@keyframes dots{0%{content:'.'}50%{content:'..'}100%{content:'...'}}
+body.bk-open>.chat{display:none!important}
 .bwarn{background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:8px 10px;font-size:12.5px;line-height:1.5;margin:4px 0 8px;font-weight:600}
 .nowcard{padding:14px 16px;border-color:var(--accent);background:linear-gradient(180deg,#eef6fa,#fff)}.now-h{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.06em}.now-b{display:flex;gap:10px;align-items:baseline;margin:6px 0 2px}.now-b .time{width:auto;font-size:15px}.now-b b{font-size:17px;line-height:1.4}.now-m{font-size:13px;color:var(--sub);margin-bottom:10px}
 .spot .desc{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12.5px;color:#56697a;line-height:1.5;margin-top:3px}
@@ -176,7 +190,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:2px 0 0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></div>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v24 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v25 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 <section id="tools" class="page hide">
 <div class="page-h"><div><h1>便利帳</h1><p>共有・しおり・旅行中に使うものをまとめました</p></div></div>
@@ -193,10 +207,11 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算を見る<i>›</i></button><button class="mini" data-go="settings" style="border-top:1px solid var(--line)">⚙️ 人数・行動時間・JSONの保存<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">コースを見直す（計画モードに戻る）</button></div></div>
-<footer>EUROPE 2027 · v24 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v25 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
+<div class="chat" id="chat"><div class="chat-log hide" id="chatLog" aria-live="polite"></div><form class="chat-bar" id="chatForm"><input id="chatIn" placeholder="✨ AIに頼む（例：ルーヴルを4時間に）" maxlength="300" enterkeyhint="send" autocomplete="off" aria-label="AIへの依頼"><button class="chat-send" aria-label="送信">↑</button></form></div>
 <nav class="tabbar"><div class="tabbar-in" id="tabs"></div></nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -675,7 +690,7 @@ function build(){ensureAssignments();renderPlan();renderCost();renderHotels();re
 let phase='plan',tripHint=true,curPage='places';
 const TABS={plan:[['places','📍','選ぶ'],['plan','🗓️','日程'],['hotels','🏨','ホテル'],['cost','💴','予算'],['settings','⚙️','設定']],trip:[['plan','🗓️','旅程'],['book','🎫','予約'],['tools','🧰','便利帳']]};
 const isTrip=()=>phase==='trip';
-function renderTabs(){$('tabs').innerHTML=TABS[phase].map(([id,ic,l])=>`<button class="tab${id===curPage?' on':''}" data-go="${id}"><span class="ic">${ic}</span>${l}${id==='book'?'<i class="nb hide" id="bookBadge"></i>':''}</button>`).join('')}
+function renderTabs(){$('tabs').innerHTML=TABS[phase].map(([id,ic,l])=>`<button class="tab${id===curPage?' on':''}" data-go="${id}"><span class="ic">${ic}</span>${l}${id==='book'?'<i class="nb hide" id="bookBadge"></i>':''}</button>`).join('');try{setTop()}catch{}}
 function setPhase(p){phase=p==='trip'?'trip':'plan';document.body.classList.toggle('trip',isTrip());const t=$('phaseTag');t.textContent=isTrip()?'確定済み':'計画中';t.classList.toggle('trip',isTrip());renderTabs()}
 function renderStepper(){const el=$('stepper'),on=!isTrip()&&(curPage==='places'||curPage==='plan');el.classList.toggle('hide',!on);if(!on)return;
  el.innerHTML=[['places','① 場所を選ぶ'],['plan','② 日程を確認'],['confirm','③ 確定して予約']].map(([k,l],i)=>`<span class="${k===curPage?'on':(curPage==='plan'&&i===0)?'done':''}">${l}</span>`).join('')}
@@ -703,7 +718,7 @@ const KW=[
  [/広場|piazza|place |square|campo /i,'広場',0.5,0],
  [/橋|ponte|pont |bridge/i,'橋',0.25,0],
  [/市場|マルシェ|mercato|marché|marche|market/i,'市場',1,0],
- [/レストラン|カフェ|ビストロ|トラットリア|ジェラート|パティスリー|café|cafe|bistro|brasserie|trattoria|osteria|restaurant|ristorante|gelateria|pâtisserie|bakery/i,'食事・カフェ',1,0],
+ [/レストラン|カフェ|ビストロ|トラットリア|ジェラート|ジェラテリア|パティスリー|café|cafe|bistro|brasserie|trattoria|osteria|restaurant|ristorante|gelateria|pâtisserie|bakery/i,'食事・カフェ',1,0],
  [/劇場|オペラ座|teatro|théâtre|theatre|theater|opéra|opera house/i,'劇場',1,15],
  [/動物園|水族館|zoo|aquarium/i,'動物園・水族館',2.5,25],
  [/島|isola|île|ile |island/i,'島',2,0],
@@ -755,18 +770,19 @@ async function addCustom(){if(adding)return;const r=$('newRegion').value,n=$('ne
  const hit=[...data[r],...(DAYTRIPS[r]||[])].find(z=>z[0]===n||(n.length>=3&&z[0].includes(n))||(n.includes(z[0])&&n.length-z[0].length<=2));
  if(hit){const k=r+'|'+hit[0];region=r;if(!selected.some(x=>keyOf(x)===k))toggle(k);else renderCatalog();$('newName').value='';fillNewGuess();return toast(`「${hit[0]}」はリストにあったので、そちらを選びました`)}
  const btn=document.querySelector('[data-act="addCustom"]'),label=btn.textContent;adding=true;btn.disabled=true;btn.textContent='調べています…';
- let found=null;try{found=await lookupPlace(r,n)}catch{}
- adding=false;btn.disabled=false;btn.textContent=label;
+ const x=await makeCustom(r,n,newDirty.h?(+$('newHours').value||null):null,newDirty.p?(+$('newPrice').value||0):null);
+ adding=false;btn.disabled=false;btn.textContent=label;selected.push(x);
+ $('newName').value='';newDirty={h:false,p:false};fillNewGuess();region=r;autoDistribute();renderCatalog();
+ toast(`「${n}」を追加しました（${x.kind}・${x.h}時間・${x.p?yen(x.p):'無料'}${x.lat!=null?'・位置あり':''}）`)}
+async function makeCustom(r,n,manualH,manualP){let found=null;try{found=await lookupPlace(r,n)}catch{}
  const wd=found&&found.wd,osm=found&&found.osm;
  let g=(osm&&guessByOsm(osm))||guessByName([n,wd&&wd.text].filter(Boolean).join(' '))||{kind:'観光地',h:1,eur:0};
  if(wd&&wd.eur!=null)g={...g,eur:wd.eur};
  const ex=(osm&&osm.extratags)||{},oh=parseOH(ex.opening_hours),lat=wd?wd.lat:osm?+osm.lat:null,lon=wd?wd.lon:osm?+osm.lon:null;
- const h=newDirty.h?(+$('newHours').value||g.h):g.h,p=newDirty.p?(+$('newPrice').value||0):Math.round(g.eur*rate()/10)*10;
+ const h=manualH||g.h,p=manualP!=null?manualP:Math.round(g.eur*rate()/10)*10;
  const src=(wd&&osm?'Wikidata・OpenStreetMap':wd?'Wikidata':osm?'OpenStreetMap':'名前')+'から推定',nm=(wd&&(wd.local||wd.ja))||(osm&&osm.name)||'';
  const note=(lat!=null?`📍 ${nm||n}`:'位置は見つかりませんでした（経路はGoogleマップで確認）')+(ex.opening_hours?` · 営業 ${ex.opening_hours}`:'')+` · ${src}`;
- selected.push({r,n,h,p,lat,lon,tag:'自由追加',kind:g.kind,note:note.slice(0,200),oh});
- $('newName').value='';newDirty={h:false,p:false};fillNewGuess();region=r;autoDistribute();renderCatalog();
- toast(`「${n}」を追加しました（${g.kind}・${h}時間・${p?yen(p):'無料'}${lat!=null?'・位置あり':''}）`)}
+ return {r,n,h,p,lat,lon,tag:'自由追加',kind:g.kind,note:note.slice(0,200),oh}}
 function setDay(k,d){assignments[k]=d;const x=selected.find(y=>keyOf(y)===k),s=segOf(d,x.r);selected=selected.filter(y=>y!==x);const others=itemsOf(s);const best=bestRoute([...others,x],s);selected=[...selected.filter(y=>!best.includes(y)),...best];build();const pd=pinnedDate(x);toast(pd&&pd!==d?`${segLabel(s)}に移しました。予約済みの日（${md(pd)}）と違うので、予約を変えたら「予約」タブでチェックし直してください（そのままだと次の自動調整で予約日に戻ります）`:`${segLabel(s)}に移動しました`)}
 const fmtH=h=>h<1?Math.round(h*60)+'分':(h%1?Math.floor(h)+'時間'+Math.round(h%1*60)+'分':h+'時間');
 function changeStay(k,delta){const x=selected.find(y=>keyOf(y)===k);if(!x)return;x.h=Math.min(10,Math.max(.25,Math.round((x.h+delta)*4)/4));build();toast(`${x.n}の滞在を${fmtH(x.h)}にしました`)}
@@ -796,6 +812,63 @@ async function share(){if(isTrip()&&tripHint){tripHint=false;if(curPage==='plan'
 function exportJSON(){const blob=new Blob([JSON.stringify(state(),null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='europe-trip-2027.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 let toastTimer;function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),msg.length>40?5000:2200)}
 
+// ===================== AI chat =====================
+// The page sends the plan (no booking memos) and the request to our Vercel function, which asks Claude for a list of
+// edits. The edits are applied here with the same functions the buttons use, and can be undone in one tap.
+const CHAT_URL=(()=>{try{const o=localStorage.getItem('chatEndpoint');if(o)return o}catch{}return /\.vercel\.app$/.test(location.hostname)?'/api/chat':'https://europe-trip-2027.vercel.app/api/chat'})();
+let chatHist=[],chatBusy=false,chatUndo=null;
+function chatContext(){const tl=s=>{const it=itemsOf(s);return it.length?timeline(it,s):null};
+ return {phase,today:TODAY,
+  days:days.map(D=>({date:D.d,night:D.night||null,travel:D.variants?{options:D.variants.map(v=>v.label),selected:moveDep(D.d).label}:null,
+   segments:(D.plan||[]).filter(s=>s.r).map(s=>{const T=tl(s);return {city:s.r,window:fmt(segStart(s))+'-'+fmt(segEnd(s)),home:T?fmt(T.home):null,stops:T?T.stops.map(st=>({name:st.x.n,arrive:fmt(st.arrive),hours:st.x.h,...(st.x.trip?{daytrip:true}:{}),...(st.closed?{closed:true}:{}),...(st.late?{late:true}:{})})):[]}})})),
+  hotels:Object.fromEntries(regions.map(r=>[r,{selected:hn(r),options:hotelOptions[r].map(h=>h.name)}])),
+  catalog:Object.fromEntries(regions.map(r=>[r,[...data[r].map(x=>({name:x[0],hours:x[1],tag:x[5]})),...(DAYTRIPS[r]||[]).map(t=>({name:t[0],hours:t[1],tag:'日帰り'}))].filter(c=>!selected.some(y=>y.r===r&&y.n===c.name))])),
+  settings:{start:$('startH').value,end:$('endH').value}}}
+const norm=t=>String(t||'').replace(/[\s・･（）()「」]/g,'');
+const findSel=n=>{const t=norm(n);if(!t)return null;return selected.find(x=>norm(x.n)===t)||selected.find(x=>norm(x.n).includes(t)||t.includes(norm(x.n)))||null};
+function findCatalog(r,n){const t=norm(n);if(!t)return null;const pool=(r?[r]:regions).flatMap(rr=>[...data[rr].map(x=>[rr,x[0]]),...(DAYTRIPS[rr]||[]).map(x=>[rr,x[0]])]);
+ const hit=pool.find(([,nm])=>norm(nm)===t)||pool.find(([,nm])=>norm(nm).includes(t)||(t.includes(norm(nm))&&norm(nm).length>=3));return hit?catalogItem(hit[0],hit[1]):null}
+// Trip mode: put a new place on the day where it fits best, without moving anything else.
+function placeOnBestDay(x){const rs=segs.filter(s=>s.r===x.r);let best=null,bv=Infinity;
+ for(const s of rs){const base=itemsOf(s).filter(y=>y!==x),v=segCost(bestRoute([...base,x],s),s)-segCost(bestRoute(base,s),s);if(v<bv){bv=v;best=s}}
+ if(best){assignments[keyOf(x)]=best.d;const b=bestRoute(itemsOf(best),best);selected=[...selected.filter(y=>!b.includes(y)),...b]}}
+async function applyChatActions(acts){const out=[],later=[];let structural=false;
+ for(const a of acts){try{switch(a.op){
+  case 'add_place':{const r=regions.includes(a.region)?a.region:null,c=findCatalog(r,a.place);
+   if(c){if(selected.some(y=>keyOf(y)===keyOf(c))){out.push(`・${c.n}はもう日程にあります`);break}selected.push(c);if(isTrip())placeOnBestDay(c);structural=true;out.push(`✓ ${c.n}を追加`);break}
+   if(!r||!a.place){out.push(`⚠ 「${a.place||'?'}」をどの都市に入れるか分かりませんでした`);break}
+   const x=await makeCustom(r,a.place.slice(0,60),a.hours>0?a.hours:null,null);selected.push(x);if(isTrip())placeOnBestDay(x);structural=true;out.push(`✓ ${x.n}を追加（${x.kind}・${fmtH(x.h)}${x.lat!=null?'':'・位置は未登録'}）`);break}
+  case 'remove_place':{const x=findSel(a.place);if(!x){out.push(`⚠ 「${a.place}」が日程に見つかりませんでした`);break}selected=selected.filter(y=>y!==x);delete assignments[keyOf(x)];structural=true;out.push(`✓ ${x.n}を外しました`);break}
+  case 'set_hotel':{const r=regions.includes(a.region)?a.region:null,list=r?hotelOptions[r]:[],t=norm(a.option),i=list.findIndex(h=>norm(h.name)===t||norm(h.name).includes(t)||t.includes(norm(h.name)));
+   if(i<0){out.push(`⚠ ホテル「${a.option}」が候補に見つかりませんでした`);break}hotelSel[r]=i;structural=true;out.push(`✓ ${r}のホテルを ${list[i].name} に`);break}
+  case 'set_travel':{const D=days.find(z=>z.d===a.date&&z.variants),t=norm(a.option),i=D?D.variants.findIndex(v=>norm(v.label)===t||norm(v.label).includes(t)||t.includes(norm(v.label.replace(/（.*?）/g,'')))):-1;
+   if(i<0){out.push(`⚠ ${a.date||''}の移動の時間帯を変えられませんでした`);break}travelChoice[D.d]=i;applyTravel();structural=true;out.push(`✓ ${md(D.d)}の移動を「${D.variants[i].label}」に`);break}
+  case 'set_day_hours':{const m=/^(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})$/.exec(a.option||'');if(!m){out.push('⚠ 行動時間を読み取れませんでした');break}
+   $('startH').value=m[1].padStart(5,'0');$('endH').value=m[2].padStart(5,'0');structural=true;out.push(`✓ 毎日の行動時間を ${m[1]}〜${m[2]} に`);break}
+  case 'set_stay':case 'move_place':later.push(a);break;
+  default:out.push('⚠ 分からない変更がありました')}}catch(e){out.push('⚠ 反映できない変更がありました')}}
+ if(structural){if(isTrip()){ensureAssignments();build()}else autoDistribute()}
+ for(const a of later){const x=findSel(a.place);if(!x){out.push(`⚠ 「${a.place}」が日程に見つかりませんでした`);continue}
+  if(a.op==='set_stay'){const h=+a.hours;if(!(h>0)){out.push(`⚠ ${x.n}の滞在時間を読み取れませんでした`);continue}x.h=Math.min(10,Math.max(.25,Math.round(h*4)/4));out.push(`✓ ${x.n}の滞在を${fmtH(x.h)}に`)}
+  else{const s=segOf(a.date,x.r);if(!s){out.push(`⚠ ${x.n}は${a.date?md(a.date):'その日'}に移せません（${x.r}にいない日です）`);continue}assignments[keyOf(x)]=s.d;const b=bestRoute(itemsOf(s),s);selected=[...selected.filter(y=>!b.includes(y)),...b];out.push(`✓ ${x.n}を${segLabel(s)}に`)}}
+ if(later.length)build();if(curPage==='places')renderCatalog();
+ return out}
+function chatPass(force){let p='';try{p=localStorage.getItem('chatPass')||''}catch{}if(!p||force){p=(prompt('AIを使うための合言葉を入力してください（3人で決めたもの）')||'').trim();try{if(p)localStorage.setItem('chatPass',p)}catch{}}return p}
+function chatRender(parts){const el=$('chatLog');el.classList.remove('hide');el.innerHTML=parts.join('')+`<div class="chat-acts">${chatUndo?'<button class="btn sub sm" data-act="chatUndoIt">↩ 元に戻す</button>':'<span></span>'}<button class="x" data-act="chatClose">閉じる ✕</button></div>`;el.scrollTop=el.scrollHeight}
+async function sendChat(text){if(chatBusy||!text)return;if(!navigator.onLine){chatUndo=null;return chatRender([`<div class="cm a"><span>電波がないので、AIは使えません。画面のボタンで編集してください。</span></div>`])}
+ const pass=chatPass();if(!pass)return;chatBusy=true;$('chatIn').value='';document.querySelector('.chat-send').disabled=true;chatUndo=null;
+ const you=`<div class="cm u"><span>${esc(text)}</span></div>`;chatRender([you,`<div class="cm a"><span class="dots">考えています</span></div>`]);
+ let res=null,err='';try{const r=await fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({passcode:pass,message:text,context:chatContext(),history:chatHist})});
+  const j=await r.json().catch(()=>({}));if(r.status===401){try{localStorage.removeItem('chatPass')}catch{}err='合言葉が違うようです。もう一度送ると、入力し直せます。'}else if(!r.ok)err=j.error||`エラーが起きました（${r.status}）`;else res=j}
+ catch{err='AIにつながりませんでした（準備中か、通信の問題です）。'}
+ if(err){chatBusy=false;document.querySelector('.chat-send').disabled=false;return chatRender([you,`<div class="cm a"><span>${esc(err)}</span></div>`])}
+ const before=JSON.stringify(state()),acts=Array.isArray(res.actions)?res.actions:[];const done=acts.length?await applyChatActions(acts):[];
+ if(done.some(t=>t.startsWith('✓')))chatUndo=before;
+ chatHist.push({role:'user',content:text},{role:'assistant',content:(res.reply||'')+(done.length?`（実行：${done.join(' / ')}）`:'')});chatHist=chatHist.slice(-6);
+ chatBusy=false;document.querySelector('.chat-send').disabled=false;
+ chatRender([you,`<div class="cm a"><span>${esc(res.reply||'')}${done.length?`<ul>${done.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`:''}</span></div>`])}
+function chatUndoIt(){if(!chatUndo)return;const s=JSON.parse(chatUndo);apply(s);if(s.v>=6)restoreOrder(s);if(curPage==='places')renderCatalog();chatUndo=null;$('chatLog').classList.add('hide');toast('AIの変更を元に戻しました')}
+function chatClose(){$('chatLog').classList.add('hide')}
 document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay]');if(!t||t.disabled)return;const d=t.dataset;
  if(d.stay){const i=d.stay.lastIndexOf('|');changeStay(d.stay.slice(0,i),+d.stay.slice(i+1))}
  else if(d.book)toggleBook(d.book);
@@ -809,7 +882,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[da
  else if('down' in d)shiftStop(d.down,1);
  else if('remove' in d)removeStop(d.remove);
  else if(d.addcity){region=d.addcity;showPage('places')}
- else if(d.act){e.preventDefault();({share,export:exportJSON,import:()=>$('importFile').click(),addCustom,openRoute,confirmTrip,toPlan,dismissHint})[d.act]()}
+ else if(d.act){e.preventDefault();({share,export:exportJSON,import:()=>$('importFile').click(),addCustom,openRoute,confirmTrip,toPlan,dismissHint,chatUndoIt,chatClose})[d.act]()}
 });
 document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
@@ -818,7 +891,8 @@ $('cvE').addEventListener('input',()=>{$('cvY').value=Math.round((+$('cvE').valu
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 keys.forEach(k=>$(k).addEventListener('change',()=>{if((k==='startH'||k==='endH')&&!isTrip())autoDistribute();else build()}));
 $('newRegion').innerHTML=regions.map(r=>`<option>${esc(r)}</option>`).join('');
-const setTop=()=>document.documentElement.style.setProperty('--toph',$('top').offsetHeight+'px');addEventListener('resize',setTop);setTop();
+const setTop=()=>{document.documentElement.style.setProperty('--toph',$('top').offsetHeight+'px');document.documentElement.style.setProperty('--tabh',document.querySelector('.tabbar').offsetHeight+'px')};
+$('chatForm').addEventListener('submit',e=>{e.preventDefault();sendChat($('chatIn').value.trim())});addEventListener('resize',setTop);setTop();
 renderHotels();renderOfficial();setHeader();
 function restoreOrder(s){if(Array.isArray(s.order)){const pos=Object.fromEntries(s.order.map((k,i)=>[k,i]));selected.sort((a,b)=>(pos[keyOf(a)]??999)-(pos[keyOf(b)]??999));build()}}
 // A shared link (#plan=...) is applied once, then removed from the address bar so that a reload
@@ -838,4 +912,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');
-</script><script src="booklet.js?v=24"></script></body></html>
+</script><script src="booklet.js?v=25"></script></body></html>

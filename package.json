@@ -1,0 +1,9 @@
+{
+  "name": "europe-trip-2027",
+  "private": true,
+  "type": "module",
+  "description": "Static trip planner (GitHub Pages / Vercel) with one serverless function: api/chat.js",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.10.0"
+  }
+}
