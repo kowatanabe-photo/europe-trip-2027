@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=22"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=23"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -38,7 +38,7 @@ input,select{width:100%;border:1px solid #cfdae2;border-radius:10px;padding:11px
 .leg{margin-left:20px;padding:3px 0 3px 34px;font-size:12px;color:var(--sub);border-left:2px dotted #c9d8e2;line-height:1.5}.leg a{font-weight:600;text-decoration:none}
 .hrow{display:flex;gap:12px;padding:6px 0;font-size:13.5px;font-weight:600;color:#3d5262}.time.lt{color:var(--warn)}
 .edit{margin:2px 0 10px 56px;padding:10px;background:#f4f8fa;border-radius:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.edit select{flex:1 1 130px;width:auto;padding:8px 10px;font-size:15px}
+.edit select{flex:1 1 100%;width:auto;padding:8px 10px;font-size:15px}@media(max-width:360px){.edit{margin-left:0}}
 .day-f{border-top:1px solid var(--line);padding:11px 16px}.add-link{color:var(--accent);font-size:14px;font-weight:600}
 .note{padding:0 16px 16px;font-size:13.5px;line-height:1.7;color:#4c5f6d}.note ul{margin:0;padding-left:18px}.note li{margin:3px 0}
 .info{padding:12px 16px;border-top:1px solid var(--line);font-size:13.5px;line-height:1.6}.info b{display:block;font-size:14.5px}.info span{color:#4c5f6d}
@@ -77,6 +77,7 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 .when{font-size:13px;font-weight:700;color:var(--accent);margin:5px 0 3px;line-height:1.5}.bitem.done .when{color:#2f7a45}
 .bitem .muted{margin:0 0 8px}.bitem input{padding:9px 11px;margin:2px 0 8px}
 .btime{margin:2px 0 4px}.btime label{margin:6px 0 4px}.btime input{max-width:170px}
+.stayed{display:flex;align-items:center;gap:6px;flex-basis:100%;font-size:13px;font-weight:600;color:var(--sub);white-space:nowrap}.stayed b{flex:1;text-align:center;color:var(--ink);font-size:13.5px;white-space:nowrap}.stayed .btn{padding:6px 0;width:40px;font-size:17px;line-height:1.2}
 .bwarn{background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:8px 10px;font-size:12.5px;line-height:1.5;margin:4px 0 8px;font-weight:600}
 .nowcard{padding:14px 16px;border-color:var(--accent);background:linear-gradient(180deg,#eef6fa,#fff)}.now-h{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.06em}.now-b{display:flex;gap:10px;align-items:baseline;margin:6px 0 2px}.now-b .time{width:auto;font-size:15px}.now-b b{font-size:17px;line-height:1.4}.now-m{font-size:13px;color:var(--sub);margin-bottom:10px}
 .spot .desc{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12.5px;color:#56697a;line-height:1.5;margin-top:3px}
@@ -174,7 +175,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:2px 0 0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></div>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v22 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v23 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 <section id="tools" class="page hide">
 <div class="page-h"><div><h1>便利帳</h1><p>共有・しおり・旅行中に使うものをまとめました</p></div></div>
@@ -191,7 +192,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算を見る<i>›</i></button><button class="mini" data-go="settings" style="border-top:1px solid var(--line)">⚙️ 人数・行動時間・JSONの保存<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">コースを見直す（計画モードに戻る）</button></div></div>
-<footer>EUROPE 2027 · v22 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v23 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
@@ -491,7 +492,7 @@ function permute(a){if(a.length<=1)return [a];const out=[];a.forEach((x,i)=>{for
 const routeCache=new Map();
 // Best visiting order for one segment: exhaustive for up to 7 spots, otherwise greedy + 2-opt.
 function bestRoute(items,s){if(items.length<2)return items;items=[...items].sort((a,b)=>keyOf(a)<keyOf(b)?-1:1); // deterministic result
- const ck=bookVer+s.d+s.idx+hn(s.r)+'|'+items.map(keyOf).sort().join(',')+'|'+T0()+T1();if(routeCache.has(ck))return routeCache.get(ck).map(k=>items.find(x=>keyOf(x)===k));
+ const ck=bookVer+s.d+s.idx+hn(s.r)+'|'+items.map(x=>keyOf(x)+x.h).sort().join(',')+'|'+T0()+T1();if(routeCache.has(ck))return routeCache.get(ck).map(k=>items.find(x=>keyOf(x)===k));
  let best=items,bc=Infinity;
  if(items.length<=5){for(const p of permute(items)){const c=segCost(p,s);if(c<bc){bc=c;best=p}}}
  else{let left=[...items],cur=[];while(left.length){let bi=0,bv=Infinity;left.forEach((x,i)=>{const v=segCost([...cur,x],s);if(v<bv){bv=v;bi=i}});cur.push(left.splice(bi,1)[0])}
@@ -588,7 +589,7 @@ function renderCatalog(){
  $('placesSub').textContent=selected.length?`${selected.length}か所を選択中 · タップで日程に自動で入ります`:'タップで選ぶと、日程に自動で入ります';
  $('cityChips').innerHTML=regions.map(r=>{const c=selected.filter(x=>x.r===r).length;return `<button class="chip ${r===region?'on':''}" data-city="${esc(r)}">${esc(r)}${c?`<i>${c}</i>`:''}</button>`}).join('');
  const list=[...data[region].map(x=>item(region,x)),...selected.filter(x=>x.r===region&&x.tag==='自由追加')];
- $('catalog').innerHTML=list.map(x=>{const k=keyOf(x),on=selected.some(y=>keyOf(y)===k),p=priceYen(x),R=resOf(x),bid=spotBookId(x),ad=on&&assignments[k];
+ $('catalog').innerHTML=list.map(x0=>{const k=keyOf(x0),sx=selected.find(y=>keyOf(y)===k),x=sx||x0,on=!!sx,p=priceYen(x),R=resOf(x),bid=spotBookId(x),ad=on&&assignments[k];
   const pill=R?(isBooked(bid)?'<span class="rv ok">予約済み</span>':`<span class="rv ${R[0]==='必須'?'':'rec'}">予約${R[0]}</span>`):'';
   return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}${pill}</b>${typeof SPOT_INFO!=='undefined'&&SPOT_INFO[x.n]?`<span class="desc">${esc(SPOT_INFO[x.n][1])}</span>`:''}<small>${esc(x.kind?x.tag+'・'+x.kind:x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note?'<br>'+esc(x.note):''}</small></span><span class="tick">✓</span></button>`}).join('');
 }
@@ -604,7 +605,7 @@ function segHtml(s){const items=itemsOf(s),T=timeline(items,s);
   const bkFlag=st.bt!=null?(st.lateBook?`<span class="badge rsv">予約の${fmt(st.bt)}に間に合わない可能性</span>`:`<span class="badge ok">🎫 予約 ${fmt(st.bt)}入場</span>`):'';
   const R=resOf(st.x),bid=spotBookId(st.x),rsv=bkFlag||(R?(isBooked(bid)?'<span class="badge ok">✓ 予約済み</span>':`<span class="badge${R[0]==='必須'?' rsv':''}">🎫 予約${R[0]}</span>`):'');
   const flag=[st.closed?'<span class="badge">この日は通常休館日</span>':st.late?'<span class="badge">閉館時刻を過ぎる可能性</span>':'',rsv].filter(Boolean).join(' ');
-  return `${st.lunchAt!=null?`<div class="hrow sub"><span class="time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}${legHtml(st.prev,st.x,st.leg)}${st.wait>=.5?`<div class="leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間${evType(st.x)?'（光の時間待ち）':''}</div>`:''}<button class="stop" data-open="${esc(k)}" aria-expanded="${open}"><span class="time">${fmt(st.arrive)}</span><span class="t"><b>${esc(st.x.n)}</b><small>${meta}</small>${flag?'<br>'+flag:''}</span><span class="chev">${open?'▲':'▼'}</span></button>${open?`<div class="edit"><select data-day="${esc(k)}" aria-label="日付を変更">${segs.filter(z=>z.r===st.x.r).map(z=>`<option value="${z.d}" ${z.d===s.d?'selected':''}>${segLabel(z)}</option>`).join('')}</select><button class="btn sub sm" data-up="${esc(k)}" ${i===0?'disabled':''} aria-label="前へ">↑</button><button class="btn sub sm" data-down="${esc(k)}" ${i===T.stops.length-1?'disabled':''} aria-label="後へ">↓</button>${st.x.lat?`<a class="btn sub sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${st.x.lat},${st.x.lon}">地図</a>`:''}<button class="btn danger sm" data-remove="${esc(k)}">削除</button></div>`:''}`}).join('');
+  return `${st.lunchAt!=null?`<div class="hrow sub"><span class="time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}${legHtml(st.prev,st.x,st.leg)}${st.wait>=.5?`<div class="leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間${evType(st.x)?'（光の時間待ち）':''}</div>`:''}<button class="stop" data-open="${esc(k)}" aria-expanded="${open}"><span class="time">${fmt(st.arrive)}</span><span class="t"><b>${esc(st.x.n)}</b><small>${meta}</small>${flag?'<br>'+flag:''}</span><span class="chev">${open?'▲':'▼'}</span></button>${open?`<div class="edit"><select data-day="${esc(k)}" aria-label="日付を変更">${segs.filter(z=>z.r===st.x.r).map(z=>`<option value="${z.d}" ${z.d===s.d?'selected':''}>${segLabel(z)}</option>`).join('')}</select><button class="btn sub sm" data-up="${esc(k)}" ${i===0?'disabled':''} aria-label="前へ">↑</button><button class="btn sub sm" data-down="${esc(k)}" ${i===T.stops.length-1?'disabled':''} aria-label="後へ">↓</button>${st.x.lat?`<a class="btn sub sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${st.x.lat},${st.x.lon}">地図</a>`:''}<button class="btn danger sm" data-remove="${esc(k)}">削除</button><span class="stayed">滞在 <button class="btn sub sm" data-stay="${esc(k)}|-0.5" ${st.x.h<=.5?'disabled':''} aria-label="滞在を30分短く">−</button><b>${fmtH(st.x.h)}</b><button class="btn sub sm" data-stay="${esc(k)}|0.5" ${st.x.h>=10?'disabled':''} aria-label="滞在を30分長く">＋</button></span></div>`:''}`}).join('');
  return `<div class="seg">${head}<div class="load ${over?'over':''}"><span class="bar"><i style="width:${ratio}%"></i></span>${over?`${fmt(T.limit)}を約${T.home-T.limit<1.5?Math.round((T.home-T.limit)*60)+'分':Math.round((T.home-T.limit)*2)/2+'時間'}オーバー`:`ホテル着 ${fmt(T.home)}`}</div>${lateHome?`<div class="badge" style="margin-top:6px">ホテル着が${fmt(T.home)}ごろ。夜は大通り・地下鉄やタクシーで戻りましょう</div>`:nightOk?`<div class="muted" style="margin-top:6px">🌙 夜の撮影があるので帰着は遅め（21時までに戻る想定）</div>`:''}
  <div class="stops"><div class="hrow"><span class="time">${fmt(T.start)}</span><span>🏨 ${esc(T.H.name)} を出発</span></div>${stops}${legHtml(items[items.length-1],T.H,T.back)}<div class="hrow"><span class="time${over||lateHome?' lt':''}">${fmt(T.home)}</span><span>🏨 ${esc(T.H.name)} に戻る</span></div></div></div>`}
 function renderPlan(){
@@ -741,14 +742,17 @@ async function addCustom(){if(adding)return;const r=$('newRegion').value,n=$('ne
  $('newName').value='';newDirty={h:false,p:false};fillNewGuess();region=r;autoDistribute();renderCatalog();
  toast(`「${n}」を追加しました（${g.kind}・${h}時間・${p?yen(p):'無料'}${lat!=null?'・位置あり':''}）`)}
 function setDay(k,d){assignments[k]=d;const x=selected.find(y=>keyOf(y)===k),s=segOf(d,x.r);selected=selected.filter(y=>y!==x);const others=itemsOf(s);const best=bestRoute([...others,x],s);selected=[...selected.filter(y=>!best.includes(y)),...best];build();const pd=pinnedDate(x);toast(pd&&pd!==d?`${segLabel(s)}に移しました。予約済みの日（${md(pd)}）と違うので、予約を変えたら「予約」タブでチェックし直してください（そのままだと次の自動調整で予約日に戻ります）`:`${segLabel(s)}に移動しました`)}
+const fmtH=h=>h<1?Math.round(h*60)+'分':(h%1?Math.floor(h)+'時間'+Math.round(h%1*60)+'分':h+'時間');
+function changeStay(k,delta){const x=selected.find(y=>keyOf(y)===k);if(!x)return;x.h=Math.min(10,Math.max(.25,Math.round((x.h+delta)*4)/4));build();toast(`${x.n}の滞在を${fmtH(x.h)}にしました`)}
 function shiftStop(k,delta){const day=assignments[k],x0=selected.find(y=>keyOf(y)===k),arr=selected.filter(x=>x.r===x0.r&&assignments[keyOf(x)]===day),i=arr.indexOf(x0),j=i+delta;if(j<0||j>=arr.length)return;const a=selected.indexOf(arr[i]),b=selected.indexOf(arr[j]);[selected[a],selected[b]]=[selected[b],selected[a]];build()}
 function removeStop(k){const x=selected.find(y=>keyOf(y)===k);selected=selected.filter(y=>keyOf(y)!==k);delete assignments[k];if(isTrip())build();else autoDistribute();toast(`「${x?x.n:''}」を外しました`)}
 function persist(){try{localStorage.setItem('europetrip_v4',JSON.stringify(state()))}catch{}}
-function state(){return {v:6,selected:selected.map(x=>x.tag==='自由追加'?x:{r:x.r,n:x.n}),assignments,order:selected.map(keyOf),hotels:hotelSel,travel:travelChoice,bookings,phase,hint:tripHint,settings:Object.fromEntries(keys.map(k=>[k,$(k).value]))}}
+function state(){return {v:6,selected:selected.map(x=>x.tag==='自由追加'?x:{r:x.r,n:x.n}),assignments,order:selected.map(keyOf),hotels:hotelSel,travel:travelChoice,bookings,phase,stay:Object.fromEntries(selected.filter(x=>x.tag!=='自由追加').map(x=>{const c=(data[x.r]||[]).find(z=>z[0]===x.n);return c&&c[1]!==x.h?[keyOf(x),x.h]:null}).filter(Boolean)),hint:tripHint,settings:Object.fromEntries(keys.map(k=>[k,$(k).value]))}}
 // Older saves: keep the chosen places (refreshed from the catalog), drop outdated settings, and re-plan.
 function apply(s){if(!s||!Array.isArray(s.selected))throw Error('データが不正です');
  selected=s.selected.filter(x=>x&&regions.includes(x.r)&&typeof x.n==='string').slice(0,120).map(x=>{const c=(data[x.r]||[]).find(z=>z[0]===x.n);if(c)return item(x.r,c);const ok=Number.isFinite(+x.lat)&&Number.isFinite(+x.lon)&&x.lat!==null&&inBox(x.r,+x.lat,+x.lon),oh=Array.isArray(x.oh)&&x.oh.length===7&&x.oh.every(v=>v===0||(Array.isArray(v)&&v.length===2&&v.every(Number.isFinite)))?x.oh:null;
   return {r:x.r,n:x.n.slice(0,100),h:Math.min(12,Math.max(.25,+x.h||1)),p:Math.max(0,+x.p||0),lat:ok?+x.lat:null,lon:ok?+x.lon:null,tag:'自由追加',kind:typeof x.kind==='string'?x.kind.slice(0,20):'',note:typeof x.note==='string'?x.note.slice(0,200):'',oh}});
+ if(s.stay&&typeof s.stay==='object')for(const x of selected){const v=+s.stay[keyOf(x)];if(x.tag!=='自由追加'&&v>=.25&&v<=10)x.h=v}
  if(s.v>=5)for(const k of keys)if(s.settings&&s.settings[k]!=null&&$(k))$(k).value=s.settings[k];
  if(s.travel&&typeof s.travel==='object'){travelChoice={};for(const D of days)if(D.variants&&Number.isInteger(+s.travel[D.d]))travelChoice[D.d]=+s.travel[D.d];applyTravel()}
  if(s.hotels&&typeof s.hotels==='object')for(const r of regions)if(Number.isInteger(+s.hotels[r]))hotelSel[r]=+s.hotels[r];
@@ -758,12 +762,17 @@ function apply(s){if(!s||!Array.isArray(s.selected))throw Error('データが不
 function openRoute(){const r=['パリ','モン・サン・ミッシェル','パリ','ヴェネツィア','ローマ'];window.open('https://www.google.com/maps/dir/'+r.map(encodeURIComponent).join('/')+'/','_blank','noopener')}
 function encode(s){const b=new TextEncoder().encode(JSON.stringify(s));let raw='';b.forEach(x=>raw+=String.fromCharCode(x));return btoa(raw).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
 function decode(s){let raw=atob(s.replace(/-/g,'+').replace(/_/g,'/'));return JSON.parse(new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0))))}
-async function share(){if(isTrip()&&tripHint){tripHint=false;if(curPage==='plan')renderPlan()}persist();const url=location.origin+location.pathname+'#plan='+encode(state());try{await navigator.clipboard.writeText(url);toast(url.length>7500?'コピーしました（URLが長いのでJSON共有も検討を）':'URLをコピーしました。LINEに貼って共有できます')}catch{prompt('このURLをコピーしてください',url)}}
+// openExternalBrowser=1 makes LINE open the link in Safari/Chrome, so the plan is saved where they usually open it.
+const shareUrl=()=>location.origin+location.pathname+'?openExternalBrowser=1#plan='+encode(state());
+async function share(){if(isTrip()&&tripHint){tripHint=false;if(curPage==='plan')renderPlan()}persist();const url=shareUrl();
+ if(navigator.share&&/iPhone|iPad|Android/i.test(navigator.userAgent)){try{await navigator.share({title:'EUROPE 2027 旅の計画',text:isTrip()?'確定したコースです（旅程・予約リスト）':'計画中のコースです',url});return}catch(e){if(e&&e.name==='AbortError')return}}
+ try{await navigator.clipboard.writeText(url);toast(url.length>7500?'コピーしました（URLが長いのでJSON共有も検討を）':'URLをコピーしました。LINEに貼って共有できます')}catch{prompt('このURLをコピーしてください',url)}}
 function exportJSON(){const blob=new Blob([JSON.stringify(state(),null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='europe-trip-2027.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 let toastTimer;function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),msg.length>40?5000:2200)}
 
-document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book]');if(!t||t.disabled)return;const d=t.dataset;
- if(d.book)toggleBook(d.book);
+document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay]');if(!t||t.disabled)return;const d=t.dataset;
+ if(d.stay){const i=d.stay.lastIndexOf('|');changeStay(d.stay.slice(0,i),+d.stay.slice(i+1))}
+ else if(d.book)toggleBook(d.book);
  else if(d.jump)jumpDay(d.jump);
  else if(d.hotel){const [r,i]=d.hotel.split('|');hotelSel[r]=+i;autoDistribute();const b=bookings['hotel-'+r];toast(b&&b.done&&b.ref!==hn(r)?`${r}は ${hn(r)} にしました（予約済みの宿とは違います）`:`${r}は ${hn(r)} にしました`)}
  else if(d.go)showPage(d.go);
@@ -791,14 +800,16 @@ function restoreOrder(s){if(Array.isArray(s.order)){const pos=Object.fromEntries
 function loadInitial(){let local=null;try{local=JSON.parse(localStorage.getItem('europetrip_v4')||'null')}catch{}
  if(!location.hash.startsWith('#plan='))return local;
  let shared=null;try{shared=decode(location.hash.slice(6))}catch{toast('共有リンクを読み込めませんでした')}
- try{history.replaceState(null,'',location.pathname+location.search)}catch{}
+ try{history.replaceState(null,'',location.pathname+location.search.replace(/[?&]openExternalBrowser=1/,''))}catch{}
  if(!shared)return local;
  if(local&&JSON.stringify(local)!==JSON.stringify(shared)&&!confirm('共有された計画を開きます。\nこの端末に保存している計画は上書きされます。よろしいですか？'))return local;
- setTimeout(()=>toast('共有された計画を読み込みました'),400);return shared}
+ let kept=0;if(local&&local.bookings&&typeof local.bookings==='object'){const sb=shared.bookings=shared.bookings&&typeof shared.bookings==='object'?{...shared.bookings}:{};
+  for(const [k,v] of Object.entries(local.bookings)){if(!v||!v.done)continue;const w=sb[k];if(!w||!w.done){sb[k]=v;kept++}else sb[k]={...w,memo:w.memo||v.memo||'',time:w.time||v.time||''}}}
+ setTimeout(()=>toast(kept?`共有された計画を読み込みました（あなたの予約チェック${kept}件はそのまま残しています）`:'共有された計画を読み込みました'),400);return shared}
 addEventListener('hashchange',()=>{if(!location.hash.startsWith('#plan='))return;const s=loadInitial();if(s){try{apply(s);if(s.v>=6)restoreOrder(s);showPage(isTrip()?'plan':'places')}catch(e){toast('読み込めませんでした')}}});
 try{const src=loadInitial();
  if(src){apply(src);if(src.v>=6)restoreOrder(src)}
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');
-</script><script src="booklet.js?v=22"></script></body></html>
+</script><script src="booklet.js?v=23"></script></body></html>
