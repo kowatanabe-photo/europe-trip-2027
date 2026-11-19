@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=30"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=31"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -183,7 +183,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v30 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v31 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
@@ -200,7 +200,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v30 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v31 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
@@ -280,6 +280,7 @@ const RES={
 'パンテオン':['推奨','入場€5。週末・祝日は混むのでオンライン購入が安心',''],
 'ドゥカーレ宮殿':['推奨','日時指定券（サン・マルコ広場の美術館共通券）','https://palazzoducale.visitmuve.it/en/visitor-information/'],
 'サン・マルコ寺院':['推奨','入場時間を予約すると行列を避けられます','https://www.basilicasanmarco.it/en/'],
+'干潟ウォーク（ガイドツアー）':['必須','公認ガイドのツアーに申し込む（潮が速く流砂もあるので、個人で歩かない）。開催日は潮の時刻しだい',''],
 'ポンペイ遺跡':['推奨','入場券は記名式。オンラインで買っておくと安心（当日はパスポートを持参）','https://www.pompeiisites.org/en/']};
 const resOf=x=>x&&x.tag!=='自由追加'&&RES[x.n]?RES[x.n]:null;
 // [name, stay hours, adult price EUR (non-EU, 2026), lat, lon, tag, note]
@@ -290,23 +291,32 @@ const data={
 ['オランジュリー美術館',1.25,12.5,48.8638,2.3226,'美術館','モネの「睡蓮」。火曜休館・料金は目安'],['コンコルド広場',0.5,0,48.8656,2.3212,'広場'],
 ['オペラ・ガルニエ',1,20,48.8720,2.3316,'建築','料金は要確認（2026年に非EU料金あり）'],['ギャラリー・ラファイエット屋上',0.75,0,48.8738,2.3320,'展望・買い物','屋上テラスは無料'],
 ['アンヴァリッド',1.5,17,48.8550,2.3125,'建築・博物館','ナポレオンの墓。料金は目安'],['マレ地区',2,0,48.8575,2.3590,'街並み'],
-['リュクサンブール公園',1,0,48.8462,2.3372,'公園'],['モンパルナス・タワー展望台',1,21,48.8421,2.3219,'展望・夜景','エッフェル塔を含むパリの夜景。料金は目安']],
+['リュクサンブール公園',1,0,48.8462,2.3372,'公園'],['モンパルナス・タワー展望台',1,21,48.8421,2.3219,'展望・夜景','エッフェル塔を含むパリの夜景。料金は目安'],
+['ギャルリー・ヴィヴィエンヌ',0.5,0,48.8665,2.3398,'建築・撮影','ガラス屋根のパッサージュ（アーケード）'],['パレ・ロワイヤル',0.5,0,48.8636,2.3372,'撮影・庭園','白黒の縞模様の円柱が並ぶ中庭'],['アレクサンドル3世橋',0.5,0,48.8639,2.3136,'撮影・夜景','金色の装飾の橋。夜はエッフェル塔と一緒に']],
 'モン・サン・ミッシェル':[
-['修道院',1.5,13,48.6361,-1.5115,'建築'],['グランド・リュ',1,0,48.6358,-1.5108,'旧市街'],['城壁・展望テラス',1,0,48.636,-1.512,'海景'],['対岸の展望エリア',1.5,0,48.626,-1.509,'朝夕撮影','朝焼けか夕景に合わせて組みます'],['クエノン川の堰',1,0,48.613,-1.513,'夜景','ライトアップされた島の撮影']],
+['修道院',1.5,13,48.6361,-1.5115,'建築'],['グランド・リュ',1,0,48.6358,-1.5108,'旧市街'],['城壁・展望テラス',1,0,48.636,-1.512,'海景'],['対岸の展望エリア',1.5,0,48.626,-1.509,'朝夕撮影','朝焼けか夕景に合わせて組みます'],['クエノン川の堰',1,0,48.613,-1.513,'夜景','ライトアップされた島の撮影'],
+['干潟ウォーク（ガイドツアー）',2,15,48.6340,-1.5100,'体験・撮影','裸足で干潟を歩いて渡る。潮が危険なので必ずガイド付きで（料金は目安）'],['ラ・メール・プラール',1,0,48.6355,-1.5110,'名物グルメ','ふわふわオムレツの老舗。食事代は別（1皿€30台・目安）'],['サン・ピエール教会',0.5,0,48.6359,-1.5109,'建築'],['ガブリエル塔',0.5,0,48.6349,-1.5118,'撮影','城壁の塔。島を下から見上げる構図']],
 'ローマ':[
 ['コロッセオ',2,18,41.8902,12.4922,'古代遺跡','フォロ・ロマーノと共通券'],['フォロ・ロマーノ',2,0,41.8925,12.4853,'古代遺跡','パラティーノの丘も含めコロッセオの券で入れる'],['パンテオン',0.75,5,41.8986,12.4769,'建築'],['トレビの泉',0.5,0,41.9009,12.4833,'街並み・夜景'],['スペイン広場',0.5,0,41.9059,12.4823,'街並み'],['ナヴォーナ広場',0.5,0,41.8992,12.4731,'広場'],['サンタンジェロ城',1.5,15,41.9031,12.4663,'展望・夕景'],['バチカン美術館',3.5,25,41.9065,12.4536,'美術館','日曜休館'],['サン・ピエトロ大聖堂',1.5,0,41.9022,12.4539,'建築','クーポラに登るなら別料金・+1時間'],['ボルゲーゼ美術館',2,18,41.9142,12.4923,'美術館','予約必須・2時間制'],['トラステヴェレ',2,0,41.8895,12.4707,'街並み'],
 ['ヴィットリアーノ',0.75,0,41.8946,12.4831,'建築・展望','屋上テラスのエレベーターは別料金'],['カピトリーニ美術館',2,16,41.8933,12.4828,'美術館','カンピドーリオ広場。料金は目安'],
 ['真実の口',0.25,0,41.8881,12.4814,'名所','少額の寄付で記念撮影'],['ピンチョの丘',0.75,0,41.9113,12.4797,'夕景','ポポロ広場を見下ろす夕日の名所'],
-['ポポロ広場',0.5,0,41.9107,12.4763,'広場'],['サンタ・マリア・マッジョーレ大聖堂',0.75,0,41.8976,12.4984,'建築'],['カンポ・デ・フィオーリ',0.5,0,41.8956,12.4722,'市場・広場']],
+['ポポロ広場',0.5,0,41.9107,12.4763,'広場'],['サンタ・マリア・マッジョーレ大聖堂',0.75,0,41.8976,12.4984,'建築'],['カンポ・デ・フィオーリ',0.5,0,41.8956,12.4722,'市場・広場'],
+['サンティニャツィオ教会',0.5,0,41.8990,12.4797,'建築','天井一面のだまし絵。床の鏡で見上げずに撮れる'],['マルタ騎士団の鍵穴',0.5,0,41.8829,12.4787,'撮影','鍵穴からサン・ピエトロのドームが見える。並ぶことあり'],['アッピア旧街道とカタコンベ',3,10,41.8589,12.5106,'郊外・遺跡','古代の石畳の道と地下墓地（カタコンベ）。バスで約30分・料金は目安']],
 'ヴェネツィア':[
 ['サン・マルコ広場',1,0,45.4342,12.3385,'広場'],['サン・マルコ寺院',1,10,45.4345,12.3397,'建築'],['ドゥカーレ宮殿',2,35,45.4337,12.3404,'宮殿','ため息橋の内部も見学'],['リアルト橋',0.5,0,45.4380,12.3358,'運河'],['ため息橋',0.25,0,45.434,12.3407,'建築'],['カナル・グランデ',1,0,45.437,12.333,'運河','水上バス1番線で（パスで乗れる）'],['ゴンドラ乗船',0.5,30,45.436,12.337,'体験','1艘€90を3人で割った額'],['アカデミア橋',0.75,0,45.4318,12.3287,'夕景'],['サルーテ聖堂',0.75,0,45.4307,12.3346,'建築'],['ブラーノ島',3,0,45.4854,12.4167,'街並み','船はパスで乗れる'],['ムラーノ島',2,0,45.458,12.353,'島巡り','船はパスで乗れる'],
 ['サン・マルコの鐘楼',0.75,15,45.4340,12.3389,'展望','広場と潟を見下ろす'],['サン・ジョルジョ・マッジョーレ教会',1,8,45.4291,12.3431,'展望・夕景','鐘楼からサン・マルコを一望。料金は目安'],
-['アカデミア美術館',1.5,15,45.4311,12.3282,'美術館','料金は目安'],['ペギー・グッゲンハイム美術館',1.5,16,45.4309,12.3315,'美術館','火曜休館・料金は目安']]
+['アカデミア美術館',1.5,15,45.4311,12.3282,'美術館','料金は目安'],['ペギー・グッゲンハイム美術館',1.5,16,45.4309,12.3315,'美術館','火曜休館・料金は目安'],
+['コンタリーニ・デル・ボヴォロ',0.75,9,45.4349,12.3349,'建築・撮影','らせん階段の塔。上から赤い屋根を一望（料金は目安）'],['リブレリア・アックア・アルタ',0.5,0,45.4378,12.3424,'撮影','ゴンドラに本を積んだ名物書店'],['フェニーチェ劇場',1,12,45.4337,12.3338,'建築','豪華な歌劇場。公演やリハーサルの日は見学できないことも（料金は目安）']]
 };
 // Day trips: [name, stay hours at the destination, entry EUR, round-trip fare EUR, lat, lon, note, trip]
 // trip: departure station, one-way door-to-door hours from that station, how to go/back, hours you can be there,
 // closed weekdays (Sun=0), Sunday caveat, whether the train is worth booking. Times and prices are estimates (Nov 2026).
-const DAYTRIPS={'ローマ':[
+const DAYTRIPS={'パリ':[
+ ['フォンテーヌブロー宮殿',3,14,8,48.4021,2.7002,'歴代の王が暮らした豪華な宮殿と庭園（世界遺産）。火曜休館',{from:'Paris Gare de Lyon',st:[48.8443,2.3743],go:1.0,how:'列車でフォンテーヌブロー＝アヴォン駅へ（約40分）→ バスで宮殿へ（約15分）',back:'バスで駅へ → 列車で Paris Gare de Lyon 駅へ',hours:[9.5,17],closed:[2],half:true}]],
+'ヴェネツィア':[
+ ['ヴェローナ',5,12,20,45.4390,10.9944,'ロミオとジュリエットの街。古代の円形劇場アレーナとジュリエッタの家',{from:'Venezia Santa Lucia',st:[45.4411,12.3210],go:1.4,how:'列車でヴェローナ・ポルタ・ヌオーヴァ駅へ（約1時間10分）→ 歩いて旧市街へ',back:'歩いて駅へ → 列車で Venezia Santa Lucia 駅へ',hours:[0,21.5]}]],
+'ローマ':[
+ ['オスティア・アンティカ',3,18,3,41.7558,12.2918,'古代ローマの港町の遺跡。劇場や浴場、モザイクの床が残る。月曜休み',{from:'Piramide',st:[41.8752,12.4818],go:.75,how:'ローマ・リド線でオスティア・アンティカ駅へ（約30分）→ 歩いて遺跡へ',back:'歩いて駅へ → ローマ・リド線で Piramide 駅へ',hours:[8.5,16.5],closed:[1],half:true}],
  ['チヴィタ・ディ・バーニョレージョ＋オルヴィエート',4.5,5,22,42.6280,12.0942,'谷に浮かぶ「天空の街」と、大聖堂の丘の街オルヴィエート',{from:'Roma Termini',st:[41.9009,12.5017],go:2.25,how:'列車でオルヴィエートへ（約1時間15分）→ バスでバーニョレージョへ（約45分）→ 歩いて橋を渡る',back:'バスでオルヴィエート駅へ → 列車で Roma Termini 駅へ',hours:[8.5,17.5],sun:'日曜・祝日はオルヴィエート↔バーニョレージョのバスが少ない'}],
  ['ティヴォリ（エステ家別荘＋ヴィッラ・アドリアーナ）',5,25,10,41.9630,12.7963,'噴水の庭園と皇帝の別荘遺跡。どちらも世界遺産',{from:'Roma Tiburtina',st:[41.9104,12.5307],go:1.1,how:'列車でティヴォリへ（約1時間）',back:'列車で Roma Tiburtina 駅へ（約1時間）',hours:[9,17.5],closed:[1]}],
  ['ポンペイ遺跡',4,18,70,40.7491,14.4849,'火山灰に埋もれた古代都市。片道約2時間で丸1日がかり',{from:'Roma Termini',st:[41.9009,12.5017],go:2.0,how:'高速列車でナポリへ（約1時間10分）→ ヴェスヴィオ周遊鉄道で Pompei Scavi へ（約35分）',back:'周遊鉄道でナポリへ → 高速列車で Roma Termini 駅へ',hours:[9,17],book:'ローマ ⇄ ナポリの高速列車'}],
@@ -392,7 +402,7 @@ const stations={
 'パリ|サント・シャペル':['Cité',['M4']],'パリ|ヴェルサイユ宮殿':['Versailles Château Rive Gauche',['RER C']],
 'パリ|トロカデロ広場':['Trocadéro',['M6','M9']],'パリ|セーヌ川クルーズ':['Alma–Marceau',['M9']],'パリ|オランジュリー美術館':['Concorde',['M1','M8','M12']],'パリ|コンコルド広場':['Concorde',['M1','M8','M12']],
 'パリ|オペラ・ガルニエ':['Opéra',['M3','M7','M8']],'パリ|ギャラリー・ラファイエット屋上':['Chaussée d’Antin–La Fayette',['M7','M9']],'パリ|アンヴァリッド':['Varenne',['M13']],'パリ|マレ地区':['Saint-Paul',['M1']],
-'パリ|リュクサンブール公園':['Luxembourg',['RER B']],'パリ|モンパルナス・タワー展望台':['Montparnasse–Bienvenüe',['M4','M6','M12','M13']],
+'パリ|リュクサンブール公園':['Luxembourg',['RER B']],'パリ|ギャルリー・ヴィヴィエンヌ':['Bourse',['M3']],'パリ|パレ・ロワイヤル':['Palais Royal–Musée du Louvre',['M1','M7']],'パリ|アレクサンドル3世橋':['Invalides',['M8','M13','RER C']],'パリ|モンパルナス・タワー展望台':['Montparnasse–Bienvenüe',['M4','M6','M12','M13']],
 'ローマ|HOTEL':['Repubblica',['A']],'ローマ|コロッセオ':['Colosseo',['B']],'ローマ|フォロ・ロマーノ':['Colosseo',['B']],'ローマ|トレビの泉':['Barberini',['A']],
 'ローマ|スペイン広場':['Spagna',['A']],'ローマ|バチカン美術館':['Cipro',['A']],'ローマ|サン・ピエトロ大聖堂':['Ottaviano',['A']],'ローマ|ボルゲーゼ美術館':['Spagna',['A']],'ローマ|ピンチョの丘':['Flaminio',['A']],'ローマ|ポポロ広場':['Flaminio',['A']],'ローマ|サンタ・マリア・マッジョーレ大聖堂':['Termini',['A','B']],
 'ヴェネツィア|HOTEL':['Ferrovia（サンタ・ルチア駅前）',['1','2']],'ヴェネツィア|サン・マルコ広場':['San Marco',['1','2']],'ヴェネツィア|サン・マルコ寺院':['San Marco',['1','2']],'ヴェネツィア|ドゥカーレ宮殿':['San Zaccaria',['1','2']],
@@ -463,6 +473,16 @@ function venueHours(x,date){const w=dow(date),n=x.n,r=x.r;
  if(n.includes('サンタ・マリア・マッジョーレ'))return [7,18.5];
  if(n.includes('サン・マルコ寺院'))return w===0?[14,17.25]:[9.5,17.25];
  if(n.includes('修道院')&&r==='モン・サン・ミッシェル')return [9.5,18];
+ if(n.includes('ギャルリー・ヴィヴィエンヌ'))return [8.5,20.5];
+ if(n.includes('パレ・ロワイヤル'))return [8.5,20.5];
+ if(n.includes('干潟ウォーク'))return [9,17]; // tours depend on the tide
+ if(n.includes('メール・プラール'))return [11.5,21];
+ if(n.includes('サン・ピエール教会'))return [9,19];
+ if(n.includes('ボヴォロ'))return [10,18];
+ if(n.includes('アックア・アルタ'))return [9,19.25];
+ if(n.includes('フェニーチェ'))return [9.5,18];
+ if(n.includes('サンティニャツィオ'))return [9,19];
+ if(n.includes('カタコンベ'))return w===3?null:[9,17];
  return [0,24]; // outdoor spots
 }
 const knownHours=h=>h&&!(h[0]===0&&h[1]===24);
@@ -511,7 +531,7 @@ function segCostRaw(items,s){const T=timeline(items,s);const busy=T.stops.reduce
  for(const st of T.stops){if(st.closed)c+=1000;if(st.lateBook)c+=300*(st.pre-st.bt);const et=evType(st.x);if(et&&et!=='night'){const e=evStart(st.x,s);if(e)c+=30*Math.max(0,st.arrive-(e+.75))} // missed the golden hour
   if(st.late)c+=100*(st.leave-st.h[1]);if(isMorning(s)&&isLateSpot(st.x,s))c+=1000}
  const lateCount=T.stops.filter(st=>isLateSpot(st.x,s)).length;if(lateCount>1)c+=40*(lateCount-1);
- for(const st of T.stops){if(st.x.trip&&st.x.trip.sun&&dow(s.d)===0)c+=40;if(st.x.trip&&(s.from!=null||s.to!=null))c+=2000} // a day trip needs a whole free day
+ for(const st of T.stops){if(st.x.trip&&st.x.trip.sun&&dow(s.d)===0)c+=40;if(st.x.trip&&!st.x.trip.half&&(s.from!=null||s.to!=null))c+=2000} // a day trip needs a whole free day
  if(s.d==='2027-03-12')c+=.4*busy*busy; // arrival day after the night flight: prefer a light plan
  return c}
 function permute(a){if(a.length<=1)return [a];const out=[];a.forEach((x,i)=>{for(const p of permute([...a.slice(0,i),...a.slice(i+1)]))out.push([x,...p])});return out}
@@ -620,8 +640,8 @@ function renderCatalog(){
  const list=[...data[region].map(x=>item(region,x)),...selected.filter(x=>x.r===region&&x.tag==='自由追加')];
  const row=x0=>{const k=keyOf(x0),sx=selected.find(y=>keyOf(y)===k),x=sx||x0,on=!!sx,p=priceYen(x),R=resOf(x),bid=spotBookId(x),ad=on&&assignments[k];
   const pill=R?(isBooked(bid)?'<span class="rv ok">予約済み</span>':`<span class="rv ${R[0]==='必須'?'':'rec'}">予約${R[0]}</span>`):'';
-  return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}${pill}</b>${typeof SPOT_INFO!=='undefined'&&SPOT_INFO[x.n]?`<span class="desc">${esc(SPOT_INFO[x.n][1])}</span>`:''}<small>${x.trip?`現地${fmtH(x.h)} · 片道約${legMin(x.trip.go)} · 往復の交通費 約${yen(x.fare*rate())}${p?' · 入場 '+yen(p):''}`:`${esc(x.kind?x.tag+'・'+x.kind:x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}`}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note&&(x.trip||x.tag==='自由追加'||typeof SPOT_INFO==='undefined'||!SPOT_INFO[x.n])?'<br>'+esc(x.note):''}</small></span><span class="tick">✓</span></button>`};
- $('catalog').innerHTML=list.map(row).join('')+(trips.length?`<div class="cat-h"><b>🚆 ${esc(region)}から日帰り</b><span>1日がかりなので、${esc(region)}で丸1日使える日（${esc(segs.filter(s=>s.r===region&&s.from==null&&s.to==null).map(s=>dl(s.d)).join('・'))}）に入ります。選びすぎると時間オーバーになります</span></div>`+trips.map(row).join(''):'');
+  return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}${pill}</b>${typeof SPOT_INFO!=='undefined'&&SPOT_INFO[x.n]?`<span class="desc">${esc(SPOT_INFO[x.n][1])}</span>`:''}<small>${x.trip?`${x.trip.half?'半日':'1日がかり'} · 現地${fmtH(x.h)} · 片道約${legMin(x.trip.go)} · 往復の交通費 約${yen(x.fare*rate())}${p?' · 入場 '+yen(p):''}`:`${esc(x.kind?x.tag+'・'+x.kind:x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}`}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note&&(x.trip||x.tag==='自由追加'||typeof SPOT_INFO==='undefined'||!SPOT_INFO[x.n])?'<br>'+esc(x.note):''}</small></span><span class="tick">✓</span></button>`};
+ $('catalog').innerHTML=list.map(row).join('')+(trips.length?`<div class="cat-h"><b>🚆 ${esc(region)}から郊外・日帰り</b><span>電車の行き帰りも日程に入ります。「1日がかり」の場所は、${esc(region)}で丸1日使える日（${esc(segs.filter(s=>s.r===region&&s.from==null&&s.to==null).map(s=>dl(s.d)).join('・'))||'なし'}）に入ります</span></div>`+trips.map(row).join(''):'');
 }
 const legMin=h=>h>=1?(Math.floor(h)+'時間'+(Math.round(h%1*12)*5?Math.round(h%1*12)*5+'分':'')):Math.max(5,Math.round(h*12)*5)+'分';
 const legHtml=(a,b,leg)=>`<div class="leg">${legIcon(leg.mode)} ${esc(leg.mode)} · 約${legMin(leg.h)} · <a target="_blank" rel="noopener" href="${routeUrl(a,b,leg.mode)}">経路 ↗</a>${leg.detail?`<br><span class="st">${esc(leg.detail)}</span>`:''}</div>`;
@@ -648,7 +668,7 @@ function renderPlan(){
   +`<div class="card"><button class="mini" data-go="book">🎫 予約 ${bDone} / ${BL.length}件 済み <span>${bLeft?`必須あと${bLeft}件`:'必須はすべて完了'}</span><i>›</i></button></div>`:'';
  const bottom=isTrip()?'':n?`<div class="card cta"><div><b>コースが決まったら確定へ</b><p>確定すると「旅程・予約・便利帳」の画面に切り替わり、3人で共有して予約や当日の動きを決められます。あとから見直すこともできます。</p></div><button class="btn" data-act="confirmTrip">✓ このコースで確定する</button></div>`:'';
  const warn=regions.map(r=>{let over=0;for(const s of segs.filter(z=>z.r===r)){const it=itemsOf(s);if(!it.length)continue;const T=timeline(it,s);over+=Math.max(0,T.home-T.limit)}
-  const nt=selected.filter(x=>x.r===r&&x.trip).length,full=segs.filter(z=>z.r===r&&z.from==null&&z.to==null).length;
+  const nt=selected.filter(x=>x.r===r&&x.trip&&!x.trip.half).length,full=segs.filter(z=>z.r===r&&z.from==null&&z.to==null).length;
   if(nt>full)return `<div class="warnbox">⚠ 日帰りは丸1日かかるので、<b>${esc(r)}</b>で行けるのは${full}か所までです（いま${nt}か所選択中）。「選ぶ」で${nt-full}か所外してください。</div>`;
   if(over<.25)return '';const big=selected.filter(x=>x.r===r).sort((a,b)=>dur(b)-dur(a)).slice(0,2).map(x=>`${x.n}（${x.h}時間）`).join('、');
   return `<div class="warnbox">⚠ <b>${esc(r)}</b>は選んだ場所が多く、合計で約${Math.round(over*2)/2}時間オーバーしています。${esc(big)}など時間のかかる場所を外すか、優先度の低い場所を減らすと収まります。</div>`}).join('');
@@ -802,7 +822,7 @@ function chatContext(){const tl=s=>{const it=itemsOf(s);return it.length?timelin
   days:days.map(D=>({date:D.d,night:D.night||null,travel:D.variants?{options:D.variants.map(v=>v.label),selected:moveDep(D.d).label}:null,
    segments:(D.plan||[]).filter(s=>s.r).map(s=>{const T=tl(s);return {city:s.r,window:fmt(segStart(s))+'-'+fmt(segEnd(s)),home:T?fmt(T.home):null,stops:T?T.stops.map(st=>({name:st.x.n,arrive:fmt(st.arrive),hours:st.x.h,...(st.x.trip?{daytrip:true}:{}),...(st.closed?{closed:true}:{}),...(st.late?{late:true}:{})})):[]}})})),
   hotels:Object.fromEntries(regions.map(r=>[r,{selected:hn(r),options:hotelOptions[r].map(h=>h.name)}])),
-  catalog:Object.fromEntries(regions.map(r=>[r,[...data[r].map(x=>({name:x[0],hours:x[1],tag:x[5]})),...(DAYTRIPS[r]||[]).map(t=>({name:t[0],hours:t[1],tag:'日帰り'}))].filter(c=>!selected.some(y=>y.r===r&&y.n===c.name))])),
+  catalog:Object.fromEntries(regions.map(r=>[r,[...data[r].map(x=>({name:x[0],hours:x[1],tag:x[5]})),...(DAYTRIPS[r]||[]).map(t=>({name:t[0],hours:t[1],tag:t[7].half?'半日の郊外':'日帰り'}))].filter(c=>!selected.some(y=>y.r===r&&y.n===c.name))])),
   settings:{start:$('startH').value,end:$('endH').value}}}
 const norm=t=>String(t||'').replace(/[\s・･（）()「」]/g,'');
 const findSel=n=>{const t=norm(n);if(!t)return null;return selected.find(x=>norm(x.n)===t)||selected.find(x=>norm(x.n).includes(t)||t.includes(norm(x.n)))||null};
@@ -893,4 +913,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');
-</script><script src="booklet.js?v=30"></script></body></html>
+</script><script src="booklet.js?v=31"></script></body></html>
