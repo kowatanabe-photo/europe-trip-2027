@@ -66,7 +66,11 @@ const SPOT_INFO={
 'サン・マルコの鐘楼':['Campanile di San Marco','高さ約99mの鐘楼。エレベーターで上がり、赤い屋根の街並みと潟を一望できます。','',''],
 'サン・ジョルジョ・マッジョーレ教会':['San Giorgio Maggiore','対岸の小島に建つ教会。鐘楼からサン・マルコ広場を正面に見渡せる、写真好きの穴場です。','','鐘楼から夕方のサン・マルコ'],
 'アカデミア美術館':["Gallerie dell'Accademia",'ティツィアーノ、ベッリーニ、ティントレットなど、ヴェネツィア派絵画の宝庫。','',''],
-'ペギー・グッゲンハイム美術館':['Peggy Guggenheim Collection','運河沿いの邸宅で、ピカソ、ダリ、ポロックなど20世紀美術を楽しめます。火曜休館。','','']};
+'ペギー・グッゲンハイム美術館':['Peggy Guggenheim Collection','運河沿いの邸宅で、ピカソ、ダリ、ポロックなど20世紀美術を楽しめます。火曜休館。','',''],
+'チヴィタ・ディ・バーニョレージョ＋オルヴィエート':['Civita di Bagnoregio · Orvieto','浸食で少しずつ崩れていく丘の上に残る「死にゆく町」チヴィタと、白黒の縞模様の大聖堂が美しい丘の街オルヴィエート。チヴィタへは長い橋を歩いて渡ります（入場料あり）。','','橋の手前の展望台から、谷に浮かぶ町の全景を'],
+'ティヴォリ（エステ家別荘＋ヴィッラ・アドリアーナ）':['Tivoli · Villa d’Este · Villa Adriana','数百の噴水が連なるルネサンスの庭園エステ家別荘と、ハドリアヌス帝が築いた広大な別荘遺跡。どちらも世界遺産で、月曜休館。','','「百の噴水」の小道と、庭園の下段から見上げる別荘'],
+'ポンペイ遺跡':['Pompei Scavi','西暦79年、ヴェスヴィオ火山の噴火で埋もれた古代都市。石畳の道や家、浴場、壁画がそのまま残ります。とても広いので歩きやすい靴で。','','フォロ（広場）の奥にヴェスヴィオ山を入れて'],
+'フィレンツェ':['Firenze','ルネサンスの都。ドゥオーモ、ヴェッキオ橋、ウフィツィ美術館。夕方はミケランジェロ広場から赤い屋根の街並みを一望できます。','','ミケランジェロ広場から、ドゥオーモと赤い屋根の街並み']};
 const TILE='https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 const TILE_ATTR='&copy; OpenStreetMap contributors';
 let bkMaps=[],bkTiles=0,bkTilesDone=0;
@@ -87,7 +91,8 @@ const pad2=n=>String(n).padStart(2,'0');
 function loadLeaflet(){return new Promise(res=>{if(window.L)return res();const l=document.createElement('link');l.rel='stylesheet';l.href='vendor/leaflet/leaflet.css';document.head.appendChild(l);const s=document.createElement('script');s.src='vendor/leaflet/leaflet.js';s.onload=()=>res();s.onerror=()=>res();document.head.appendChild(s)})}
 function bkBudget(){const R=rate(),people=Math.max(1,+$('people').value||3),rooms=Math.ceil(people/3),entry=selected.reduce((a,x)=>a+priceYen(x),0),flight=+$('flight').value||0,food=+$('food').value||0;
  const hotel=regions.reduce((a,r)=>a+hotelInfo(r).eur*NIGHTS[r],0)*R*rooms/people,inter=transfers.reduce((a,t)=>a+t[3],0)*R,local=passes.reduce((a,p)=>a+p[2],0)*R;
- const rows=[['国際線往復',flight],['宿泊（10泊）',hotel],['食費（11日）',food*11],['都市間・空港の移動',inter],['市内交通',local],['入場・体験',entry]];return {rows,per:rows.reduce((a,r)=>a+r[1],0),people}}
+ const fares=selected.reduce((a,x)=>a+(x.fare||0),0)*R;
+ const rows=[['国際線往復',flight],['宿泊（10泊）',hotel],['食費（11日）',food*11],['都市間・空港の移動',inter],['市内交通',local],['入場・体験',entry],...(fares?[['日帰りの交通費',fares]]:[])];return {rows,per:rows.reduce((a,r)=>a+r[1],0),people}}
 const folio=(n,label)=>`<div class="folio"><span class="latin">EUROPE PHOTO JOURNEY 2027</span><span>${esc(label)} · ${n}</span></div>`;
 // Reservation tag that reflects what was ticked in the app's booking list.
 function rsvTag(x){const R=resOf(x);if(!R)return '';const ok=isBooked(spotBookId(x));return `<span class="tag-r${ok?' ok':R[0]==='必須'?' must':''}">${ok?'✓ 予約済み':'予約'+R[0]}</span>`}
@@ -162,10 +167,10 @@ function bkDay(D,dayNo,page){const regs=[...new Set(D.plan.filter(s=>s.r).map(s=
   const items=itemsOf(s);if(!items.length)return `<div class="seg-title">📍 ${esc(s.r)} <span>${fmt(segStart(s))}〜${fmt(segEnd(s))}${s.label?' · '+esc(s.label):''}</span></div>${bkIdeas(s)}`;
   const T=timeline(items,s),base=num;num+=items.length;
   const rows=T.stops.map((st,i)=>{const p=priceYen(st.x);
-   const meta=[st.bt!=null?`🎫 予約 ${fmt(st.bt)}入場`:'',`滞在${st.x.h}時間`,p?yen(p):'',knownHours(st.h)?`営業${fmt(st.h[0])}–${fmt(st.h[1])}`:'',st.lunchIn?'途中で昼食':''].filter(Boolean).join(' · ');
-   return `${st.lunchAt!=null?`<div class="tl-row"><span class="tl-time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}<div class="tl-leg">${legIcon(st.leg.mode)} ${esc(st.leg.mode)} 約${Math.max(5,Math.round(st.leg.h*12)*5)}分${st.leg.detail?`<span class="st">${esc(st.leg.detail)}</span>`:''}</div>${st.wait>=.5?`<div class="tl-leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間</div>`:''}<div class="tl-row"><span class="tl-time">${fmt(st.arrive)}</span><span><span class="tl-num">${base+i+1}</span><b>${esc(st.x.n)}</b>${rsvTag(st.x)}<br><span class="m">${esc(meta)}</span>${st.lateBook?`<br><span class="warnline">⚠ 予約の${fmt(st.bt)}に間に合わない可能性</span>`:st.closed?'<br><span class="warnline">⚠ この日は通常休館日</span>':st.late?'<br><span class="warnline">⚠ 閉館時刻を過ぎる可能性</span>':''}</span></div>`}).join('');
+   const meta=st.x.trip?[`現地${fmtH(st.x.h)}`,`往復の交通費 約${yen(st.x.fare*rate())}`,`帰りは${fmt(st.h?st.h[1]:24)}までに出発`].join(' · '):[st.bt!=null?`🎫 予約 ${fmt(st.bt)}入場`:'',`滞在${st.x.h}時間`,p?yen(p):'',knownHours(st.h)?`営業${fmt(st.h[0])}–${fmt(st.h[1])}`:'',st.lunchIn?'途中で昼食':''].filter(Boolean).join(' · ');
+   return `${st.lunchAt!=null?`<div class="tl-row"><span class="tl-time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}<div class="tl-leg">${legIcon(st.leg.mode)} ${esc(st.leg.mode)} 約${legMin(st.leg.h)}${st.leg.detail?`<span class="st">${esc(st.leg.detail)}</span>`:''}</div>${st.wait>=.5?`<div class="tl-leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間</div>`:''}<div class="tl-row"><span class="tl-time">${fmt(st.arrive)}</span><span><span class="tl-num">${base+i+1}</span><b>${esc(st.x.n)}</b>${rsvTag(st.x)}<br><span class="m">${esc(meta)}</span>${st.lateBook?`<br><span class="warnline">⚠ 予約の${fmt(st.bt)}に間に合わない可能性</span>`:st.closed?'<br><span class="warnline">⚠ この日は通常休館日</span>':st.late?'<br><span class="warnline">⚠ 閉館時刻を過ぎる可能性</span>':''}</span></div>`}).join('');
   return `<div class="seg-title">📍 ${esc(s.r)}の観光 <span>${fmt(T.start)}〜${fmt(T.end)}${s.label?' · '+esc(s.label):''}</span></div><div class="bk-map${isMove?' small':''}" data-map="seg" data-d="${s.d}" data-r="${esc(s.r)}" data-base="${base}"></div>
-<div class="tl-row"><span class="tl-time">${fmt(T.start)}</span><span><span class="tl-num h">H</span>${esc(T.H.name)} を出発</span></div>${rows}<div class="tl-leg">${legIcon(T.back.mode)} ${esc(T.back.mode)} 約${Math.max(5,Math.round(T.back.h*12)*5)}分${T.back.detail?`<span class="st">${esc(T.back.detail)}</span>`:''}</div><div class="tl-row"><span class="tl-time"${T.home>T.limit+.01?' style="color:#a8483a"':''}>${fmt(T.home)}</span><span><span class="tl-num h">H</span>${esc(T.H.name)} に戻る</span></div>`}).join('');
+<div class="tl-row"><span class="tl-time">${fmt(T.start)}</span><span><span class="tl-num h">H</span>${esc(T.H.name)} を出発</span></div>${rows}<div class="tl-leg">${legIcon(T.back.mode)} ${esc(T.back.mode)} 約${legMin(T.back.h)}${T.back.detail?`<span class="st">${esc(T.back.detail)}</span>`:''}</div><div class="tl-row"><span class="tl-time"${T.home>T.limit+.01?' style="color:#a8483a"':''}>${fmt(T.home)}</span><span><span class="tl-num h">H</span>${esc(T.H.name)} に戻る</span></div>`}).join('');
  const reserve=allItems.filter(x=>resOf(x)),photos=allItems.filter(x=>(SPOT_INFO[x.n]||[])[3]),cost=allItems.reduce((a,x)=>a+priceYen(x),0);
  const sunNotes=regs.map(r=>`${esc(r)}：日の出 ${fmt(sunrise[r])}ごろ／日没 ${fmt(sunset[r])}ごろ`).join('<br>');
  const side=`<div class="box"><h4>🌅 光の時間</h4>${sunNotes}</div>
@@ -224,10 +229,10 @@ function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkT
    for(const r of regions)L.marker([CITY[r].lat,CITY[r].lon],{icon:L.divIcon({className:'',html:`<div class="bk-city-label">${esc(r)}</div>`,iconSize:null,iconAnchor:[0,0]})}).addTo(map);
    map.fitBounds(L.latLngBounds(pts),{padding:[40,40]})}
   else{const s=segOf(el.dataset.d,el.dataset.r),items=itemsOf(s),H=hotelFor(s.r),col=CITY[s.r].c,base=+el.dataset.base||0;
-   const pts=[[H.lat,H.lon],...items.filter(x=>x.lat).map(x=>[x.lat,x.lon]),[H.lat,H.lon]];
+   const pts=[[H.lat,H.lon],...items.filter(x=>x.lat&&!x.trip).map(x=>[x.lat,x.lon]),[H.lat,H.lon]]; // day trips are far away: keep the city map
    L.polyline(pts,{color:col,weight:3,opacity:.75,dashArray:'2 7',lineCap:'round'}).addTo(map);
    L.marker([H.lat,H.lon],{icon:bkPin(0,col,true)}).addTo(map);
-   items.forEach((x,i)=>{if(x.lat)L.marker([x.lat,x.lon],{icon:bkPin(base+i+1,col)}).addTo(map)});
+   items.forEach((x,i)=>{if(x.lat&&!x.trip)L.marker([x.lat,x.lon],{icon:bkPin(base+i+1,col)}).addTo(map)});
    map.fitBounds(L.latLngBounds(pts),{padding:[28,28],maxZoom:16})}
   bkMaps.push(map)})}
 function fitBookletZoom(){const pages=$('bk-pages');if(!pages)return;const w=Math.min(1,(window.innerWidth-12)/pages.offsetWidth);pages.style.zoom=w<1?w:''}
