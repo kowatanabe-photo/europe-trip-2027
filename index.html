@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=31"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=32"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -183,7 +183,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v31 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v32 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
@@ -200,7 +200,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v31 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v32 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
@@ -526,7 +526,7 @@ function timeline(items,s){const H=hotelFor(s.r);let start=segStart(s);
  return {H,start,end,limit,stops,back,home,travel,hasLate}}
 // Memoized: the optimizer evaluates the same (segment, order) many times.
 const costCache=new Map();let bookVer=0; // bumped whenever bookings change (they pin dates and entry times)
-function segCost(items,s){if(!items.length)return 0;const k=bookVer+s.d+s.idx+hn(s.r)+T0()+'-'+T1()+'|'+items.map(x=>keyOf(x)+x.h).join(',');let v=costCache.get(k);if(v===undefined){if(costCache.size>60000)costCache.clear();v=segCostRaw(items,s);costCache.set(k,v)}return v}
+function segCost(items,s){if(!items.length)return 0;const k=bookVer+s.d+s.idx+'/'+s.from+'/'+s.to+hn(s.r)+T0()+'-'+T1()+'|'+items.map(x=>keyOf(x)+x.h).join(',');let v=costCache.get(k);if(v===undefined){if(costCache.size>60000)costCache.clear();v=segCostRaw(items,s);costCache.set(k,v)}return v}
 function segCostRaw(items,s){const T=timeline(items,s);const busy=T.stops.reduce((a,st)=>a+dur(st.x),0)+T.travel,wait=T.stops.reduce((a,st)=>a+st.wait,0);let c=busy+.25*busy*busy+.1*wait+T.travel*.5+Math.max(0,T.home-T.limit)*(s.d==='2027-03-12'?300:100)+Math.max(0,T.home-LATEST)*150;
  for(const st of T.stops){if(st.closed)c+=1000;if(st.lateBook)c+=300*(st.pre-st.bt);const et=evType(st.x);if(et&&et!=='night'){const e=evStart(st.x,s);if(e)c+=30*Math.max(0,st.arrive-(e+.75))} // missed the golden hour
   if(st.late)c+=100*(st.leave-st.h[1]);if(isMorning(s)&&isLateSpot(st.x,s))c+=1000}
@@ -538,7 +538,7 @@ function permute(a){if(a.length<=1)return [a];const out=[];a.forEach((x,i)=>{for
 const routeCache=new Map();
 // Best visiting order for one segment: exhaustive for up to 7 spots, otherwise greedy + 2-opt.
 function bestRoute(items,s){if(items.length<2)return items;items=[...items].sort((a,b)=>keyOf(a)<keyOf(b)?-1:1); // deterministic result
- const ck=bookVer+s.d+s.idx+hn(s.r)+'|'+items.map(x=>keyOf(x)+x.h).sort().join(',')+'|'+T0()+T1();if(routeCache.has(ck))return routeCache.get(ck).map(k=>items.find(x=>keyOf(x)===k));
+ const ck=bookVer+s.d+s.idx+'/'+s.from+'/'+s.to+hn(s.r)+'|'+items.map(x=>keyOf(x)+x.h).sort().join(',')+'|'+T0()+T1();if(routeCache.has(ck))return routeCache.get(ck).map(k=>items.find(x=>keyOf(x)===k));
  let best=items,bc=Infinity;
  if(items.length<=5){for(const p of permute(items)){const c=segCost(p,s);if(c<bc){bc=c;best=p}}}
  else{let left=[...items],cur=[];while(left.length){let bi=0,bv=Infinity;left.forEach((x,i)=>{const v=segCost([...cur,x],s);if(v<bv){bv=v;bi=i}});cur.push(left.splice(bi,1)[0])}
@@ -667,11 +667,19 @@ function renderPlan(){
  const top=isTrip()?(tripHint?`<div class="card hint"><b>📤 確定したコースを3人に共有しましょう</b><p>URLをLINEで送ると、2人も同じ旅程と予約リストを開けます。編集は各自の端末で独立しているので、予約したら送り合って最新にそろえましょう。</p><div class="row2"><button class="btn sm" data-act="share">URLをコピー</button><button class="btn sub sm" data-act="dismissHint">あとで</button></div></div>`:'')
   +`<div class="card"><button class="mini" data-go="book">🎫 予約 ${bDone} / ${BL.length}件 済み <span>${bLeft?`必須あと${bLeft}件`:'必須はすべて完了'}</span><i>›</i></button></div>`:'';
  const bottom=isTrip()?'':n?`<div class="card cta"><div><b>コースが決まったら確定へ</b><p>確定すると「旅程・予約・便利帳」の画面に切り替わり、3人で共有して予約や当日の動きを決められます。あとから見直すこともできます。</p></div><button class="btn" data-act="confirmTrip">✓ このコースで確定する</button></div>`:'';
- const warn=regions.map(r=>{let over=0;for(const s of segs.filter(z=>z.r===r)){const it=itemsOf(s);if(!it.length)continue;const T=timeline(it,s);over+=Math.max(0,T.home-T.limit)}
+ const overOf=(r,asg=assignments)=>{let o=0;for(const s of segs.filter(z=>z.r===r)){const it=itemsOf(s,asg);if(!it.length)continue;const T=timeline(it,s);o+=Math.max(0,T.home-T.limit)}return o};
+ const rebalanced=r=>{const asg={...assignments},rs=segs.filter(z=>z.r===r);let cur=overOf(r,asg); // rough: would moving a spot to another day of the same city fix it?
+  for(const x of selected.filter(y=>y.r===r&&!pinnedDate(y))){if(cur<.05)break;const k=keyOf(x);let bd=asg[k];for(const s of rs){if(s.d===bd)continue;const o0=asg[k];asg[k]=s.d;const v=overOf(r,asg);if(v<cur-.05){cur=v;bd=s.d}else asg[k]=o0}asg[k]=bd}return cur};
+ const travelFix=(r,over)=>{let best=null;const keep={...travelChoice},base=regions.filter(q=>q!==r).reduce((t,q)=>t+overOf(q),0); // would another travel time on a move day give this city enough time?
+  for(const D of days){if(!D.variants||!D.variants.some(v=>v.plan.some(z=>z.r===r)))continue;
+   for(let j=0;j<D.variants.length;j++){if(j===(+keep[D.d]||0))continue;travelChoice={...keep,[D.d]:j};applyTravel();const o=rebalanced(r),others=regions.filter(q=>q!==r).reduce((t,q)=>t+rebalanced(q),0);if(o<over-.2&&others<=base+.1&&(!best||o<best.o))best={d:D.d,j,o}}}
+  travelChoice=keep;applyTravel();return best};
+ const warn=regions.map(r=>{const over=overOf(r);
   const nt=selected.filter(x=>x.r===r&&x.trip&&!x.trip.half).length,full=segs.filter(z=>z.r===r&&z.from==null&&z.to==null).length;
   if(nt>full)return `<div class="warnbox">⚠ 日帰りは丸1日かかるので、<b>${esc(r)}</b>で行けるのは${full}か所までです（いま${nt}か所選択中）。「選ぶ」で${nt-full}か所外してください。</div>`;
   if(over<.25)return '';const big=selected.filter(x=>x.r===r).sort((a,b)=>dur(b)-dur(a)).slice(0,2).map(x=>`${x.n}（${x.h}時間）`).join('、');
-  return `<div class="warnbox">⚠ <b>${esc(r)}</b>は選んだ場所が多く、合計で約${Math.round(over*2)/2}時間オーバーしています。${esc(big)}など時間のかかる場所を外すか、優先度の低い場所を減らすと収まります。</div>`}).join('');
+  const fx=travelFix(r,over),D=fx&&days.find(z=>z.d===fx.d);
+  return `<div class="warnbox">⚠ <b>${esc(r)}</b>は選んだ場所が多く、合計で約${Math.round(over*2)/2}時間オーバーしています。${fx?`${md(fx.d)}の移動を「${esc(D.variants[fx.j].label)}」にすると${fx.o<.25?'収まります':`オーバーが約${Math.round(fx.o*2)/2}時間に減ります`}。<button class="btn sub sm" style="display:block;margin:8px 0" data-travelfix="${fx.d}|${fx.j}">移動を「${esc(D.variants[fx.j].label.replace(/（.*?）/g,''))}」に変える</button>ほかに、`:''}${esc(big)}など時間のかかる場所を外すか、優先度の低い場所を減らすと収まります。</div>`}).join('');
  $('dayChips').innerHTML=days.map(D=>`<button class="chip sm ${D.d===TODAY?'today':''}" data-jump="${D.d}">${md(D.d)}<small>${wd(D.d)}</small></button>`).join('');
  const todayTag=D=>D.d===TODAY?'<span class="today-tag">TODAY</span>':'';
  $('days').innerHTML=nowCard()+top+warn+days.map(D=>{
@@ -872,10 +880,11 @@ function chatUndoIt(){if(!chatUndo)return;const last=chatHist[chatHist.length-1]
 function chatClose(){$('chatLog').classList.add('hide')}
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[role="button"]')){e.preventDefault();e.target.click()}});
 document.addEventListener('pointerdown',e=>{const l=$('chatLog');if(l&&!l.classList.contains('hide')&&!e.target.closest('#chat'))l.classList.add('hide')},true);
-document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay]');if(!t||t.disabled)return;const d=t.dataset;
+document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix]');if(!t||t.disabled)return;const d=t.dataset;
  if(d.stay){const i=d.stay.lastIndexOf('|');changeStay(d.stay.slice(0,i),+d.stay.slice(i+1))}
  else if(d.book)toggleBook(d.book);
  else if(d.jump)jumpDay(d.jump);
+ else if(d.travelfix){const [dd,j]=d.travelfix.split('|'),D=days.find(z=>z.d===dd);travelChoice[dd]=+j;applyTravel();const msg=`${md(dd)}は「${D.variants[+j].label}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}
  else if(d.hotel){const [r,i]=d.hotel.split('|');hotelSel[r]=+i;autoDistribute();const b=bookings['hotel-'+r];toast(b&&b.done&&b.ref!==hn(r)?`${r}は ${hn(r)} にしました（予約済みの宿とは違います）`:`${r}は ${hn(r)} にしました`)}
  else if(d.go)showPage(d.go);
  else if(d.city){region=d.city;renderCatalog()}
@@ -913,4 +922,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');
-</script><script src="booklet.js?v=31"></script></body></html>
+</script><script src="booklet.js?v=32"></script></body></html>
