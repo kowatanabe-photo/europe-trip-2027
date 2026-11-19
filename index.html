@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=33"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=34"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -108,6 +108,14 @@ a.rowi{color:inherit;text-decoration:none}a.rowi b{white-space:nowrap}a.rowi b{c
 .cta{padding:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border:2px solid var(--accent)}.cta>div{flex:1 1 220px}.cta b{font-size:16px}.cta p{margin:4px 0 0;font-size:13px;color:var(--sub);line-height:1.6}
 .hint{padding:14px 16px;background:#f2f9f4;border-color:#bfe0c9}.hint b{font-size:15px}.hint p{margin:6px 0 10px;font-size:13px;color:#4c5f6d;line-height:1.6}
 button.mini{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;width:100%;font-size:14.5px;font-weight:600;text-align:left}button.mini span{color:var(--sub);font-weight:600;font-size:13px}button.mini i{font-style:normal;color:var(--accent);font-weight:700}
+.ex-amt{display:flex;gap:8px}.ex-amt input{flex:1;font-size:22px;font-weight:700}.ex-cur{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex:none}.ex-cur button{border:0;background:#fff;padding:0 16px;font-size:16px;font-weight:700;color:var(--sub)}.ex-cur button.on{background:var(--navy);color:#fff}
+.ex-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}.ex-cats .chip{padding:6px 11px;font-size:13px}
+.ex-row span small{display:block;color:var(--sub);font-size:12px;font-weight:400}.ex-row{align-items:center}.ex-row>span{flex:1;min-width:0}.ex-del{border:0;background:none;color:var(--sub);font-size:15px;padding:6px 4px 6px 10px;margin-left:4px}
+.ex-bar span{position:relative;flex:1}.ex-bar span i{display:block;height:4px;border-radius:2px;background:var(--accent);opacity:.55;margin-top:4px;max-width:100%}
+.wx{font-size:12px;font-weight:600;color:var(--ink);background:#eef3f7;border-radius:6px;padding:1px 6px;white-space:nowrap}.wx.n{color:var(--sub);font-weight:500;background:none;padding:0}
+.wxnote{font-size:12.5px;color:var(--ink);background:#eef3f7;border-radius:8px;padding:6px 9px;margin:6px 0 2px;line-height:1.45}.wxnote.rain{background:var(--warn-soft);color:var(--warn)}
+.opens{margin:6px 0 2px;font-size:13px;font-weight:600;color:var(--ink)}.opens small{display:block;font-weight:400;color:var(--sub);font-size:12px;margin-top:1px}.opens.soon{color:var(--warn)}.opens.on{color:#2f7a45}
+.otl{padding:0 16px 10px}.otl-r{display:flex;gap:12px;padding:8px 0;border-top:1px dashed var(--line);font-size:13.5px;line-height:1.45}.otl-r:first-child{border-top:0}.otl-r>b{flex:none;width:92px;color:var(--warn);font-size:12.5px}.otl-r.on>b{color:#2f7a45}.otl-r.unk>b{color:var(--sub)}.otl-r small{display:block;color:var(--sub);font-size:12px}
 .howto{padding:2px 16px 14px}.howto div{display:flex;gap:12px;padding:9px 0;border-top:1px dashed var(--line);font-size:13.5px;line-height:1.55}.howto div:first-child{border-top:0}.howto b{flex:none;width:98px;color:var(--accent);font-size:12.5px}.travel-pick label{margin:0;white-space:nowrap}.travel-pick select{padding:7px 10px;font-size:14.5px}
 </style></head><body>
 <header class="top" id="top"><div class="top-in"><div class="brand"><b>EUROPE 2027<em class="phase" id="phaseTag" data-act="phaseTap" role="button" tabindex="0" title="タップで切り替え">計画中</em></b><span>3/11夜〜3/23 · パリ · モン・サン・ミッシェル · ヴェネツィア · ローマ</span></div><button class="share-btn" data-act="share">共有</button></div></header>
@@ -143,12 +151,13 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <section id="book" class="page hide">
 <div class="page-h"><div><h1>予約</h1><p id="bookSub">日程から、予約が必要なものを自動でリストにしています</p></div></div>
 <div class="card" id="bookProg"></div>
+<div class="card" id="bookOpens"></div>
 <div id="bookList"></div>
 <details class="card more"><summary>いつ予約する？（目安）</summary><div class="howto">
 <div><b>今すぐ</b><span>国際線とホテル。ホテルは「キャンセル無料」のプランで早めに押さえ、日程が固まったら見直すのが安心です。</span></div>
-<div><b>出発の3〜4か月前</b><span>フランス・イタリアの列車と、パリ→ヴェネツィアの飛行機。発売が始まったら早いほど安い運賃が残っています（発売時期は目安）。</span></div>
-<div><b>出発の約2か月前</b><span>バチカン美術館・エッフェル塔・ルーヴル美術館など、日時指定の入場券。人気の時間帯から売り切れます。</span></div>
-<div><b>出発の約1か月前</b><span>コロッセオ。販売開始直後に売り切れることが多いので、公式サイトで販売開始日を確認しておきましょう。</span></div>
+<div><b>発売中</b><span>フランスの列車（SNCF・2026年11月12日発売）、イタリアの列車、パリ→ヴェネツィアの飛行機。早いほど安い運賃が残っています。</span></div>
+<div><b>出発の約2〜3か月前</b><span>ルーヴル美術館（約90日前）・エッフェル塔（60日前）・バチカン美術館（約60日前）など、日時指定の入場券。人気の時間帯から売り切れます。</span></div>
+<div><b>出発の約1か月前</b><span>コロッセオ（30日前）。販売開始直後に売り切れることが多いので、上の「予約開始のスケジュール」でカレンダーに入れておくと安心です。</span></div>
 <div><b>予約したら</b><span>ここにチェックを入れて予約番号をメモ。確認メールはスクリーンショットも残しておくと、通信できない場所でも安心です。</span></div>
 </div><p class="muted" style="margin:0 16px 14px">販売開始の時期や条件は施設・会社によって変わります。必ず各公式サイトで確認してください。</p></details>
 </section>
@@ -183,7 +192,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v33 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v34 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
@@ -200,7 +209,21 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v33 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v34 · 予約・料金は必ず各公式サイトで確認してください</footer>
+</section>
+
+<section id="money" class="page hide">
+<div class="page-h"><div><h1>支出メモ</h1><p>誰がいくら払ったかを記録します（この端末だけに保存）</p></div></div>
+<div class="card"><div class="form ex-form" style="padding-top:14px">
+<div class="full"><label for="exAmt">金額</label><div class="ex-amt"><input id="exAmt" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0"><div class="ex-cur" role="group" aria-label="通貨"><button type="button" data-excur="EUR">€</button><button type="button" data-excur="JPY">円</button></div></div></div>
+<div class="full"><label>何に</label><div class="ex-cats" id="exCats"></div><input id="exItem" maxlength="60" placeholder="内容（例：ランチ、メトロ）" aria-label="内容"></div>
+<div><label for="exBy">払った人</label><input id="exBy" list="exByList" maxlength="20" placeholder="例：自分"><datalist id="exByList"></datalist></div>
+<div><label for="exDay">日付</label><select id="exDay"></select></div>
+<button class="btn full" data-act="addExp">＋ 記録する</button>
+</div></div>
+<div id="exSum"></div>
+<div id="exList"></div>
+<footer>EUROPE 2027 · 支出メモは共有URLには含まれません</footer>
 </section>
 </main>
 
@@ -282,6 +305,19 @@ const RES={
 'サン・マルコ寺院':['推奨','入場時間を予約すると行列を避けられます','https://www.basilicasanmarco.it/en/'],
 '干潟ウォーク（ガイドツアー）':['必須','公認ガイドのツアーに申し込む（潮が速く流砂もあるので、個人で歩かない）。開催日は潮の時刻しだい',''],
 'ポンペイ遺跡':['推奨','入場券は記名式。オンラインで買っておくと安心（当日はパスポートを持参）','https://www.pompeiisites.org/en/']};
+// When tickets go on sale: [days before the visit, note]. Researched Nov 2026; release rules change, so all are estimates.
+const OPENS={
+'エッフェル塔':[60,'エレベーター券は60日前の0時（パリ時間＝日本時間の朝8時）に発売。7日前にも追加の販売あり'],
+'ルーヴル美術館':[90,'約90日前の0時（パリ時間＝日本時間の朝8時）に発売'],
+'オルセー美術館':[60,'2〜4か月前から発売（目安）。遅くとも約60日前には買えます'],
+'サント・シャペル':[60,'約2か月前から発売（目安）'],
+'ヴェルサイユ宮殿':[90,'約3か月前から発売（目安）'],
+'コロッセオ':[30,'公式サイトで30日前から発売。午前の枠は発売直後に売り切れやすい'],
+'バチカン美術館':[60,'およそ60日前から発売（もっと早く出ることも）'],
+'ボルゲーゼ美術館':[null,'発売時期は情報が分かれます（10日前〜数か月前）。日程が決まったら公式サイトをこまめに確認']};
+const addDays=(d,n)=>new Date(Date.parse(d)+n*864e5).toISOString().slice(0,10);
+const ymd=d=>`${+d.slice(5,7)}/${+d.slice(8,10)}（${'日月火水木金土'[new Date(d+'T12:00:00Z').getUTCDay()]}）`;
+const daysTo=d=>Math.round((Date.parse(d)-Date.parse(TODAY))/864e5);
 const resOf=x=>x&&x.tag!=='自由追加'&&RES[x.n]?RES[x.n]:null;
 // [name, stay hours, adult price EUR (non-EU, 2026), lat, lon, tag, note]
 const data={
@@ -569,10 +605,10 @@ const dl=d=>`${md(d)}（${wd(d)}）`;
 function nightRanges(r){const out=[];for(const d of days.filter(D=>D.night===r).map(D=>D.d)){const g=out[out.length-1];if(g&&nextDay(g[g.length-1])===d)g.push(d);else out.push([d])}return out}
 function moveDep(dd){const D=days.find(x=>x.d===dd),s=(D.plan||[]).find(z=>z.move),v=D.variants?D.variants[Math.min(D.variants.length-1,Math.max(0,+travelChoice[dd]||0))].label:'';const st=s&&s.steps[1];return {label:v,short:v.replace(/（.*?）/g,''),t:st?st[0]:null,steps:s?s.steps:[]}}
 const MOVE_BOOK=[
- {d:'2027-03-14',id:'tr-0314',name:'パリ → モン・サン・ミッシェル',sub:'列車＋バス',lvl:'必須',note:'SNCF Connect で列車とバスを通しで予約できます。発売はおよそ3〜4か月前から（目安）。',url:SNCF},
- {d:'2027-03-15',id:'tr-0315',name:'モン・サン・ミッシェル → パリ',sub:'バス＋TGV',lvl:'必須',note:'行きと同じく SNCF Connect で。バスと TGV の乗り継ぎを通しで予約すると安心です。',url:SNCF},
- {d:'2027-03-16',id:'tr-0316',name:'パリ → ヴェネツィア',sub:'飛行機（LCC）',lvl:'必須',note:'オルリー空港発・ヴェネツィア（マルコポーロ）空港着の便を。LCCは受託手荷物が別料金なので、荷物込みで予約しましょう。',url:'https://www.easyjet.com/'},
- {d:'2027-03-19',id:'tr-0319',name:'ヴェネツィア → ローマ',sub:'高速鉄道',lvl:'推奨',note:'Trenitalia（Frecciarossa）か Italo。早く買うほど安い割引運賃が残っています。',url:'https://www.trenitalia.com/'}];
+ {d:'2027-03-14',id:'tr-0314',name:'パリ → モン・サン・ミッシェル',sub:'列車＋バス',lvl:'必須',note:'SNCF Connect で列車とバスを通しで予約できます。',url:SNCF,open:{date:'2026-11-12',txt:'SNCFの2027年1月7日〜7月2日分は、2026年11月12日に発売されました'}},
+ {d:'2027-03-15',id:'tr-0315',name:'モン・サン・ミッシェル → パリ',sub:'バス＋TGV',lvl:'必須',note:'行きと同じく SNCF Connect で。バスと TGV の乗り継ぎを通しで予約すると安心です。',url:SNCF,open:{date:'2026-11-12',txt:'2026年11月12日に発売されました'}},
+ {d:'2027-03-16',id:'tr-0316',name:'パリ → ヴェネツィア',sub:'飛行機（LCC）',lvl:'必須',note:'オルリー空港発・ヴェネツィア（マルコポーロ）空港着の便を。LCCは受託手荷物が別料金なので、荷物込みで予約しましょう。',url:'https://www.easyjet.com/',open:{on:true,txt:'3月下旬までの冬ダイヤの便は発売中のはず（目安）。見つからなければ少し待って再確認'}},
+ {d:'2027-03-19',id:'tr-0319',name:'ヴェネツィア → ローマ',sub:'高速鉄道',lvl:'推奨',note:'Trenitalia（Frecciarossa）か Italo。早く買うほど安い割引運賃が残っています。',url:'https://www.trenitalia.com/',open:{on:true,txt:'Trenitaliaは数か月前（6〜9か月前）から発売。すでに予約できるはず'}}];
 const PREP_BOOK=[
  ['prep-ins','海外旅行保険','推奨','クレジットカード付帯の保険は、補償額や「旅行代金をそのカードで払う」などの条件を確認しておきましょう。',''],
  ['prep-etias','EUの渡航認証（ETIAS）を確認','推奨','2026年11月時点ではまだ始まっていません。出発前に必要になっていないか公式サイトで確認を。','https://travel-europe.europa.eu/etias_en'],
@@ -587,24 +623,37 @@ const bookedTime=(x,d)=>{const b=bookedSpot(x);return b&&b.time&&b.ref===d?tm(b.
 const pinnedDate=x=>{const b=bookedSpot(x);return b&&segOf(b.ref,x.r)?b.ref:null};
 function bookingItems(){const L=[];
  const back=moveDep('2027-03-22'),ret=back.steps[back.steps.length-1];
- L.push({id:'flight',g:'flight',name:'国際線（往復）',lvl:'必須',when:`行き ${dl('2027-03-11')} 羽田 22:55発（例）／帰り ${dl('2027-03-22')} ローマ ${ret?fmt(ret[0]):''}発ごろ（${back.short}）`,ref:back.label,note:'「東京→パリ」「ローマ→東京」の周遊（マルチシティ）で検索。帰りの時間帯は、日程の「移動の時間帯」と合わせましょう。',url:'https://www.google.com/travel/flights',refMsg:r=>`予約したときの帰りの時間帯は「${r}」でした。日程の「移動の時間帯」と合っているか確認してください`});
+ L.push({id:'flight',g:'flight',name:'国際線（往復）',lvl:'必須',when:`行き ${dl('2027-03-11')} 羽田 22:55発（例）／帰り ${dl('2027-03-22')} ローマ ${ret?fmt(ret[0]):''}発ごろ（${back.short}）`,ref:back.label,open:{on:true,txt:'航空券はおよそ1年前から発売。すでに予約できます'},note:'「東京→パリ」「ローマ→東京」の周遊（マルチシティ）で検索。帰りの時間帯は、日程の「移動の時間帯」と合わせましょう。',url:'https://www.google.com/travel/flights',refMsg:r=>`予約したときの帰りの時間帯は「${r}」でした。日程の「移動の時間帯」と合っているか確認してください`});
  for(const x of selected.filter(y=>y.trip&&y.trip.book)){const d=assignments[keyOf(x)],s=d&&segOf(d,x.r);if(!s)continue;const st=timeline(itemsOf(s),s).stops.find(z=>z.x===x);if(!st)continue;
-  L.push({id:'trip-'+x.n,g:'move',name:x.trip.book+'（日帰り）',sub:x.n,lvl:'推奨',when:`${dl(d)} ${fmt(st.arrive-x.trip.go+.1)}ごろ ${x.trip.from} 発`,ref:d,note:'Trenitalia（Frecciarossa）か Italo。早く買うほど安い割引運賃があります。帰りの便は現地の予定に余裕をもって。',url:'https://www.trenitalia.com/',refMsg:r=>`予約した日（${md(r)}）と今の日程（${md(d)}）がずれています`})}
- for(const m of MOVE_BOOK){const dep=moveDep(m.d);L.push({id:m.id,g:'move',name:m.name,sub:m.sub,lvl:m.lvl,when:`${dl(m.d)} ${dep.t!=null?fmt(dep.t)+'発':''}（${dep.short}）`,ref:dep.label,note:m.note,url:m.url,refMsg:r=>`予約したときの時間帯は「${r}」でした。日程の「移動の時間帯」を合わせてください`})}
- for(const r of [...regions].sort((a,b)=>nightRanges(a)[0][0].localeCompare(nightRanges(b)[0][0]))){const h=hotelInfo(r),rg=nightRanges(r);L.push({id:'hotel-'+r,g:'hotel',name:h.name,sub:r,lvl:'必須',when:rg.map(g=>`${dl(g[0])}〜${dl(nextDay(g[g.length-1]))} ${g.length}泊`).join(' ＋ '),ref:h.name,note:(rg.length>1?'2回に分けて泊まるので予約も2件になります。モン・サン・ミッシェルに行く間、大きな荷物を預かってもらえるかも確認を。':'')+'「大人3名・1室」で検索し、キャンセル無料のプランを選ぶと安心です。',url:'https://www.google.com/search?q='+encodeURIComponent(h.query+' official site'),refMsg:x=>`予約したのは「${x}」です。ホテルのページで選んでいる宿と違います`})}
+  L.push({id:'trip-'+x.n,g:'move',name:x.trip.book+'（日帰り）',sub:x.n,lvl:'推奨',open:{on:true,txt:'Trenitaliaは数か月前（6〜9か月前）から発売。すでに予約できるはず'},when:`${dl(d)} ${fmt(st.arrive-x.trip.go+.1)}ごろ ${x.trip.from} 発`,ref:d,note:'Trenitalia（Frecciarossa）か Italo。早く買うほど安い割引運賃があります。帰りの便は現地の予定に余裕をもって。',url:'https://www.trenitalia.com/',refMsg:r=>`予約した日（${md(r)}）と今の日程（${md(d)}）がずれています`})}
+ for(const m of MOVE_BOOK){const dep=moveDep(m.d);L.push({id:m.id,g:'move',name:m.name,sub:m.sub,lvl:m.lvl,open:m.open,when:`${dl(m.d)} ${dep.t!=null?fmt(dep.t)+'発':''}（${dep.short}）`,ref:dep.label,note:m.note,url:m.url,refMsg:r=>`予約したときの時間帯は「${r}」でした。日程の「移動の時間帯」を合わせてください`})}
+ for(const r of [...regions].sort((a,b)=>nightRanges(a)[0][0].localeCompare(nightRanges(b)[0][0]))){const h=hotelInfo(r),rg=nightRanges(r);L.push({id:'hotel-'+r,g:'hotel',open:{on:true,txt:''},name:h.name,sub:r,lvl:'必須',when:rg.map(g=>`${dl(g[0])}〜${dl(nextDay(g[g.length-1]))} ${g.length}泊`).join(' ＋ '),ref:h.name,note:(rg.length>1?'2回に分けて泊まるので予約も2件になります。モン・サン・ミッシェルに行く間、大きな荷物を預かってもらえるかも確認を。':'')+'「大人3名・1室」で検索し、キャンセル無料のプランを選ぶと安心です。',url:'https://www.google.com/search?q='+encodeURIComponent(h.query+' official site'),refMsg:x=>`予約したのは「${x}」です。ホテルのページで選んでいる宿と違います`})}
  const tk=new Map();
  for(const s of segs){const its=itemsOf(s);if(!its.length)continue;for(const st of timeline(its,s).stops){const R=resOf(st.x);if(!R)continue;const key=R[3]||st.x.n,e=tk.get(key)||{key,R:RES[key]||R,m:[]};e.m.push({x:st.x,d:s.d,t:st.arrive});tk.set(key,e)}}
  [...tk.values()].map(e=>{e.m.sort((a,b)=>a.d.localeCompare(b.d)||a.t-b.t);return e}).sort((a,b)=>a.m[0].d.localeCompare(b.m[0].d)||a.m[0].t-b.m[0].t).forEach(e=>{const f=e.m[0],same=e.m.every(m=>m.d===f.d),names=e.m.map(m=>m.x.n);
-  const bk=bookings['tk-'+e.key]||{};L.push({id:'tk-'+e.key,g:'ticket',name:names.join('＋'),sub:f.x.r,lvl:e.R[0],when:`${dl(f.d)} `+(bk.done&&bk.time?`${bk.time} 入場（予約した時刻）`:`${fmt(f.t)}ごろ入場`)+(same?'':` ／ ${names[names.length-1]}は${md(e.m[e.m.length-1].d)}`),ref:f.d,note:e.R[1],url:e.R[2]||'https://www.google.com/search?q='+encodeURIComponent(names[0]+' '+f.x.r+' 公式 チケット'),tip:same?'':'共通券は24時間有効なので、同じ日か続けて回るのがおすすめです',refMsg:r=>`予約した日（${md(r)}）と今の日程（${md(f.d)}）がずれています。日程を戻すか、予約を変更してください`})});
+  const bk=bookings['tk-'+e.key]||{},O=OPENS[e.key];L.push({id:'tk-'+e.key,g:'ticket',open:O?(O[0]?{date:addDays(f.d,-O[0]),txt:O[1]}:{txt:O[1]}):null,name:names.join('＋'),sub:f.x.r,lvl:e.R[0],when:`${dl(f.d)} `+(bk.done&&bk.time?`${bk.time} 入場（予約した時刻）`:`${fmt(f.t)}ごろ入場`)+(same?'':` ／ ${names[names.length-1]}は${md(e.m[e.m.length-1].d)}`),ref:f.d,note:e.R[1],url:e.R[2]||'https://www.google.com/search?q='+encodeURIComponent(names[0]+' '+f.x.r+' 公式 チケット'),tip:same?'':'共通券は24時間有効なので、同じ日か続けて回るのがおすすめです',refMsg:r=>`予約した日（${md(r)}）と今の日程（${md(f.d)}）がずれています。日程を戻すか、予約を変更してください`})});
  for(const p of PREP_BOOK)L.push({id:p[0],g:'prep',name:p[1],lvl:p[2],note:p[3],url:p[4],ref:''});
  return L}
+function openState(o){if(!o)return null;if(o.date){const n=daysTo(o.date);return n>0?{soon:true,n}:{on:true}}return o.on?{on:true}:{unknown:true}}
+function openHtml(o){const st=openState(o);
+ if(st.soon)return `<div class="opens soon">🔔 予約開始 <b>${ymd(o.date)}ごろ</b>・あと${st.n}日<small>${esc(o.txt)}</small></div>`;
+ if(st.on)return `<div class="opens on">🟢 いま予約できます${o.txt?`<small>${esc(o.txt)}</small>`:''}</div>`;
+ return `<div class="opens unk">❔ 予約開始日は要確認<small>${esc(o.txt)}</small></div>`}
+function bookingIcs(L){const ev=L.filter(i=>!isBooked(i.id)&&i.open&&openState(i.open).soon),z=d=>d.replace(/-/g,''),stamp=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z';
+ const esc2=t=>String(t).replace(/[\\,;]/g,m=>'\\'+m).replace(/\n/g,'\\n');
+ const body=ev.map(i=>['BEGIN:VEVENT',`UID:${i.id}-${z(i.open.date)}@europe-trip-2027`,`DTSTAMP:${stamp}`,`DTSTART;VALUE=DATE:${z(i.open.date)}`,`DTEND;VALUE=DATE:${z(addDays(i.open.date,1))}`,`SUMMARY:${esc2('予約開始：'+i.name)}`,`DESCRIPTION:${esc2((i.when||'')+'\n'+i.open.txt+(i.url?'\n'+i.url:''))}`,'BEGIN:VALARM','ACTION:DISPLAY','TRIGGER:PT8H',`DESCRIPTION:${esc2('予約開始：'+i.name)}`,'END:VALARM','END:VEVENT'].join('\r\n'));
+ return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//EUROPE 2027//JA','CALSCALE:GREGORIAN',...body,'END:VCALENDAR'].join('\r\n')}
+function downloadIcs(){const t=bookingIcs(bookingItems());const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/calendar'}));a.download='europe2027-booking-dates.ics';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);toast('カレンダーのファイルを作りました。開くとカレンダーに追加できます')}
 function bookItemHtml(i){const b=bookings[i.id]||{},done=!!b.done,mism=done&&i.ref&&b.ref&&b.ref!==i.ref;
  return `<div class="bitem ${done?'done':''}"><button class="bcheck" data-book="${esc(i.id)}" aria-pressed="${done}" aria-label="${esc(i.name)}を予約済みにする">✓</button><div class="t"><b>${esc(i.name)}</b>${i.sub?`<span class="sub">${esc(i.sub)}</span>`:''}${done?'<span class="rv ok">予約済み</span>':`<span class="rv ${i.lvl==='必須'?'':'rec'}">${esc(i.lvl)}</span>`}
-${i.when?`<div class="when">📅 ${esc(i.when)}${i.g==='ticket'&&!done?' → この日時で予約':''}</div>`:''}${mism?`<div class="bwarn">⚠ ${esc(i.refMsg(b.ref))}</div>`:''}${i.tip?`<div class="bwarn">💡 ${esc(i.tip)}</div>`:''}
+${i.when?`<div class="when">📅 ${esc(i.when)}${i.g==='ticket'&&!done?' → この日時で予約':''}</div>`:''}${!done&&i.open?openHtml(i.open):''}${mism?`<div class="bwarn">⚠ ${esc(i.refMsg(b.ref))}</div>`:''}${i.tip?`<div class="bwarn">💡 ${esc(i.tip)}</div>`:''}
 <div class="muted">${esc(i.note)}</div>${done&&i.g==='ticket'?`<div class="btime"><label for="bt-${esc(i.id)}">予約した入場時刻（入れると日程をこの時刻に合わせます）</label><input id="bt-${esc(i.id)}" type="time" data-btime="${esc(i.id)}" value="${esc(b.time||'')}"></div>`:''}${done?`<input data-memo="${esc(i.id)}" value="${esc(b.memo||'')}" placeholder="予約番号・メモ（任意）" maxlength="200" aria-label="予約番号・メモ">`:''}${i.url?`<a class="blink" target="_blank" rel="noopener" href="${esc(i.url)}">${i.g==='prep'?'公式サイトを開く':'予約サイトを開く'} ↗</a>`:''}</div></div>`}
 function renderBook(){const L=bookingItems(),done=L.filter(i=>isBooked(i.id)).length,must=L.filter(i=>i.lvl==='必須'),left=must.filter(i=>!isBooked(i.id)).length;
  const nb=$('bookBadge');if(nb){nb.textContent=left;nb.classList.toggle('hide',!left)}
  if($('book').classList.contains('hide'))return;
+ const soon=L.filter(i=>!isBooked(i.id)&&i.open&&openState(i.open).soon).sort((a,b)=>a.open.date.localeCompare(b.open.date)),nowOk=L.filter(i=>!isBooked(i.id)&&i.open&&openState(i.open).on).length,unk=L.filter(i=>!isBooked(i.id)&&i.open&&openState(i.open).unknown);
+ $('bookOpens').innerHTML=`<div class="hgroup-h">🔔 予約開始のスケジュール</div><div class="otl">${nowOk?`<div class="otl-r on"><b>いま</b><span>予約できるもの <b>${nowOk}件</b>（下のリストの🟢）</span></div>`:''}${soon.map(i=>`<div class="otl-r"><b>${ymd(i.open.date)}</b><span>${esc(i.name)}<small>${esc(i.when||'')} · あと${daysTo(i.open.date)}日</small></span></div>`).join('')}${unk.map(i=>`<div class="otl-r unk"><b>要確認</b><span>${esc(i.name)}<small>${esc(i.open.txt)}</small></span></div>`).join('')}</div>${soon.length?`<div class="form" style="padding-top:4px"><button class="btn sub full" data-act="downloadIcs">📅 予約開始日をカレンダーに入れる</button><p class="muted full" style="margin:0">発売日の朝8時に通知が出るようにします（iPhoneはファイルを開いて「すべてを追加」）。発売日は目安なので、公式サイトでも確認してください。</p></div>`:''}`;
+ $('bookOpens').classList.toggle('hide',!soon.length&&!nowOk&&!unk.length);
  $('bookProg').innerHTML=`<div class="prog"><div class="prog-n"><b>${done}</b>/ ${L.length}件 予約済み</div><span class="bar"><i style="width:${L.length?done/L.length*100:0}%"></i></span><div class="muted">${left?`必須のうち<b style="color:var(--red)">あと${left}件</b>。`:'必須の予約はすべて完了！'}チェックすると日程とPDFにも「予約済み」と出ます</div></div>`;
  const G=[['flight','✈️ 国際線'],['move','🚄 都市間の移動'],['hotel','🏨 ホテル'],['ticket','🎟 入場券（日時指定）'],['prep','🧳 出発前の準備']];
  $('bookList').innerHTML=G.map(([g,t])=>{const its=L.filter(i=>i.g===g);
@@ -621,13 +670,67 @@ function jumpDay(d){const el=$('day-'+d);if(el)el.scrollIntoView({behavior:'smoo
 function setHeader(){const left=Math.round((Date.parse('2027-03-11')-Date.parse(TODAY))/864e5),i=days.findIndex(D=>D.d===TODAY);
  document.querySelector('.brand span').textContent=(left>0?`出発まであと${left}日 · `:i>=0?`旅行${i+1}日目 · `:'')+'3/11夜〜3/23 · パリ · モン・サン・ミッシェル · ヴェネツィア · ローマ'}
 
+// ===================== expenses (this device only) =====================
+const EX_CATS=[['食事','🍽'],['交通','🚇'],['入場','🎟'],['買い物','🛍'],['宿泊','🏨'],['その他','📌']];
+let EXP={list:[],cur:'EUR',cat:'食事',by:''};
+try{const v=JSON.parse(localStorage.getItem('europetrip_exp')||'null');if(v&&Array.isArray(v.list))EXP={...EXP,...v,list:v.list.filter(e=>e&&Number.isFinite(+e.amt)).slice(0,2000)}}catch{}
+const saveExp=()=>{try{localStorage.setItem('europetrip_exp',JSON.stringify(EXP))}catch{}};
+const exYen=e=>e.cur==='JPY'?+e.amt:+e.amt*rate();
+const exFmt=e=>e.cur==='JPY'?yen(e.amt):'€'+(+e.amt).toLocaleString('ja-JP',{maximumFractionDigits:2});
+const TRIP_DAYS=days.map(D=>D.d);
+function renderMoney(){if($('money').classList.contains('hide'))return;
+ const dsel=$('exDay');if(!dsel.options.length){const def=TRIP_DAYS.includes(TODAY)?TODAY:TRIP_DAYS[1];dsel.innerHTML=TRIP_DAYS.map(d=>`<option value="${d}"${d===def?' selected':''}>${dl(d)}</option>`).join('')}
+ document.querySelectorAll('[data-excur]').forEach(b=>b.classList.toggle('on',b.dataset.excur===EXP.cur));
+ $('exCats').innerHTML=EX_CATS.map(([c,ic])=>`<button type="button" class="chip sm${c===EXP.cat?' on':''}" data-excat="${c}">${ic} ${c}</button>`).join('');
+ if(!$('exBy').value&&EXP.by)$('exBy').value=EXP.by;
+ const names=[...new Set(EXP.list.map(e=>e.by).filter(Boolean))];$('exByList').innerHTML=names.map(n=>`<option value="${esc(n)}">`).join('');
+ const L=EXP.list,tot=L.reduce((a,e)=>a+exYen(e),0),eur=L.filter(e=>e.cur==='EUR').reduce((a,e)=>a+ +e.amt,0),people=Math.max(1,+$('people').value||3);
+ const food=+$('food').value||0,plan=(food*11+passes.reduce((a,p)=>a+p[2],0)*rate()+selected.reduce((a,x)=>a+priceYen(x),0)+selected.filter(x=>x.trip).reduce((a,x)=>a+(x.fare||0),0)*rate())*people;
+ const sumBy=k=>{const m=new Map();for(const e of L){const key=e[k]||'（未入力）';m.set(key,(m.get(key)||0)+exYen(e))}return [...m.entries()].sort((a,b)=>b[1]-a[1])};
+ const byCat=sumBy('cat'),byPer=sumBy('by'),mx=Math.max(1,...byCat.map(x=>x[1]));
+ $('exSum').innerHTML=L.length?`<div class="card"><div class="total"><div><small>合計</small><strong>${yen(tot)}</strong></div><div class="g"><small>1人あたり（${people}人）</small><strong>${yen(tot/people)}</strong></div></div>
+<p class="muted" style="margin:0 16px 10px">ユーロ分 €${eur.toLocaleString('ja-JP',{maximumFractionDigits:2})} は1ユーロ＝${rate()}円で換算。現地で使う予定の予算（食費・市内交通・入場・日帰り）は${people}人で約${yen(plan)}です${tot>plan?'（<b style="color:var(--red)">超えています</b>）':`（残り約${yen(plan-tot)}）`}。</p>
+<div class="hgroup-h">払った人ごと</div>${byPer.map(([n,v])=>`<div class="rowi"><span>${esc(n)}</span><b>${yen(v)}</b></div>`).join('')}
+<div class="hgroup-h">内容ごと</div>${byCat.map(([c,v])=>`<div class="rowi ex-bar"><span>${(EX_CATS.find(x=>x[0]===c)||['','📌'])[1]} ${esc(c)}<i style="width:${v/mx*100}%"></i></span><b>${yen(v)}</b></div>`).join('')}
+<div class="form" style="padding-top:8px"><button class="btn sub full" data-act="copyExp">📋 まとめをコピー（LINEに貼れます）</button></div></div>`:'<div class="card"><p class="muted" style="margin:14px 16px">まだ記録がありません。誰かがまとめて払ったら、金額と払った人を入れておくと、あとで精算するときに便利です。</p></div>';
+ const byDay=TRIP_DAYS.map(d=>[d,L.filter(e=>e.d===d)]).filter(x=>x[1].length).reverse();
+ $('exList').innerHTML=byDay.map(([d,es])=>`<div class="card"><div class="hgroup-h">${dl(d)} <span>${yen(es.reduce((a,e)=>a+exYen(e),0))}</span></div>${es.slice().reverse().map(e=>`<div class="rowi ex-row"><span>${(EX_CATS.find(x=>x[0]===e.cat)||['','📌'])[1]} ${esc(e.item||e.cat)}<small>${e.by?esc(e.by)+'が支払い':''}${e.cur==='EUR'?` · ${yen(exYen(e))}`:''}</small></span><b>${exFmt(e)}</b><button class="ex-del" data-exdel="${esc(e.id)}" aria-label="${esc(e.item||e.cat)}を削除">✕</button></div>`).join('')}</div>`).join('')}
+function addExp(){const amt=Math.round((+$('exAmt').value||0)*100)/100;if(!(amt>0)){toast('金額を入れてください');$('exAmt').focus();return}
+ const e={id:Date.now().toString(36)+Math.random().toString(36).slice(2,6),d:$('exDay').value,item:$('exItem').value.trim().slice(0,60),cat:EXP.cat,amt,cur:EXP.cur,by:$('exBy').value.trim().slice(0,20)};
+ EXP.list.push(e);EXP.by=e.by;saveExp();$('exAmt').value='';$('exItem').value='';renderMoney();toast(`${exFmt(e)}（${e.item||e.cat}）を記録しました`)}
+function delExp(id){const e=EXP.list.find(x=>x.id===id);if(!e||!confirm(`「${e.item||e.cat} ${exFmt(e)}」を削除しますか？`))return;EXP.list=EXP.list.filter(x=>x.id!==id);saveExp();renderMoney();toast('削除しました')}
+async function copyExp(){const L=EXP.list,people=Math.max(1,+$('people').value||3),tot=L.reduce((a,e)=>a+exYen(e),0),m=new Map();for(const e of L){const k=e.by||'（未入力）';m.set(k,(m.get(k)||0)+exYen(e))}
+ const t=[`【旅の支出まとめ】合計 ${yen(tot)}（1人あたり ${yen(tot/people)}）`,'払った人ごと：',...[...m.entries()].map(([n,v])=>`・${n} ${yen(v)}`),'',...TRIP_DAYS.filter(d=>L.some(e=>e.d===d)).map(d=>md(d)+' '+L.filter(e=>e.d===d).map(e=>`${e.item||e.cat} ${exFmt(e)}${e.by?'（'+e.by+'）':''}`).join('、')),`※ユーロは1ユーロ＝${rate()}円で換算`].join('\n');
+ try{await navigator.clipboard.writeText(t);toast('まとめをコピーしました')}catch{prompt('コピーしてください',t)}}
+
+// ===================== weather =====================
+// Mid-March normals (approx.: high, low, rainy days in March) always; a real forecast (Open-Meteo, no key) from ~16 days before.
+const WX_LOC={'パリ':[48.8566,2.3522],'モン・サン・ミッシェル':[48.6361,-1.5115],'ヴェネツィア':[45.4371,12.3326],'ローマ':[41.8986,12.4823]};
+const CLIMATE={'パリ':[13,5,10],'モン・サン・ミッシェル':[12,5,11],'ヴェネツィア':[13,5,7],'ローマ':[16,7,8]};
+let wx=null;
+const wxIcon=c=>c==null?['',''] :c===0?['☀️','晴れ']:c<=2?['🌤','晴れ時々くもり']:c===3?['☁️','くもり']:c<=48?['🌫','霧']:c<=57?['🌦','霧雨']:c<=67||(c>=80&&c<=82)?['🌧','雨']:c<=77||c===85||c===86?['🌨','雪']:['⛈','雷雨'];
+const dayCity=D=>{if(D.pre||!D.plan)return null;const ss=D.plan.filter(s=>s.r);return D.night&&ss.some(s=>s.r===D.night)?D.night:(ss[ss.length-1]||{}).r||null};
+const wxOf=D=>{const r=dayCity(D);return r&&wx&&wx[r]&&wx[r][D.d]?{r,...wx[r][D.d]}:null};
+function wxHtml(D){const r=dayCity(D);if(!r)return '';const f=wxOf(D);
+ if(f){const [ic,w]=wxIcon(f.code);return `<span class="wx" title="${esc(w)}">${ic} ${Math.round(f.hi)}°/${Math.round(f.lo)}°${f.pop!=null?` · ☂${f.pop}%`:''}</span>`}
+ const c=CLIMATE[r];return `<span class="wx n">平年 ${c[0]}°/${c[1]}°</span>`}
+function wxNote(D){const f=wxOf(D);if(!f)return '';const [ic,w]=wxIcon(f.code);
+ return `<div class="wxnote${f.pop>=60?' rain':''}">${ic} ${esc(f.r)}の予報：${esc(w)}・最高${Math.round(f.hi)}° 最低${Math.round(f.lo)}°${f.pop!=null?`・降水確率${f.pop}%`:''}${f.pop>=60?'。屋内の場所を雨の時間に回す、折りたたみ傘を持つなど準備を':''}</div>`}
+async function loadWeather(){const left=daysTo('2027-03-23');if(left>17||left<0)return; // the forecast reaches about 16 days ahead
+ let c=null;try{c=JSON.parse(localStorage.getItem('wx1')||'null')}catch{}
+ if(c&&c.today===TODAY&&Date.now()-c.t<3*36e5){wx=c.data;return}
+ try{const R=regions,u='https://api.open-meteo.com/v1/forecast?latitude='+R.map(r=>WX_LOC[r][0]).join(',')+'&longitude='+R.map(r=>WX_LOC[r][1]).join(',')+'&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=16';
+  const res=await fetch(u);if(!res.ok)return;let j=await res.json();if(!Array.isArray(j))j=[j];const data={};
+  R.forEach((r,i)=>{const d=j[i]&&j[i].daily;if(!d||!Array.isArray(d.time))return;data[r]={};d.time.forEach((t,k)=>{if(d.temperature_2m_max[k]!=null)data[r][t]={code:d.weather_code[k],hi:d.temperature_2m_max[k],lo:d.temperature_2m_min[k],pop:d.precipitation_probability_max?d.precipitation_probability_max[k]:null}})});
+  wx=data;try{localStorage.setItem('wx1',JSON.stringify({t:Date.now(),today:TODAY,data}))}catch{}if(curPage==='plan')renderPlan()}catch{}}
+
 // In-trip helper: the next thing on today's plan.
 function todayEvents(D){const ev=[],tx=x=>typeof x==='function'?x():x;if(D.pre){D.steps.forEach(([t,x])=>{if(t!=null)ev.push({t,label:tx(x)})});return ev}
  for(const s of D.plan){if(s.move){s.steps.forEach(([t,x])=>{if(t!=null)ev.push({t,label:tx(x)})});continue}
   const it=itemsOf(s);if(!it.length)continue;const T=timeline(it,s);T.stops.forEach(st=>ev.push({t:st.arrive,end:st.leave,label:st.x.n,x:st.x}));ev.push({t:T.home,label:T.H.name+' に戻る',x:T.H})}
  return ev.sort((a,b)=>a.t-b.t)}
 function nowCard(){const D=days.find(D=>D.d===TODAY);if(!D)return '';const now=nowH(),ev=todayEvents(D),rest=ev.filter(e=>e.t>=now-.05),nx=rest[0];
- const head=`<div class="now-h">TODAY · ${esc(dl(D.d))} · 旅行${days.indexOf(D)+1}日目</div>`;
+ const head=`<div class="now-h">TODAY · ${esc(dl(D.d))} · 旅行${days.indexOf(D)+1}日目</div>${wxNote(D)}`;
  if(!nx)return `<div class="card nowcard" data-jump="${D.d}">${head}<div class="now-b"><b>今日の予定はおしまい。おつかれさまでした！</b></div></div>`;
  const cur=ev.find(e=>e.end!=null&&e.t<now-.05&&e.end>now+.05),left=m=>m<90?m+'分':Math.round(m/30)/2+'時間';
  if(cur){const m=Math.round((cur.end-now)*60);return `<div class="card nowcard" data-jump="${D.d}">${head}<div class="now-b"><span class="time">〜${fmt(cur.end)}</span><b>${esc(cur.label)}</b></div><div class="now-m">いま滞在中 · 出発まであと約${left(m)} · 次は${fmt(nx.t)} ${esc(nx.label)} · タップで今日の日程へ</div></div>`}
@@ -687,7 +790,7 @@ function renderPlan(){
  $('days').innerHTML=nowCard()+top+warn+days.map(D=>{
   if(D.pre)return `<div class="card${D.d===TODAY?' today':''}" id="day-${D.d}"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(D.title)}</span>${todayTag(D)}</div><span class="tag move">機内泊</span></div><div class="stops">${stepsHtml(D.steps,'',`東京 → パリ`)}<p class="muted" style="margin:4px 0 12px">${esc(D.note)}</p></div></div>`;
   const regs=[...new Set(D.plan.filter(s=>s.r).map(s=>s.r))];
-  return `<div class="card${D.d===TODAY?' today':''}" id="day-${D.d}"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(regs.join(' → '))}</span>${todayTag(D)}</div><span class="tag ${D.plan.some(s=>s.move)?'move':''}">${D.night?esc(D.night)+'泊':'帰国便（機内泊）'}</span></div>${D.variants?`<div class="travel-pick"><label>移動の時間帯</label><select data-travel="${D.d}">${D.variants.map((v,i)=>`<option value="${i}" ${D.plan===v.plan?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>`:''}<div class="stops">${D.plan.map(s=>s.move?stepsHtml(s.steps,s.url,s.title):segHtml(s)).join('')}</div></div>`}).join('')+bottom;
+  return `<div class="card${D.d===TODAY?' today':''}" id="day-${D.d}"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(regs.join(' → '))}</span>${wxHtml(D)}${todayTag(D)}</div><span class="tag ${D.plan.some(s=>s.move)?'move':''}">${D.night?esc(D.night)+'泊':'帰国便（機内泊）'}</span></div>${D.variants?`<div class="travel-pick"><label>移動の時間帯</label><select data-travel="${D.d}">${D.variants.map((v,i)=>`<option value="${i}" ${D.plan===v.plan?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>`:''}<div class="stops">${D.plan.map(s=>s.move?stepsHtml(s.steps,s.url,s.title):segHtml(s)).join('')}</div></div>`}).join('')+bottom;
  watchDayChips()}
 function renderHotels(){$('hotelCards').innerHTML=Object.entries(hotelOptions).map(([r,list])=>`<div class="hgroup"><div class="hgroup-h">${esc(r)} <span>${NIGHTS[r]}泊</span></div>${list.map((h,i)=>{const on=hotelInfo(r)===h;return `<div class="hotel ${on?'on':''}"${on?'':` data-hotel="${esc(r)}|${i}" role="button" tabindex="0"`}><div class="hotel-top"><span class="city">${esc(h.rec)}</span>${on?`<span class="chosen">✓ 選択中${isBooked('hotel-'+r)?'・予約済み':''}</span>`:''}</div><b>${esc(h.name)}</b><div class="muted">📍 ${esc(h.area)}${h.st?' · 最寄り '+esc(h.st[0]):''}</div><p>${esc(h.why)}</p><div class="price">1泊 約${yen(h.eur*rate())}<small>（€${h.eur}・3名1室の目安）</small></div><div class="muted" style="margin-bottom:10px">${esc(h.basis)}</div><div class="row2"><a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.query)}">地図で見る ↗</a>${on?'':'<span class="pick">タップで選ぶ</span>'}</div></div>`}).join('')}</div>`).join('')}
 function renderOfficial(){$('official').innerHTML=official.map(([n,t,u])=>`<div class="info"><b>${esc(n)}</b><span>${esc(t)}</span>${u?` <a target="_blank" rel="noopener" href="${u}">公式サイト ↗</a>`:''}</div>`).join('')}
@@ -706,12 +809,12 @@ ${trips.length?`<h4>日帰りの往復交通費</h4>${trips.map(x=>`<div><span>$
 <h4>入場・体験（選んだ場所）</h4>${selected.filter(x=>priceYen(x)>0).map(x=>`<div><span>${esc(x.n)}<br><small class="muted">${esc(x.r)}</small></span><b>${x.eur!=null?'€'+x.eur:yen(priceYen(x))}</b></div>`).join('')||'<p class="muted">なし</p>'}
 <p class="muted" style="margin:10px 0 0">1ユーロ＝${R}円で換算。入場料は非EU居住者の大人料金。運賃・宿泊料金は2026年11月時点で調べた目安で、予約する時期によって変わります。</p></div></details>`;
 }
-function build(){ensureAssignments();renderPlan();renderCost();renderHotels();renderBook();persist()}
+function build(){ensureAssignments();renderPlan();renderCost();renderHotels();renderBook();renderMoney();persist()}
 
 // ===================== actions =====================
 // Two stages: 'plan' (choose places and shape the route) and 'trip' (route confirmed: share, book, fine-tune the days).
 let phase='plan',tripHint=true,curPage='places';
-const TABS={plan:[['places','📍','選ぶ'],['plan','🗓️','日程'],['hotels','🏨','ホテル'],['cost','💴','予算']],trip:[['plan','🗓️','旅程'],['book','🎫','予約'],['tools','🧰','便利帳']]};
+const TABS={plan:[['places','📍','選ぶ'],['plan','🗓️','日程'],['hotels','🏨','ホテル'],['cost','💴','予算']],trip:[['plan','🗓️','旅程'],['book','🎫','予約'],['money','💳','支出'],['tools','🧰','便利帳']]};
 const isTrip=()=>phase==='trip';
 function renderTabs(){$('tabs').innerHTML=TABS[phase].map(([id,ic,l])=>`<button class="tab${id===curPage?' on':''}" data-go="${id}"><span class="ic">${ic}</span>${l}${id==='book'?'<i class="nb hide" id="bookBadge"></i>':''}</button>`).join('');try{setTop()}catch{}}
 function setPhase(p){phase=p==='trip'?'trip':'plan';document.body.classList.toggle('trip',isTrip());const t=$('phaseTag');t.textContent=isTrip()?'確定済み':'計画中';t.classList.toggle('trip',isTrip());renderTabs()}
@@ -882,10 +985,13 @@ function chatUndoIt(){if(!chatUndo)return;const last=chatHist[chatHist.length-1]
 function chatClose(){$('chatLog').classList.add('hide')}
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[role="button"]')){e.preventDefault();e.target.click()}});
 document.addEventListener('pointerdown',e=>{const l=$('chatLog');if(l&&!l.classList.contains('hide')&&!e.target.closest('#chat'))l.classList.add('hide')},true);
-document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix]');if(!t||t.disabled)return;const d=t.dataset;
+document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix],[data-excur],[data-excat],[data-exdel]');if(!t||t.disabled)return;const d=t.dataset;
  if(d.stay){const i=d.stay.lastIndexOf('|');changeStay(d.stay.slice(0,i),+d.stay.slice(i+1))}
  else if(d.book)toggleBook(d.book);
  else if(d.jump)jumpDay(d.jump);
+ else if(d.excur){EXP.cur=d.excur;saveExp();renderMoney()}
+ else if(d.excat){EXP.cat=d.excat;saveExp();renderMoney()}
+ else if(d.exdel)delExp(d.exdel);
  else if(d.travelfix){const [dd,j]=d.travelfix.split('|'),D=days.find(z=>z.d===dd);travelChoice[dd]=+j;applyTravel();const msg=`${md(dd)}は「${D.variants[+j].label}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}
  else if(d.hotel){const [r,i]=d.hotel.split('|');hotelSel[r]=+i;autoDistribute();const b=bookings['hotel-'+r];toast(b&&b.done&&b.ref!==hn(r)?`${r}は ${hn(r)} にしました（予約済みの宿とは違います）`:`${r}は ${hn(r)} にしました`)}
  else if(d.go)showPage(d.go);
@@ -896,10 +1002,11 @@ document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[
  else if('down' in d)shiftStop(d.down,1);
  else if('remove' in d)removeStop(d.remove);
  else if(d.addcity){region=d.addcity;showPage('places')}
- else if(d.act){e.preventDefault();({share,export:exportJSON,import:()=>$('importFile').click(),openRoute,confirmTrip,toPlan,phaseTap,dismissHint,chatUndoIt,chatClose})[d.act]()}
+ else if(d.act){e.preventDefault();({share,downloadIcs,addExp,copyExp,export:exportJSON,import:()=>$('importFile').click(),openRoute,confirmTrip,toPlan,phaseTap,dismissHint,chatUndoIt,chatClose})[d.act]()}
 });
 document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
+$('exAmt').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addExp()}});
 $('cvE').addEventListener('input',()=>{$('cvY').value=Math.round((+$('cvE').value||0)*rate())});$('cvY').addEventListener('input',()=>{$('cvE').value=Math.round((+$('cvY').value||0)/rate()*100)/100});
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 keys.forEach(k=>$(k).addEventListener('change',()=>{if((k==='startH'||k==='endH')&&!isTrip())autoDistribute();else build()}));
@@ -923,5 +1030,5 @@ try{const src=loadInitial();
  if(src){apply(src);if(src.v>=6)restoreOrder(src)}
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
-setPhase(phase);showPage(isTrip()?'plan':'places');
-</script><script src="booklet.js?v=33"></script></body></html>
+setPhase(phase);showPage(isTrip()?'plan':'places');loadWeather();
+</script><script src="booklet.js?v=34"></script></body></html>
