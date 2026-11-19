@@ -2,7 +2,7 @@
    last copy in the cache when there is no signal or the network is very slow. */
 const CACHE = 'europe-trip-2027';
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', 'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css'])).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', 'vendor/leaflet/leaflet.js', 'vendor/leaflet/leaflet.css', 'vendor/pdf/html2canvas.min.js', 'vendor/pdf/jspdf.umd.min.js'])).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));

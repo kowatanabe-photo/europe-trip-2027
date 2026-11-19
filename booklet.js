@@ -221,6 +221,7 @@ function buildBooklet(){const E=[{r:()=>bkCover()},{contents:true}];
 
 function bkPin(n,color,h){return L.divIcon({className:'',html:`<div class="bk-pin${h?' h':''}" style="background:${color}">${h?'H':n}</div>`,iconSize:[22,22],iconAnchor:[11,11]})}
 function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkTilesDone=0;if(!window.L)return;
+ L.Browser.any3d=false; // left/top positioning instead of 3D transforms: the PDF renderer (html2canvas) draws those correctly
  document.querySelectorAll('#bk-pages [data-map]').forEach(el=>{const map=L.map(el,{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,touchZoom:false,tap:false,zoomSnap:.25,fadeAnimation:false,zoomAnimation:false,markerZoomAnimation:false});
   map.attributionControl.setPrefix(false);
   const tl=L.tileLayer(TILE,{maxZoom:19,attribution:TILE_ATTR,crossOrigin:true});tl.on('tileloadstart',()=>bkTiles++);tl.on('tileload tileerror',()=>bkTilesDone++);tl.addTo(map);
@@ -235,9 +236,14 @@ function initBookletMaps(){bkMaps.forEach(m=>m.remove());bkMaps=[];bkTiles=0;bkT
    items.forEach((x,i)=>{if(x.lat&&!x.trip)L.marker([x.lat,x.lon],{icon:bkPin(base+i+1,col)}).addTo(map)});
    map.fitBounds(L.latLngBounds(pts),{padding:[28,28],maxZoom:16})}
   bkMaps.push(map)})}
-function fitBookletZoom(){const pages=$('bk-pages');if(!pages)return;const w=Math.min(1,(window.innerWidth-12)/pages.offsetWidth);pages.style.zoom=w<1?w:''}
-async function openBooklet(){let el=$('booklet');if(!el){el=document.createElement('div');el.id='booklet';el.innerHTML=`<div id="bk-bar"><button class="close" data-bk="close">← 戻る</button><span class="t">印刷画面で「PDFとして保存」（iPhoneは共有→「ファイルに保存」）${navigator.standalone?'。ホーム画面から開いていてうまくいかないときは、Safariで開いてください':''}</span><button class="print" data-bk="print">PDFで保存</button></div><div id="bk-scroll"><div id="bk-pages"></div></div>`;document.body.appendChild(el)}
- ensureAssignments();$('bk-pages').innerHTML=buildBooklet();document.body.classList.add('bk-open');el.classList.remove('hide');window.scrollTo(0,0);fitBookletZoom();fitBookletPages();
+// Fit the A4 pages to the screen with a transform. Measured on the layout viewport (clientWidth), which pinch-zoom
+// does not change, so zooming with two fingers works like on any page instead of fighting this function.
+let bkFitW=0;
+function fitBookletZoom(force){const pages=$('bk-pages'),sc=$('bk-scroll');if(!pages)return;const cw=document.documentElement.clientWidth;if(!force&&cw===bkFitW)return;bkFitW=cw;
+ const s=Math.min(1,(cw-12)/pages.offsetWidth);pages.style.transform=s<1?`scale(${s})`:'';pages.style.marginLeft=s<1?'6px':'';
+ sc.style.height=s<1?Math.ceil(pages.offsetHeight*s+52)+'px':''}
+async function openBooklet(){let el=$('booklet');if(!el){el=document.createElement('div');el.id='booklet';el.innerHTML=`<div id="bk-bar"><button class="close" data-bk="close">← 戻る</button><span class="t">「PDFで保存」でA4サイズのPDFを作ります（iPhone・iPadは共有メニューから「ファイルに保存」）</span><button class="print" data-bk="print">PDFで保存</button></div><div id="bk-scroll"><div id="bk-pages"></div></div>`;document.body.appendChild(el)}
+ ensureAssignments();$('bk-pages').innerHTML=buildBooklet();document.body.classList.add('bk-open');el.classList.remove('hide');window.scrollTo(0,0);fitBookletPages();fitBookletZoom(true);
  await loadLeaflet();initBookletMaps()}
 // Busy days: shrink maps and spacing step by step until the page fits on one A4 sheet; as a last resort let it run onto a second sheet instead of clipping.
 function fitBookletPages(){const pages=[...document.querySelectorAll('#bk-pages .bk-page')];if(!pages.length)return;const a4=pages[0].offsetWidth*297/210+1;
@@ -246,8 +252,28 @@ function fitBookletPages(){const pages=[...document.querySelectorAll('#bk-pages 
   const more=el.querySelector('.more-see');if(!more||el.offsetHeight<=a4)return;const items=[...more.querySelectorAll('.ms-list span')];
   while(items.length&&el.offsetHeight>a4)items.pop().remove();if(!items.length)more.remove()})}
 function closeBooklet(){document.body.classList.remove('bk-open');const el=$('booklet');if(el)el.classList.add('hide');bkMaps.forEach(m=>m.remove());bkMaps=[];showPage('plan')}
+const loadScript=src=>new Promise((res,rej)=>{if(document.querySelector(`script[src="${src}"]`))return res();const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s)});
+let bkBusy=false;
+async function exportPdf(){if(bkBusy)return;bkBusy=true;const bar=document.querySelector('#bk-bar .t'),msg=bar.textContent,btn=document.querySelector('#bk-bar .print');btn.disabled=true;
+ const pagesEl=$('bk-pages'),sc=$('bk-scroll'),keep=[pagesEl.style.transform,pagesEl.style.marginLeft,sc.style.height];
+ try{bar.textContent='PDFの準備をしています…';await Promise.all([loadScript('vendor/pdf/html2canvas.min.js'),loadScript('vendor/pdf/jspdf.umd.min.js')]);
+  const t0=Date.now();while(bkTilesDone<bkTiles&&Date.now()-t0<10000)await new Promise(r=>setTimeout(r,250));
+  pagesEl.style.transform='';pagesEl.style.marginLeft='';sc.style.height=''; // capture at full size
+  const pages=[...pagesEl.querySelectorAll('.bk-page')],{jsPDF}=window.jspdf,pdf=new jsPDF({unit:'mm',format:'a4',orientation:'portrait',compress:true});
+  for(let i=0;i<pages.length;i++){bar.textContent=`PDFを作っています… ${i+1} / ${pages.length}ページ`;await new Promise(r=>setTimeout(r,0));
+   const pg=pages[i],cv=await html2canvas(pg,{scale:1.8,useCORS:true,backgroundColor:getComputedStyle(pg).backgroundColor||'#fbf8f3',logging:false,scrollX:0,scrollY:-window.scrollY});
+   let w=210,h=210*cv.height/cv.width,x=0;if(h>297){w=297*cv.width/cv.height;h=297;x=(210-w)/2} // a page that ran long is shrunk onto one sheet
+   if(i)pdf.addPage('a4','portrait');pdf.addImage(cv.toDataURL('image/jpeg',.86),'JPEG',x,0,w,h,undefined,'FAST');cv.width=cv.height=0}
+  const name='EUROPE2027_旅のしおり.pdf',blob=pdf.output('blob'),file=new File([blob],name,{type:'application/pdf'});
+  bar.textContent='PDFができました';
+  if(navigator.canShare&&/iPhone|iPad|Macintosh.*Mobile|Android/i.test(navigator.userAgent+(navigator.maxTouchPoints>1?' Mobile':''))&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:name})}catch(e){if(!e||e.name!=='AbortError')throw e}}
+  else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='EUROPE2027-shiori.pdf';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000)}
+  bar.textContent=msg}
+ catch(e){console.error(e);bar.textContent='PDFを作れませんでした。印刷画面から保存します…';window.print();setTimeout(()=>bar.textContent=msg,3000)}
+ finally{pagesEl.style.transform=keep[0];pagesEl.style.marginLeft=keep[1];sc.style.height=keep[2];btn.disabled=false;bkBusy=false}}
 async function printBooklet(){const t0=Date.now();const bar=document.querySelector('#bk-bar .t'),msg=bar.textContent;bar.textContent='地図を読み込んでいます…';while(bkTilesDone<bkTiles&&Date.now()-t0<8000)await new Promise(r=>setTimeout(r,250));bar.textContent=msg;window.print()}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-bk]');if(!b)return;const a=b.dataset.bk;if(a==='open')openBooklet();else if(a==='close')closeBooklet();else if(a==='print')printBooklet()});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-bk]');if(!b)return;const a=b.dataset.bk;if(a==='open')openBooklet();else if(a==='close')closeBooklet();else if(a==='print')exportPdf()});
 addEventListener('resize',()=>{if(document.body.classList.contains('bk-open'))fitBookletZoom()});
+addEventListener('orientationchange',()=>setTimeout(()=>{if(document.body.classList.contains('bk-open'))fitBookletZoom(true)},300));
 // The place list shows short descriptions from SPOT_INFO, which loads with this file.
 if(!$('places').classList.contains('hide'))renderCatalog();
