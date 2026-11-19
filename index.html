@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=21"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=22"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -97,11 +97,13 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="chips" id="cityChips"></div>
 <div class="card" id="catalog"></div>
 <details class="card more"><summary>リストにない場所を追加</summary><div class="form">
-<div><label>エリア</label><select id="newRegion"></select></div>
-<div><label>滞在時間（時間）</label><input id="newHours" type="number" value="2" min=".5" step=".5" inputmode="decimal"></div>
-<div class="full"><label>場所の名前</label><input id="newName" placeholder="例：ピガール地区"></div>
-<div class="full"><label>入場料（円／人）</label><input id="newPrice" type="number" value="0" min="0" inputmode="numeric"></div>
-<button class="btn full" data-act="addCustom">追加する</button></div></details>
+<div><label for="newRegion">エリア</label><select id="newRegion"></select></div>
+<div class="full"><label for="newName">場所の名前（日本語でも現地語でもOK）</label><input id="newName" placeholder="例：ロダン美術館、Musée Rodin" enterkeyhint="done"></div>
+<div><label for="newHours">滞在時間（自動）</label><input id="newHours" type="number" value="1" min=".25" step=".25" inputmode="decimal"></div>
+<div><label for="newPrice">入場料 円／人（自動）</label><input id="newPrice" type="number" value="0" min="0" inputmode="numeric"></div>
+<p class="muted full" id="newHint" style="margin:-4px 0 0">名前を入れると、滞在時間と入場料を自動で入れます（書き換えもできます）</p>
+<button class="btn full" data-act="addCustom">追加する（位置・料金も調べます）</button>
+<p class="muted full" style="margin:-4px 0 0">位置や料金は Wikidata と OpenStreetMap で調べた目安です。見つからないときは名前から推定します。</p></div></details>
 </section>
 
 <section id="plan" class="page hide">
@@ -172,7 +174,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:2px 0 0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></div>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v21 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v22 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 <section id="tools" class="page hide">
 <div class="page-h"><div><h1>便利帳</h1><p>共有・しおり・旅行中に使うものをまとめました</p></div></div>
@@ -189,7 +191,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算を見る<i>›</i></button><button class="mini" data-go="settings" style="border-top:1px solid var(--line)">⚙️ 人数・行動時間・JSONの保存<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">コースを見直す（計画モードに戻る）</button></div></div>
-<footer>EUROPE 2027 · v21 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v22 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 </main>
 
@@ -376,7 +378,7 @@ const stations={
 'ヴェネツィア|アカデミア橋':['Accademia',['1','2']],'ヴェネツィア|サルーテ聖堂':['Salute',['1']],'ヴェネツィア|ブラーノ島':['Burano',['12']],'ヴェネツィア|ムラーノ島':['Murano Faro',['4.1','4.2','12']],'ヴェネツィア|サン・マルコの鐘楼':['San Marco',['1','2']],'ヴェネツィア|サン・ジョルジョ・マッジョーレ教会':['San Giorgio',['2']],'ヴェネツィア|アカデミア美術館':['Accademia',['1','2']],'ヴェネツィア|ペギー・グッゲンハイム美術館':['Salute',['1']]};
 const lineName=(r,l)=>r==='パリ'?(l.startsWith('RER')?l+'線':'メトロ'+l.slice(1)+'号線'):r==='ローマ'?'地下鉄'+l+'線':'水上バス'+l+'番線';
 const stOf=x=>x.hotel?x.st:stations[x.r+'|'+x.n];
-function transitDetail(a,b,r){const A=stOf(a),B=stOf(b);if(!A||!B)return '';if(A[0]===B[0])return '';
+function transitDetail(a,b,r){const A=stOf(a),B=stOf(b);if(!A||!B)return null;if(A[0]===B[0])return '';
  if(r==='ヴェネツィア'&&B[0]==='Burano')return `Fondamente Nove から${lineName(r,'12')}で Burano へ`;
  if(r==='ヴェネツィア'&&A[0]==='Burano')return `Burano から${lineName(r,'12')}で Fondamente Nove へ`;
  const common=A[1].filter(l=>B[1].includes(l));return `${A[0]} → ${B[0]}（${common.length?lineName(r,common[0])+'で直通':'乗り換えあり'}）`}
@@ -406,6 +408,7 @@ const allowedDates=r=>segs.filter(s=>s.r===r).map(s=>s.d);
 const segLabel=s=>md(s.d)+'（'+wd(s.d)+'）'+(isMorning(s)?' 午前':s.from>=13?' 午後':'');
 // Opening hours (regular schedule checked Nov 2026). null = regular closing day.
 function venueHours(x,date){const w=dow(date),n=x.n,r=x.r;
+ if(Array.isArray(x.oh)){const v=x.oh[w];return v===0?null:Array.isArray(v)?v:[0,24]}
  if(n.includes('ルーヴル'))return w===2?null:[9,w===3||w===5?21:18];
  if(n.includes('オルセー'))return w===1?null:[9.5,w===4?21.75:18];
  if(n.includes('エッフェル'))return [9.5,23];
@@ -455,7 +458,7 @@ function legInfo(a,b){const H=a.hotel?a:b.hotel?b:null,o=a.hotel?b:a;
  if(r==='ヴェネツィア')return km<2?{h:Math.max(.2,km/3.5),mode:'徒歩',detail:''}:{h:km/12+.3,mode:'水上バス（ヴァポレット）',detail:transitDetail(a,b,r)};
  if(r==='モン・サン・ミッシェル')return {h:Math.max(.15,km/3.5),mode:'徒歩',detail:''};
  if(km<1.6)return {h:Math.max(.15,km/4),mode:'徒歩',detail:''};
- const det=transitDetail(a,b,r);return {h:km/17+.25,mode:det?(r==='パリ'?'メトロ・RER':'地下鉄'):(r==='パリ'?'メトロ・バス':'バス・徒歩'),detail:det||'最寄りに地下鉄がないのでバスか徒歩（経路で確認）'}}
+ const det=transitDetail(a,b,r);return {h:km/17+.25,mode:det?(r==='パリ'?'メトロ・RER':'地下鉄'):(r==='パリ'?'メトロ・バス':'バス・徒歩'),detail:det===null?'乗り方は「経路」で確認':det||'最寄りに地下鉄がないのでバスか徒歩（経路で確認）'}}
 const legIcon=m=>m.includes('鉄道')?'🚆':m.includes('水上バス')?'⛴':m.includes('シャトル')?'🚌':m.includes('メトロ')||m.includes('地下鉄')?'🚇':m.includes('バス')?'🚌':'🚶';
 function routeUrl(a,b,mode){const p=x=>x.lat?`${x.lat},${x.lon}`:encodeURIComponent(x.n+' '+x.r);return `https://www.google.com/maps/dir/?api=1&origin=${p(a)}&destination=${p(b)}&travelmode=${mode==='徒歩'?'walking':'transit'}`}
 
@@ -587,7 +590,7 @@ function renderCatalog(){
  const list=[...data[region].map(x=>item(region,x)),...selected.filter(x=>x.r===region&&x.tag==='自由追加')];
  $('catalog').innerHTML=list.map(x=>{const k=keyOf(x),on=selected.some(y=>keyOf(y)===k),p=priceYen(x),R=resOf(x),bid=spotBookId(x),ad=on&&assignments[k];
   const pill=R?(isBooked(bid)?'<span class="rv ok">予約済み</span>':`<span class="rv ${R[0]==='必須'?'':'rec'}">予約${R[0]}</span>`):'';
-  return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}${pill}</b>${typeof SPOT_INFO!=='undefined'&&SPOT_INFO[x.n]?`<span class="desc">${esc(SPOT_INFO[x.n][1])}</span>`:''}<small>${esc(x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note?'<br>'+esc(x.note):''}</small></span><span class="tick">✓</span></button>`}).join('');
+  return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}${pill}</b>${typeof SPOT_INFO!=='undefined'&&SPOT_INFO[x.n]?`<span class="desc">${esc(SPOT_INFO[x.n][1])}</span>`:''}<small>${esc(x.kind?x.tag+'・'+x.kind:x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note?'<br>'+esc(x.note):''}</small></span><span class="tick">✓</span></button>`}).join('');
 }
 const legHtml=(a,b,leg)=>`<div class="leg">${legIcon(leg.mode)} ${esc(leg.mode)} · 約${Math.max(5,Math.round(leg.h*12)*5)}分 · <a target="_blank" rel="noopener" href="${routeUrl(a,b,leg.mode)}">経路 ↗</a>${leg.detail?`<br><span class="st">${esc(leg.detail)}</span>`:''}</div>`;
 const stepsHtml=(steps,url,title)=>`<div class="move"><div class="move-t">${esc(title)}</div>${steps.map(([t,txt])=>`<div class="hrow"><span class="time">${t==null?'':fmt(t)}</span><span>${esc(typeof txt==='function'?txt():txt)}</span></div>`).join('')}${url?`<a class="move-l" target="_blank" rel="noopener" href="${url}">時刻・料金を調べる ↗</a>`:''}</div>`;
@@ -659,7 +662,84 @@ function tripReflow(msg){const before=JSON.stringify(assignments);ensureAssignme
 function showPage(id){if(!TABS[phase].some(t=>t[0]===id)&&!['settings','cost'].includes(id))id='plan';curPage=id;
  document.querySelectorAll('.page').forEach(e=>e.classList.toggle('hide',e.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.go===id));renderStepper();id==='places'?renderCatalog():build();window.scrollTo(0,0);const dc=$('dayChips');dc.scrollLeft=0;dc.querySelectorAll('.chip.on').forEach(c=>c.classList.remove('on'))}
 function toggle(k){const i=selected.findIndex(y=>keyOf(y)===k);if(i>=0)selected.splice(i,1);else{const r=k.slice(0,k.indexOf('|')),n=k.slice(k.indexOf('|')+1),x=(data[r]||[]).find(z=>z[0]===n);if(x)selected.push(item(r,x))}autoDistribute();renderCatalog()}
-function addCustom(){const r=$('newRegion').value,n=$('newName').value.trim();if(!n)return toast('場所の名前を入力してください');if(selected.some(x=>x.r===r&&x.n===n))return toast('すでに追加されています');selected.push({r,n,h:+$('newHours').value||2,p:+$('newPrice').value||0,lat:null,lon:null,tag:'自由追加'});$('newName').value='';region=r;autoDistribute();renderCatalog();toast(`「${n}」を追加しました`)}
+// ----- Places not in the list: estimate stay and fee from the name, then look the place up -----
+// keyword -> [kind, stay hours, adult fee EUR] (first match wins; Japanese, French, Italian and English words)
+const KW=[
+ [/美術館|博物館|ギャラリー|museum|musée|musee|museo|galleria|gallery|pinacoteca|collezione|collection/i,'美術館・博物館',2,15],
+ [/カタコンベ|地下墓地|catacomb|catacombe/i,'地下遺跡',1.5,20],
+ [/大聖堂|聖堂|教会|寺院|礼拝堂|修道院|basilica|basilique|chiesa|église|eglise|cathédrale|cathedrale|cathedral|church|duomo|chapelle|cappella|abbaye|abbazia|abbey|convent/i,'教会',0.75,0],
+ [/宮殿|城|palazzo|château|chateau|castel|castello|palais|palace|castle|villa/i,'宮殿・城',2,15],
+ [/遺跡|古代|浴場|forum|foro|terme|thermes|ruin|circo|mausoleo|mausoleum|archaeolog|amphitheat/i,'遺跡',1.5,12],
+ [/展望|タワー|鐘楼|塔|tower|torre|campanile|terrazza|belvedere|viewpoint|observation/i,'展望',1,15],
+ [/墓地|cimetière|cimitero|cemetery/i,'墓地',1,0],
+ [/公園|庭園|ガーデン|植物園|jardin|parc|parco|giardino|garden|park/i,'公園・庭園',1,0],
+ [/広場|piazza|place |square|campo /i,'広場',0.5,0],
+ [/橋|ponte|pont |bridge/i,'橋',0.25,0],
+ [/市場|マルシェ|mercato|marché|marche|market/i,'市場',1,0],
+ [/レストラン|カフェ|ビストロ|トラットリア|ジェラート|パティスリー|café|cafe|bistro|brasserie|trattoria|osteria|restaurant|ristorante|gelateria|pâtisserie|bakery/i,'食事・カフェ',1,0],
+ [/劇場|オペラ座|teatro|théâtre|theatre|theater|opéra|opera house/i,'劇場',1,15],
+ [/動物園|水族館|zoo|aquarium/i,'動物園・水族館',2.5,25],
+ [/島|isola|île|ile |island/i,'島',2,0],
+ [/百貨店|デパート|ショップ|アウトレット|boutique|galeries|department store|shop|outlet/i,'買い物',1,0],
+ [/地区|通り|界隈|街|quartier|rue |via |quartiere|district|neighbourhood|neighborhood|street|avenue/i,'街歩き',1.5,0],
+ [/噴水|fontana|fontaine|fountain|記念碑|monument|statue|obelisk/i,'名所',0.25,0]];
+function guessByName(t){for(const [re,kind,h,eur] of KW)if(re.test(t+' '))return {kind,h,eur};return null}
+const OSM_KIND={'tourism=museum':['美術館・博物館',2,15],'tourism=gallery':['美術館・博物館',1.5,12],'tourism=artwork':['名所',0.25,0],'tourism=viewpoint':['展望',0.5,0],'tourism=attraction':['名所',1,0],'tourism=zoo':['動物園・水族館',3,25],'tourism=aquarium':['動物園・水族館',2,20],'tourism=theme_park':['テーマパーク',4,40],
+ 'amenity=place_of_worship':['教会',0.75,0],'building=church':['教会',0.75,0],'building=cathedral':['教会',0.75,0],'historic=church':['教会',0.75,0],'historic=castle':['宮殿・城',2,15],'historic=palace':['宮殿・城',2,15],'building=palace':['宮殿・城',2,15],
+ 'historic=monument':['名所',0.5,0],'historic=memorial':['名所',0.25,0],'historic=archaeological_site':['遺跡',1.5,12],'historic=ruins':['遺跡',1,0],'leisure=park':['公園・庭園',1,0],'leisure=garden':['公園・庭園',1,0],'amenity=theatre':['劇場',1,15],
+ 'amenity=marketplace':['市場',1,0],'place=square':['広場',0.5,0],'highway=pedestrian':['街歩き',0.75,0],'place=neighbourhood':['街歩き',1.5,0],'place=quarter':['街歩き',1.5,0],'place=suburb':['街歩き',1.5,0],'place=island':['島',2,0],'place=islet':['島',1,0],
+ 'man_made=bridge':['橋',0.25,0],'amenity=restaurant':['食事・カフェ',1,0],'amenity=cafe':['食事・カフェ',0.75,0],'amenity=ice_cream':['食事・カフェ',0.25,0],'shop=department_store':['買い物',1,0],'man_made=tower':['展望',1,10],'amenity=grave_yard':['墓地',1,0],'landuse=cemetery':['墓地',1,0],'amenity=fountain':['名所',0.25,0]};
+function guessByOsm(o){const g=OSM_KIND[o.category+'='+o.type]||(o.category==='shop'?['買い物',0.75,0]:null);if(!g)return null;let [kind,h,eur]=g;const ex=o.extratags||{};
+ if(ex.fee==='no')eur=0;else if(ex.fee==='yes'&&!eur)eur=10;const m=/(\d+(?:[.,]\d+)?)\s*(?:€|eur)/i.exec(ex.charge||'');if(m)eur=+m[1].replace(',','.');return {kind,h,eur}}
+// Simple OSM opening_hours ("Tu-Su 09:30-18:00; Mo off", "24/7") -> per weekday (Sun=0) [open,close] or 0 = closed. Anything fancier -> null (unknown).
+function parseOH(str){if(typeof str!=='string'||!str.trim())return null;str=str.trim();if(str==='24/7')return Array(7).fill([0,24]);
+ const D=['Su','Mo','Tu','We','Th','Fr','Sa'],out=Array(7).fill(undefined),span=t=>{const rs=[...t.matchAll(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/g)];if(!rs.length)return null;const L=rs[rs.length-1],o=+rs[0][1]+rs[0][2]/60;let c=(+L[3]+L[4]/60)||24;if(c<=o)c+=24;return [o,c]};
+ for(const part of str.split(';')){const p=part.trim();if(!p||/^PH\b/.test(p))continue;
+  const m=/^((?:(?:Mo|Tu|We|Th|Fr|Sa|Su)(?:-(?:Mo|Tu|We|Th|Fr|Sa|Su))?,?)+)\s+(.+)$/.exec(p);
+  if(!m){if(!/^\d/.test(p))return null;const t=span(p);if(!t)return null;out.fill(t);continue}
+  let t;if(/^(off|closed)$/i.test(m[2].trim()))t=0;else{t=span(m[2]);if(!t)return null}
+  for(const seg of m[1].split(',').filter(Boolean)){const [a,b]=seg.split('-'),ia=D.indexOf(a),ib=b?D.indexOf(b):ia;if(ia<0||ib<0)return null;for(let i=ia,k=0;k<7;i=(i+1)%7,k++){out[i]=t;if(i===ib)break}}}
+ return out.every(v=>v===undefined)?null:out.map(v=>v===undefined?0:v)}
+const VIEWBOX={'パリ':[2.0,48.65,2.6,49.05],'モン・サン・ミッシェル':[-1.75,48.5,-1.3,48.75],'ヴェネツィア':[12.15,45.35,12.5,45.55],'ローマ':[12.3,41.75,12.65,42.0]};
+const inBox=(r,lat,lon)=>{const b=VIEWBOX[r];return b&&lon>=b[0]&&lon<=b[2]&&lat>=b[1]&&lat<=b[3]};
+async function getJSON(u){const c=new AbortController(),t=setTimeout(()=>c.abort(),7000);try{const r=await fetch(u,{signal:c.signal});return r.ok?await r.json():null}catch{return null}finally{clearTimeout(t)}}
+// Wikidata finds Japanese names well (coordinates, local name, description); OpenStreetMap adds the kind of place, fee and opening hours.
+async function lookupPlace(r,n){let wd=null;
+ const sr=await getJSON('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbsearchentities',search:n,language:'ja',uselang:'ja',type:'item',limit:'7',format:'json',origin:'*'}));
+ const ids=((sr&&sr.search)||[]).map(x=>x.id).filter(Boolean);
+ if(ids.length){const ge=await getJSON('https://www.wikidata.org/w/api.php?'+new URLSearchParams({action:'wbgetentities',ids:ids.join('|'),props:'claims|labels|descriptions',languages:'ja|en|fr|it',format:'json',origin:'*'}));
+  for(const id of ids){const e=ge&&ge.entities&&ge.entities[id];if(!e)continue;const c=e.claims||{},v=c.P625&&c.P625[0]&&c.P625[0].mainsnak&&c.P625[0].mainsnak.datavalue&&c.P625[0].mainsnak.datavalue.value;
+   if(!v||!inBox(r,v.latitude,v.longitude))continue;const L=k=>((e.labels||{})[k]||{}).value||'',Ds=k=>((e.descriptions||{})[k]||{}).value||'';
+   const fee=c.P2555&&c.P2555[0]&&c.P2555[0].mainsnak&&c.P2555[0].mainsnak.datavalue&&c.P2555[0].mainsnak.datavalue.value;
+   wd={lat:v.latitude,lon:v.longitude,local:L(r==='ローマ'||r==='ヴェネツィア'?'it':'fr')||L('en'),ja:L('ja'),text:[L('ja'),Ds('ja'),Ds('en'),L('en')].join(' '),eur:fee&&/Q4916$/.test(fee.unit||'')?Math.abs(parseFloat(fee.amount))||0:null};break}}
+ const vb=VIEWBOX[r].join(','),osmQ=q=>getJSON('https://nominatim.openstreetmap.org/search?'+new URLSearchParams({format:'jsonv2',limit:'5',extratags:'1',namedetails:'1',bounded:'1',viewbox:vb,'accept-language':'ja',q}));
+ // skip bus stops, stations, plain roads etc. that merely share the name
+ const bad=o=>/^(railway|public_transport|boundary|route|power|office|landuse)$/.test(o.category)||/bus_stop|platform|station|stop_position|parking|taxi|residential|service|primary|secondary|tertiary|unclassified/.test(o.type);
+ let osm=null;for(const q of [wd&&wd.local,n].filter(Boolean)){const res=await osmQ(q);if(!Array.isArray(res))continue;osm=res.find(o=>OSM_KIND[o.category+'='+o.type])||res.find(o=>!bad(o))||null;if(osm)break}
+ if(osm&&wd&&Math.hypot(+osm.lat-wd.lat,+osm.lon-wd.lon)>.01)osm=null; // a different place with a similar name
+ return (wd||osm)?{wd,osm}:null}
+let newDirty={h:false,p:false};
+function fillNewGuess(){const n=$('newName').value.trim(),g=n&&(guessByName(n)||{kind:'観光地',h:1,eur:0});
+ if(!g){$('newHint').textContent='名前を入れると、滞在時間と入場料を自動で入れます（書き換えもできます）';return}
+ if(!newDirty.h)$('newHours').value=g.h;if(!newDirty.p)$('newPrice').value=Math.round(g.eur*rate()/10)*10;
+ $('newHint').textContent=`名前から推定：${g.kind} · ${g.h}時間 · ${g.eur?'約€'+g.eur:'無料'}（目安）。「追加する」で位置や料金も調べます`}
+let adding=false;
+async function addCustom(){if(adding)return;const r=$('newRegion').value,n=$('newName').value.trim();if(!n)return toast('場所の名前を入力してください');if(selected.some(x=>x.r===r&&x.n===n))return toast('すでに追加されています');
+ const hit=data[r].find(z=>z[0]===n||(n.length>=3&&z[0].includes(n))||(n.includes(z[0])&&n.length-z[0].length<=2));
+ if(hit){const k=r+'|'+hit[0];region=r;if(!selected.some(x=>keyOf(x)===k))toggle(k);else renderCatalog();$('newName').value='';fillNewGuess();return toast(`「${hit[0]}」はリストにあったので、そちらを選びました`)}
+ const btn=document.querySelector('[data-act="addCustom"]'),label=btn.textContent;adding=true;btn.disabled=true;btn.textContent='調べています…';
+ let found=null;try{found=await lookupPlace(r,n)}catch{}
+ adding=false;btn.disabled=false;btn.textContent=label;
+ const wd=found&&found.wd,osm=found&&found.osm;
+ let g=(osm&&guessByOsm(osm))||guessByName([n,wd&&wd.text].filter(Boolean).join(' '))||{kind:'観光地',h:1,eur:0};
+ if(wd&&wd.eur!=null)g={...g,eur:wd.eur};
+ const ex=(osm&&osm.extratags)||{},oh=parseOH(ex.opening_hours),lat=wd?wd.lat:osm?+osm.lat:null,lon=wd?wd.lon:osm?+osm.lon:null;
+ const h=newDirty.h?(+$('newHours').value||g.h):g.h,p=newDirty.p?(+$('newPrice').value||0):Math.round(g.eur*rate()/10)*10;
+ const src=(wd&&osm?'Wikidata・OpenStreetMap':wd?'Wikidata':osm?'OpenStreetMap':'名前')+'から推定',nm=(wd&&(wd.local||wd.ja))||(osm&&osm.name)||'';
+ const note=(lat!=null?`📍 ${nm||n}`:'位置は見つかりませんでした（経路はGoogleマップで確認）')+(ex.opening_hours?` · 営業 ${ex.opening_hours}`:'')+` · ${src}`;
+ selected.push({r,n,h,p,lat,lon,tag:'自由追加',kind:g.kind,note:note.slice(0,200),oh});
+ $('newName').value='';newDirty={h:false,p:false};fillNewGuess();region=r;autoDistribute();renderCatalog();
+ toast(`「${n}」を追加しました（${g.kind}・${h}時間・${p?yen(p):'無料'}${lat!=null?'・位置あり':''}）`)}
 function setDay(k,d){assignments[k]=d;const x=selected.find(y=>keyOf(y)===k),s=segOf(d,x.r);selected=selected.filter(y=>y!==x);const others=itemsOf(s);const best=bestRoute([...others,x],s);selected=[...selected.filter(y=>!best.includes(y)),...best];build();const pd=pinnedDate(x);toast(pd&&pd!==d?`${segLabel(s)}に移しました。予約済みの日（${md(pd)}）と違うので、予約を変えたら「予約」タブでチェックし直してください（そのままだと次の自動調整で予約日に戻ります）`:`${segLabel(s)}に移動しました`)}
 function shiftStop(k,delta){const day=assignments[k],x0=selected.find(y=>keyOf(y)===k),arr=selected.filter(x=>x.r===x0.r&&assignments[keyOf(x)]===day),i=arr.indexOf(x0),j=i+delta;if(j<0||j>=arr.length)return;const a=selected.indexOf(arr[i]),b=selected.indexOf(arr[j]);[selected[a],selected[b]]=[selected[b],selected[a]];build()}
 function removeStop(k){const x=selected.find(y=>keyOf(y)===k);selected=selected.filter(y=>keyOf(y)!==k);delete assignments[k];if(isTrip())build();else autoDistribute();toast(`「${x?x.n:''}」を外しました`)}
@@ -667,7 +747,8 @@ function persist(){try{localStorage.setItem('europetrip_v4',JSON.stringify(state
 function state(){return {v:6,selected:selected.map(x=>x.tag==='自由追加'?x:{r:x.r,n:x.n}),assignments,order:selected.map(keyOf),hotels:hotelSel,travel:travelChoice,bookings,phase,hint:tripHint,settings:Object.fromEntries(keys.map(k=>[k,$(k).value]))}}
 // Older saves: keep the chosen places (refreshed from the catalog), drop outdated settings, and re-plan.
 function apply(s){if(!s||!Array.isArray(s.selected))throw Error('データが不正です');
- selected=s.selected.filter(x=>x&&regions.includes(x.r)&&typeof x.n==='string').slice(0,120).map(x=>{const c=(data[x.r]||[]).find(z=>z[0]===x.n);return c?item(x.r,c):{r:x.r,n:x.n.slice(0,100),h:+x.h||2,p:+x.p||0,lat:null,lon:null,tag:'自由追加'}});
+ selected=s.selected.filter(x=>x&&regions.includes(x.r)&&typeof x.n==='string').slice(0,120).map(x=>{const c=(data[x.r]||[]).find(z=>z[0]===x.n);if(c)return item(x.r,c);const ok=Number.isFinite(+x.lat)&&Number.isFinite(+x.lon)&&x.lat!==null&&inBox(x.r,+x.lat,+x.lon),oh=Array.isArray(x.oh)&&x.oh.length===7&&x.oh.every(v=>v===0||(Array.isArray(v)&&v.length===2&&v.every(Number.isFinite)))?x.oh:null;
+  return {r:x.r,n:x.n.slice(0,100),h:Math.min(12,Math.max(.25,+x.h||1)),p:Math.max(0,+x.p||0),lat:ok?+x.lat:null,lon:ok?+x.lon:null,tag:'自由追加',kind:typeof x.kind==='string'?x.kind.slice(0,20):'',note:typeof x.note==='string'?x.note.slice(0,200):'',oh}});
  if(s.v>=5)for(const k of keys)if(s.settings&&s.settings[k]!=null&&$(k))$(k).value=s.settings[k];
  if(s.travel&&typeof s.travel==='object'){travelChoice={};for(const D of days)if(D.variants&&Number.isInteger(+s.travel[D.d]))travelChoice[D.d]=+s.travel[D.d];applyTravel()}
  if(s.hotels&&typeof s.hotels==='object')for(const r of regions)if(Number.isInteger(+s.hotels[r]))hotelSel[r]=+s.hotels[r];
@@ -697,6 +778,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-hotel],[da
 });
 document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
+$('newName').addEventListener('input',fillNewGuess);$('newName').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();addCustom()}});$('newHours').addEventListener('input',()=>newDirty.h=true);$('newPrice').addEventListener('input',()=>newDirty.p=true);
 $('cvE').addEventListener('input',()=>{$('cvY').value=Math.round((+$('cvE').value||0)*rate())});$('cvY').addEventListener('input',()=>{$('cvE').value=Math.round((+$('cvY').value||0)/rate()*100)/100});
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 keys.forEach(k=>$(k).addEventListener('change',()=>{if((k==='startH'||k==='endH')&&!isTrip())autoDistribute();else build()}));
@@ -719,4 +801,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');
-</script><script src="booklet.js?v=21"></script></body></html>
+</script><script src="booklet.js?v=22"></script></body></html>
