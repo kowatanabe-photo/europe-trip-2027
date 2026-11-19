@@ -99,7 +99,7 @@ function dayTitle(D){if(D.pre)return 'いよいよ出発。羽田から夜の便
  return top.length?top.join('と')+'へ':(D.night||'')+'を気ままに歩く'}
 
 function bkCover(){const n=selected.length,photo=selected.filter(x=>evType(x)).length;
- return `<section class="bk-page cover"><div class="cover-mast latin"><span>VOL. 01</span><span>SPRING 2027 · TRAVEL NOTEBOOK</span><span>FOR 3 TRAVELLERS</span></div>
+ return `<section class="bk-page cover"><div class="cover-mast latin"><span>VOL. 01</span><span>SPRING 2027 · TRAVEL NOTEBOOK</span><span>${isTrip()?'FOR 3 TRAVELLERS':'DRAFT · 計画中のコース'}</span></div>
 <h1 class="masthead latin">EUROPE</h1>
 <div class="cover-tag"><span class="latin">PHOTO JOURNEY</span><span class="serif">パリ · モン・サン・ミッシェル · ヴェネツィア · ローマ</span></div>
 <div class="cover-body"><div class="map bk-map" data-map="overview"></div>
