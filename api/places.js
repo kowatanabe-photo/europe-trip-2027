@@ -9,8 +9,21 @@ const ALLOWED_ORIGINS = ["https://kowatanabe-photo.github.io"];
 const REGIONS = ["パリ", "モン・サン・ミッシェル", "ヴェネツィア", "ローマ"];
 const KEY = "europe2027:places";
 const MAX_PLACES = 300;
-const REDIS_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const REDIS_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// The integration names its variables after the chosen prefix (KV_REST_API_URL, UPSTASH_REDIS_REST_URL, or <PREFIX>_…),
+// so take whichever REST URL / write token pair is present.
+function findRedisEnv() {
+  const env = process.env;
+  for (const [u, t] of [["KV_REST_API_URL", "KV_REST_API_TOKEN"], ["UPSTASH_REDIS_REST_URL", "UPSTASH_REDIS_REST_TOKEN"]])
+    if (env[u] && env[t]) return [env[u], env[t]];
+  for (const k of Object.keys(env)) {
+    const m = /^(.*)_(REST_API_URL|REDIS_REST_URL)$/.exec(k);
+    if (!m) continue;
+    const t = env[`${m[1]}_${m[2].replace("URL", "TOKEN")}`];
+    if (env[k] && t && /^https:\/\//.test(env[k])) return [env[k], t];
+  }
+  return [null, null];
+}
+const [REDIS_URL, REDIS_TOKEN] = findRedisEnv();
 
 async function redis(cmd) {
   const r = await fetch(REDIS_URL, {
