@@ -10,6 +10,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request, url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return; // map tiles etc. go straight to the network
+  if (url.pathname.startsWith('/api/')) return; // the shared place list must always be fresh
   const nav = req.mode === 'navigate';
   e.respondWith((async () => {
     const c = await caches.open(CACHE);
