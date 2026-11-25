@@ -3,11 +3,14 @@
 // picks for the plan stays on their own device.
 // Storage: Upstash Redis (Vercel → Storage → Upstash for Redis), read over its REST API. The URL/token come from
 // the environment variables that integration adds; nothing secret is in the page.
-// Reading is open (place names only); adding or removing needs the same passcode as the chat (CHAT_PASSCODE).
+// It also keeps the "行きたい" votes: who wants to go where, so the three can see each other's opinions.
+// Reading is open (place names and first names only); adding, removing or voting needs the same passcode as the chat (CHAT_PASSCODE).
 
 const ALLOWED_ORIGINS = ["https://kowatanabe-photo.github.io"];
 const REGIONS = ["パリ", "モン・サン・ミッシェル", "ヴェネツィア", "ローマ"];
 const KEY = "europe2027:places";
+const VOTE_KEY = "europe2027:votes"; // field "<region>|<place>\u0001<name>" = "1" (one field per vote, so votes never overwrite each other)
+const MAX_VOTES = 3000;
 const MAX_PLACES = 300;
 // The integration names its variables after the chosen prefix (KV_REST_API_URL, UPSTASH_REDIS_REST_URL, or <PREFIX>_…),
 // so take whichever REST URL / write token pair is present.
@@ -95,7 +98,14 @@ export default async function handler(req, res) {
         } catch {}
       }
       places.sort((a, b) => a.at - b.at);
-      return res.json({ places });
+      const vf = (await redis(["HKEYS", VOTE_KEY])) || [];
+      const votes = {};
+      for (const f of vf) {
+        const i = f.lastIndexOf("\u0001");
+        if (i < 1) continue;
+        (votes[f.slice(0, i)] ||= []).push(f.slice(i + 1));
+      }
+      return res.json({ places, votes });
     }
     if (req.method !== "POST") return res.status(405).json({ error: "GET or POST only" });
 
@@ -129,7 +139,19 @@ export default async function handler(req, res) {
       await redis(["HDEL", KEY, `${r}|${n}`]);
       return res.json({ ok: true });
     }
-    return res.status(400).json({ error: "op は add か remove" });
+    if (body.op === "vote") {
+      const r = REGIONS.includes(body.r) ? body.r : null,
+        n = str(body.n, 100),
+        name = str(body.name, 20).replace(/\u0001/g, "");
+      if (!r || !n || !name) return res.status(400).json({ error: "投票の指定が正しくありません" });
+      const field = `${r}|${n}\u0001${name}`;
+      if (body.on) {
+        if ((await redis(["HLEN", VOTE_KEY])) >= MAX_VOTES) return res.status(409).json({ error: "投票がいっぱいです" });
+        await redis(["HSET", VOTE_KEY, field, "1"]);
+      } else await redis(["HDEL", VOTE_KEY, field]);
+      return res.json({ ok: true });
+    }
+    return res.status(400).json({ error: "op は add・remove・vote のどれか" });
   } catch {
     return res.status(502).json({ error: "共有の保存場所に接続できませんでした" });
   }
