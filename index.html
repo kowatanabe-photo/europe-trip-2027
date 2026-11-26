@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=36"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=37"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -78,6 +78,9 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 .bitem .muted{margin:0 0 8px}.bitem input{padding:9px 11px;margin:2px 0 8px}
 .btime{margin:2px 0 4px}.btime label{margin:6px 0 4px}.btime input{max-width:170px}
 .stayed{display:flex;align-items:center;gap:6px;flex-basis:100%;font-size:13px;font-weight:600;color:var(--sub);white-space:nowrap}.stayed b{flex:1;text-align:center;color:var(--ink);font-size:13.5px;white-space:nowrap}.stayed .btn{padding:6px 0;width:40px;font-size:17px;line-height:1.2}
+.sp-ph{flex:none;width:64px;height:64px;border-radius:10px;overflow:hidden;background:#e9eef2;align-self:flex-start;margin-top:2px}.sp-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pv{position:fixed;inset:0;z-index:80;background:rgba(10,20,30,.82);display:flex;align-items:center;justify-content:center;padding:16px}.pv-in{position:relative;background:#fff;border-radius:16px;overflow:hidden;max-width:560px;width:100%;max-height:90vh;display:flex;flex-direction:column}.pv-in img{width:100%;max-height:60vh;object-fit:cover;background:#e9eef2}.pv-t{padding:12px 16px 14px;overflow:auto}.pv-t b{font-size:17px}.pv-t p{margin:6px 0 8px;font-size:13.5px;line-height:1.6;color:#41566a}.pv-t small{font-size:11.5px;color:var(--sub)}.pv-t a{color:var(--accent)}.pv-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:16px}
+.pcred{padding:10px 16px 14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--sub)}.pcred summary{cursor:pointer;font-weight:600}.pcred div{margin-top:4px;line-height:1.5}.pcred a{color:var(--accent)}
 .vote{flex:none;display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:14px;background:#fff;color:var(--sub);line-height:1;min-width:44px;justify-content:center}.vote b{font-size:13px;font-weight:700;color:var(--ink)}.vote.on{background:#fff4d6;border-color:#f0c34a}.vote.on b{color:#8a5a00}
 .voters{display:block;color:#8a5a00;font-weight:600;margin-top:2px}.vote-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 16px;font-size:12.5px;color:var(--sub);background:#fbfaf5}.vote-bar .chip{flex:none;padding:5px 10px;font-size:12.5px}.linkish{border:0;background:none;padding:0;color:var(--accent);font-size:12.5px;font-weight:600;text-decoration:underline}
 .cand-act{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 16px 10px 16px;margin-top:-6px;font-size:12px;color:var(--sub)}.cand-del{border:0;background:none;color:var(--red);font-size:12.5px;font-weight:600;padding:4px 0}
@@ -195,7 +198,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v36 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v37 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
@@ -212,7 +215,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v36 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v37 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="money" class="page hide">
@@ -233,6 +236,8 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="chat" id="chat"><div class="chat-log hide" id="chatLog" aria-live="polite"></div><form class="chat-bar" id="chatForm"><input id="chatIn" placeholder="✨ AIに頼む 例：ルーヴルを4時間に" maxlength="300" enterkeyhint="send" autocomplete="off" aria-label="AIへの依頼"><button class="chat-send" aria-label="送信">↑</button></form></div>
 <nav class="tabbar"><div class="tabbar-in" id="tabs"></div></nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="pv hide" id="photoView" role="dialog" aria-modal="true" aria-label="写真"></div>
+<script src="photos.js?v=37"></script>
 
 <script>
 // ===================== data =====================
@@ -750,10 +755,11 @@ function renderCatalog(){
  const me=myName(),vc=x=>(VOTES[keyOf(x)]||[]).length,bySort=a=>voteSort?a.map((x,i)=>[x,i]).sort((p,q)=>vc(q[0])-vc(p[0])||p[1]-q[1]).map(p=>p[0]):a;
  const row=x0=>{const k=keyOf(x0),sx=selected.find(y=>keyOf(y)===k),x=sx||x0,on=!!sx,p=priceYen(x),R=resOf(x),bid=spotBookId(x),ad=on&&assignments[k],vs=VOTES[k]||[],mine=!!me&&vs.includes(me);
   const pill=R?(isBooked(bid)?'<span class="rv ok">予約済み</span>':`<span class="rv ${R[0]==='必須'?'':'rec'}">予約${R[0]}</span>`):'';
-  return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}"><span class="t"><b>${esc(x.n)}${pill}</b>${typeof SPOT_INFO!=='undefined'&&SPOT_INFO[x.n]?`<span class="desc">${esc(SPOT_INFO[x.n][1])}</span>`:''}<small>${x.trip?`${x.trip.half?'半日':'1日がかり'} · 現地${fmtH(x.h)} · 片道約${legMin(x.trip.go)} · 往復の交通費 約${yen(x.fare*rate())}${p?' · 入場 '+yen(p):''}`:`${esc(x.kind?x.tag+'・'+x.kind:x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}`}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note&&(x.trip||x.tag==='自由追加'||typeof SPOT_INFO==='undefined'||!SPOT_INFO[x.n])?'<br>'+esc(x.note):''}${vs.length?`<span class="voters">👍 ${esc(vs.join('・'))}</span>`:''}</small></span><span class="vote${mine?' on':''}" role="button" tabindex="0" data-vote="${esc(k)}" aria-pressed="${mine}" aria-label="${esc(x.n)}に行きたいと投票">👍<b>${vs.length||''}</b></span><span class="tick">✓</span></button>`};
+  const ph=photoOf(x.n);
+  return `<button class="spot ${on?'on':''}" data-toggle="${esc(k)}" aria-pressed="${on}">${ph?`<span class="sp-ph" role="button" tabindex="0" data-photo="${esc(x.n)}" aria-label="${esc(x.n)}の写真を大きく見る"><img src="${esc(ph[0])}" alt="" loading="lazy" decoding="async" onerror="this.parentNode.remove()"></span>`:''}<span class="t"><b>${esc(x.n)}${pill}</b>${typeof SPOT_INFO!=='undefined'&&SPOT_INFO[x.n]?`<span class="desc">${esc(SPOT_INFO[x.n][1])}</span>`:''}<small>${x.trip?`${x.trip.half?'半日':'1日がかり'} · 現地${fmtH(x.h)} · 片道約${legMin(x.trip.go)} · 往復の交通費 約${yen(x.fare*rate())}${p?' · 入場 '+yen(p):''}`:`${esc(x.kind?x.tag+'・'+x.kind:x.tag)} · ${x.h}時間 · ${p?yen(p):'無料'}`}${ad?` · <span style="color:var(--accent);font-weight:600">📅 ${esc(dl(ad))}</span>`:''}${x.note&&(x.trip||x.tag==='自由追加'||typeof SPOT_INFO==='undefined'||!SPOT_INFO[x.n])?'<br>'+esc(x.note):''}${vs.length?`<span class="voters">👍 ${esc(vs.join('・'))}</span>`:''}</small></span><span class="vote${mine?' on':''}" role="button" tabindex="0" data-vote="${esc(k)}" aria-pressed="${mine}" aria-label="${esc(x.n)}に行きたいと投票">👍<b>${vs.length||''}</b></span><span class="tick">✓</span></button>`};
  const voteBar=`<div class="vote-bar"><span>👍で「行きたい」に投票（3人に見えます）${me?` · <button class="linkish" data-votename="1">${esc(me)}として投票</button>`:''}</span><button class="chip sm${voteSort?' on':''}" data-votesort="1">👍の多い順</button></div>`;
  const ownRow=x=>{const c=CANDS.find(z=>candKey(z)===keyOf(x));return row(x)+(c?`<div class="cand-act">${c.pending?'<span>この端末だけ（まだ共有されていません）</span>':'<span>👥 3人で共有中</span>'}<button class="cand-del" data-canddel="${esc(candKey(c))}">候補から消す</button></div>`:'')};
- $('catalog').innerHTML=voteBar+bySort(list).map(row).join('')+(own.length?`<div class="cat-h"><b>✨ 自分たちで追加した場所</b><span>AIで追加した場所は3人共通の候補になり、ほかの人も再読み込みすると一覧に出ます。行く・行かないは各自で選べます${candsShared===false?'（共有の保存場所に接続できないため、いまはこの端末だけに表示）':''}</span></div>`+bySort(own).map(ownRow).join(''):'')+(trips.length?`<div class="cat-h"><b>🚆 ${esc(region)}から郊外・日帰り</b><span>電車の行き帰りも日程に入ります。「1日がかり」の場所は、${esc(region)}で丸1日使える日（${esc(segs.filter(s=>s.r===region&&s.from==null&&s.to==null).map(s=>dl(s.d)).join('・'))||'なし'}）に入ります</span></div>`+bySort(trips).map(row).join(''):'');
+ $('catalog').innerHTML=voteBar+bySort(list).map(row).join('')+(own.length?`<div class="cat-h"><b>✨ 自分たちで追加した場所</b><span>AIで追加した場所は3人共通の候補になり、ほかの人も再読み込みすると一覧に出ます。行く・行かないは各自で選べます${candsShared===false?'（共有の保存場所に接続できないため、いまはこの端末だけに表示）':''}</span></div>`+bySort(own).map(ownRow).join(''):'')+(trips.length?`<div class="cat-h"><b>🚆 ${esc(region)}から郊外・日帰り</b><span>電車の行き帰りも日程に入ります。「1日がかり」の場所は、${esc(region)}で丸1日使える日（${esc(segs.filter(s=>s.r===region&&s.from==null&&s.to==null).map(s=>dl(s.d)).join('・'))||'なし'}）に入ります</span></div>`+bySort(trips).map(row).join(''):'')+photoCredits([...list,...own,...trips]);
 }
 const legMin=h=>h>=1?(Math.floor(h)+'時間'+(Math.round(h%1*12)*5?Math.round(h%1*12)*5+'分':'')):Math.max(5,Math.round(h*12)*5)+'分';
 const legHtml=(a,b,leg)=>`<div class="leg">${legIcon(leg.mode)} ${esc(leg.mode)} · 約${legMin(leg.h)} · <a target="_blank" rel="noopener" href="${routeUrl(a,b,leg.mode)}">経路 ↗</a>${leg.detail?`<br><span class="st">${esc(leg.detail)}</span>`:''}</div>`;
@@ -938,6 +944,14 @@ let toastTimer;function toast(msg){const t=$('toast');t.textContent=msg;t.classL
 const CHAT_URL=(()=>{try{const o=localStorage.getItem('chatEndpoint');if(o)return o}catch{}return /\.vercel\.app$/.test(location.hostname)?'/api/chat':'https://europe-trip-2027-two.vercel.app/api/chat'})();
 // ----- Places someone added themselves: shared with the other two as candidates (picking them stays per device) -----
 const PLACES_URL=CHAT_URL.replace(/\/api\/chat$/,'/api/places');
+function photoCredits(L){const ps=L.map(x=>[x.n,photoOf(x.n)]).filter(p=>p[1]);if(!ps.length)return '';
+ return `<details class="pcred"><summary>写真のクレジット（Wikimedia Commons）</summary>${ps.map(([n,p])=>`<div>${esc(n)}：<a href="${esc(p[3])}" target="_blank" rel="noopener">${esc(p[1])}</a>（${esc(p[2])}）</div>`).join('')}</details>`}
+const photoOf=n=>typeof PHOTOS!=='undefined'&&PHOTOS[n]||null;
+const bigPhoto=u=>u.replace(/\/\d+px-([^/]+)$/,'/960px-$1');
+function openPhoto(n){const ph=photoOf(n);if(!ph)return;const info=typeof SPOT_INFO!=='undefined'&&SPOT_INFO[n];
+ $('photoView').innerHTML=`<div class="pv-in"><img src="${esc(bigPhoto(ph[0]))}" alt="${esc(n)}"><div class="pv-t"><b>${esc(n)}</b>${info?`<p>${esc(info[1])}</p>`:''}<small>写真：<a href="${esc(ph[3])}" target="_blank" rel="noopener">${esc(ph[1])}</a>（${esc(ph[2])}・Wikimedia Commons）</small></div><button class="pv-x" data-act="closePhoto" aria-label="閉じる">✕</button></div>`;
+ $('photoView').classList.remove('hide')}
+function closePhoto(){$('photoView').classList.add('hide');$('photoView').innerHTML=''}
 const candKey=c=>c.r+'|'+c.n;
 const candClean=c=>c&&regions.includes(c.r)&&typeof c.n==='string'&&c.n.trim()?{r:c.r,n:c.n.slice(0,100),h:Math.min(12,Math.max(.25,+c.h||1)),p:Math.max(0,+c.p||0),lat:Number.isFinite(+c.lat)&&c.lat!==null?+c.lat:null,lon:Number.isFinite(+c.lon)&&c.lon!==null?+c.lon:null,kind:String(c.kind||'').slice(0,20),note:String(c.note||'').slice(0,200),oh:Array.isArray(c.oh)&&c.oh.length===7?c.oh:null,pending:!!c.pending}:null;
 let VOTES={},voteSort=false,lastTouch=Date.now();
@@ -1034,7 +1048,7 @@ function chatUndoIt(){if(!chatUndo)return;const last=chatHist[chatHist.length-1]
 function chatClose(){$('chatLog').classList.add('hide')}
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[role="button"]')){e.preventDefault();e.target.click()}});
 document.addEventListener('pointerdown',e=>{const l=$('chatLog');if(l&&!l.classList.contains('hide')&&!e.target.closest('#chat'))l.classList.add('hide')},true);
-document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix],[data-excur],[data-excat],[data-exdel],[data-canddel],[data-vote],[data-votesort],[data-votename]');if(!t||t.disabled)return;const d=t.dataset;
+document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix],[data-excur],[data-excat],[data-exdel],[data-canddel],[data-vote],[data-votesort],[data-votename],[data-photo]');if(!t||t.disabled)return;const d=t.dataset;
  if(d.stay){const i=d.stay.lastIndexOf('|');changeStay(d.stay.slice(0,i),+d.stay.slice(i+1))}
  else if(d.book)toggleBook(d.book);
  else if(d.jump)jumpDay(d.jump);
@@ -1043,6 +1057,7 @@ document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[
  else if(d.exdel)delExp(d.exdel);
  else if(d.canddel)removeCandidate(d.canddel);
  else if(d.vote)toggleVote(d.vote);
+ else if(d.photo)openPhoto(d.photo);
  else if(d.votesort){voteSort=!voteSort;renderCatalog()}
  else if(d.votename){if(askName(true))renderCatalog()}
  else if(d.travelfix){const [dd,j]=d.travelfix.split('|'),D=days.find(z=>z.d===dd);travelChoice[dd]=+j;applyTravel();const msg=`${md(dd)}は「${D.variants[+j].label}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}
@@ -1055,10 +1070,11 @@ document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[
  else if('down' in d)shiftStop(d.down,1);
  else if('remove' in d)removeStop(d.remove);
  else if(d.addcity){region=d.addcity;showPage('places')}
- else if(d.act){e.preventDefault();({share,downloadIcs,addExp,copyExp,export:exportJSON,import:()=>$('importFile').click(),openRoute,confirmTrip,toPlan,phaseTap,dismissHint,chatUndoIt,chatClose})[d.act]()}
+ else if(d.act){e.preventDefault();({share,downloadIcs,addExp,copyExp,export:exportJSON,import:()=>$('importFile').click(),openRoute,confirmTrip,toPlan,phaseTap,dismissHint,chatUndoIt,chatClose,closePhoto})[d.act]()}
 });
 document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
+$('photoView').addEventListener('click',e=>{if(e.target.id==='photoView')closePhoto()});addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('photoView').classList.contains('hide'))closePhoto()});
 $('exAmt').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addExp()}});
 $('cvE').addEventListener('input',()=>{$('cvY').value=Math.round((+$('cvE').value||0)*rate())});$('cvY').addEventListener('input',()=>{$('cvE').value=Math.round((+$('cvY').value||0)/rate()*100)/100});
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -1084,4 +1100,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');loadWeather();syncPlaces();
-</script><script src="booklet.js?v=36"></script></body></html>
+</script><script src="booklet.js?v=37"></script></body></html>
