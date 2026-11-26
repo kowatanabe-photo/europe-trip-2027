@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=40"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=41"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -83,6 +83,9 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 .pv-in.sh .pv-t{padding:20px 18px 18px}.pv-in.sh .pv-t p{margin:8px 0 10px}.sh-url{width:100%;font-size:13px;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;color:var(--ink);background:#f6f8fa}.pv-in.sh .row2{display:flex;gap:8px;margin-bottom:10px}.pv-in.sh .row2 .btn{flex:1}
 .bwho{display:flex;align-items:center;gap:8px;margin:8px 0 2px}.bwho label{flex:none;font-size:12.5px;color:var(--sub);font-weight:600}.bwho input{flex:1;min-width:0;padding:7px 10px;font-size:14px;border:1px solid var(--line);border-radius:9px}
 .who-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 4px 12px;font-size:12.5px;color:var(--sub);line-height:1.5}.who-bar .chip{flex:none;padding:5px 10px;font-size:12.5px}
+.suggest{margin:10px 0 2px;padding:10px 12px;border-radius:12px;background:#fbfaf5;border:1px dashed #e6dcc0}.sg-h{font-size:12.5px;color:#7a5d17;font-weight:600;margin-bottom:8px}.sg{display:inline-flex;flex-direction:column;align-items:flex-start;gap:1px;margin:0 6px 6px 0;padding:7px 11px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:13.5px;font-weight:600;color:var(--ink);text-align:left}.sg small{font-size:11.5px;font-weight:400;color:var(--sub)}
+.id-l{display:block;font-size:12.5px;font-weight:600;color:var(--sub);margin:4px 0 4px}
+.beds{font-size:13px;color:#41566a;background:#f3f6f9;border-radius:8px;padding:7px 10px;margin:-2px 0 10px;line-height:1.5}
 .share-info{margin:-6px 4px 12px;font-size:12.5px;color:var(--sub);line-height:1.5}.share-info b{color:var(--ink)}.share-info .warn{color:var(--warn);font-weight:600}
 .pcred{padding:10px 16px 14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--sub)}.pcred summary{cursor:pointer;font-weight:600}.pcred div{margin-top:4px;line-height:1.5}.pcred a{color:var(--accent)}
 .vote{flex:none;display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:14px;background:#fff;color:var(--sub);line-height:1;min-width:44px;justify-content:center}.vote b{font-size:13px;font-weight:700;color:var(--ink)}.vote.on{background:#fff4d6;border-color:#f0c34a}.vote.on b{color:#8a5a00}
@@ -198,20 +201,24 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="full"><label>為替（1ユーロ＝円）</label><input id="rate" type="number" value="177" step="0.5" inputmode="decimal"></div>
 <p class="muted full" style="margin:-4px 0 0">食費はパン屋の朝食・ランチの定食・カジュアルな夕食で1日€35前後の想定。航空券は東京→パリ／ローマ→東京の乗継便エコノミーの目安です。宿泊費と現地の交通費は、ホテル候補と区間ごとの運賃から自動で計算します。</p>
 </div></div>
+<div class="card idcard"><div class="hgroup-h">👤 あなたの名前と合言葉</div><div class="form" style="padding-top:6px">
+<div><label for="idName2">名前（👍・共有・担当に表示）</label><input id="idName2" class="id-name" maxlength="20" placeholder="例：ゆうき" autocomplete="off"></div>
+<div><label for="idPass2">合言葉（3人で決めたもの）</label><input id="idPass2" class="id-pass" type="password" maxlength="60" placeholder="AI・投票・共有に使います" autocomplete="off"></div>
+<p class="muted full" style="margin:-4px 0 0">この端末にだけ保存されます。一度入れておけば、AI・👍・共有のたびに聞かれません。</p></div></div>
 <details class="card more"><summary>しおり・データの保存</summary><div class="form" style="padding-top:2px">
 <button class="btn sub full" data-bk="open">📖 旅のしおりを試しに見る（PDF）</button>
 <button class="btn sub" data-act="export">JSONで保存</button><button class="btn sub" data-act="import">JSONを読み込む</button>
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v40 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v41 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
 <div class="page-h"><div><h1>便利帳</h1><p>共有・しおり・旅行中に使うものをまとめました</p></div></div>
 <div class="card"><div class="form" style="padding-top:16px">
 <button class="btn full" data-bk="open">📖 旅のしおり（PDF）</button>
-<p class="muted full" style="margin:0">右上の「共有」でURLをLINEに送ると、2人も同じ旅程と予約リストを開けます。編集は各自の端末で独立しているので、予約したら送り合って最新にそろえましょう。</p>
+<p class="muted full" style="margin:0">右上の「共有」で短いURLを作って、LINEで2人に送れます。旅程の上に「いつ・誰が共有したか」が出るので、いちばん新しいリンクがすぐわかります。予約の担当者も一緒に届きます（支出メモは各自の端末だけ）。</p>
 </div></div>
 <div class="card" ><div class="hgroup-h">💱 ユーロ ⇄ 円</div><div class="form" style="padding-top:8px">
 <div><label for="cvE">ユーロ（€）</label><input id="cvE" type="number" inputmode="decimal" value="10" min="0" step="0.5"></div>
@@ -219,9 +226,13 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:-4px 0 0">設定の為替（1ユーロ＝<span id="cvR"></span>円）で換算。カード払いは海外事務手数料で数％上乗せされることがあります。</p></div></div>
 <div class="page-h" style="margin-top:22px"><div><h1 style="font-size:18px">もしもの時</h1><p>タップで電話をかけられます</p></div></div>
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
+<div class="card idcard"><div class="hgroup-h">👤 あなたの名前と合言葉</div><div class="form" style="padding-top:6px">
+<div><label for="idName1">名前（👍・共有・担当に表示）</label><input id="idName1" class="id-name" maxlength="20" placeholder="例：ゆうき" autocomplete="off"></div>
+<div><label for="idPass1">合言葉（3人で決めたもの）</label><input id="idPass1" class="id-pass" type="password" maxlength="60" placeholder="AI・投票・共有に使います" autocomplete="off"></div>
+<p class="muted full" style="margin:-4px 0 0">この端末にだけ保存されます。一度入れておけば、AI・👍・共有のたびに聞かれません。</p></div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v40 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v41 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="money" class="page hide">
@@ -243,7 +254,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <nav class="tabbar"><div class="tabbar-in" id="tabs"></div></nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="pv hide" id="photoView" role="dialog" aria-modal="true" aria-label="写真"></div>
-<script src="photos.js?v=40"></script>
+<script src="photos.js?v=41"></script>
 
 <script>
 // ===================== data =====================
@@ -253,21 +264,23 @@ const HUB={
  eiffel:{cdg:'Aéroport CDG 2 駅から RER B → Saint-Michel Notre-Dame 駅で RER C に乗り換え → Javel 駅、徒歩5分（約65分・€14）',toMp:'Charles Michels 駅からメトロ10号線 → La Motte-Picquet–Grenelle 駅で6号線に乗り換え → Montparnasse–Bienvenüe 駅（約25分）',fromMp:'メトロ6号線 → La Motte-Picquet–Grenelle 駅で10号線に乗り換え → Charles Michels 駅（約25分）',toOrly:'Javel 駅から RER C → Bibliothèque François Mitterrand 駅でメトロ14号線に乗り換え → Aéroport d’Orly 駅（約50分・空港券€14）。タクシーなら約30分'}};
 const hotelOptions={
 'パリ':[
- {name:'ibis Styles Paris Gare de Lyon TGV',short:'ibis Styles（リヨン駅前）',rec:'おすすめ：安さと交通の便',area:'リヨン駅前（12区）',why:'3つ星。メトロ1・14号線、RER A・Dが使えて、空港・モンパルナス駅・オルリー空港への移動が楽。モン・サン・ミッシェルの1泊は大きな荷物を預けて行けます。',query:'ibis Styles Paris Gare de Lyon TGV',lat:48.8452,lon:2.3770,eur:195,basis:'2名で1泊€156前後。3名1室と滞在税を加味',st:['Gare de Lyon',['M1','M14','RER A','RER D']],hub:'gdl'},
- {name:'Novotel Paris Centre Tour Eiffel',short:'Novotel（エッフェル塔近く）',rec:'夜景撮影を重視するなら',area:'セーヌ河岸（15区）',why:'4つ星・トリプルあり。エッフェル塔の夜景を撮った後に歩いて戻れる距離。RER C（オルセー美術館・ノートルダム・ヴェルサイユに直通）の Javel 駅が近い。',query:'Novotel Paris Centre Tour Eiffel',lat:48.8497,lon:2.2834,eur:255,basis:'2名で1泊€140〜220前後。3名1室と滞在税（€8.45/人・泊）を加味',st:['Javel',['M10','RER C']],hub:'eiffel'},
- {name:'Novotel Paris Gare de Lyon',short:'Novotel（リヨン駅前）',rec:'少し高いが部屋が広い',area:'リヨン駅前（12区）',why:'4つ星・トリプル／ファミリールームあり、屋内プール付き。立地はibis Stylesとほぼ同じで、部屋の広さと快適さを優先したい場合に。',query:'Novotel Paris Gare de Lyon',lat:48.8448,lon:2.3726,eur:305,basis:'2名で1泊€240〜280前後。3名1室と滞在税（€8.45/人・泊）を加味',st:['Gare de Lyon',['M1','M14','RER A','RER D']],hub:'gdl'}],
+ {name:'ibis Styles Paris Gare de Lyon TGV',beds:'3人部屋＝ダブルベッド1台＋1人用ソファーベッド（2人は同じベッド）。ファミリールームはダブル＋2人用ソファーベッド',short:'ibis Styles（リヨン駅前）',rec:'おすすめ：安さと交通の便',area:'リヨン駅前（12区）',why:'3つ星。メトロ1・14号線、RER A・Dが使えて、空港・モンパルナス駅・オルリー空港への移動が楽。モン・サン・ミッシェルの1泊は大きな荷物を預けて行けます。',query:'ibis Styles Paris Gare de Lyon TGV',lat:48.8452,lon:2.3770,eur:195,basis:'2名で1泊€156前後。3名1室と滞在税を加味',st:['Gare de Lyon',['M1','M14','RER A','RER D']],hub:'gdl'},
+ {name:'Novotel Paris Centre Tour Eiffel',beds:'3人部屋あり。ベッドの組み合わせは予約時に確認を',short:'Novotel（エッフェル塔近く）',rec:'夜景撮影を重視するなら',area:'セーヌ河岸（15区）',why:'4つ星・トリプルあり。エッフェル塔の夜景を撮った後に歩いて戻れる距離。RER C（オルセー美術館・ノートルダム・ヴェルサイユに直通）の Javel 駅が近い。',query:'Novotel Paris Centre Tour Eiffel',lat:48.8497,lon:2.2834,eur:255,basis:'2名で1泊€140〜220前後。3名1室と滞在税（€8.45/人・泊）を加味',st:['Javel',['M10','RER C']],hub:'eiffel'},
+ {name:'Novotel Paris Gare de Lyon',beds:'3人部屋・ファミリールームあり。ベッドの組み合わせは予約時に確認を',short:'Novotel（リヨン駅前）',rec:'少し高いが部屋が広い',area:'リヨン駅前（12区）',why:'4つ星・トリプル／ファミリールームあり、屋内プール付き。立地はibis Stylesとほぼ同じで、部屋の広さと快適さを優先したい場合に。',query:'Novotel Paris Gare de Lyon',lat:48.8448,lon:2.3726,eur:305,basis:'2名で1泊€240〜280前後。3名1室と滞在税（€8.45/人・泊）を加味',st:['Gare de Lyon',['M1','M14','RER A','RER D']],hub:'gdl'}],
 'モン・サン・ミッシェル':[
- {name:'Hôtel Vert',short:'Hôtel Vert',rec:'おすすめ：一番安い',area:'ラ・カゼルヌ地区',why:'2つ星。島へのシャトル乗り場の目の前で、夕景・夜景・朝の撮影の後も歩いて戻れる。部屋はシンプル。',query:'Hotel Vert Le Mont Saint Michel',lat:48.6155,lon:-1.5103,eur:90,basis:'公式サイトのトリプル€88＋滞在税'},
- {name:'Hôtel Gabriel',short:'Hôtel Gabriel',rec:'少し上の快適さ',area:'ラ・カゼルヌ地区',why:'3つ星・改装済み。立地はHôtel Vertと同じで、部屋がきれいめ。',query:'Hotel Gabriel Mont Saint Michel',lat:48.6158,lon:-1.5108,eur:112,basis:'公式サイトのトリプル€109＋滞在税（€1/人）'},
- {name:'Hôtel Mercure Mont Saint-Michel',short:'Mercure',rec:'4つ星で安心感',area:'ラ・カゼルヌ地区',why:'4つ星。レストラン併設。同じくシャトル乗り場の近く。3名で泊まれる部屋は予約時に確認。',query:'Hotel Mercure Mont Saint Michel',lat:48.6150,lon:-1.5098,eur:170,basis:'2名で1泊€130〜180前後。3名1室は要確認（推定）'}],
+ {name:'Hôtel Vert',beds:'3人部屋（トリプル）あり。ベッドの組み合わせは予約時に確認を',short:'Hôtel Vert',rec:'おすすめ：一番安い',area:'ラ・カゼルヌ地区',why:'2つ星。島へのシャトル乗り場の目の前で、夕景・夜景・朝の撮影の後も歩いて戻れる。部屋はシンプル。',query:'Hotel Vert Le Mont Saint Michel',lat:48.6155,lon:-1.5103,eur:90,basis:'公式サイトのトリプル€88＋滞在税'},
+ {name:'Hôtel Gabriel',beds:'3人部屋（トリプル）・ファミリールームあり。ベッドの組み合わせは予約時に確認を',short:'Hôtel Gabriel',rec:'少し上の快適さ',area:'ラ・カゼルヌ地区',why:'3つ星・改装済み。立地はHôtel Vertと同じで、部屋がきれいめ。',query:'Hotel Gabriel Mont Saint Michel',lat:48.6158,lon:-1.5108,eur:114,basis:'公式サイトのトリプル€109〜＋滞在税（€1.80/人）'},
+ {name:'Hôtel Mercure Mont Saint-Michel',beds:'3人部屋（トリプル）あり。ベッドの組み合わせは予約時に確認を',short:'Mercure',rec:'4つ星で安心感',area:'ラ・カゼルヌ地区',why:'4つ星。レストラン併設。同じくシャトル乗り場の近く。',query:'Hotel Mercure Mont Saint Michel',lat:48.6150,lon:-1.5098,eur:129,basis:'公式サイトのトリプル€124〜＋滞在税（€1.65/人）'},
+ {name:'Le Relais Saint-Michel',short:'Relais Saint-Michel（島が見える）',rec:'部屋から島が見える',area:'ラ・カゼルヌ地区（湾に面した側）',why:'4つ星。湾に面していて、テラス付きの部屋から島を正面に眺められる（島が見えるのは「Mont側」の部屋）。シャトル乗り場の目の前。',beds:'2人部屋・スイートが中心で、3人で泊まれるかはスイートかエキストラベッドを問い合わせ',query:'Le Relais Saint-Michel Mont Saint-Michel',lat:48.6163,lon:-1.5097,eur:260,basis:'観光案内所の掲載は2人部屋€170〜。3名（スイートかエキストラベッド）として推定'},
+ {name:'Hôtel Du Guesclin',short:'Du Guesclin（島の中）',rec:'島の中に泊まる',area:'島の中・グランド・リュ',why:'島の参道沿いの小さなホテル。湾が見える部屋あり。観光客が帰った後の夜と早朝の島を歩ける。島内は坂と階段が多いので、大きな荷物はパリに預けて1泊分だけで。',beds:'3人部屋（トリプル）あり。ベッドの組み合わせと湾側の部屋は予約時に確認を',query:'Hotel Du Guesclin Mont Saint-Michel',lat:48.6357,lon:-1.5107,eur:160,island:true,basis:'観光案内所の掲載はトリプル€140〜165（目安）。朝食€12/人は別'}],
 'ヴェネツィア':[
- {name:'Hotel Santa Chiara',short:'Santa Chiara（ローマ広場）',rec:'おすすめ：安心と荷物の運びやすさ',area:'本島の入口・ローマ広場（Piazzale Roma）',why:'本島で唯一車・バスで入れるエリアにあり、空港バスの停留所の目の前。橋を渡らずにスーツケースを運べる。駅まで徒歩6分。トリプルあり。夜も本島内なので戻りやすい。',query:'Hotel Santa Chiara Venice',lat:45.4379,lon:12.3187,eur:215,basis:'平均€216前後（2名）。3名1室と滞在税を加味',st:['Piazzale Roma',['1','2']],airport:'空港バス（ATVO または ACTV 5番）で Piazzale Roma へ（約20分）。ホテルはバス停の目の前',toRail:'ホテルから歩いて Venezia Santa Lucia 駅へ（約6分）',rail:'Venezia Santa Lucia'},
- {name:"Hotel ai Mori d'Oriente",short:"ai Mori d'Oriente（カンナレージョ）",rec:'静かな地区・評価が高い',area:'カンナレージョ地区（本島北側）',why:'4つ星・口コミ評価が高い。観光客が少なく静かな住宅地。ブラーノ島行きの船が出る Fondamente Nove にも近い。駅からは徒歩15分ほど。',query:"Hotel ai Mori d'Oriente Venice",lat:45.4448,lon:12.3315,eur:230,basis:'2名で1泊€150〜250前後。3名1室と滞在税を加味（推定）',st:["Madonna dell'Orto",['4.1','4.2']],airport:'空港バスで Piazzale Roma へ（約20分）→ 歩いてホテルへ（約25分、橋あり）',toRail:'ホテルから歩いて Venezia Santa Lucia 駅へ（約15分）',rail:'Venezia Santa Lucia'},
- {name:'Best Western Hotel Tritone',short:'BW Tritone（メストレ駅前）',rec:'予算重視なら（本土側）',area:'メストレ駅前（本土側）',why:'4つ星で一番安い。本島まで鉄道で約10分。ただしメストレ駅の周辺は夜の治安があまり良くないと言われるので、夜は大通りを通って早めに戻る前提で。',query:'Best Western Hotel Tritone Mestre',lat:45.4829,lon:12.2338,eur:150,basis:'2名で1泊$90〜140前後。3名1室と滞在税（€3.10/人・泊）を加味',mestre:true,airport:'空港バス（ACTV 15番 または ATVO）で Venezia Mestre 駅へ（約20分）。ホテルは駅から徒歩2分',toRail:'ホテルから歩いて Venezia Mestre 駅へ（約2分）',rail:'Venezia Mestre'}],
+ {name:'Hotel Santa Chiara',beds:'3人で泊まれるのは街側の部屋（Deluxe City View）とスイート（最大3名・エキストラベッド）。運河側の部屋は最大2名',short:'Santa Chiara（ローマ広場）',rec:'おすすめ：安心と荷物の運びやすさ',area:'本島の入口・ローマ広場（Piazzale Roma）',why:'本島で唯一車・バスで入れるエリアにあり、空港バスの停留所の目の前。橋を渡らずにスーツケースを運べる。駅まで徒歩6分。トリプルあり。夜も本島内なので戻りやすい。',query:'Hotel Santa Chiara Venice',lat:45.4379,lon:12.3187,eur:215,basis:'平均€216前後（2名）。3名1室と滞在税を加味',st:['Piazzale Roma',['1','2']],airport:'空港バス（ATVO または ACTV 5番）で Piazzale Roma へ（約20分）。ホテルはバス停の目の前',toRail:'ホテルから歩いて Venezia Santa Lucia 駅へ（約6分）',rail:'Venezia Santa Lucia'},
+ {name:"Hotel ai Mori d'Oriente",beds:'3人で泊まれる部屋とベッドの組み合わせは予約時に確認を',short:"ai Mori d'Oriente（カンナレージョ）",rec:'静かな地区・評価が高い',area:'カンナレージョ地区（本島北側）',why:'4つ星・口コミ評価が高い。観光客が少なく静かな住宅地。ブラーノ島行きの船が出る Fondamente Nove にも近い。駅からは徒歩15分ほど。',query:"Hotel ai Mori d'Oriente Venice",lat:45.4448,lon:12.3315,eur:230,basis:'2名で1泊€150〜250前後。3名1室と滞在税を加味（推定）',st:["Madonna dell'Orto",['4.1','4.2']],airport:'空港バスで Piazzale Roma へ（約20分）→ 歩いてホテルへ（約25分、橋あり）',toRail:'ホテルから歩いて Venezia Santa Lucia 駅へ（約15分）',rail:'Venezia Santa Lucia'},
+ {name:'Best Western Hotel Tritone',beds:'3人で泊まれる部屋とベッドの組み合わせは予約時に確認を',short:'BW Tritone（メストレ駅前）',rec:'予算重視なら（本土側）',area:'メストレ駅前（本土側）',why:'4つ星で一番安い。本島まで鉄道で約10分。ただしメストレ駅の周辺は夜の治安があまり良くないと言われるので、夜は大通りを通って早めに戻る前提で。',query:'Best Western Hotel Tritone Mestre',lat:45.4829,lon:12.2338,eur:150,basis:'2名で1泊$90〜140前後。3名1室と滞在税（€3.10/人・泊）を加味',mestre:true,airport:'空港バス（ACTV 15番 または ATVO）で Venezia Mestre 駅へ（約20分）。ホテルは駅から徒歩2分',toRail:'ホテルから歩いて Venezia Mestre 駅へ（約2分）',rail:'Venezia Mestre'}],
 'ローマ':[
- {name:'B&B HOTEL Roma Italia Viminale',short:'B&B HOTEL（ナツィオナーレ通り）',rec:'おすすめ：安さと駅の近さ',area:'テルミニ駅とナツィオナーレ通りの間',why:'2つ星・2019年改装、トリプルあり。地下鉄A線 Repubblica 駅まで徒歩6分。テルミニ駅の周辺はスリが多いので、夜は駅の裏通りを避けて大通りを使いましょう。',query:'B&B HOTEL Roma Italia Viminale',lat:41.8996,lon:12.4935,eur:160,basis:'料金データ未確認。2つ星・3名1室と滞在税として推定',st:['Repubblica',['A']],termini:'Roma Termini 駅から歩いてホテルへ（約10分）'},
- {name:'Hotel Raffaello',short:'Hotel Raffaello（モンティ地区）',rec:'雰囲気の良い地区・評価が高い',area:'モンティ地区',why:'3つ星・口コミ評価9.0前後、トリプルあり。おしゃれで落ち着いたモンティ地区にあり、コロッセオやフォロ・ロマーノまで歩ける。地下鉄B線 Cavour 駅が近い。',query:'Hotel Raffaello Rome',lat:41.8966,lon:12.4936,eur:250,basis:'公式のトリプル€260〜（朝食込み）。滞在税€6/人・泊を加味（推定）',st:['Cavour',['B']],termini:'Roma Termini 駅から歩いてホテルへ（約10分）'},
- {name:'Hotel Artemide',short:'Hotel Artemide（ナツィオナーレ通り）',rec:'高いが安心感・快適さ重視',area:'ナツィオナーレ通り',why:'4つ星・口コミ評価9.3前後、デラックストリプルあり。大通り沿いで夜も明るい。地下鉄A線 Repubblica 駅とテルミニ駅に近い。',query:'Hotel Artemide Rome',lat:41.9006,lon:12.4943,eur:330,basis:'2名で1泊€250〜400前後。3名1室と滞在税（€7.50/人・泊）を加味（推定）',st:['Repubblica',['A']],termini:'Roma Termini 駅から歩いてホテルへ（約8分）'}]};
+ {name:'B&B HOTEL Roma Italia Viminale',beds:'3人部屋あり。予約サイトによってベッドの表記が違うので要確認',short:'B&B HOTEL（ナツィオナーレ通り）',rec:'おすすめ：安さと駅の近さ',area:'テルミニ駅とナツィオナーレ通りの間',why:'2つ星・2019年改装、トリプルあり。地下鉄A線 Repubblica 駅まで徒歩6分。テルミニ駅の周辺はスリが多いので、夜は駅の裏通りを避けて大通りを使いましょう。',query:'B&B HOTEL Roma Italia Viminale',lat:41.8996,lon:12.4935,eur:160,basis:'料金データ未確認。2つ星・3名1室と滞在税として推定',st:['Repubblica',['A']],termini:'Roma Termini 駅から歩いてホテルへ（約10分）'},
+ {name:'Hotel Raffaello',beds:'デラックス＝キング＋シングル（3名・23㎡）。ファミリースイート＝キング＋シングル2台（4名まで・27㎡）なら3人とも別々のベッド',short:'Hotel Raffaello（モンティ地区）',rec:'雰囲気の良い地区・評価が高い',area:'モンティ地区',why:'3つ星・口コミ評価9.0前後、トリプルあり。おしゃれで落ち着いたモンティ地区にあり、コロッセオやフォロ・ロマーノまで歩ける。地下鉄B線 Cavour 駅が近い。',query:'Hotel Raffaello Rome',lat:41.8966,lon:12.4936,eur:250,basis:'公式のトリプル€260〜（朝食込み）。滞在税€6/人・泊を加味（推定）',st:['Cavour',['B']],termini:'Roma Termini 駅から歩いてホテルへ（約10分）'},
+ {name:'Hotel Artemide',beds:'デラックスルームは最大3名。ベッドの組み合わせは予約時に確認を',short:'Hotel Artemide（ナツィオナーレ通り）',rec:'高いが安心感・快適さ重視',area:'ナツィオナーレ通り',why:'4つ星・口コミ評価9.3前後、デラックストリプルあり。大通り沿いで夜も明るい。地下鉄A線 Repubblica 駅とテルミニ駅に近い。',query:'Hotel Artemide Rome',lat:41.9006,lon:12.4943,eur:330,basis:'2名で1泊€250〜400前後。3名1室と滞在税（€7.50/人・泊）を加味（推定）',st:['Repubblica',['A']],termini:'Roma Termini 駅から歩いてホテルへ（約8分）'}]};
 const NIGHTS={'パリ':3,'モン・サン・ミッシェル':1,'ヴェネツィア':3,'ローマ':3};
 const DEFAULT_SEL={'パリ':0,'モン・サン・ミッシェル':0,'ヴェネツィア':0,'ローマ':0};
 let hotelSel={...DEFAULT_SEL};
@@ -388,20 +401,20 @@ const days=[
 {d:'2027-03-13',night:'パリ',plan:[{r:'パリ'}]},
 {d:'2027-03-14',night:'モン・サン・ミッシェル',variants:[
  {label:'朝の列車（おすすめ）',plan:[
-  {move:true,title:'パリ → モン・サン・ミッシェル',steps:[[6.9,()=>'1泊分の荷物で '+hn('パリ')+' を出発（大きな荷物はホテルに預ける）。'+hub('パリ','toMp')],[7.5,'Paris Montparnasse 駅発の列車'],[11.4,'Pontorson–Mont-Saint-Michel 駅着 → バスに乗り換え'],[12.4,()=>'La Caserne 着。'+hn('モン・サン・ミッシェル')+' に荷物を預けて昼食']],url:SNCF},
+  {move:true,title:'パリ → モン・サン・ミッシェル',steps:[[6.9,()=>'1泊分の荷物で '+hn('パリ')+' を出発（大きな荷物はホテルに預ける）。'+hub('パリ','toMp')],[7.5,'Paris Montparnasse 駅発の列車'],[11.4,'Pontorson–Mont-Saint-Michel 駅着 → バスに乗り換え'],[12.4,()=>'La Caserne 着。'+(hotelInfo('モン・サン・ミッシェル').island?'無料シャトルで島へ（約12分）→ ':'')+hn('モン・サン・ミッシェル')+' に荷物を預けて昼食']],url:SNCF},
   {r:'モン・サン・ミッシェル',from:13.25}]},
  {label:'昼の列車（午前はパリ）',plan:[
   {r:'パリ',to:10.75,label:'出発前のパリ'},
-  {move:true,title:'パリ → モン・サン・ミッシェル',steps:[[10.75,()=>hn('パリ')+' で荷物を受け取る（大きな荷物は預けたまま）。'+hub('パリ','toMp')],[11.9,'Paris Montparnasse 駅発の TGV で Rennes 駅へ（約1時間30分）'],[13.6,'Rennes 駅前からバスでモン・サン・ミッシェルへ（約1時間10分）'],[15.1,()=>'La Caserne 着。'+hn('モン・サン・ミッシェル')+' にチェックイン']],url:SNCF},
+  {move:true,title:'パリ → モン・サン・ミッシェル',steps:[[10.75,()=>hn('パリ')+' で荷物を受け取る（大きな荷物は預けたまま）。'+hub('パリ','toMp')],[11.9,'Paris Montparnasse 駅発の TGV で Rennes 駅へ（約1時間30分）'],[13.6,'Rennes 駅前からバスでモン・サン・ミッシェルへ（約1時間10分）'],[15.1,()=>'La Caserne 着。'+(hotelInfo('モン・サン・ミッシェル').island?'無料シャトルで島へ（約12分）→ ':'')+hn('モン・サン・ミッシェル')+' にチェックイン']],url:SNCF},
   {r:'モン・サン・ミッシェル',from:15.6}]}]},
 {d:'2027-03-15',night:'パリ',variants:[
  {label:'昼に移動（おすすめ）',plan:[
   {r:'モン・サン・ミッシェル',to:11.25,dawn:true,label:'朝の撮影ができる時間'},
-  {move:true,title:'モン・サン・ミッシェル → パリ',steps:[[11.25,()=>hn('モン・サン・ミッシェル')+' で荷物を受け取る'],[11.75,'La Caserne からバスで Rennes 駅へ（約1時間10分）'],[13.4,'Rennes 駅から TGV で Paris Montparnasse 駅へ（約1時間30分）'],[15.2,()=>hub('パリ','fromMp')],[15.75,()=>hn('パリ')+' にチェックイン（預けた荷物を受け取る）']],url:SNCF},
+  {move:true,title:'モン・サン・ミッシェル → パリ',steps:[[11.25,()=>hn('モン・サン・ミッシェル')+' で荷物を受け取る'+(hotelInfo('モン・サン・ミッシェル').island?' → シャトルで La Caserne へ（約12分・早めに）':'')],[11.75,'La Caserne からバスで Rennes 駅へ（約1時間10分）'],[13.4,'Rennes 駅から TGV で Paris Montparnasse 駅へ（約1時間30分）'],[15.2,()=>hub('パリ','fromMp')],[15.75,()=>hn('パリ')+' にチェックイン（預けた荷物を受け取る）']],url:SNCF},
   {r:'パリ',from:16.25}]},
  {label:'夕方に移動（島をゆっくり）',plan:[
   {r:'モン・サン・ミッシェル',to:14.25,dawn:true,label:'朝の撮影と島の散策'},
-  {move:true,title:'モン・サン・ミッシェル → パリ',steps:[[14.25,()=>hn('モン・サン・ミッシェル')+' で荷物を受け取る'],[14.75,'La Caserne からバスで Rennes 駅へ（約1時間10分）'],[16.4,'Rennes 駅から TGV で Paris Montparnasse 駅へ（約1時間30分）'],[18.2,()=>hub('パリ','fromMp')],[18.75,()=>hn('パリ')+' にチェックイン（預けた荷物を受け取る）']],url:SNCF},
+  {move:true,title:'モン・サン・ミッシェル → パリ',steps:[[14.25,()=>hn('モン・サン・ミッシェル')+' で荷物を受け取る'+(hotelInfo('モン・サン・ミッシェル').island?' → シャトルで La Caserne へ（約12分・早めに）':'')],[14.75,'La Caserne からバスで Rennes 駅へ（約1時間10分）'],[16.4,'Rennes 駅から TGV で Paris Montparnasse 駅へ（約1時間30分）'],[18.2,()=>hub('パリ','fromMp')],[18.75,()=>hn('パリ')+' にチェックイン（預けた荷物を受け取る）']],url:SNCF},
   {r:'パリ',from:19.25,label:'夜景を見に行くなら'}]}]},
 {d:'2027-03-16',night:'ヴェネツィア',variants:[
  {label:'朝の便',plan:[
@@ -782,9 +795,19 @@ function renderCatalog(){
 const legMin=h=>h>=1?(Math.floor(h)+'時間'+(Math.round(h%1*12)*5?Math.round(h%1*12)*5+'分':'')):Math.max(5,Math.round(h*12)*5)+'分';
 const legHtml=(a,b,leg)=>`<div class="leg">${legIcon(leg.mode)} ${esc(leg.mode)} · 約${legMin(leg.h)} · <a target="_blank" rel="noopener" href="${routeUrl(a,b,leg.mode)}">経路 ↗</a>${leg.detail?`<br><span class="st">${esc(leg.detail)}</span>`:''}</div>`;
 const stepsHtml=(steps,url,title)=>`<div class="move"><div class="move-t">${esc(title)}</div>${steps.map(([t,txt])=>`<div class="hrow"><span class="time">${t==null?'':fmt(t)}</span><span>${esc(typeof txt==='function'?txt():txt)}</span></div>`).join('')}${url?`<a class="move-l" target="_blank" rel="noopener" href="${url}">時刻・料金を調べる ↗</a>`:''}</div>`;
+// Free time on a day: suggest up to 3 places that fit (most 👍 first, then closest to that day's plan).
+const kmBetween=(a,b)=>a&&b&&a.lat!=null&&b.lat!=null?Math.hypot((a.lat-b.lat)*111,(a.lon-b.lon)*111*Math.cos(a.lat*Math.PI/180)):5;
+function suggestHtml(s,T,items){if((isTrip()&&s.d<TODAY)||s.d==='2027-03-12')return ''; // the arrival day is kept light on purpose
+const end=items.length?T.home:T.start,free=T.limit-end;if(free<2.5)return '';
+ const ref=items.length?items[items.length-1]:T.H,pool=[...data[s.r].map(x=>item(s.r,x)),...CANDS.filter(c=>c.r===s.r).map(c=>candItem(c.r,c.n))].filter(x=>!selected.some(y=>keyOf(y)===keyOf(x)));
+ const evening=T.limit>=(sunset[s.r]||18)+.5,fits=pool.filter(x=>{if(dur(x)+.75>free||(['night','sunset'].includes(evType(x))&&!evening))return false;const h=venueHours(x,s.d);return !!h&&h[1]-Math.max(end,h[0])>=dur(x)}); // open that day, long enough // no night views in a morning-only slot
+ const ranked=fits.map(x=>({x,v:(VOTES[keyOf(x)]||[]).length,k:kmBetween(ref,x)})).sort((a,b)=>b.v-a.v||a.k-b.k).slice(0,3);if(!ranked.length)return '';
+ return `<div class="suggest"><div class="sg-h">💡 ${items.length?`${fmt(end)}以降`:s.to!=null?`出発前（〜${fmt(T.limit)}）`:s.from!=null?`到着後（${fmt(T.start)}〜）`:'この日'}が約${Math.floor(free*2)/2}時間空いています。入れるなら：</div>${ranked.map(({x,v,k})=>`<button class="sg" data-suggest="${esc(keyOf(x))}|${s.d}">${esc(x.n)}<small>${fmtH(x.h)}${v?` · 👍${v}`:''}${k<4.9?` · 約${k<1?Math.round(k*10)/10:Math.round(k)}km`:''}</small></button>`).join('')}</div>`}
+function addSuggest(v){const i=v.lastIndexOf('|'),k=v.slice(0,i),d=v.slice(i+1),r=k.slice(0,k.indexOf('|')),n=k.slice(k.indexOf('|')+1),x=catalogItem(r,n)||candItem(r,n),s=x&&segOf(d,r);if(!x||!s)return;
+ if(!selected.some(y=>keyOf(y)===k))selected.push(x);assignments[k]=d;const b=bestRoute(itemsOf(s),s);selected=[...selected.filter(y=>!b.includes(y)),...b];build();toast(`「${x.n}」を${dl(d)}に入れました`)}
 function segHtml(s){const items=itemsOf(s),T=timeline(items,s);
  const head=`<div class="seg-h">📍 ${esc(s.r)}の観光 <span>${fmt(T.start)}〜${fmt(T.end)}</span></div>${s.label?`<div class="muted" style="margin:-4px 0 6px">${esc(s.label)}</div>`:''}`;
- if(!items.length)return `<div class="seg">${head}<div class="muted">${isTrip()?'自由時間（予定なし）':`予定なし · <button class="add-link" data-addcity="${esc(s.r)}">＋ 場所を選ぶ</button>`}</div></div>`;
+ if(!items.length)return `<div class="seg">${head}<div class="muted">${isTrip()?'自由時間（予定なし）':`予定なし · <button class="add-link" data-addcity="${esc(s.r)}">＋ 場所を選ぶ</button>`}</div>${suggestHtml(s,T,items)}</div>`;
  const over=T.home>T.limit+.01,lateHome=T.home>LATEST,nightOk=!over&&T.home>T.end+.01;
  const ratio=Math.min(100,(T.home-T.start)/Math.max(.5,T.limit-T.start)*100);
  const stops=T.stops.map((st,i)=>{const k=keyOf(st.x),open=openKey===k,p=priceYen(st.x);
@@ -794,14 +817,14 @@ function segHtml(s){const items=itemsOf(s),T=timeline(items,s);
   const flag=[st.closed?'<span class="badge">この日は通常休館日</span>':st.late?`<span class="badge">${st.x.trip?'帰りのバス・列車に間に合わない可能性':'閉館時刻を過ぎる可能性'}</span>`:'',st.x.trip&&st.x.trip.sun&&dow(s.d)===0?`<span class="badge">${esc(st.x.trip.sun)}</span>`:'',rsv].filter(Boolean).join(' ');
   return `${st.lunchAt!=null?`<div class="hrow sub"><span class="time">${fmt(st.lunchAt)}</span><span>🍽 昼食（約1時間）</span></div>`:''}${legHtml(st.prev,st.x,st.leg)}${st.wait>=.5?`<div class="leg">☕ 自由時間 約${Math.round(st.wait*2)/2}時間${evType(st.x)?'（光の時間待ち）':''}</div>`:''}<button class="stop" data-open="${esc(k)}" aria-expanded="${open}"><span class="time">${fmt(st.arrive)}</span><span class="t"><b>${esc(st.x.n)}</b><small>${meta}</small>${flag?'<br>'+flag:''}</span><span class="chev">${open?'▲':'▼'}</span></button>${open?`<div class="edit">${st.x.lat&&!st.x.trip?`<a class="btn sub sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${st.x.lat},${st.x.lon}">地図で見る ↗</a>`:''}<button class="btn danger sm" data-remove="${esc(k)}">外す</button><p class="edit-hint">日付・順番・滞在時間は、下のAIに頼めます（例：「${esc(st.x.n)}を3時間に」「${esc(st.x.n)}を別の日に」）</p></div>`:''}`}).join('');
  return `<div class="seg">${head}<div class="load ${over?'over':''}"><span class="bar"><i style="width:${ratio}%"></i></span>${over?`${fmt(T.limit)}を約${T.home-T.limit<1.5?Math.round((T.home-T.limit)*60)+'分':Math.round((T.home-T.limit)*2)/2+'時間'}オーバー`:`ホテル着 ${fmt(T.home)}`}</div>${lateHome?`<div class="badge" style="margin-top:6px">ホテル着が${fmt(T.home)}ごろ。夜は大通り・地下鉄やタクシーで戻りましょう</div>`:nightOk?`<div class="muted" style="margin-top:6px">🌙 夜の撮影があるので帰着は遅め（21時までに戻る想定）</div>`:''}
- <div class="stops"><div class="hrow"><span class="time">${fmt(T.start)}</span><span>🏨 ${esc(T.H.name)} を出発</span></div>${stops}${legHtml(items[items.length-1],T.H,T.back)}<div class="hrow"><span class="time${over||lateHome?' lt':''}">${fmt(T.home)}</span><span>🏨 ${esc(T.H.name)} に戻る</span></div></div></div>`}
+ <div class="stops"><div class="hrow"><span class="time">${fmt(T.start)}</span><span>🏨 ${esc(T.H.name)} を出発</span></div>${stops}${legHtml(items[items.length-1],T.H,T.back)}<div class="hrow"><span class="time${over||lateHome?' lt':''}">${fmt(T.home)}</span><span>🏨 ${esc(T.H.name)} に戻る</span></div></div>${over?'':suggestHtml(s,T,items)}</div>`}
 function renderPlan(){
  const n=selected.length;$('planTitle').textContent=isTrip()?'旅程':'日程';
  $('planSub').textContent=isTrip()?`確定したコース · ${n}か所 · 予約した時刻や便に合わせて調整できます`:n?`${n}か所 · 場所をタップで編集。決まったら確定へ`:'まだ場所が選ばれていません';
  $('shareInfo').innerHTML=shareInfoHtml();
  $('planAct').innerHTML=isTrip()?'<button class="btn sub sm" data-act="toPlan">↩ 確定を解除</button>':'';
  const BL=isTrip()?bookingItems():[],bDone=BL.filter(i=>isBooked(i.id)).length,bLeft=BL.filter(i=>i.lvl==='必須'&&!isBooked(i.id)).length;
- const top=isTrip()?(tripHint?`<div class="card hint"><b>📤 確定したコースを3人に共有しましょう</b><p>URLをLINEで送ると、2人も同じ旅程と予約リストを開けます。編集は各自の端末で独立しているので、予約したら送り合って最新にそろえましょう。</p><div class="row2"><button class="btn sm" data-act="share">URLをコピー</button><button class="btn sub sm" data-act="dismissHint">あとで</button></div></div>`:'')
+ const top=isTrip()?(tripHint?`<div class="card hint"><b>📤 確定したコースを3人に共有しましょう</b><p>「共有する」で短いURLができるので、LINEで2人に送ってください。開いた2人も同じ旅程と予約リストになります。旅程の上に「いつ・誰が共有した旅程か」が出るので、予約したり変えたりしたら、もう一度共有すると最新がわかります。</p><div class="row2"><button class="btn sm" data-act="share">共有する</button><button class="btn sub sm" data-act="dismissHint">あとで</button></div></div>`:'')
   +`<div class="card"><button class="mini" data-go="book">🎫 予約 ${bDone} / ${BL.length}件 済み <span>${bLeft?`必須あと${bLeft}件`:'必須はすべて完了'}</span><i>›</i></button></div>`:'';
  const bottom=isTrip()?'':n?`<div class="card cta"><div><b>コースが決まったら確定へ</b><p>確定すると「旅程・予約・便利帳」の画面に切り替わり、3人で共有して予約や当日の動きを決められます。あとから見直すこともできます。</p></div><button class="btn" data-act="confirmTrip">✓ このコースで確定する</button></div>`:'';
  const overOf=(r,asg=assignments)=>{let o=0;for(const s of segs.filter(z=>z.r===r)){const it=itemsOf(s,asg);if(!it.length)continue;const T=timeline(it,s);o+=Math.max(0,T.home-T.limit)}return o};
@@ -824,7 +847,7 @@ function renderPlan(){
   const regs=[...new Set(D.plan.filter(s=>s.r).map(s=>s.r))];
   return `<div class="card${D.d===TODAY?' today':''}" id="day-${D.d}"><div class="day-h"><div class="d"><b>${md(D.d)}（${wd(D.d)}）</b><span>${esc(regs.join(' → '))}</span>${wxHtml(D)}${todayTag(D)}</div><span class="tag ${D.plan.some(s=>s.move)?'move':''}">${D.night?esc(D.night)+'泊':'帰国便（機内泊）'}</span></div>${D.variants?`<div class="travel-pick"><label>移動の時間帯</label><select data-travel="${D.d}">${D.variants.map((v,i)=>`<option value="${i}" ${D.plan===v.plan?'selected':''}>${esc(v.label)}</option>`).join('')}</select></div>`:''}<div class="stops">${D.plan.map(s=>s.move?stepsHtml(s.steps,s.url,s.title):segHtml(s)).join('')}</div></div>`}).join('')+bottom;
  watchDayChips()}
-function renderHotels(){$('hotelCards').innerHTML=Object.entries(hotelOptions).map(([r,list])=>`<div class="hgroup"><div class="hgroup-h">${esc(r)} <span>${NIGHTS[r]}泊</span></div>${list.map((h,i)=>{const on=hotelInfo(r)===h;return `<div class="hotel ${on?'on':''}"${on?'':` data-hotel="${esc(r)}|${i}" role="button" tabindex="0"`}><div class="hotel-top"><span class="city">${esc(h.rec)}</span>${on?`<span class="chosen">✓ 選択中${isBooked('hotel-'+r)?'・予約済み':''}</span>`:''}</div><b>${esc(h.name)}</b><div class="muted">📍 ${esc(h.area)}${h.st?' · 最寄り '+esc(h.st[0]):''}</div><p>${esc(h.why)}</p><div class="price">1泊 約${yen(h.eur*rate())}<small>（€${h.eur}・3名1室の目安）</small></div><div class="muted" style="margin-bottom:10px">${esc(h.basis)}</div><div class="row2"><a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.query)}">地図で見る ↗</a>${on?'':'<span class="pick">タップで選ぶ</span>'}</div></div>`}).join('')}</div>`).join('')}
+function renderHotels(){$('hotelCards').innerHTML=Object.entries(hotelOptions).map(([r,list])=>`<div class="hgroup"><div class="hgroup-h">${esc(r)} <span>${NIGHTS[r]}泊</span></div>${list.map((h,i)=>{const on=hotelInfo(r)===h;return `<div class="hotel ${on?'on':''}"${on?'':` data-hotel="${esc(r)}|${i}" role="button" tabindex="0"`}><div class="hotel-top"><span class="city">${esc(h.rec)}</span>${on?`<span class="chosen">✓ 選択中${nightRanges(r).some((g,i)=>isBooked(hotelBookId(r,i)))?'・予約済み':''}</span>`:''}</div><b>${esc(h.name)}</b><div class="muted">📍 ${esc(h.area)}${h.st?' · 最寄り '+esc(h.st[0]):''}</div><p>${esc(h.why)}</p>${h.beds?`<div class="beds">🛏 ${esc(h.beds)}</div>`:''}<div class="price">1泊 約${yen(h.eur*rate())}<small>（€${h.eur}・3名1室の目安）</small></div><div class="muted" style="margin-bottom:10px">${esc(h.basis)}</div><div class="row2"><a class="maplink" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.query)}">地図で見る ↗</a>${on?'':'<span class="pick">タップで選ぶ</span>'}</div></div>`}).join('')}</div>`).join('')}
 function renderOfficial(){$('official').innerHTML=official.map(([n,t,u])=>`<div class="info"><b>${esc(n)}</b><span>${esc(t)}</span>${u?` <a target="_blank" rel="noopener" href="${u}">公式サイト ↗</a>`:''}</div>`).join('')}
 function renderCost(){
  const R=rate(),people=Math.max(1,+$('people').value||3),rooms=Math.ceil(people/3),entry=selected.reduce((a,x)=>a+priceYen(x),0),flight=+$('flight').value||0,food=+$('food').value||0,active=11;
@@ -861,7 +884,7 @@ function dismissHint(){tripHint=false;persist();renderPlan()}
 // After a change in trip mode: keep every place on its day and in its order, just recompute times.
 function tripReflow(msg){const before=JSON.stringify(assignments);ensureAssignments();const moved=Object.keys(assignments).filter(k=>JSON.parse(before)[k]&&JSON.parse(before)[k]!==assignments[k]).length;build();if(moved)toast(`${moved}か所の日付が変わりました。旅程で確認してください`);else if(msg)toast(msg)}
 function showPage(id){if(id==='settings')id='cost';$('chatLog').classList.add('hide');if(!TABS[phase].some(t=>t[0]===id)&&id!=='cost')id='plan';curPage=id;
- document.querySelectorAll('.page').forEach(e=>e.classList.toggle('hide',e.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.go===id));renderStepper();id==='places'?(renderCatalog(),candsShared!==false&&syncPlaces()):build();window.scrollTo(0,0);const dc=$('dayChips');dc.scrollLeft=0;dc.querySelectorAll('.chip.on').forEach(c=>c.classList.remove('on'))}
+ document.querySelectorAll('.page').forEach(e=>e.classList.toggle('hide',e.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.go===id));renderStepper();id==='places'?(renderCatalog(),candsShared!==false&&syncPlaces()):build();fillIdInputs();window.scrollTo(0,0);const dc=$('dayChips');dc.scrollLeft=0;dc.querySelectorAll('.chip.on').forEach(c=>c.classList.remove('on'))}
 function toggle(k){const i=selected.findIndex(y=>keyOf(y)===k);if(i>=0)selected.splice(i,1);else{const r=k.slice(0,k.indexOf('|')),n=k.slice(k.indexOf('|')+1),x=catalogItem(r,n)||candItem(r,n);if(x)selected.push(x)}autoDistribute();renderCatalog()}
 // ----- Places not in the list: estimate stay and fee from the name, then look the place up -----
 // keyword -> [kind, stay hours, adult fee EUR] (first match wins; Japanese, French, Italian and English words)
@@ -962,10 +985,10 @@ function shareInfoHtml(){const src=getSrc();if(!src||!src.at)return '';const edi
 // Share: make a short link first (needs the network), then let a second tap send or copy it — phones only allow
 // the share sheet / clipboard straight after a tap, not after waiting for the network.
 let shareLink='',sharing=false,bookMine=false;
-async function share(){if(sharing)return;sharing=true;if(isTrip()&&tripHint){tripHint=false;if(curPage==='plan')renderPlan()}persist();
+async function share(){if(sharing)return;if(!(await ensureId(!myName(),!savedPass(),'短い共有URLを作るには合言葉が必要です（名前は「誰が共有したか」として2人に表示されます）。')))return;sharing=true;if(isTrip()&&tripHint){tripHint=false;if(curPage==='plan')renderPlan()}persist();
  toast('共有用のURLを作っています…');const st=shareState();let short=null;try{short=await shortShareUrl(st)}finally{sharing=false}
  shareLink=short||shareUrl(st);setSrc(st.sharedAt,st.sharedBy,'sent');if(curPage==='plan')renderPlan();
- $('photoView').innerHTML=`<div class="pv-in sh"><div class="pv-t"><b>📤 計画を共有</b><p>${short?'短いURLを作りました。LINEなどで2人に送ってください（2027年7月まで有効）。':'短いURLを作れなかったため、計画をまるごと入れた長いURLになっています（このままでも送れます）。'}<br><b>${esc(fmtStamp(st.sharedAt))}</b>${st.sharedBy?`・${esc(st.sharedBy)}`:''} 時点の旅程として届きます${st.sharedBy?'':'（名前は「選ぶ」の👍で初めて投票したときに登録されます）'}。</p><input class="sh-url" readonly value="${esc(shareLink)}" aria-label="共有URL" onclick="this.select()"><div class="row2">${navigator.share?'<button class="btn" data-act="shareNative">LINEなどで送る</button>':''}<button class="btn sub" data-act="shareCopy">URLをコピー</button></div><small>受け取った人が開くと、その人の計画が置き換わります（予約のチェックは残ります）。支出メモは送られません。</small></div><button class="pv-x" data-act="closePhoto" aria-label="閉じる">✕</button></div>`;
+ $('photoView').innerHTML=`<div class="pv-in sh"><div class="pv-t"><b>📤 計画を共有</b><p>${short?'短いURLを作りました。LINEなどで2人に送ってください（2027年7月まで有効）。':'短いURLを作れなかったため、計画をまるごと入れた長いURLになっています（このままでも送れます）。'}<br><b>${esc(fmtStamp(st.sharedAt))}</b>${st.sharedBy?`・${esc(st.sharedBy)}`:''} 時点の旅程として届きます${st.sharedBy?'':'（名前は「選ぶ」の👍で初めて投票したときに登録されます）'}。</p><input class="sh-url share-link" readonly value="${esc(shareLink)}" aria-label="共有URL" onclick="this.select()"><div class="row2">${navigator.share?'<button class="btn" data-act="shareNative">LINEなどで送る</button>':''}<button class="btn sub" data-act="shareCopy">URLをコピー</button></div><small>受け取った人が開くと、その人の計画が置き換わります（予約のチェックは残ります）。支出メモは送られません。</small></div><button class="pv-x" data-act="closePhoto" aria-label="閉じる">✕</button></div>`;
  $('photoView').classList.remove('hide')}
 async function shareNative(){try{await navigator.share({title:'EUROPE 2027 旅の計画',text:isTrip()?'確定したコースです（旅程・予約リスト）':'計画中のコースです',url:shareLink});closePhoto()}catch(e){if(!(e&&e.name==='AbortError'))shareCopy()}}
 async function shareCopy(){try{await navigator.clipboard.writeText(shareLink);toast('URLをコピーしました。LINEに貼って送れます');closePhoto()}catch{const i=document.querySelector('.sh-url');if(i){i.focus();i.select()}toast('URLを選択しました。長押しでコピーしてください')}}
@@ -985,7 +1008,7 @@ const bigPhoto=u=>u.replace(/\/\d+px-([^/]+)$/,'/960px-$1');
 function openPhoto(n){const ph=photoOf(n);if(!ph)return;const info=typeof SPOT_INFO!=='undefined'&&SPOT_INFO[n];
  $('photoView').innerHTML=`<div class="pv-in"><img src="${esc(bigPhoto(ph[0]))}" alt="${esc(n)}"><div class="pv-t"><b>${esc(n)}</b>${info?`<p>${esc(info[1])}</p>`:''}<small>写真：<a href="${esc(ph[3])}" target="_blank" rel="noopener">${esc(ph[1])}</a>（${esc(ph[2])}・Wikimedia Commons）</small></div><button class="pv-x" data-act="closePhoto" aria-label="閉じる">✕</button></div>`;
  $('photoView').classList.remove('hide')}
-function closePhoto(){$('photoView').classList.add('hide');$('photoView').innerHTML=''}
+function closePhoto(){$('photoView').classList.add('hide');$('photoView').innerHTML='';if(idResolve){const r=idResolve;idResolve=null;r(false)}}
 const candKey=c=>c.r+'|'+c.n;
 const candClean=c=>c&&regions.includes(c.r)&&typeof c.n==='string'&&c.n.trim()?{r:c.r,n:c.n.slice(0,100),h:Math.min(12,Math.max(.25,+c.h||1)),p:Math.max(0,+c.p||0),lat:Number.isFinite(+c.lat)&&c.lat!==null?+c.lat:null,lon:Number.isFinite(+c.lon)&&c.lon!==null?+c.lon:null,kind:String(c.kind||'').slice(0,20),note:String(c.note||'').slice(0,200),oh:Array.isArray(c.oh)&&c.oh.length===7?c.oh:null,pending:!!c.pending}:null;
 let VOTES={},voteSort=false,lastTouch=Date.now();
@@ -1020,7 +1043,15 @@ addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'
 addEventListener('pointerdown',()=>{lastTouch=Date.now()},{passive:true});
 setInterval(()=>{if(document.visibilityState==='visible'&&curPage==='places'&&candsShared!==false&&Date.now()-lastTouch<15*6e4)syncPlaces()},60000);
 function askName(force){let n=myName();if(!n||force){n=(prompt('投票に表示するあなたの名前を入れてください（例：ゆうき）',n)||'').trim().slice(0,20);if(!n)return '';try{localStorage.setItem('voterName',n)}catch{}}return n}
-async function toggleVote(k){const name=askName();if(!name)return;const pass=chatPass();if(!pass)return;
+function fillIdInputs(){document.querySelectorAll('.id-name').forEach(i=>{if(document.activeElement!==i)i.value=myName()});document.querySelectorAll('.id-pass').forEach(i=>{if(document.activeElement!==i)i.value=savedPass()})}
+// Ask for the missing name / passcode in one sheet (instead of two prompts); resolves true once saved.
+function ensureId(needName,needPass,why){const n=myName(),p=savedPass();needName=needName&&!n;needPass=needPass&&!p;if(!needName&&!needPass)return Promise.resolve(true);
+ return new Promise(res=>{idResolve=res;$('photoView').innerHTML=`<div class="pv-in sh"><div class="pv-t"><b>👤 はじめに一度だけ</b><p>${esc(why)}</p>${needName?`<label class="id-l">名前（3人に表示されます）</label><input class="sh-url id-in" id="idNameS" maxlength="20" placeholder="例：ゆうき" value="${esc(n)}">`:''}${needPass?`<label class="id-l">合言葉（3人で決めたもの）</label><input class="sh-url id-in" id="idPassS" type="password" maxlength="60" value="${esc(p)}">`:''}<div class="row2"><button class="btn" data-act="saveId">保存して続ける</button></div><small>あとから便利帳（計画中は予算ページ）の「あなたの名前と合言葉」で変えられます。</small></div><button class="pv-x" data-act="closePhoto" aria-label="閉じる">✕</button></div>`;$('photoView').classList.remove('hide');setTimeout(()=>{const f=$('idNameS')&&!n?$('idNameS'):$('idPassS');f&&f.focus()},50)})}
+let idResolve=null;
+function saveId(){const nE=$('idNameS'),pE=$('idPassS'),n=nE?nE.value.trim().slice(0,20):myName(),p=pE?pE.value.trim().slice(0,60):savedPass();
+ if((nE&&!n)||(pE&&!p)){toast('空欄を入れてください');return}try{if(nE)localStorage.setItem('voterName',n);if(pE)localStorage.setItem('chatPass',p)}catch{}
+ const r=idResolve;idResolve=null;closePhoto();fillIdInputs();r&&r(true)}
+async function toggleVote(k){if(!(await ensureId(true,true,'👍の投票には、名前（ほかの2人に表示）と合言葉が必要です。')))return;const name=myName(),pass=savedPass();if(!name||!pass)return;
  const i=k.indexOf('|'),r=k.slice(0,i),n=k.slice(i+1),cur=VOTES[k]||[],on=!cur.includes(name);
  VOTES={...VOTES,[k]:on?[...cur,name].sort():cur.filter(x=>x!==name)};voteBusy++;renderCatalog();
  const res=await postCand({op:'vote',r,n,name,on,passcode:pass});voteBusy--;
@@ -1082,7 +1113,7 @@ function chatUndoIt(){if(!chatUndo)return;const last=chatHist[chatHist.length-1]
 function chatClose(){$('chatLog').classList.add('hide')}
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[role="button"]')){e.preventDefault();e.target.click()}});
 document.addEventListener('pointerdown',e=>{const l=$('chatLog');if(l&&!l.classList.contains('hide')&&!e.target.closest('#chat'))l.classList.add('hide')},true);
-document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix],[data-excur],[data-excat],[data-exdel],[data-canddel],[data-vote],[data-votesort],[data-votename],[data-photo],[data-bookmine]');if(!t||t.disabled)return;const d=t.dataset;
+document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix],[data-excur],[data-excat],[data-exdel],[data-canddel],[data-vote],[data-votesort],[data-votename],[data-photo],[data-bookmine],[data-suggest]');if(!t||t.disabled)return;const d=t.dataset;
  if(d.stay){const i=d.stay.lastIndexOf('|');changeStay(d.stay.slice(0,i),+d.stay.slice(i+1))}
  else if(d.book)toggleBook(d.book);
  else if(d.jump)jumpDay(d.jump);
@@ -1093,6 +1124,7 @@ document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[
  else if(d.vote)toggleVote(d.vote);
  else if(d.photo)openPhoto(d.photo);
  else if(d.bookmine){bookMine=!bookMine;renderBook()}
+ else if(d.suggest)addSuggest(d.suggest);
  else if(d.votesort){voteSort=!voteSort;renderCatalog()}
  else if(d.votename){if(askName(true))renderCatalog()}
  else if(d.travelfix){const [dd,j]=d.travelfix.split('|'),D=days.find(z=>z.d===dd);travelChoice[dd]=+j;applyTravel();const msg=`${md(dd)}は「${D.variants[+j].label}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}
@@ -1105,11 +1137,13 @@ document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[
  else if('down' in d)shiftStop(d.down,1);
  else if('remove' in d)removeStop(d.remove);
  else if(d.addcity){region=d.addcity;showPage('places')}
- else if(d.act){e.preventDefault();({share,downloadIcs,addExp,copyExp,export:exportJSON,import:()=>$('importFile').click(),openRoute,confirmTrip,toPlan,phaseTap,dismissHint,chatUndoIt,chatClose,closePhoto,shareNative,shareCopy})[d.act]()}
+ else if(d.act){e.preventDefault();({share,downloadIcs,addExp,copyExp,export:exportJSON,import:()=>$('importFile').click(),openRoute,confirmTrip,toPlan,phaseTap,dismissHint,chatUndoIt,chatClose,closePhoto,shareNative,shareCopy,saveId})[d.act]()}
 });
-document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if('who' in ds){const v=e.target.value.trim().slice(0,20);bookings[ds.who]={...(bookings[ds.who]||{}),who:v};persist();renderBook();toast(v?`担当を「${v}」にしました`:'担当を未定にしました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
+document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if(e.target.classList.contains('id-name')){const v=e.target.value.trim().slice(0,20);try{v?localStorage.setItem('voterName',v):localStorage.removeItem('voterName')}catch{}fillIdInputs();if(curPage==='places')renderCatalog();toast(v?`名前を「${v}」にしました`:'名前を消しました')}
+ else if(e.target.classList.contains('id-pass')){const v=e.target.value.trim().slice(0,60);try{v?localStorage.setItem('chatPass',v):localStorage.removeItem('chatPass')}catch{}fillIdInputs();toast(v?'合言葉を保存しました':'合言葉を消しました')}
+ else if('who' in ds){const v=e.target.value.trim().slice(0,20);bookings[ds.who]={...(bookings[ds.who]||{}),who:v};persist();renderBook();toast(v?`担当を「${v}」にしました`:'担当を未定にしました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
-$('photoView').addEventListener('click',e=>{if(e.target.id==='photoView')closePhoto()});addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('photoView').classList.contains('hide'))closePhoto()});
+$('photoView').addEventListener('click',e=>{if(e.target.id==='photoView')closePhoto()});$('photoView').addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.target.id==='idNameS'||e.target.id==='idPassS')){e.preventDefault();saveId()}});addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('photoView').classList.contains('hide'))closePhoto()});
 $('exAmt').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addExp()}});
 $('cvE').addEventListener('input',()=>{$('cvY').value=Math.round((+$('cvE').value||0)*rate())});$('cvY').addEventListener('input',()=>{$('cvE').value=Math.round((+$('cvY').value||0)/rate()*100)/100});
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -1143,7 +1177,7 @@ async function loadShortPlan(id){clearLinkHash();if(!/^[A-Za-z0-9]{6,16}$/.test(
  try{const r=await fetch(PLACES_URL+'?plan='+id,{cache:'no-store'});const j=await r.json().catch(()=>({}));if(r.ok&&j.plan)plan=j.plan;else if(j.error)msg=j.error}catch{}
  if(!plan){toast(msg);return}
  const s=mergeShared(plan);if(!s)return;try{apply(s);if(s.v>=6)restoreOrder(s);showPage(isTrip()?'plan':'places')}catch{toast('読み込めませんでした')}}
-async function shortShareUrl(st){const pass=savedPass()||chatPass();if(!pass)return null;
+async function shortShareUrl(st){const pass=savedPass();if(!pass)return null;
  try{const r=await fetch(PLACES_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({op:'share',passcode:pass,plan:st})});
   if(r.status===401){try{localStorage.removeItem('chatPass')}catch{}toast('合言葉が違うため、短いURLを作れませんでした');return null}
   const j=await r.json();return r.ok&&j.id?location.origin+location.pathname+'?openExternalBrowser=1#p='+j.id:null}catch{return null}}
@@ -1153,4 +1187,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');loadWeather();syncPlaces();if(location.hash.startsWith('#p='))loadShortPlan(location.hash.slice(3));
-</script><script src="booklet.js?v=40"></script></body></html>
+</script><script src="booklet.js?v=41"></script></body></html>
