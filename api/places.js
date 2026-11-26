@@ -3,7 +3,8 @@
 // picks for the plan stays on their own device.
 // Storage: Upstash Redis (Vercel → Storage → Upstash for Redis), read over its REST API. The URL/token come from
 // the environment variables that integration adds; nothing secret is in the page.
-// It also keeps the "行きたい" votes: who wants to go where, so the three can see each other's opinions.
+// It also stores a copy of a plan when someone shares it, so the link can be short (#p=<id>) instead of carrying the
+// whole plan. It also keeps the "行きたい" votes: who wants to go where, so the three can see each other's opinions.
 // Reading is open (place names and first names only); adding, removing or voting needs the same passcode as the chat (CHAT_PASSCODE).
 
 const ALLOWED_ORIGINS = ["https://kowatanabe-photo.github.io"];
@@ -11,6 +12,13 @@ const REGIONS = ["パリ", "モン・サン・ミッシェル", "ヴェネツィ
 const KEY = "europe2027:places";
 const VOTE_KEY = "europe2027:votes"; // field "<region>|<place>\u0001<name>" = "1" (one field per vote, so votes never overwrite each other)
 const MAX_VOTES = 3000;
+const PLAN_PREFIX = "europe2027:plan:"; // shared plans for short links (#p=<id>), kept until after the trip
+const PLAN_MAX_BYTES = 120_000;
+const newId = () => {
+  const A = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789",
+    b = crypto.getRandomValues(new Uint8Array(10));
+  return Array.from(b, (x) => A[x % A.length]).join("");
+};
 const MAX_PLACES = 300;
 // The integration names its variables after the chosen prefix (KV_REST_API_URL, UPSTASH_REDIS_REST_URL, or <PREFIX>_…),
 // so take whichever REST URL / write token pair is present.
@@ -88,6 +96,13 @@ export default async function handler(req, res) {
   if (!REDIS_URL || !REDIS_TOKEN) return res.status(503).json({ error: "not_configured" });
 
   try {
+    if (req.method === "GET" && req.query && req.query.plan) {
+      const id = String(req.query.plan);
+      if (!/^[A-Za-z0-9]{6,16}$/.test(id)) return res.status(400).json({ error: "リンクが正しくありません" });
+      const v = await redis(["GET", PLAN_PREFIX + id]);
+      if (!v) return res.status(404).json({ error: "共有された計画が見つかりません（期限切れか、リンクの間違い）" });
+      return res.json({ plan: JSON.parse(v) });
+    }
     if (req.method === "GET") {
       const flat = (await redis(["HGETALL", KEY])) || [];
       const places = [];
@@ -139,6 +154,17 @@ export default async function handler(req, res) {
       await redis(["HDEL", KEY, `${r}|${n}`]);
       return res.json({ ok: true });
     }
+    if (body.op === "share") {
+      const plan = body.plan;
+      if (!plan || typeof plan !== "object" || !Array.isArray(plan.selected))
+        return res.status(400).json({ error: "計画のデータが正しくありません" });
+      const json = JSON.stringify(plan);
+      if (json.length > PLAN_MAX_BYTES) return res.status(413).json({ error: "計画が大きすぎます" });
+      const ttl = Math.max(30 * 86400, Math.round((Date.parse("2027-07-01T00:00:00Z") - Date.now()) / 1000));
+      const id = newId();
+      await redis(["SET", PLAN_PREFIX + id, json, "EX", String(ttl)]);
+      return res.json({ id });
+    }
     if (body.op === "vote") {
       const r = REGIONS.includes(body.r) ? body.r : null,
         n = str(body.n, 100),
@@ -151,7 +177,7 @@ export default async function handler(req, res) {
       } else await redis(["HDEL", VOTE_KEY, field]);
       return res.json({ ok: true });
     }
-    return res.status(400).json({ error: "op は add・remove・vote のどれか" });
+    return res.status(400).json({ error: "op は add・remove・vote・share のどれか" });
   } catch {
     return res.status(502).json({ error: "共有の保存場所に接続できませんでした" });
   }
