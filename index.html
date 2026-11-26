@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=37"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=38"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -198,7 +198,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v37 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v38 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
@@ -215,7 +215,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v37 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v38 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="money" class="page hide">
@@ -237,7 +237,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <nav class="tabbar"><div class="tabbar-in" id="tabs"></div></nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="pv hide" id="photoView" role="dialog" aria-modal="true" aria-label="写真"></div>
-<script src="photos.js?v=37"></script>
+<script src="photos.js?v=38"></script>
 
 <script>
 // ===================== data =====================
@@ -269,14 +269,16 @@ const hotelInfo=r=>{const list=hotelOptions[r];return list[Math.min(list.length-
 const hn=r=>hotelInfo(r).name;
 const hub=(r,k)=>(HUB[hotelInfo(r).hub]||{})[k]||'';
 // Per-person fares (EUR), researched November 2026.
-const transfers=[
-['3/12','シャルル・ド・ゴール空港 → パリ市内','RER B＋RER A（空港券）',14],
-['3/14','パリ → モン・サン・ミッシェル','モンパルナス駅から列車＋バス（約4〜4.5時間）',60],
-['3/15','モン・サン・ミッシェル → パリ','バス＋TGV（約4時間）',60],
-['3/16','パリ → ヴェネツィア','地下鉄でオルリー空港 → LCC（受託手荷物込み）→ バスでメストレ',114],
-['3/19','ヴェネツィア → ローマ','高速鉄道 Frecciarossa / Italo（約3.5〜4時間）',45],
-['3/22','ローマ → フィウミチーノ空港','Leonardo Express',14]];
-const passes=[['パリ','1日券 Navigo Jour × 3日',36.9],['モン・サン・ミッシェル','島へのシャトルは無料',0],['ヴェネツィア','ACTV 72時間券（水上バス・メストレのバス、ブラーノ島などへの船も）',45],['ローマ','ROMA 72H（地下鉄・バス）',22]];
+// The wording follows the chosen hotels (e.g. the Venice airport bus goes to Piazzale Roma or to Mestre).
+function transferList(){const pg=hotelInfo('パリ').hub==='eiffel',v=hotelInfo('ヴェネツィア');
+ return [
+ ['3/12','シャルル・ド・ゴール空港 → パリ市内',pg?'RER B＋RER C（空港券）':'RER B＋RER A（空港券）',14],
+ ['3/14','パリ → モン・サン・ミッシェル','モンパルナス駅から列車＋バス（約4〜4.5時間）',60],
+ ['3/15','モン・サン・ミッシェル → パリ','バス＋TGV（約4時間）',60],
+ ['3/16','パリ → ヴェネツィア',`${pg?'RER C＋メトロ14号線':'メトロ14号線'}でオルリー空港 → LCC（受託手荷物込み）→ ${v.mestre?'空港バスでメストレ駅（本土側）へ':"空港バスで本島の Piazzale Roma へ"}`,114],
+ ['3/19','ヴェネツィア → ローマ',`${v.rail||'Venezia Santa Lucia'} 駅から高速鉄道 Frecciarossa / Italo（約3.5〜4時間）`,45],
+ ['3/22','ローマ → フィウミチーノ空港','Leonardo Express',14]]}
+const passes=[['パリ','1日券 Navigo Jour × 3日',36.9],['モン・サン・ミッシェル','島へのシャトルは無料',0],['ヴェネツィア','ACTV 72時間券（水上バス・本土側の市バス、ブラーノ島などへの船も。空港バスは別料金）',45],['ローマ','ROMA 72H（地下鉄・バス）',22]];
 const official=[
 ['ルーヴル美術館','非EU居住者は€32（2026年1月から）。火曜休館、水・金は21時まで。','https://www.louvre.fr/en/visit/hours-admission/tickets-and-prices/'],
 ['オルセー美術館','月曜休館、木曜は21:45まで。料金は購入日・区分により異なる。','https://www.musee-orsay.fr/en/visit'],
@@ -809,7 +811,7 @@ function renderHotels(){$('hotelCards').innerHTML=Object.entries(hotelOptions).m
 function renderOfficial(){$('official').innerHTML=official.map(([n,t,u])=>`<div class="info"><b>${esc(n)}</b><span>${esc(t)}</span>${u?` <a target="_blank" rel="noopener" href="${u}">公式サイト ↗</a>`:''}</div>`).join('')}
 function renderCost(){
  const R=rate(),people=Math.max(1,+$('people').value||3),rooms=Math.ceil(people/3),entry=selected.reduce((a,x)=>a+priceYen(x),0),flight=+$('flight').value||0,food=+$('food').value||0,active=11;
- const hotelTotal=regions.reduce((a,r)=>a+hotelInfo(r).eur*NIGHTS[r],0)*R*rooms,inter=transfers.reduce((a,t)=>a+t[3],0)*R,local=passes.reduce((a,p)=>a+p[2],0)*R;
+ const hotelTotal=regions.reduce((a,r)=>a+hotelInfo(r).eur*NIGHTS[r],0)*R*rooms,inter=transferList().reduce((a,t)=>a+t[3],0)*R,local=passes.reduce((a,p)=>a+p[2],0)*R;
  const trips=selected.filter(x=>x.trip),fares=trips.reduce((a,x)=>a+(x.fare||0),0)*R;
  const per=flight+food*active+hotelTotal/people+inter+local+entry+fares;summary={per,total:per*people,people};
  $('cvR').textContent=R;$('cvY').value=Math.round((+$('cvE').value||0)*R);
@@ -817,7 +819,7 @@ function renderCost(){
  $('breakdown').innerHTML=[['✈️ 国際線往復',flight*people],[`🏨 宿泊（10泊・${rooms}室）`,hotelTotal],['🍽 食費（11日）',food*active*people],['🚄 都市間・空港の移動',inter*people],['🚇 市内交通（パス）',local*people],...(trips.length?[[`🚆 日帰りの交通費（${trips.length}か所）`,fares*people]]:[]),[`🎟 入場・体験（${selected.length}か所）`,entry*people]].map(([n,v])=>`<div class="rowi"><span>${n}</span><b>${yen(v)}</b></div>`).join('')
  +`<details class="more" style="border-top:1px solid var(--line)"><summary>金額の根拠（1人あたり）</summary><div class="basis">
 <h4>宿泊（1室1泊・3名）</h4>${regions.map(r=>`<div><span>${esc(r)} × ${NIGHTS[r]}泊<br><small class="muted">${esc(hn(r))}</small></span><b>€${hotelInfo(r).eur}</b></div>`).join('')}
-<h4>都市間・空港の移動</h4>${transfers.map(t=>`<div><span>${t[0]} ${esc(t[1])}<br><small class="muted">${esc(t[2])}</small></span><b>€${t[3]}</b></div>`).join('')}
+<h4>都市間・空港の移動</h4>${transferList().map(t=>`<div><span>${t[0]} ${esc(t[1])}<br><small class="muted">${esc(t[2])}</small></span><b>€${t[3]}</b></div>`).join('')}
 ${trips.length?`<h4>日帰りの往復交通費</h4>${trips.map(x=>`<div><span>${esc(x.n)}<br><small class="muted">${esc(x.trip.from)} 発着</small></span><b>€${x.fare}</b></div>`).join('')}`:''}<h4>市内交通</h4>${passes.map(p=>`<div><span>${esc(p[0])}<br><small class="muted">${esc(p[1])}</small></span><b>€${p[2]}</b></div>`).join('')}
 <h4>入場・体験（選んだ場所）</h4>${selected.filter(x=>priceYen(x)>0).map(x=>`<div><span>${esc(x.n)}<br><small class="muted">${esc(x.r)}</small></span><b>${x.eur!=null?'€'+x.eur:yen(priceYen(x))}</b></div>`).join('')||'<p class="muted">なし</p>'}
 <p class="muted" style="margin:10px 0 0">1ユーロ＝${R}円で換算。入場料は非EU居住者の大人料金。運賃・宿泊料金は2026年11月時点で調べた目安で、予約する時期によって変わります。</p></div></details>`;
@@ -1100,4 +1102,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');loadWeather();syncPlaces();
-</script><script src="booklet.js?v=37"></script></body></html>
+</script><script src="booklet.js?v=38"></script></body></html>

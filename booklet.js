@@ -106,7 +106,7 @@ const pad2=n=>String(n).padStart(2,'0');
 
 function loadLeaflet(){return new Promise(res=>{if(window.L)return res();const l=document.createElement('link');l.rel='stylesheet';l.href='vendor/leaflet/leaflet.css';document.head.appendChild(l);const s=document.createElement('script');s.src='vendor/leaflet/leaflet.js';s.onload=()=>res();s.onerror=()=>res();document.head.appendChild(s)})}
 function bkBudget(){const R=rate(),people=Math.max(1,+$('people').value||3),rooms=Math.ceil(people/3),entry=selected.reduce((a,x)=>a+priceYen(x),0),flight=+$('flight').value||0,food=+$('food').value||0;
- const hotel=regions.reduce((a,r)=>a+hotelInfo(r).eur*NIGHTS[r],0)*R*rooms/people,inter=transfers.reduce((a,t)=>a+t[3],0)*R,local=passes.reduce((a,p)=>a+p[2],0)*R;
+ const hotel=regions.reduce((a,r)=>a+hotelInfo(r).eur*NIGHTS[r],0)*R*rooms/people,inter=transferList().reduce((a,t)=>a+t[3],0)*R,local=passes.reduce((a,p)=>a+p[2],0)*R;
  const fares=selected.reduce((a,x)=>a+(x.fare||0),0)*R;
  const rows=[['国際線往復',flight],['宿泊（10泊）',hotel],['食費（11日）',food*11],['都市間・空港の移動',inter],['市内交通',local],['入場・体験',entry],...(fares?[['日帰りの交通費',fares]]:[])];return {rows,per:rows.reduce((a,r)=>a+r[1],0),people}}
 const folio=(n,label)=>`<div class="folio"><span class="latin">EUROPE PHOTO JOURNEY 2027</span><span>${esc(label)} · ${n}</span></div>`;
@@ -215,7 +215,7 @@ function bkTransport(page){return `<section class="bk-page"><div class="sec-h"><
 <h3 class="bk" style="--c:${CITY['モン・サン・ミッシェル'].c}">モン・サン・ミッシェル</h3><ul><li>パリからは列車＋バス。SNCF Connect で通しで予約できる</li><li>ホテル街から島へは無料シャトル「Le Passeur」（約12分）。歩いても約40分</li></ul></div>
 <div><h3 class="bk" style="--c:${CITY['ヴェネツィア'].c}">ヴェネツィア</h3><ul><li>水上バス（ヴァポレット）は <b>72時間券（€45）</b>が便利。1回券は€9.50と高い</li><li>乗る前に乗り場の読み取り機にカードをタッチ（乗るたびに必要）</li><li>同じ番号でも方向が2つあるので、行き先表示を確認</li><li>ブラーノ島へは Fondamente Nove から12番線</li></ul>
 <h3 class="bk" style="--c:${CITY['ローマ'].c}">ローマ</h3><ul><li>クレジットカードのタッチ決済で改札を通れる（1日の上限€8.50）。72時間券（€22）も</li><li>バスは乗ったらすぐ車内の機械で打刻。打刻なしは罰金</li><li>地下鉄はA線・B線が中心。スリが多いので混雑した車両は避ける</li></ul>
-<h3 class="bk">都市間の移動</h3><ul>${transfers.map(t=>`<li>${t[0]} ${esc(t[1])}：${esc(t[2])}（目安€${t[3]}）</li>`).join('')}</ul></div></div>${folio(page,'TRANSPORT')}</section>`}
+<h3 class="bk">都市間の移動</h3><ul>${transferList().map(t=>`<li>${t[0]} ${esc(t[1])}：${esc(t[2])}（目安€${t[3]}）</li>`).join('')}</ul></div></div>${folio(page,'TRANSPORT')}</section>`}
 
 function bkSafety(page){return `<section class="bk-page"><div class="sec-h"><div class="kicker">Safety &amp; Checklist</div><h2 class="serif">安心して旅するために</h2><p>トラブル対策と緊急連絡先、持ち物リスト</p></div>
 <div class="cols"><div><div class="box" style="border-color:#a8483a"><h4>🚨 緊急連絡先</h4><ul><li><b>112</b>：警察・救急・消防（EU共通・無料）</li><li><b>在フランス日本国大使館</b>：+33-1-4888-6200（閉館時も緊急対応）<br>7, avenue Hoche, 75008 Paris</li><li><b>在イタリア日本国大使館</b>：+39-06-487991<br>Via Quintino Sella 60, Roma</li><li>クレジットカード会社の紛失・盗難窓口：＿＿＿＿＿＿</li><li>海外旅行保険の緊急窓口：＿＿＿＿＿＿</li></ul></div>
