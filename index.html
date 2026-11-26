@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=39"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#102e43"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="favicon.png" type="image/png"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="EUROPE 2027"><title>EUROPE 2027 | Photo Trip Planner</title><link rel="stylesheet" href="booklet.css?v=40"><style>
 :root{--navy:#102e43;--accent:#16698f;--accent-soft:#e6f1f6;--ink:#17283b;--sub:#6b7d8b;--line:#e3e9ee;--bg:#f4f6f8;--warn:#94570c;--warn-soft:#fff3e0;--red:#b23a3a;--red-soft:#fbecec;--toph:58px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Helvetica Neue",sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
 html{scroll-padding-bottom:calc(var(--tabh,56px) + 80px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}body{margin:0;padding-bottom:calc(var(--tabh,56px) + 72px + env(safe-area-inset-bottom))}
 button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none;padding:0}a{color:var(--accent)}
@@ -81,6 +81,9 @@ footer{text-align:center;color:#8a9aa6;font-size:11px;padding:20px 0 4px}
 .sp-ph{flex:none;width:64px;height:64px;border-radius:10px;overflow:hidden;background:#e9eef2;align-self:flex-start;margin-top:2px}.sp-ph img{width:100%;height:100%;object-fit:cover;display:block}
 .pv{position:fixed;inset:0;z-index:80;background:rgba(10,20,30,.82);display:flex;align-items:center;justify-content:center;padding:16px}.pv-in{position:relative;background:#fff;border-radius:16px;overflow:hidden;max-width:560px;width:100%;max-height:90vh;display:flex;flex-direction:column}.pv-in img{width:100%;max-height:60vh;object-fit:cover;background:#e9eef2}.pv-t{padding:12px 16px 14px;overflow:auto}.pv-t b{font-size:17px}.pv-t p{margin:6px 0 8px;font-size:13.5px;line-height:1.6;color:#41566a}.pv-t small{font-size:11.5px;color:var(--sub)}.pv-t a{color:var(--accent)}.pv-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:16px}
 .pv-in.sh .pv-t{padding:20px 18px 18px}.pv-in.sh .pv-t p{margin:8px 0 10px}.sh-url{width:100%;font-size:13px;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:10px;color:var(--ink);background:#f6f8fa}.pv-in.sh .row2{display:flex;gap:8px;margin-bottom:10px}.pv-in.sh .row2 .btn{flex:1}
+.bwho{display:flex;align-items:center;gap:8px;margin:8px 0 2px}.bwho label{flex:none;font-size:12.5px;color:var(--sub);font-weight:600}.bwho input{flex:1;min-width:0;padding:7px 10px;font-size:14px;border:1px solid var(--line);border-radius:9px}
+.who-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 4px 12px;font-size:12.5px;color:var(--sub);line-height:1.5}.who-bar .chip{flex:none;padding:5px 10px;font-size:12.5px}
+.share-info{margin:-6px 4px 12px;font-size:12.5px;color:var(--sub);line-height:1.5}.share-info b{color:var(--ink)}.share-info .warn{color:var(--warn);font-weight:600}
 .pcred{padding:10px 16px 14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--sub)}.pcred summary{cursor:pointer;font-weight:600}.pcred div{margin-top:4px;line-height:1.5}.pcred a{color:var(--accent)}
 .vote{flex:none;display:inline-flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:14px;background:#fff;color:var(--sub);line-height:1;min-width:44px;justify-content:center}.vote b{font-size:13px;font-weight:700;color:var(--ink)}.vote.on{background:#fff4d6;border-color:#f0c34a}.vote.on b{color:#8a5a00}
 .voters{display:block;color:#8a5a00;font-weight:600;margin-top:2px}.vote-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 16px;font-size:12.5px;color:var(--sub);background:#fbfaf5}.vote-bar .chip{flex:none;padding:5px 10px;font-size:12.5px}.linkish{border:0;background:none;padding:0;color:var(--accent);font-size:12.5px;font-weight:600;text-decoration:underline}
@@ -138,6 +141,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 
 <section id="plan" class="page hide">
 <div class="page-h"><div><h1 id="planTitle">日程</h1><p id="planSub"></p></div><span id="planAct"></span></div>
+<div id="shareInfo"></div>
 <div class="chips" id="dayChips"></div>
 <div id="days"></div>
 <details class="card more"><summary>計算の前提と注意</summary><div class="note"><ul>
@@ -159,6 +163,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="page-h"><div><h1>予約</h1><p id="bookSub">日程から、予約が必要なものを自動でリストにしています</p></div></div>
 <div class="card" id="bookProg"></div>
 <div class="card" id="bookOpens"></div>
+<div id="bookWho"></div>
 <div id="bookList"></div>
 <details class="card more"><summary>いつ予約する？（目安）</summary><div class="howto">
 <div><b>今すぐ</b><span>国際線とホテル。ホテルは「キャンセル無料」のプランで早めに押さえ、日程が固まったら見直すのが安心です。</span></div>
@@ -199,7 +204,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <p class="muted full" style="margin:0">📱 <b>ホーム画面に追加</b>すると、アプリのように開けて電波がない場所でも見られます（iPhoneはSafariの共有ボタン →「ホーム画面に追加」）。ホーム画面版とSafari版は保存データが別なので、作った計画は「計画のURLをコピー」で移してください。</p>
 </div></details>
 <input id="importFile" type="file" accept=".json,application/json" class="hide">
-<footer>EUROPE 2027 · v39 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v40 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="tools" class="page hide">
@@ -216,7 +221,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <div class="card"><a class="rowi" href="tel:112"><span>🚨 警察・救急・消防（EU共通・無料）</span><b>112</b></a><a class="rowi" href="tel:+33148886200"><span>🇫🇷 在フランス日本国大使館</span><b>+33-1-4888-6200</b></a><a class="rowi" href="tel:+3906487991"><span>🇮🇹 在イタリア日本国大使館</span><b>+39-06-487991</b></a><div class="muted" style="padding:10px 16px 14px;border-top:1px solid var(--line)">カードをなくしたら、カード裏面（または会員アプリ）の紛失・盗難窓口へすぐ連絡。盗難は警察で被害届の証明書をもらうと、保険の請求に使えます。</div></div>
 <div class="card"><button class="mini" data-go="cost">💴 予算・人数・行動時間<i>›</i></button></div>
 <div class="card"><div class="form" style="padding-top:16px"><p class="muted full" style="margin:0">行き先やホテルを変えたくなったら、計画モードに戻して見直せます。予約済みの場所は、その日に固定されたままです。</p><button class="btn sub full" data-act="toPlan">↩ 確定を解除して見直す</button></div></div>
-<footer>EUROPE 2027 · v39 · 予約・料金は必ず各公式サイトで確認してください</footer>
+<footer>EUROPE 2027 · v40 · 予約・料金は必ず各公式サイトで確認してください</footer>
 </section>
 
 <section id="money" class="page hide">
@@ -238,7 +243,7 @@ button.mini{display:flex;justify-content:space-between;align-items:center;gap:10
 <nav class="tabbar"><div class="tabbar-in" id="tabs"></div></nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="pv hide" id="photoView" role="dialog" aria-modal="true" aria-label="写真"></div>
-<script src="photos.js?v=39"></script>
+<script src="photos.js?v=40"></script>
 
 <script>
 // ===================== data =====================
@@ -613,6 +618,9 @@ const TODAY=(()=>{const q=QS.get('today');if(q&&/^\d{4}-\d\d-\d\d$/.test(q))retu
 const nowH=()=>{const q=QS.get('now');if(q&&/^\d{1,2}:\d\d$/.test(q)){const [h,m]=q.split(':');return +h+m/60}const n=new Date();return n.getHours()+n.getMinutes()/60};
 const nextDay=d=>new Date(Date.parse(d)+864e5).toISOString().slice(0,10);
 const dl=d=>`${md(d)}（${wd(d)}）`;
+// The first stay keeps the old id ('hotel-パリ') so earlier checks still count; later stays add their first night.
+const hotelBookId=(r,i)=>i?`hotel-${r}#${nightRanges(r)[i][0]}`:'hotel-'+r;
+const hotelNightBooked=(r,d)=>{const rg=nightRanges(r),i=rg.findIndex(g=>g.includes(d));return i>=0&&isBooked(hotelBookId(r,i))};
 function nightRanges(r){const out=[];for(const d of days.filter(D=>D.night===r).map(D=>D.d)){const g=out[out.length-1];if(g&&nextDay(g[g.length-1])===d)g.push(d);else out.push([d])}return out}
 function moveDep(dd){const D=days.find(x=>x.d===dd),s=(D.plan||[]).find(z=>z.move),v=D.variants?D.variants[Math.min(D.variants.length-1,Math.max(0,+travelChoice[dd]||0))].label:'';const st=s&&s.steps[1];return {label:v,short:v.replace(/（.*?）/g,''),t:st?st[0]:null,steps:s?s.steps:[]}}
 const MOVE_BOOK=[
@@ -638,7 +646,10 @@ function bookingItems(){const L=[];
  for(const x of selected.filter(y=>y.trip&&y.trip.book)){const d=assignments[keyOf(x)],s=d&&segOf(d,x.r);if(!s)continue;const st=timeline(itemsOf(s),s).stops.find(z=>z.x===x);if(!st)continue;
   L.push({id:'trip-'+x.n,g:'move',name:x.trip.book+'（日帰り）',sub:x.n,lvl:'推奨',open:{on:true,txt:'Trenitaliaは数か月前（6〜9か月前）から発売。すでに予約できるはず'},when:`${dl(d)} ${fmt(st.arrive-x.trip.go+.1)}ごろ ${x.trip.from} 発`,ref:d,note:'Trenitalia（Frecciarossa）か Italo。早く買うほど安い割引運賃があります。帰りの便は現地の予定に余裕をもって。',url:'https://www.trenitalia.com/',refMsg:r=>`予約した日（${md(r)}）と今の日程（${md(d)}）がずれています`})}
  for(const m of MOVE_BOOK){const dep=moveDep(m.d);L.push({id:m.id,g:'move',name:m.name,sub:m.sub,lvl:m.lvl,open:m.open,when:`${dl(m.d)} ${dep.t!=null?fmt(dep.t)+'発':''}（${dep.short}）`,ref:dep.label,note:m.note,url:m.url,refMsg:r=>`予約したときの時間帯は「${r}」でした。日程の「移動の時間帯」を合わせてください`})}
- for(const r of [...regions].sort((a,b)=>nightRanges(a)[0][0].localeCompare(nightRanges(b)[0][0]))){const h=hotelInfo(r),rg=nightRanges(r);L.push({id:'hotel-'+r,g:'hotel',open:{on:true,txt:''},name:h.name,sub:r,lvl:'必須',when:rg.map(g=>`${dl(g[0])}〜${dl(nextDay(g[g.length-1]))} ${g.length}泊`).join(' ＋ '),ref:h.name,note:(rg.length>1?'2回に分けて泊まるので予約も2件になります。モン・サン・ミッシェルに行く間、大きな荷物を預かってもらえるかも確認を。':'')+'「大人3名・1室」で検索し、キャンセル無料のプランを選ぶと安心です。',url:'https://www.google.com/search?q='+encodeURIComponent(h.query+' official site'),refMsg:x=>`予約したのは「${x}」です。ホテルのページで選んでいる宿と違います`})}
+ // One booking per stay: Paris is booked twice (before and after Mont-Saint-Michel), so each stay gets its own check.
+ const stays=regions.flatMap(r=>nightRanges(r).map((g,i,all)=>({r,g,i,n:all.length}))).sort((a,b)=>a.g[0].localeCompare(b.g[0]));
+ for(const {r,g,i,n} of stays){const h=hotelInfo(r);L.push({id:hotelBookId(r,i),g:'hotel',open:{on:true,txt:''},name:h.name,sub:n>1?`${r} · ${i+1}件目`:r,lvl:'必須',when:`${dl(g[0])}〜${dl(nextDay(g[g.length-1]))} ${g.length}泊`,ref:h.name,
+  note:(n>1?(i===0?`${r}は2回に分けて泊まるので、予約も2件です（こちらは1件目）。モン・サン・ミッシェルに行く間、大きな荷物を預かってもらえるかも確認を。`:`2件目（モン・サン・ミッシェルから戻る夜）。1件目と同じホテルにすると、預けた荷物をそのまま受け取れて楽です。`):'')+'「大人3名・1室」で検索し、キャンセル無料のプランを選ぶと安心です。',url:'https://www.google.com/search?q='+encodeURIComponent(h.query+' official site'),refMsg:x=>`予約したのは「${x}」です。ホテルのページで選んでいる宿と違います`})}
  const tk=new Map();
  for(const s of segs){const its=itemsOf(s);if(!its.length)continue;for(const st of timeline(its,s).stops){const R=resOf(st.x);if(!R)continue;const key=R[3]||st.x.n,e=tk.get(key)||{key,R:RES[key]||R,m:[]};e.m.push({x:st.x,d:s.d,t:st.arrive});tk.set(key,e)}}
  [...tk.values()].map(e=>{e.m.sort((a,b)=>a.d.localeCompare(b.d)||a.t-b.t);return e}).sort((a,b)=>a.m[0].d.localeCompare(b.m[0].d)||a.m[0].t-b.m[0].t).forEach(e=>{const f=e.m[0],same=e.m.every(m=>m.d===f.d),names=e.m.map(m=>m.x.n);
@@ -658,7 +669,7 @@ function downloadIcs(){const t=bookingIcs(bookingItems());const a=document.creat
 function bookItemHtml(i){const b=bookings[i.id]||{},done=!!b.done,mism=done&&i.ref&&b.ref&&b.ref!==i.ref;
  return `<div class="bitem ${done?'done':''}"><button class="bcheck" data-book="${esc(i.id)}" aria-pressed="${done}" aria-label="${esc(i.name)}を予約済みにする">✓</button><div class="t"><b>${esc(i.name)}</b>${i.sub?`<span class="sub">${esc(i.sub)}</span>`:''}${done?'<span class="rv ok">予約済み</span>':`<span class="rv ${i.lvl==='必須'?'':'rec'}">${esc(i.lvl)}</span>`}
 ${i.when?`<div class="when">📅 ${esc(i.when)}${i.g==='ticket'&&!done?' → この日時で予約':''}</div>`:''}${!done&&i.open?openHtml(i.open):''}${mism?`<div class="bwarn">⚠ ${esc(i.refMsg(b.ref))}</div>`:''}${i.tip?`<div class="bwarn">💡 ${esc(i.tip)}</div>`:''}
-<div class="muted">${esc(i.note)}</div>${done&&i.g==='ticket'?`<div class="btime"><label for="bt-${esc(i.id)}">予約した入場時刻（入れると日程をこの時刻に合わせます）</label><input id="bt-${esc(i.id)}" type="time" data-btime="${esc(i.id)}" value="${esc(b.time||'')}"></div>`:''}${done?`<input data-memo="${esc(i.id)}" value="${esc(b.memo||'')}" placeholder="予約番号・メモ（任意）" maxlength="200" aria-label="予約番号・メモ">`:''}${i.url?`<a class="blink" target="_blank" rel="noopener" href="${esc(i.url)}">${i.g==='prep'?'公式サイトを開く':'予約サイトを開く'} ↗</a>`:''}</div></div>`}
+<div class="muted">${esc(i.note)}</div><div class="bwho"><label for="bw-${esc(i.id)}">👤 担当</label><input id="bw-${esc(i.id)}" data-who="${esc(i.id)}" list="whoList" value="${esc(b.who||'')}" placeholder="未定（名前を入力）" maxlength="20" autocomplete="off"></div>${done&&i.g==='ticket'?`<div class="btime"><label for="bt-${esc(i.id)}">予約した入場時刻（入れると日程をこの時刻に合わせます）</label><input id="bt-${esc(i.id)}" type="time" data-btime="${esc(i.id)}" value="${esc(b.time||'')}"></div>`:''}${done?`<input data-memo="${esc(i.id)}" value="${esc(b.memo||'')}" placeholder="予約番号・メモ（任意）" maxlength="200" aria-label="予約番号・メモ">`:''}${i.url?`<a class="blink" target="_blank" rel="noopener" href="${esc(i.url)}">${i.g==='prep'?'公式サイトを開く':'予約サイトを開く'} ↗</a>`:''}</div></div>`}
 function renderBook(){const L=bookingItems(),done=L.filter(i=>isBooked(i.id)).length,must=L.filter(i=>i.lvl==='必須'),left=must.filter(i=>!isBooked(i.id)).length;
  const nb=$('bookBadge');if(nb){nb.textContent=left;nb.classList.toggle('hide',!left)}
  if($('book').classList.contains('hide'))return;
@@ -666,8 +677,12 @@ function renderBook(){const L=bookingItems(),done=L.filter(i=>isBooked(i.id)).le
  $('bookOpens').innerHTML=`<div class="hgroup-h">🔔 予約開始のスケジュール</div><div class="otl">${nowOk?`<div class="otl-r on"><b>いま</b><span>予約できるもの <b>${nowOk}件</b>（下のリストの🟢）</span></div>`:''}${soon.map(i=>`<div class="otl-r"><b>${ymd(i.open.date)}</b><span>${esc(i.name)}<small>${esc(i.when||'')} · あと${daysTo(i.open.date)}日</small></span></div>`).join('')}${unk.map(i=>`<div class="otl-r unk"><b>要確認</b><span>${esc(i.name)}<small>${esc(i.open.txt)}</small></span></div>`).join('')}</div>${soon.length?`<div class="form" style="padding-top:4px"><button class="btn sub full" data-act="downloadIcs">📅 予約開始日をカレンダーに入れる</button><p class="muted full" style="margin:0">発売日の朝8時に通知が出るようにします（iPhoneはファイルを開いて「すべてを追加」）。発売日は目安なので、公式サイトでも確認してください。</p></div>`:''}`;
  $('bookOpens').classList.toggle('hide',!soon.length&&!nowOk&&!unk.length);
  $('bookProg').innerHTML=`<div class="prog"><div class="prog-n"><b>${done}</b>/ ${L.length}件 予約済み</div><span class="bar"><i style="width:${L.length?done/L.length*100:0}%"></i></span><div class="muted">${left?`必須のうち<b style="color:var(--red)">あと${left}件</b>。`:'必須の予約はすべて完了！'}チェックすると日程とPDFにも「予約済み」と出ます</div></div>`;
+ const me=myName(),who=i=>((bookings[i.id]||{}).who||'').trim(),names=[...new Set([me,...Object.values(bookings).map(b=>(b&&b.who||'').trim())].filter(Boolean))];
+ const cnt=new Map();for(const i of L.filter(i=>!isBooked(i.id))){const w=who(i)||'未定';cnt.set(w,(cnt.get(w)||0)+1)}
+ $('bookWho').innerHTML=`<div class="who-bar"><span>👤 まだ予約していない分の担当：${[...cnt.entries()].sort((a,b)=>(a[0]==='未定')-(b[0]==='未定')||b[1]-a[1]).map(([n,c])=>`${esc(n)} ${c}件`).join('・')||'なし'}</span>${me?`<button class="chip sm${bookMine?' on':''}" data-bookmine="1">${esc(me)}の担当だけ</button>`:''}</div><datalist id="whoList">${names.map(n=>`<option value="${esc(n)}">`).join('')}<option value="みんな"></datalist>`;
+ const show=i=>!bookMine||!me||who(i)===me;
  const G=[['flight','✈️ 国際線'],['move','🚄 都市間の移動'],['hotel','🏨 ホテル'],['ticket','🎟 入場券（日時指定）'],['prep','🧳 出発前の準備']];
- $('bookList').innerHTML=G.map(([g,t])=>{const its=L.filter(i=>i.g===g);
+ $('bookList').innerHTML=G.map(([g,t])=>{const its=L.filter(i=>i.g===g&&show(i));if(bookMine&&!its.length)return '';
   if(!its.length)return g==='ticket'?`<div class="card"><div class="hgroup-h">${t}</div><p class="muted" style="margin:4px 16px 14px">予約が必要な場所はまだ日程に入っていません。「選ぶ」で「予約必須」「予約推奨」の印がある場所を選ぶと、ここに出てきます。</p></div>`:'';
   return `<div class="card"><div class="hgroup-h">${t} <span>${its.filter(i=>isBooked(i.id)).length}/${its.length}</span></div>${its.map(bookItemHtml).join('')}</div>`}).join('')}
 // Trip mode: re-order only the day that holds this booking, around the booked entry time.
@@ -783,6 +798,7 @@ function segHtml(s){const items=itemsOf(s),T=timeline(items,s);
 function renderPlan(){
  const n=selected.length;$('planTitle').textContent=isTrip()?'旅程':'日程';
  $('planSub').textContent=isTrip()?`確定したコース · ${n}か所 · 予約した時刻や便に合わせて調整できます`:n?`${n}か所 · 場所をタップで編集。決まったら確定へ`:'まだ場所が選ばれていません';
+ $('shareInfo').innerHTML=shareInfoHtml();
  $('planAct').innerHTML=isTrip()?'<button class="btn sub sm" data-act="toPlan">↩ 確定を解除</button>':'';
  const BL=isTrip()?bookingItems():[],bDone=BL.filter(i=>isBooked(i.id)).length,bLeft=BL.filter(i=>i.lvl==='必須'&&!isBooked(i.id)).length;
  const top=isTrip()?(tripHint?`<div class="card hint"><b>📤 確定したコースを3人に共有しましょう</b><p>URLをLINEで送ると、2人も同じ旅程と予約リストを開けます。編集は各自の端末で独立しているので、予約したら送り合って最新にそろえましょう。</p><div class="row2"><button class="btn sm" data-act="share">URLをコピー</button><button class="btn sub sm" data-act="dismissHint">あとで</button></div></div>`:'')
@@ -825,7 +841,7 @@ ${trips.length?`<h4>日帰りの往復交通費</h4>${trips.map(x=>`<div><span>$
 <h4>入場・体験（選んだ場所）</h4>${selected.filter(x=>priceYen(x)>0).map(x=>`<div><span>${esc(x.n)}<br><small class="muted">${esc(x.r)}</small></span><b>${x.eur!=null?'€'+x.eur:yen(priceYen(x))}</b></div>`).join('')||'<p class="muted">なし</p>'}
 <p class="muted" style="margin:10px 0 0">1ユーロ＝${R}円で換算。入場料は非EU居住者の大人料金。運賃・宿泊料金は2026年11月時点で調べた目安で、予約する時期によって変わります。</p></div></details>`;
 }
-function build(){ensureAssignments();renderPlan();renderCost();renderHotels();renderBook();renderMoney();persist()}
+function build(){ensureAssignments();if(pendingSrc){setSrc(pendingSrc.at,pendingSrc.by,'received');pendingSrc=null}renderPlan();renderCost();renderHotels();renderBook();renderMoney();persist()}
 
 // ===================== actions =====================
 // Two stages: 'plan' (choose places and shape the route) and 'trip' (route confirmed: share, book, fine-tune the days).
@@ -927,21 +943,29 @@ function apply(s){if(!s||!Array.isArray(s.selected))throw Error('データが不
  if(s.v>=5)for(const k of keys)if(s.settings&&s.settings[k]!=null&&$(k))$(k).value=s.settings[k];
  if(s.travel&&typeof s.travel==='object'){travelChoice={};for(const D of days)if(D.variants&&Number.isInteger(+s.travel[D.d]))travelChoice[D.d]=+s.travel[D.d];applyTravel()}
  if(s.hotels&&typeof s.hotels==='object')for(const r of regions)if(Number.isInteger(+s.hotels[r]))hotelSel[r]=+s.hotels[r];
- if(s.bookings&&typeof s.bookings==='object'){bookings={};for(const [k,v] of Object.entries(s.bookings).slice(0,200))if(v&&typeof v==='object')bookings[String(k).slice(0,80)]={done:!!v.done,memo:String(v.memo||'').slice(0,200),ref:String(v.ref||'').slice(0,120),time:/^\d{1,2}:\d\d$/.test(v.time||'')?v.time:''};bookVer++}
+ if(s.bookings&&typeof s.bookings==='object'){bookings={};for(const [k,v] of Object.entries(s.bookings).slice(0,200))if(v&&typeof v==='object')bookings[String(k).slice(0,80)]={done:!!v.done,memo:String(v.memo||'').slice(0,200),ref:String(v.ref||'').slice(0,120),time:/^\d{1,2}:\d\d$/.test(v.time||'')?v.time:'',who:String(v.who||'').slice(0,20)};bookVer++}
  phase=s.phase==='trip'?'trip':'plan';tripHint=s.hint!==false;setPhase(phase);
  renderCatalog();if(s.v>=6){assignments=s.assignments&&typeof s.assignments==='object'?s.assignments:{};build()}else autoDistribute()}
 function openRoute(){const r=['パリ','モン・サン・ミッシェル','パリ','ヴェネツィア','ローマ'];window.open('https://www.google.com/maps/dir/'+r.map(encodeURIComponent).join('/')+'/','_blank','noopener')}
 function encode(s){const b=new TextEncoder().encode(JSON.stringify(s));let raw='';b.forEach(x=>raw+=String.fromCharCode(x));return btoa(raw).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
 function decode(s){let raw=atob(s.replace(/-/g,'+').replace(/_/g,'/'));return JSON.parse(new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0))))}
 // openExternalBrowser=1 makes LINE open the link in Safari/Chrome, so the plan is saved where they usually open it.
-const shareUrl=()=>location.origin+location.pathname+'?openExternalBrowser=1#plan='+encode(state());
+// What gets shared: the plan plus when and by whom, so the three can tell which link is the newest.
+const shareState=()=>({...state(),sharedAt:new Date().toISOString(),sharedBy:myName()});
+const shareUrl=(st=shareState())=>location.origin+location.pathname+'?openExternalBrowser=1#plan='+encode(st);
+const fmtStamp=iso=>{const d=new Date(iso);if(isNaN(d))return '';return `${d.getMonth()+1}/${d.getDate()}（${'日月火水木金土'[d.getDay()]}）${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`};
+const planKey=st=>{const {sharedAt,sharedBy,hint,settings,...rest}=st||{};return JSON.stringify(rest)};
+const getSrc=()=>{try{return JSON.parse(localStorage.getItem('europetrip_src')||'null')}catch{return null}};
+const setSrc=(at,by,kind)=>{try{localStorage.setItem('europetrip_src',JSON.stringify({at,by:by||'',kind,key:planKey(state())}))}catch{}};
+function shareInfoHtml(){const src=getSrc();if(!src||!src.at)return '';const edited=src.key&&src.key!==planKey(state());
+ return `<div class="share-info">📤 ${src.kind==='sent'?'自分が共有':'受け取った共有'}：<b>${esc(fmtStamp(src.at))}</b>${src.by?`（${esc(src.by)}）`:''}${edited?' · <span class="warn">この端末で変更あり（まだ共有していません）</span>':' · 最新のまま'}</div>`}
 // Share: make a short link first (needs the network), then let a second tap send or copy it — phones only allow
 // the share sheet / clipboard straight after a tap, not after waiting for the network.
-let shareLink='',sharing=false;
+let shareLink='',sharing=false,bookMine=false;
 async function share(){if(sharing)return;sharing=true;if(isTrip()&&tripHint){tripHint=false;if(curPage==='plan')renderPlan()}persist();
- toast('共有用のURLを作っています…');let short=null;try{short=await shortShareUrl()}finally{sharing=false}
- shareLink=short||shareUrl();
- $('photoView').innerHTML=`<div class="pv-in sh"><div class="pv-t"><b>📤 計画を共有</b><p>${short?'短いURLを作りました。LINEなどで2人に送ってください（2027年7月まで有効）。':'短いURLを作れなかったため、計画をまるごと入れた長いURLになっています（このままでも送れます）。'}</p><input class="sh-url" readonly value="${esc(shareLink)}" aria-label="共有URL" onclick="this.select()"><div class="row2">${navigator.share?'<button class="btn" data-act="shareNative">LINEなどで送る</button>':''}<button class="btn sub" data-act="shareCopy">URLをコピー</button></div><small>受け取った人が開くと、その人の計画が置き換わります（予約のチェックは残ります）。支出メモは送られません。</small></div><button class="pv-x" data-act="closePhoto" aria-label="閉じる">✕</button></div>`;
+ toast('共有用のURLを作っています…');const st=shareState();let short=null;try{short=await shortShareUrl(st)}finally{sharing=false}
+ shareLink=short||shareUrl(st);setSrc(st.sharedAt,st.sharedBy,'sent');if(curPage==='plan')renderPlan();
+ $('photoView').innerHTML=`<div class="pv-in sh"><div class="pv-t"><b>📤 計画を共有</b><p>${short?'短いURLを作りました。LINEなどで2人に送ってください（2027年7月まで有効）。':'短いURLを作れなかったため、計画をまるごと入れた長いURLになっています（このままでも送れます）。'}<br><b>${esc(fmtStamp(st.sharedAt))}</b>${st.sharedBy?`・${esc(st.sharedBy)}`:''} 時点の旅程として届きます${st.sharedBy?'':'（名前は「選ぶ」の👍で初めて投票したときに登録されます）'}。</p><input class="sh-url" readonly value="${esc(shareLink)}" aria-label="共有URL" onclick="this.select()"><div class="row2">${navigator.share?'<button class="btn" data-act="shareNative">LINEなどで送る</button>':''}<button class="btn sub" data-act="shareCopy">URLをコピー</button></div><small>受け取った人が開くと、その人の計画が置き換わります（予約のチェックは残ります）。支出メモは送られません。</small></div><button class="pv-x" data-act="closePhoto" aria-label="閉じる">✕</button></div>`;
  $('photoView').classList.remove('hide')}
 async function shareNative(){try{await navigator.share({title:'EUROPE 2027 旅の計画',text:isTrip()?'確定したコースです（旅程・予約リスト）':'計画中のコースです',url:shareLink});closePhoto()}catch(e){if(!(e&&e.name==='AbortError'))shareCopy()}}
 async function shareCopy(){try{await navigator.clipboard.writeText(shareLink);toast('URLをコピーしました。LINEに貼って送れます');closePhoto()}catch{const i=document.querySelector('.sh-url');if(i){i.focus();i.select()}toast('URLを選択しました。長押しでコピーしてください')}}
@@ -1058,7 +1082,7 @@ function chatUndoIt(){if(!chatUndo)return;const last=chatHist[chatHist.length-1]
 function chatClose(){$('chatLog').classList.add('hide')}
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[role="button"]')){e.preventDefault();e.target.click()}});
 document.addEventListener('pointerdown',e=>{const l=$('chatLog');if(l&&!l.classList.contains('hide')&&!e.target.closest('#chat'))l.classList.add('hide')},true);
-document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix],[data-excur],[data-excat],[data-exdel],[data-canddel],[data-vote],[data-votesort],[data-votename],[data-photo]');if(!t||t.disabled)return;const d=t.dataset;
+document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[href^="tel:"]'))return;const t=e.target.closest('[data-hotel],[data-act],[data-go],[data-city],[data-toggle],[data-open],[data-up],[data-down],[data-remove],[data-addcity],[data-jump],[data-book],[data-stay],[data-travelfix],[data-excur],[data-excat],[data-exdel],[data-canddel],[data-vote],[data-votesort],[data-votename],[data-photo],[data-bookmine]');if(!t||t.disabled)return;const d=t.dataset;
  if(d.stay){const i=d.stay.lastIndexOf('|');changeStay(d.stay.slice(0,i),+d.stay.slice(i+1))}
  else if(d.book)toggleBook(d.book);
  else if(d.jump)jumpDay(d.jump);
@@ -1068,10 +1092,11 @@ document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[
  else if(d.canddel)removeCandidate(d.canddel);
  else if(d.vote)toggleVote(d.vote);
  else if(d.photo)openPhoto(d.photo);
+ else if(d.bookmine){bookMine=!bookMine;renderBook()}
  else if(d.votesort){voteSort=!voteSort;renderCatalog()}
  else if(d.votename){if(askName(true))renderCatalog()}
  else if(d.travelfix){const [dd,j]=d.travelfix.split('|'),D=days.find(z=>z.d===dd);travelChoice[dd]=+j;applyTravel();const msg=`${md(dd)}は「${D.variants[+j].label}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}
- else if(d.hotel){const [r,i]=d.hotel.split('|');hotelSel[r]=+i;autoDistribute();const b=bookings['hotel-'+r];toast(b&&b.done&&b.ref!==hn(r)?`${r}は ${hn(r)} にしました（予約済みの宿とは違います）`:`${r}は ${hn(r)} にしました`)}
+ else if(d.hotel){const [r,i]=d.hotel.split('|');hotelSel[r]=+i;autoDistribute();const b=nightRanges(r).map((g,i)=>bookings[hotelBookId(r,i)]).find(x=>x&&x.done);toast(b&&b.ref!==hn(r)?`${r}は ${hn(r)} にしました（予約済みの宿とは違います）`:`${r}は ${hn(r)} にしました`)}
  else if(d.go)showPage(d.go);
  else if(d.city){region=d.city;renderCatalog()}
  else if('toggle' in d)toggle(d.toggle);
@@ -1082,7 +1107,7 @@ document.addEventListener('click',e=>{if(e.target.closest('a[target="_blank"],a[
  else if(d.addcity){region=d.addcity;showPage('places')}
  else if(d.act){e.preventDefault();({share,downloadIcs,addExp,copyExp,export:exportJSON,import:()=>$('importFile').click(),openRoute,confirmTrip,toPlan,phaseTap,dismissHint,chatUndoIt,chatClose,closePhoto,shareNative,shareCopy})[d.act]()}
 });
-document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
+document.addEventListener('change',e=>{const ds=e.target.dataset;if('btime' in ds){const v=/^\d{1,2}:\d\d/.test(e.target.value)?e.target.value.slice(0,5):'';bookings[ds.btime]={...(bookings[ds.btime]||{}),time:v};bookVer++;if(isTrip())rerouteBooked(ds.btime);else autoDistribute();toast(v?`入場${v}に合わせて日程を組み直しました`:'入場時刻を消しました')}else if('who' in ds){const v=e.target.value.trim().slice(0,20);bookings[ds.who]={...(bookings[ds.who]||{}),who:v};persist();renderBook();toast(v?`担当を「${v}」にしました`:'担当を未定にしました')}else if('memo' in ds){bookings[ds.memo]={...(bookings[ds.memo]||{}),memo:e.target.value.slice(0,200)};persist();toast('メモを保存しました')}else if('day' in ds)setDay(ds.day,e.target.value);else if('travel' in ds){travelChoice[ds.travel]=+e.target.value;applyTravel();const msg=`${md(ds.travel)}は「${e.target.selectedOptions[0].text}」にしました`;if(isTrip())tripReflow(msg);else{autoDistribute();toast(msg)}}});
 $('importFile').onchange=async e=>{try{apply(JSON.parse(await e.target.files[0].text()));toast('計画を読み込みました')}catch{toast('読み込めませんでした')}e.target.value=''};
 $('photoView').addEventListener('click',e=>{if(e.target.id==='photoView')closePhoto()});addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('photoView').classList.contains('hide'))closePhoto()});
 $('exAmt').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addExp()}});
@@ -1095,6 +1120,7 @@ renderHotels();renderOfficial();setHeader();
 function restoreOrder(s){if(Array.isArray(s.order)){const pos=Object.fromEntries(s.order.map((k,i)=>[k,i]));selected.sort((a,b)=>(pos[keyOf(a)]??999)-(pos[keyOf(b)]??999));build()}}
 // A shared link (#plan=...) is applied once, then removed from the address bar so that a reload
 // keeps your own edits. If this device already has a different plan, ask before replacing it.
+let pendingSrc=null; // set when a shared plan is opened; recorded after it has been applied
 const localState=()=>{try{return JSON.parse(localStorage.getItem('europetrip_v4')||'null')}catch{return null}};
 const clearLinkHash=()=>{try{history.replaceState(null,'',location.pathname+location.search.replace(/[?&]openExternalBrowser=1/,''))}catch{}};
 function loadInitial(){const local=localState();
@@ -1104,10 +1130,12 @@ function loadInitial(){const local=localState();
  if(!shared)return local;
  return mergeShared(shared)||local}
 // A shared plan replaces this device's plan (after asking), but booking checks made here are kept.
-function mergeShared(shared){const local=localState();
- if(local&&JSON.stringify(local)!==JSON.stringify(shared)&&!confirm('共有された計画を開きます。\nこの端末に保存している計画は上書きされます。よろしいですか？'))return local;
+function mergeShared(shared){const local=localState(),src=getSrc(),at=shared.sharedAt,stamp=at?`\n（${fmtStamp(at)}${shared.sharedBy?'・'+shared.sharedBy:''} に共有された旅程）`:'';
+ const older=at&&src&&src.at&&Date.parse(src.at)>Date.parse(at)?`\n\n⚠ この端末には、もっと新しい共有（${fmtStamp(src.at)}${src.by?'・'+src.by:''}）が入っています。古いリンクかもしれません。`:'';
+ if(local&&planKey(local)!==planKey(shared)&&!confirm('共有された計画を開きます。'+stamp+older+'\n\nこの端末に保存している計画は上書きされます。よろしいですか？'))return null;
+ pendingSrc=at?{at,by:shared.sharedBy||''}:null;
  let kept=0;if(local&&local.bookings&&typeof local.bookings==='object'){const sb=shared.bookings=shared.bookings&&typeof shared.bookings==='object'?{...shared.bookings}:{};
-  for(const [k,v] of Object.entries(local.bookings)){if(!v||!v.done)continue;const w=sb[k];if(!w||!w.done){sb[k]=v;kept++}else sb[k]={...w,memo:w.memo||v.memo||'',time:w.time||v.time||''}}}
+  for(const [k,v] of Object.entries(local.bookings)){if(!v)continue;const w=sb[k];if(!v.done){if(v.who&&!(w&&w.who))sb[k]={...(w||{}),who:v.who};continue}if(!w||!w.done){sb[k]={...v,who:(w&&w.who)||v.who||''};kept++}else sb[k]={...w,memo:w.memo||v.memo||'',time:w.time||v.time||'',who:w.who||v.who||''}}}
  setTimeout(()=>toast(kept?`共有された計画を読み込みました（あなたの予約チェック${kept}件はそのまま残しています）`:'共有された計画を読み込みました'),400);return shared}
 // Short links (#p=<id>): the plan itself is stored by the shared-places function.
 async function loadShortPlan(id){clearLinkHash();if(!/^[A-Za-z0-9]{6,16}$/.test(id)){toast('共有リンクが正しくありません');return}
@@ -1115,8 +1143,8 @@ async function loadShortPlan(id){clearLinkHash();if(!/^[A-Za-z0-9]{6,16}$/.test(
  try{const r=await fetch(PLACES_URL+'?plan='+id,{cache:'no-store'});const j=await r.json().catch(()=>({}));if(r.ok&&j.plan)plan=j.plan;else if(j.error)msg=j.error}catch{}
  if(!plan){toast(msg);return}
  const s=mergeShared(plan);if(!s)return;try{apply(s);if(s.v>=6)restoreOrder(s);showPage(isTrip()?'plan':'places')}catch{toast('読み込めませんでした')}}
-async function shortShareUrl(){const pass=savedPass()||chatPass();if(!pass)return null;
- try{const r=await fetch(PLACES_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({op:'share',passcode:pass,plan:state()})});
+async function shortShareUrl(st){const pass=savedPass()||chatPass();if(!pass)return null;
+ try{const r=await fetch(PLACES_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({op:'share',passcode:pass,plan:st})});
   if(r.status===401){try{localStorage.removeItem('chatPass')}catch{}toast('合言葉が違うため、短いURLを作れませんでした');return null}
   const j=await r.json();return r.ok&&j.id?location.origin+location.pathname+'?openExternalBrowser=1#p='+j.id:null}catch{return null}}
 addEventListener('hashchange',()=>{if(location.hash.startsWith('#p=')){loadShortPlan(location.hash.slice(3));return}if(!location.hash.startsWith('#plan='))return;const s=loadInitial();if(s){try{apply(s);if(s.v>=6)restoreOrder(s);showPage(isTrip()?'plan':'places')}catch(e){toast('読み込めませんでした')}}});
@@ -1125,4 +1153,4 @@ try{const src=loadInitial();
  else{selected=[['パリ',0],['パリ',1],['パリ',2],['モン・サン・ミッシェル',0],['ローマ',0],['ローマ',3],['ヴェネツィア',0]].map(([r,i])=>item(r,data[r][i]));autoDistribute();renderCatalog()}}
 catch(e){console.error(e);renderCatalog();build()}
 setPhase(phase);showPage(isTrip()?'plan':'places');loadWeather();syncPlaces();if(location.hash.startsWith('#p='))loadShortPlan(location.hash.slice(3));
-</script><script src="booklet.js?v=39"></script></body></html>
+</script><script src="booklet.js?v=40"></script></body></html>
